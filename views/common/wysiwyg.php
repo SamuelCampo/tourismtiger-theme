@@ -5,8 +5,8 @@
  * $wysiwyg (string) 
  * $class   (string)
  * 
- * @package PROJECT_SLUG
- * @author  PROJECT_AUTHOR
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 ?>
 

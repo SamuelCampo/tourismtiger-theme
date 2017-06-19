@@ -2,8 +2,8 @@
 /**
  * ACF local fields
  *
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 

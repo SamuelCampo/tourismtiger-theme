@@ -6,8 +6,8 @@
  * - Change page template
  * - Check function get_pc_styles_list()
  *
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 if ( function_exists( 'acf_add_local_field_group' ) ) :

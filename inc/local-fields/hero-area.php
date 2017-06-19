@@ -2,8 +2,8 @@
 /**
  * ACF local fields: Hero area
  *
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 if ( function_exists( 'acf_add_local_field_group' ) ) :

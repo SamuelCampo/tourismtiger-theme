@@ -2,8 +2,8 @@
 /**
  * Testimonial post type
  *
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 add_action('init', 'init_testimonial_post_type');

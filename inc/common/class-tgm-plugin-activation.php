@@ -7,7 +7,7 @@
  * for the support of your plugin or theme. Please contact the plugin
  * or theme author for support.
  *
- * @package   Dev_Theme
+ * @package   TourismTiger_Theme
  * @version   2.6.1
  * @link      http://tgmpluginactivation.com/
  * @author    Thomas Griffin, Gary Jones, Juliette Reinders Folmer

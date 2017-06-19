@@ -2,8 +2,8 @@
 /**
  * Add additional myme types
  *
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 function add_myme_types($mime_types){

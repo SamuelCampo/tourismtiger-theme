@@ -2,8 +2,8 @@
 /**
  * Option page: Primary Styles
  *
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 

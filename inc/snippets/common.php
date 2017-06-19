@@ -2,8 +2,8 @@
 /**
  * Common functions
  * 
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 
@@ -207,8 +207,8 @@ function insert_recaptcha_html() {
 /**
  * Crop content
  *
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 function crop_content( $charlength = 50, $text = '', $end = '[...]' ) {

@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  * 
- * @package Dev_Theme
+ * @package TourismTiger_Theme
  */
 
 get_header();

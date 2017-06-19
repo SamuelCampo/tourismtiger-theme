@@ -2,8 +2,8 @@
 /**
  * Mailbox example
  *
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 add_action( 'wp_ajax_examplemail', 'examplemail' );

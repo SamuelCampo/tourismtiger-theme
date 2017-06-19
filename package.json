@@ -1,5 +1,5 @@
 {
-  "name": "dev-theme",
+  "name": "tourismtiger-theme",
   "version": "1.0.0",
   "description": "Tourtiger",
   "main": "gulpfile.js",
@@ -9,7 +9,7 @@
   "repository": {
     "type": "git"
   },
-  "author": "team-name",
+  "author": "tourismtiger",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.16.0",

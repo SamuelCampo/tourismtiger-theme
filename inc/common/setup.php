@@ -4,8 +4,8 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 if ( ! function_exists( 'wordpress_kit_setup' ) ) :

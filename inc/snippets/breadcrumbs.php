@@ -2,8 +2,8 @@
 /**
  * Breadcrumbs
  * 
- * @package Dev_Theme
- * @author  team-name
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 function dimox_breadcrumbs() {

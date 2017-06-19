@@ -61,10 +61,10 @@ var path = {
             './inc/**/*.php',
             './*.php',
             './style.css',
-            './template-parts/**/*.css',
+            './views/**/*.php',
             './*.json'
         ],
-        from: [/PROJECT_NAME/g, /PROJECT_SLUG/g, /PROJECT_DOMAIN/g, /PROJECT_AUTHOR/g],
+        from: [/Dev Theme/g, /Dev_Theme/g, /dev-theme/g, /team-name/g],
         to: [projectName, projectSlug, projectDomain, projectAuthor],
         allowEmptyPaths: true,
         encoding: 'utf8',

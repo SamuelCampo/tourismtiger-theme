@@ -2,8 +2,8 @@
  *
  *	D E P E N D E N C E S
  *
- *  @package Dev_Theme
- *  @author  team-name
+ *  @package TourismTiger_Theme
+ *  @author  tourismtiger
  *  ========================= */
 
 //= ../../bower_components/jquery/dist/jquery.js
