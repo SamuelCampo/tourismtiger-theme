@@ -1,4 +1,4 @@
-# WP Template Stater Kit #
+# TourismTiger Theme #
 
 * /src - source code from that folder contains html, js, less, image and font files which will be compiled to /assets destination.
 * /assets - contains a compiled from /src folder files which are used on front-end side of a site. **Warning: Don't edit the files from that folder.**
@@ -50,22 +50,3 @@ git add --all
 git commit -m "Description"
 git push origin branch_name
 ```
-
------------------------------------
-
-### 3. What does Wordpress Kit include? ###
-
-**Front-end**
-
-* [Data aload](https://github.com/pazguille/aload)
-* [jQuery Mask](https://igorescobar.github.io/jQuery-Mask-Plugin/)
-* [Slick Slider](http://kenwheeler.github.io/slick/)
-* [Tooltips](http://ytiurin.github.io/html5tooltipsjs/)
-* [SmoothState](https://github.com/miguel-perez/smoothState.js)
-* [Wow.js](https://github.com/matthieua/WOW)
-* [SocIcon](http://www.socicon.com/chart.php)
-* [MagnificPopup](http://dimsemenov.com/plugins/magnific-popup/)
-
-**Admin Panel Plugins**
-
-* Polylang
