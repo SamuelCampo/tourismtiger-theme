@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="388px"
+	 height="388px" viewBox="0 0 388 388" enable-background="new 0 0 388 388" xml:space="preserve">
+<g id="icon">
+</g>
+<g id="background">
+	<g>
+		<polygon fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" points="13,226.908 
+			152.863,284.5 194,259.818 194,251.592 54.137,194 13,218.682 		"/>
+		<polygon fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" points="375,226.908 
+			235.137,284.5 194,259.818 194,251.592 333.863,194 375,218.682 		"/>
+		<polyline fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" points="
+			70.591,187.227 54.137,194 13,169.318 13,161.091 70.587,137.381 		"/>
+		<polyline fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" points="
+			317.408,185.773 333.863,194 375,169.318 375,161.091 317.408,137.381 		"/>
+		
+			<line fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" x1="194" y1="259.818" x2="194" y2="375"/>
+		<polyline fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" points="
+			333.863,243.363 333.863,317.408 194,375 54.137,317.408 54.137,243.363 		"/>
+		
+			<line fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" x1="194" y1="111.727" x2="194" y2="251.592"/>
+		<polyline fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" points="
+			70.591,202.227 70.591,62.363 194,13 317.408,62.363 317.408,202.227 		"/>
+		
+			<line fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" x1="194" y1="111.727" x2="70.591" y2="62.363"/>
+		
+			<line fill="none" stroke="#666666" stroke-width="15" stroke-linejoin="round" stroke-miterlimit="10" x1="317.408" y1="62.363" x2="194" y2="111.727"/>
+	</g>
+</g>
+</svg>

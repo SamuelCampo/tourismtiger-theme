@@ -1,0 +1,251 @@
+/*  =========================
+    Main */
+
+@sitewidth: 123.4rem;
+
+
+
+/*  =========================
+    Font styles */
+
+@primary: sans-serif;
+
+
+
+
+/*  =========================
+    Color styles */
+
+@text: #777;
+@bg:   #f9f9f9;
+
+@color-light:     #f9f9f9;
+@color-dark:      #777777;
+@color-green:     #4caf50;
+@color-salat:     #8bc34a;
+@color-red:       #f44336;
+@color-pink:      #e91e63;
+@color-purpure:   #9c27b0;
+@color-viollet:   #673ab7;
+@color-blue:      #2196f3;
+@color-ocean:     #00bcd4;
+@color-yellow:    #ffeb3b;
+@color-orange:    #ff9800;
+@color-spacegray: #607d8b;
+
+.is-light    { color: @color-light; }
+.is-dark     { color: @color-dark; }
+.is-green    { color: @color-green; }
+.is-salat    { color: @color-salat; }
+.is-red      { color: @color-red; }
+.is-pink     { color: @color-pink; }
+.is-purpure  { color: @color-purpure; }
+.is-viollet  { color: @color-viollet; }
+.is-blue     { color: @color-blue; }
+.is-ocean    { color: @color-ocean; }
+.is-yellow   { color: @color-yellow; }
+.is-orange   { color: @color-orange; }
+
+.is-bg-light       { background-color: @color-light; }
+.is-bg-dark        { background-color: @color-dark; }
+.is-bg-green       { background-color: @color-green; }
+.is-bg-salat       { background-color: @color-salat; }
+.is-bg-red         { background-color: @color-red; }
+.is-bg-pink        { background-color: @color-pink; }
+.is-bg-purpure     { background-color: @color-purpure; }
+.is-bg-viollet     { background-color: @color-viollet; }
+.is-bg-blue        { background-color: @color-blue; }
+.is-bg-ocean       { background-color: @color-ocean; }
+.is-bg-yellow      { background-color: @color-yellow; }
+.is-bg-orange      { background-color: @color-orange; }
+.is-bg-transparent { background-color: transparent; }
+
+
+
+/*  =========================
+    Devices */
+
+@desktop: 1230px;
+@laptop: 1150px;
+@pad: 992px;
+@padmini: 768px;
+@mobile: 568px;
+
+html {
+    font-size: 10px;
+
+    @media (max-width: @desktop) {
+        font-size: 9.5px;
+    }
+
+    @media (max-width: @laptop) {
+        font-size: 9px;
+    }
+
+    @media (max-width: @pad) {
+        font-size: 8.5px;
+    }
+
+    @media (max-width: @padmini) {
+        font-size: 8px;
+    }
+
+    @media (max-width: @mobile) {
+        font-size: 7.5px;
+    }
+}
+
+/*  =========================
+    Common */
+
+body {
+    box-sizing: border-box;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: @text;
+    font-family: @primary, sans-serif;
+
+    *,
+    :after,
+    :before {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        outline: none;
+    }
+
+    a,
+    button,
+    input[type="submit"] {
+        .mx-transition(.5s);
+
+        &:hover {
+            .mx-transition(.25s);
+        }
+
+        &:active {
+            .mx-transition(.15s);
+        }
+    }
+}
+
+#wrapper {
+    max-width: 100%;
+    min-width: 320px;
+    overflow: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+.box {
+    width: 100%;
+    max-width: @sitewidth;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: @pad) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+
+
+h1,
+h2,
+h3, {
+    line-height: 1.1;
+}
+
+
+
+h1 {
+    font-size: 6rem;
+    margin: 0;
+    font-weight: 700;
+
+    @media (max-width: @mobile) {
+        font-size: 4.8rem;
+        line-height: 1.3;
+    }
+}
+
+
+
+h2 {
+    font-size: 5rem;
+    margin: 0;
+    font-weight: 100;
+
+    @media (max-width: @mobile) {
+        font-size: 3.5rem;
+        line-height: 1.3;
+    }
+}
+
+
+
+h3 {
+    font-size: 4rem;
+    margin: 0;
+    font-weight: 100;
+
+    @media (max-width: @mobile) {
+        font-size: 3rem;
+        line-height: 1.3;
+    }
+}
+
+
+
+h4 {
+    font-size: 3.4rem;
+    margin: 0;
+    font-weight: 100;
+
+    @media (max-width: @mobile) {
+        font-size: 2.2rem;
+    }
+}
+
+
+
+h5 {
+    font-size: 2.8rem;
+    margin: 0;
+    font-weight: 400;
+
+    @media (max-width: @mobile) {
+        font-size: 2rem;
+    }
+}
+
+
+
+h6 {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 400;
+
+    @media (max-width: @mobile) {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+}
+
+
+
+p,
+li {
+    font-size: 1.8rem;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 400;
+}
+
+
+
+a {
+    text-decoration: none;
+}

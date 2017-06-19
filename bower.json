@@ -1,0 +1,17 @@
+{
+  "name": "dev-theme",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "~3.2.1",
+    "jquery-mask-plugin": "~1.14.10",
+    "magnific-popup": "~1.1.0",
+    "slick-carousel": "~1.6.0",
+    "smoothstate": "~0.7.2",
+    "wow": "~1.1.2",
+    "normalize.less": "~1.0.0",
+    "wordpress-core-styles": "~1.0.0",
+    "socicon": "~3.0.5"
+  },
+  "private": true
+}
+       
