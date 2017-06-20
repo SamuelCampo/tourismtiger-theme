@@ -133,7 +133,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 														),
 													),
 												),
-												'choices' => get_pc_styles_list( 'blog_card' ),
+												'choices' => '',
 												'default_value' => 'fc_style-one',
 												'layout' => 'horizontal',
 											),
@@ -196,7 +196,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 																'wrapper' => array (
 																	'width' => '50'
 																),
-																'choices' => get_pc_styles_list( 'content_card' ),
+																'choices' => '',
 																'allow_null' => 0,
 																'default_value' => 'style-one',
 																'layout' => 'horizontal',
@@ -320,8 +320,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 																			'value' => 'content',
 																		),
 																	),
-																)
-																'button_label' => 'Add Content'
+																),
+																'button_label' => 'Add Content',
 																'layouts' => array (
 																	array (
 																		'key' => '582311fe58061',
@@ -1231,7 +1231,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 																'name' => 'tour_flexiprod-style',
 																'type' => 'select',
 																'required' => 0,
-																'choices' => get_pc_styles_list( 'flexi_card' ),
+																'choices' => '',
 																'default_value' => 'fc_style-one',
 																'layout' => 'horizontal',
 															),

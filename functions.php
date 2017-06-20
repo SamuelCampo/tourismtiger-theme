@@ -52,7 +52,7 @@ define( 'THEME_ASSETS_URI', THEME_PATH_URI . '/assets/' );
  *10. F**k off bad responces
  *11. Forbid to edit theme's and plug-ins' code
  */
-include THEME_PATH . 'common/setup.php';
+include THEME_INC_PATH . '/common/setup.php';
 
 
 /**
@@ -61,19 +61,19 @@ include THEME_PATH . 'common/setup.php';
  * 1. Enqueue styles and scripts
  * 2. Include JS variables
  */
-include THEME_PATH . 'common/enqueue.php';
+include THEME_INC_PATH . '/common/enqueue.php';
 
 
 /**
  * Product post type
  */
-include THEME_PATH . 'post-types/product.php';
+include THEME_INC_PATH . '/post-types/product.php';
 
 
 /**
  * Testimonial post type
  */
-include THEME_PATH . 'post-types/testimonial.php';
+include THEME_INC_PATH . '/post-types/testimonial.php';
 
 
 /**
@@ -82,37 +82,37 @@ include THEME_PATH . 'post-types/testimonial.php';
  * 1. Include ACF Pro
  * 2. Include ACF Accordion
  */
-include THEME_PATH . 'common/acf.php';
+include THEME_INC_PATH . '/common/acf.php';
 
 
 /**
  * ACF Option page: Primary Styles
  */
-include THEME_PATH . 'option-pages/primary-styles.php';
+include THEME_INC_PATH . '/option-pages/primary-styles.php';
 
 
 /**
  * ACF Local Fields for Primary Content 
  */
-include THEME_PATH . 'local-fields/primary-content.php';
+include THEME_INC_PATH . '/local-fields/primary-content.php';
 
 
 /**
  * ACF Local Fields for Hero Area
  */
-include THEME_PATH . 'local-fields/hero-area.php';
+include THEME_INC_PATH . '/local-fields/hero-area.php';
 
 
 /**
  * ACF Local Fields for Product page
  */
-include THEME_PATH . 'local-fields/product-page.php';
+include THEME_INC_PATH . '/local-fields/product-page.php';
 
 
 /**
  * ACF Local Fields for Testimonials page
  */
-include THEME_PATH . 'local-fields/testimonials-page.php';
+include THEME_INC_PATH . '/local-fields/testimonials-page.php';
 
 
 /**
@@ -131,7 +131,7 @@ include THEME_PATH . 'local-fields/testimonials-page.php';
  * 7. WP BackitUP
  * 8. GitHub Updater
  */
-include THEME_PATH . 'common/class-tgm-plugin-activation.php';
+include THEME_INC_PATH . '/common/class-tgm-plugin-activation.php';
 
 
 /**
@@ -139,29 +139,29 @@ include THEME_PATH . 'common/class-tgm-plugin-activation.php';
  *
  * 1. Register AJAX functions for send messages
  */
-include THEME_PATH . 'features/mailbox.php';
+include THEME_INC_PATH . '/features/mailbox.php';
 
 /**
  * Navigations
  */
-include THEME_PATH . 'features/navigations.php';
+include THEME_INC_PATH . '/features/navigations.php';
 
 /**
  * Image sizes
  */
-include THEME_PATH . 'features/image-sizes.php';
+include THEME_INC_PATH . '/features/image-sizes.php';
 
 /**
  * Add additional myme types
  *
  * 1. SVG
  */
-include THEME_PATH . 'features/myme-types.php';
+include THEME_INC_PATH . '/features/myme-types.php';
 
 /**
  * Breadcrumbs
  */
-include THEME_PATH . 'snippets/breadcrumbs.php';
+include THEME_INC_PATH . '/snippets/breadcrumbs.php';
 
 /**
  * Common fetures
@@ -174,7 +174,7 @@ include THEME_PATH . 'snippets/breadcrumbs.php';
  * - generate_random_string()
  * - crop_content()
  */
-include THEME_PATH . 'snippets/common.php';
+include THEME_INC_PATH . '/snippets/common.php';
 
 /**
  * ACF css helper functions 
@@ -184,11 +184,11 @@ include THEME_PATH . 'snippets/common.php';
  * - get_font_corner_style()
  * - get_font_border_styles()
  */
-include THEME_PATH . 'snippets/acf-css-functions.php';
+include THEME_INC_PATH . '/snippets/acf-css-functions.php';
 
 /**
  * Paningation
  */
-include THEME_PATH . 'snippets/paningation.php';
+include THEME_INC_PATH . '/snippets/paningation.php';
 
 

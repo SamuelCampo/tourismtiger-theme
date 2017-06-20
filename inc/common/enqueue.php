@@ -29,7 +29,7 @@ function global_js_variables(){
 		array(
 			'url'       => admin_url('admin-ajax.php'),
 			'post_id'   => $post->ID,
-			'ajaxnonce' => json_encode( wp_create_nonce( "ajax_nonce" ) );
+			'ajaxnonce' => json_encode( wp_create_nonce( "ajax_nonce" ) )
 		)
 	);  
 }

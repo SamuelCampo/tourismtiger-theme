@@ -41,7 +41,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'name' => 'hero_area-style',
 								'type' => 'select',
 								'required' => 0,
-								'choices' => get_pc_styles_list( 'hero_area' ),
+								'choices' => '',
 								'default_value' => 'style-one',
 							),
 							array (
