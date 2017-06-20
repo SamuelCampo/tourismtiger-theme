@@ -11,5 +11,5 @@
 ?>
 
 <div class="wysiwyg <?=$classes;?>">
-	<?=$wysywyg;?>
+	<?=$wysiwyg;?>
 </div>

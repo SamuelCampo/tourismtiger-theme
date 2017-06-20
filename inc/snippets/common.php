@@ -231,3 +231,25 @@ function crop_content( $charlength = 50, $text = '', $end = '[...]' ) {
 
     return $string;
 }
+
+/**
+ * Generate classlist from array
+ */
+function generate_classlist( $array ) {
+    if ( !is_array( $array ) ) 
+        return '';
+
+    // That will be returned
+    $classlist = '';
+    $counter   = 0;
+
+    foreach ( $array as $class ) :
+        if ( $counter !== 0 )  
+            $classlist .= ' ';
+
+        $classlist .= "{$class}";
+        $counter++;
+    endforeach;
+
+    return $classlist;
+}

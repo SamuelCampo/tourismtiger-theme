@@ -15,7 +15,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			array (
 				'key' => 'pc_ha',
 				'label' => 'Primary Hero Area',
-				'name' => 'pc_hero_area',
+				'name' => 'hero_area',
 				'type' => 'flexible_content',
 				'required' => 0,
 				'button_label' => 'Add Hero Area',
@@ -47,102 +47,102 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_003-width',
 								'label' => 'Hero Width',
-								'name' => 'pc_hero_area_banner-width',
+								'name' => 'hero_area_banner-width',
 								'type' => 'select',
 								'required' => 0,
 								'wrapper' => array (
 									'width' => '33.33',
 								),
 								'choices' => array (
-									'site-grid' => 'Fit in site grid',
-									'full' => 'Full width'
+									'width_box' => 'Fit in site grid',
+									'width_full' => 'Full width'
 								),
-								'default_value' => 'site-grid',
+								'default_value' => 'width_full',
 							),
 							array (
 								'key' => 'pc_ha_003',
 								'label' => 'Hero Height',
-								'name' => 'pc_hero_area_size',
+								'name' => 'hero_area_size',
 								'type' => 'select',
 								'required' => 0,
 								'wrapper' => array (
 									'width' => '33.33',
 								),
 								'choices' => array (
-									'short' => 'Short',
-									'medium' => 'Medium',
-									'tall' => 'Tall',
+									'height_short' => 'Short',
+									'height_medium' => 'Medium',
+									'height_tall' => 'Tall',
 								),
-								'default_value' => 'short',
+								'default_value' => 'height_short',
 							),
 							array (
 								'key' => 'pc_ha_009',
 								'label' => 'Content Alignment',
-								'name' => 'pc_hero_area_align',
+								'name' => 'hero_area_align',
 								'type' => 'select',
 								'required' => 0,
 								'wrapper' => array (
 									'width' => '33.33',
 								),
 								'choices' => array (
-									'left' => 'Left',
-									'middle' => 'Middle',
-									'right' => 'right',
+									'align_left' => 'Left',
+									'align_center' => 'Center',
+									'align_right' => 'Right',
 								),
-								'default_value' => 'middle',
+								'default_value' => 'align_center',
 							),
 							array (
 								'key' => 'pc_ha_009_3290',
 								'label' => 'Text Alignment',
-								'name' => 'pc_hero_area_text-align',
+								'name' => 'hero_area_text-align',
 								'type' => 'select',
 								'required' => 0,
 								'wrapper' => array (
 									'width' => '33.33'
 								),
 								'choices' => array (
-									'left' => 'Left',
-									'center' => 'Center',
-									'right' => 'Right',
+									'align-text_left' => 'Left',
+									'align-text_center' => 'Center',
+									'align-text_right' => 'Right',
 								),
-								'default_value' => 'center',
+								'default_value' => 'align-text_center',
 							),
 							array (
 								'key' => 'pc_ha_009-1',
 								'label' => 'Content Width',
-								'name' => 'pc_hero_area_width',
+								'name' => 'hero_area_width',
 								'type' => 'select',
 								'required' => 0,
 								'wrapper' => array (
 									'width' => '33.33',
 								),
 								'choices' => array (
-									'half' => '½',
-									'third' => '¾',
-									'full' => 'Full',
+									'width_half' => '½',
+									'width_third' => '¾',
+									'width_full' => 'Full',
 								),
-								'default_value' => 'half',
+								'default_value' => 'width_half',
 							),
 							array (
 								'key' => 'pc_ha_009-2',
 								'label' => 'Vertical Alignment',
-								'name' => 'pc_hero_area_vertical',
+								'name' => 'hero_area_vertical',
 								'type' => 'select',
 								'required' => 0,
 								'wrapper' => array (
 									'width' => '33.33'
 								),
 								'choices' => array (
-									'bottom_v' => 'Bottom',
-									'middle_v' => 'Middle',
-									'top_v' => 'Top',
+									'vertical-align_bottom' => 'Bottom',
+									'vertical-align_middle' => 'Middle',
+									'vertical-align_top' => 'Top',
 								),
-								'default_value' => 'middle_v',
+								'default_value' => 'vertical-align_middle',
 							),
 							array (
 								'key' => 'pc_ha_010-1',
 								'label' => 'Downward Arrow',
-								'name' => 'pc_ha_downward_arrow',
+								'name' => 'downward_arrow',
 								'type' => 'true_false',
 								'required' => 0,
 								'wrapper' => array (
@@ -153,7 +153,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_010-1-10-33',
 								'label' => 'Arrow image',
-								'name' => 'pc_ha_downward_image',
+								'name' => 'downward_image',
 								'type' => 'image',
 								'required' => 0,
 								'wrapper' => array (
@@ -165,7 +165,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_010-2',
 								'label' => 'Type of bottom divider',
-								'name' => 'pc_ha_bd',
+								'name' => 'border-divider',
 								'type' => 'radio',
 								'required' => 0,
 								'wrapper' => array (
