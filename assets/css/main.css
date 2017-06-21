@@ -1831,6 +1831,15 @@ input[type='submit'][disabled] {
   width: 100%;
   vertical-align: middle;
 }
+.hero-area--divider__repeater {
+  width: 100%;
+  height: 10vh;
+  background-position: center center;
+}
+.hero-area--divider__gradient {
+  width: 100%;
+  height: 10vh;
+}
 /*  =========================
     Section UI */
 .section-wrapper {
