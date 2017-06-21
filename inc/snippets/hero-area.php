@@ -48,6 +48,10 @@ function get_heroarea_title_from_acf( $the_row = array() ) {
 }
 
 
+/**
+ * Generates source files for banner background 
+ * @return array
+ */
 function get_heroarea_bg_from_acf( $the_row = array() ) {
     $data = $the_row ? array( 'image' => false, 'video' => false ) : false; 
 
