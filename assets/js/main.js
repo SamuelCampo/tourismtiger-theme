@@ -13204,14 +13204,14 @@ return jQuery;
 			/**
 			 * Styling the border divider
 			 */
-			$('.hero-area--divider__repeater').length > 0 && function() { 
+			if ( $('.hero-area--divider__repeater').length > 0 ) { 
 				var $self    = $('.hero-area--divider__repeater');
 				var repeater = $self.attr('data-repeater');
 			
 				$self.css('background-image', repeater);
 			}
 			
-			$('.hero-area--divider__gradient').length > 0 && function() { 
+			if ( $('.hero-area--divider__gradient').length > 0 ) { 
 				var $self    = $('.hero-area--divider__gradient');
 				var gradient = $self.attr('data-gradient');
 			
