@@ -2,8 +2,8 @@
  *
  *	V E N D O R
  *
- *  @package PROJECT_SLUG
- *  @author  PROJECT_AUTHOR
+ *  @package TourismTiger_Theme
+ *  @author  tourismtiger
  *  ========================= */
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -1768,10 +1768,18 @@ input[type='submit'][disabled] {
 .hero-area--container__inner.align_center {
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
 }
 .hero-area--container__inner.align_right {
   margin-left: auto;
+}
+.hero-area--container__inner.align-text_left {
+  text-align: left;
+}
+.hero-area--container__inner.align-text_center {
+  text-align: center;
+}
+.hero-area--container__inner.align-text_right {
+  text-align: right;
 }
 .hero-area--container__inner.vertical-align_bottom {
   -webkit-box-align: end;

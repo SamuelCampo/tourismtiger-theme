@@ -38,17 +38,12 @@
 
     	/**
     	 * Use when you would like to refresh a DOM elements.
-    	 * Used after DOM loaded.
+    	 * Used after DOM loaded and in any actions.
     	 */
 		init: function () {
 
-			// common/wow.js
-			// common/magnific-popup.js
-			// common/mailbox.js
-			// common/burger.js
-			// common/go-to.js
+			//= common/hero-area.js
 			//= common/slider.js
-		    // common/ajax-acf-event.js
 
 		}
 	};
