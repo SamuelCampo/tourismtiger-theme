@@ -201,3 +201,10 @@ include THEME_INC_PATH . '/snippets/acf-css-functions.php';
 include THEME_INC_PATH . '/snippets/paningation.php';
 
 
+/**
+ * Functions related exclusively with Hero Area
+ *
+ * List of functons:
+ * - get_heroarea_title_from_acf()
+ */
+include THEME_INC_PATH . '/snippets/hero-area.php';

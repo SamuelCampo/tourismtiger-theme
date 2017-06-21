@@ -277,9 +277,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'type' => 'radio',
 								'required' => 0,
 								'choices' => array (
-									'Single image' => 'Single image',
-									'Slider images' => 'Slider images',
-									'Background video' => 'Background video',
+									'single' => 'Single image',
+									'slider' => 'Slider images',
+									'video'  => 'Background video',
 								),
 								'layout' => 'horizontal',
 							),
@@ -294,7 +294,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_001',
 											'operator' => '==',
-											'value' => 'Single image',
+											'value' => 'single',
 										),
 									),
 								),
@@ -341,7 +341,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_001',
 											'operator' => '==',
-											'value' => 'Slider images',
+											'value' => 'slider',
 										),
 									),
 								),
@@ -360,7 +360,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_001',
 											'operator' => '==',
-											'value' => 'Background video',
+											'value' => 'video',
 										),
 									),
 								),
@@ -380,7 +380,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_001',
 											'operator' => '==',
-											'value' => 'Background video',
+											'value' => 'video',
 										),
 									),
 								),
@@ -400,7 +400,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_001',
 											'operator' => '==',
-											'value' => 'Background video',
+											'value' => 'video',
 										),
 									),
 								),
@@ -420,7 +420,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_001',
 											'operator' => '==',
-											'value' => 'Background video',
+											'value' => 'video',
 										),
 									),
 								),
@@ -462,7 +462,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'h3' => 'H3',
 									'h4' => 'H4',
 									'h5' => 'H5',
-									'h6' => 'H6'
+									'h6' => 'H6',
+									'p'  => 'paragraph'
 								),
 								'default_value' => 'h2'
 							),
@@ -524,27 +525,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'default_value' => 'full',
 								'layout' => 'horizontal',
 							),
-							array (
-								'key' => 'pc_ha_013-2-3-3',
-								'label' => 'HR Image',
-								'name' => 'pc_ha_1-tit_hr-i',
-								'type' => 'image',
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'pc_ha_013-1-2',
-											'operator' => '==',
-											'value' => 1,
-										),
-									),
-								),
-								'wrapper' => array (
-									'width' => '33.33'
-								),
-								'preview_size' => 'medium',
-								'library' => 'uploadedTo',
-								'return_format' => 'url',
-							),
 
 							array (
 								'key' => 'field_594905dcbef94',
@@ -590,7 +570,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'h3' => 'H3',
 									'h4' => 'H4',
 									'h5' => 'H5',
-									'h6' => 'H6'
+									'h6' => 'H6',
+									'p'  => 'paragraph'
 								),
 								'default_value' => 'h2',
 							),
@@ -717,7 +698,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'h3' => 'H3',
 									'h4' => 'H4',
 									'h5' => 'H5',
-									'h6' => 'H6'
+									'h6' => 'H6',
+									'p'  => 'paragraph'
 								),
 								'default_value' => 'h2',
 							),
