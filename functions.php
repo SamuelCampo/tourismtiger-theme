@@ -141,6 +141,14 @@ include THEME_INC_PATH . '/common/class-tgm-plugin-activation.php';
  */
 include THEME_INC_PATH . '/features/mailbox.php';
 
+
+/**
+ * Seo data
+ *
+ * Prints SEO meta data into <head>
+ */
+include THEME_INC_PATH . '/features/seo-data.php';
+
 /**
  * Navigations
  */
@@ -173,6 +181,7 @@ include THEME_INC_PATH . '/snippets/breadcrumbs.php';
  * - print_content_card_border()
  * - generate_random_string()
  * - crop_content()
+ * - generate_classlist()
  */
 include THEME_INC_PATH . '/snippets/common.php';
 

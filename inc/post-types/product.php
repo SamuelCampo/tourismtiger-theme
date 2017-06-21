@@ -38,6 +38,7 @@ function init_product_post_type(){
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => 6,
+        'menu_icon'          => 'dashicons-cart',
         'supports'           => array('title','editor','author','thumbnail','excerpt','comments')
     ) );
 

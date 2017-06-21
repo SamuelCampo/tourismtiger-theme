@@ -35,7 +35,8 @@ function init_testimonial_post_type(){
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
-        'menu_position'      => 6,
+        'menu_position'      => 7,
+        'menu_icon'          => 'dashicons-groups',
         'supports'           => array('title','editor','author','thumbnail','excerpt','comments')
     ) );
 
