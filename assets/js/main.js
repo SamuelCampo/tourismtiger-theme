@@ -13188,6 +13188,7 @@ return jQuery;
 			/*  =========================
 				Hero area */
 			
+			
 			/**
 			 * Scroll down arrow
 			 */
@@ -13198,6 +13199,40 @@ return jQuery;
 			
 				$('html, body').animate({ scrollTop: distance }, 750);
 			});
+			
+			
+			/**
+			 * Styling the border divider
+			 */
+			if ( $('.hero-area--divider__repeater').length > 0 ) { 
+				var $self    = $('.hero-area--divider__repeater');
+				var repeater = $self.attr('data-repeater');
+			
+				$self.css('background-image', 'url(' + repeater + ')');
+			}
+			
+			if ( $('.hero-area--divider__gradient').length > 0 ) { 
+				var $self    = $('.hero-area--divider__gradient');
+				var gradient = $self.attr('data-gradient');
+			
+				$self.css({
+					'background': gradient,
+					'background': '-moz-linear-gradient(top, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
+					'background': '-webkit-linear-gradient(top, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
+					'background': 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
+				});
+			}
+			
+			
+			/**
+			 * Styling overlay
+			 */
+			if ( $('.hero-area--overlay__color').length > 0 ) {
+				var $self = $('.hero-area--overlay__color');
+				var color = $self.attr('data-color');
+			
+				$self.css('background-color', color);
+			}
 			/*  =========================
 				Slider UX */
 			
