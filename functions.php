@@ -206,5 +206,6 @@ include THEME_INC_PATH . '/snippets/paningation.php';
  *
  * List of functons:
  * - get_heroarea_title_from_acf()
+ * - get_heroarea_bg_from_acf()
  */
 include THEME_INC_PATH . '/snippets/hero-area.php';
