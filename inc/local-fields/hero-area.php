@@ -165,7 +165,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_010-2',
 								'label' => 'Type of bottom divider',
-								'name' => 'border-divider',
+								'name' => 'is_border-divider',
 								'type' => 'radio',
 								'required' => 0,
 								'wrapper' => array (
@@ -181,30 +181,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'layout' => 'horizontal',
 							),
 							array (
-								'key' => 'pc_ha_010-2-1',
-								'label' => 'Bottom Divider',
-								'name' => 'pc_ha_bd_repeater',
-								'type' => 'image',
-								'required' => 0,
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'pc_ha_010-2',
-											'operator' => '==',
-											'value' => 'repeater',
-										),
-									),
-								),
-								'wrapper' => array (
-									'width' => '50'
-								),
-								'preview_size' => 'medium',
-								'return_format' => 'url',
-							), 
-							array (
 								'key' => 'pc_ha_010-2-2',
 								'label' => 'Bottom Divider',
-								'name' => 'pc_ha_bd_image',
+								'name' => 'border-divider_image',
 								'type' => 'image',
 								'required' => 0,
 								'conditional_logic' => array (
@@ -213,6 +192,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 											'field' => 'pc_ha_010-2',
 											'operator' => '==',
 											'value' => 'image',
+										),
+									),
+									array (
+										array (
+											'field' => 'pc_ha_010-2',
+											'operator' => '==',
+											'value' => 'repeater',
 										),
 									),
 								),
@@ -226,9 +212,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_010-2-3-1',
 								'label' => 'Bottom divider',
-								'name' => 'pc_ha_bd_gradient',
+								'name' => 'border-divider_color',
 								'type' => 'color_picker',
-								'instructions' => 'The color would fade out at the bottom',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -246,7 +231,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_010-3',
 								'label' => 'Overlay',
-								'name' => 'pc_ha_overlay',
+								'name' => 'hero-area_overlay',
 								'type' => 'radio',
 								'required' => 0,
 								'wrapper' => array (
@@ -254,8 +239,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								'choices' => array (
 									'none' => 'None',
-									'color' => 'Color',
-									'texture' => 'Texture'
+									'color' => 'Color'
 								),
 								'default_value' => 'none',
 								'layout' => 'horizontal',
@@ -263,7 +247,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_010-3-1',
 								'label' => 'Color',
-								'name' => 'pc_ha_overlay_color',
+								'name' => 'hero-area_overlay_color',
 								'type' => 'color_picker',
 								'required' => 0,
 								'conditional_logic' => array (
@@ -279,28 +263,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'width' => '50'
 								)
 							),
-							array (
-								'key' => 'pc_ha_010-3-2',
-								'label' => 'Texture',
-								'name' => 'pc_ha_overlay_texture',
-								'type' => 'image',
-								'required' => 0,
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'pc_ha_010-3',
-											'operator' => '==',
-											'value' => 'texture',
-										),
-									),
-								),
-								'wrapper' => array (
-									'width' => '50'
-								),
-								'preview_size' => 'medium',
-								'library' => 'uploadedTo',
-								'return_format' => 'url',
-							), 
 							array (
 								'key' => 'pc_ha_tab_1',
 								'label' => 'Background',
