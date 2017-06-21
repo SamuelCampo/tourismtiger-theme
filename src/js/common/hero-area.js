@@ -35,3 +35,14 @@ if ( $('.hero-area--divider__gradient').length > 0 ) {
 		'background': 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
 	});
 }
+
+
+/**
+ * Styling overlay
+ */
+if ( $('.hero-area--overlay__color').length > 0 ) {
+	var $self = $('.hero-area--overlay__color');
+	var color = $self.attr('data-color');
+
+	$self.css('background-color', color);
+}
