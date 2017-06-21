@@ -2,8 +2,8 @@
  *
  *	D E P E N D E N C E S
  *
- *  @package PROJECT_SLUG
- *  @author  PROJECT_AUTHOR
+ *  @package TourismTiger_Theme
+ *  @author  tourismtiger
  *  ========================= */
 
 /*!
@@ -13181,15 +13181,23 @@ return jQuery;
 
     	/**
     	 * Use when you would like to refresh a DOM elements.
-    	 * Used after DOM loaded.
+    	 * Used after DOM loaded and in any actions.
     	 */
 		init: function () {
 
-			// common/wow.js
-			// common/magnific-popup.js
-			// common/mailbox.js
-			// common/burger.js
-			// common/go-to.js
+			/*  =========================
+				Hero area */
+			
+			/**
+			 * Scroll down arrow
+			 */
+			$('.hero-area--nav__down').click(function(){
+				var $self     = $(this);
+				var $heroArea = $('#hero-area');
+				var distance  = $heroArea.height() + $heroArea.offset().top;
+			
+				$('html, body').animate({ scrollTop: distance }, 750);
+			});
 			/*  =========================
 				Slider UX */
 			
@@ -13207,7 +13215,6 @@ return jQuery;
 				speed: 1500,
 				fade: true,
 			});
-		    // common/ajax-acf-event.js
 
 		}
 	};
