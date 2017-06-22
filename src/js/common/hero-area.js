@@ -7,7 +7,7 @@
  */
 $('.hero-area--nav__down').click(function(){
 	var $self     = $(this);
-	var $heroArea = $('#hero-area');
+	var $heroArea = $('#hero-area').find('.hero-area--banner');
 	var distance  = $heroArea.height() + $heroArea.offset().top;
 
 	$('html, body').animate({ scrollTop: distance }, 750);
@@ -46,3 +46,22 @@ if ( $('.hero-area--overlay__color').length > 0 ) {
 
 	$self.css('background-color', color);
 }
+
+
+/**
+ * Searchbox
+ */
+pickmeup('.hero-area--search__single', {
+	position       : 'bottom',
+	hide_on_select : true
+});
+
+pickmeup('.hero-area--search__start', {
+	position       : 'bottom',
+	hide_on_select : true
+});
+
+pickmeup('.hero-area--search__end', {
+	position       : 'bottom',
+	hide_on_select : true
+});

@@ -10,7 +10,8 @@
     "wow": "~1.1.2",
     "normalize.less": "~1.0.0",
     "wordpress-core-styles": "~1.0.0",
-    "socicon": "~3.0.5"
+    "socicon": "~3.0.5",
+    "pickmeup": "~3.0.0"
   },
   "private": true
 }

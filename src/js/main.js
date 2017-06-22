@@ -12,6 +12,7 @@
 // ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js
 //= ../../bower_components/slick-carousel/slick/slick.js
 // ../../bower_components/wow/dist/wow.min.js
+//= ../../bower_components/pickmeup/dist/pickmeup.min.js
 
 /*  =========================
 	W P K I T
