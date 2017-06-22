@@ -1,6 +1,6 @@
 <?php
 /**
- * View: Hero Area Border divider
+ * View: Hero Area panel
  *
  * {$panel_button_label} 
  * {$panel_button_url} 

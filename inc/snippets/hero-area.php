@@ -82,3 +82,22 @@ function get_heroarea_bg_from_acf( $the_row = array() ) {
 
     return $data;
 }
+
+
+function get_heroarea_searchbox_from_acf( $the_row = array() ) {
+    $html        = '';
+    $date_format = 'Y-m-d';
+
+    if ( $the_row['pc_ha_014_1'] === 'range' ) :
+        $html .= '<input type="text" class="hero-area--search__field hero-area--search__start" data-pmu-format="'.$date_format.'" />';
+        $html .= '<input type="text" class="hero-area--search__field hero-area--search__end" data-pmu-format="'.$date_format.'" />';
+
+    elseif ( $the_row['pc_ha_014_1'] === 'range' ) :
+        $html .= '<input type="text" class="hero-area--search__field hero-area--search__single" data-pmu-format="'.$date_format.'" />';
+
+    endif;
+
+    $html .= '<button type="submit">'.$the_row['pc_ha_013'].'</button>';
+
+    return $html;
+}
