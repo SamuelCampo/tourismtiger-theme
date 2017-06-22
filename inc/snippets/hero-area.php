@@ -36,10 +36,20 @@ function get_heroarea_title_from_acf( $the_row = array() ) {
             if ( $is_hr ) : 
                 $color      = $the_row["pc_ha_0{$ii}-2-3-1"];
                 $width      = $the_row["pc_ha_0{$ii}-2-3-2"];
-                $html      .= "<hr data-color='$color' data-width='$width' />";
+                $html      .= "<hr class='hero-area--hr' data-color='$color' data-width='$width' />";
             endif; 
         endif;
     endfor;
+
+
+    // Check and add the button
+    $is_button            = $the_row['pc_ha_014'] === 'custom';     
+    $hero_button_url      = $the_row['pc2131012133'] ? $the_row['pc2131012133'] : '#.';
+    $hero_button_label    = $the_row['cta_button_text'] ? $the_row['cta_button_text'] : 'Book now';
+
+    if ( $is_button )
+        $html .= "<a href='$hero_button_url' class='button'>$hero_button_label</a>";
+    
 
     if ( $html === '' ) 
         return false;
@@ -84,6 +94,12 @@ function get_heroarea_bg_from_acf( $the_row = array() ) {
 }
 
 
+
+/**
+ * Generate searchbox html 
+ * @return string
+ */
+
 function get_heroarea_searchbox_from_acf( $the_row = array() ) {
     $html        = '';
     $date_format = 'Y-m-d';
@@ -92,7 +108,8 @@ function get_heroarea_searchbox_from_acf( $the_row = array() ) {
         $html .= '<input type="text" class="hero-area--search__field hero-area--search__start" data-pmu-format="'.$date_format.'" />';
         $html .= '<input type="text" class="hero-area--search__field hero-area--search__end" data-pmu-format="'.$date_format.'" />';
 
-    elseif ( $the_row['pc_ha_014_1'] === 'range' ) :
+
+    elseif ( $the_row['pc_ha_014_1'] === 'single' ) :
         $html .= '<input type="text" class="hero-area--search__field hero-area--search__single" data-pmu-format="'.$date_format.'" />';
 
     endif;
