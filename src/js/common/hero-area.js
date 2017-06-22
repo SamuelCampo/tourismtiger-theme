@@ -65,3 +65,23 @@ pickmeup('.hero-area--search__end', {
 	position       : 'bottom',
 	hide_on_select : true
 });
+
+
+/**
+ * Generate HR lines
+ */
+if ( $('.hero-area--hr').length > 0 ) { 
+	var $heroAreaHr = $('.hero-area--hr');
+	var fullWidth   = $('.hero-area--content').width();
+
+	$heroAreaHr.map(function(){
+		var $self = $(this);
+		var color = $self.attr('data-color');
+		var width = $self.attr('data-width') * fullWidth;
+
+		$self.css({
+			'color': color,
+			'width': width
+		});
+	});
+}

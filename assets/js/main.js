@@ -13289,6 +13289,26 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 				position       : 'bottom',
 				hide_on_select : true
 			});
+			
+			
+			/**
+			 * Generate HR lines
+			 */
+			if ( $('.hero-area--hr').length > 0 ) { 
+				var $heroAreaHr = $('.hero-area--hr');
+				var fullWidth   = $('.hero-area--content').width();
+			
+				$heroAreaHr.map(function(){
+					var $self = $(this);
+					var color = $self.attr('data-color');
+					var width = $self.attr('data-width') * fullWidth;
+			
+					$self.css({
+						'color': color,
+						'width': width
+					});
+				});
+			}
 			/*  =========================
 				Slider UX */
 			

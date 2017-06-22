@@ -1794,6 +1794,10 @@ input[type='submit'][disabled] {
 .pickmeup .pmu-instance .pmu-not-in-month {
   color: #b7c6cd;
 }
+.pickmeup .pmu-instance .pmu-selected {
+  color: #fff;
+  background-color: #212c31;
+}
 /*  =========================
     Button */
 .button {
