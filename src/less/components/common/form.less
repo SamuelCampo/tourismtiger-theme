@@ -633,3 +633,24 @@ input[type='submit'][disabled] {
 		}
 	}
 }
+
+/**
+ * Input wrap
+ */
+.input-wrap {
+	position: relative;
+	display: flex;
+	
+	> input {
+		position: relative;
+		flex-grow: 1;
+		padding-right: 3rem;
+	}
+
+	> i {
+		position: absolute;
+		top: 50%;
+		right: 1rem;
+		transform: translateY(-50%);
+	}
+}
