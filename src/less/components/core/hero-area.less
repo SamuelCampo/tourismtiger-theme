@@ -250,13 +250,37 @@
 	}
 
 	&--panel {
-		.mx-box(2rem);
+		.mx-box(3rem);
 		background-color: #eee;
 
 		&__box {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+		}
+	}
+
+	&--search {
+		.mx-box(2rem);
+		background-color: #e0e0e0;
+
+		&__form {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+			max-width: 70rem;
+			margin-left: auto;
+			margin-right: auto;
+
+			> * {
+				flex-grow: 1;
+				margin: 1rem;
+			}
+		}
+
+		&__field {
+		    width: 21rem;
 		}
 	}
 }
