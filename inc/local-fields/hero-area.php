@@ -213,7 +213,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_010-2-3-1',
 								'label' => 'Bottom divider',
 								'name' => 'border-divider_color',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -226,7 +226,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								'wrapper' => array (
 									'width' => '50'
-								)
+								),
+								'rgba' => '',
+								'return_value' => 0,
+								'ext_value' => array (
+								),
 							),
 							array (
 								'key' => 'pc_ha_010-3',
@@ -248,7 +252,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_010-3-1',
 								'label' => 'Color',
 								'name' => 'hero-area_overlay_color',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -483,7 +487,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_013-2-3-1',
 								'label' => 'HR Color',
 								'name' => 'pc_ha_1-tit_hr-c',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -517,12 +521,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'width' => '33.33'
 								),
 								'choices' => array (
-									'quarter' => '¼',
-									'half' => '½',
-									'third' => '¾',
-									'full' => 'Full',
+									'0.25' => '¼',
+									'0.5' => '½',
+									'0.66' => '¾',
+									'1' => 'Full',
 								),
-								'default_value' => 'full',
+								'default_value' => '0.25',
 								'layout' => 'horizontal',
 							),
 
@@ -590,7 +594,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_014-2-3-1',
 								'label' => 'HR Color',
 								'name' => 'pc_ha_2-tit_hr-c',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -624,34 +628,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'width' => '33.33'
 								),
 								'choices' => array (
-									'quarter' => '¼',
-									'half' => '½',
-									'third' => '¾',
-									'full' => 'Full',
+									'0.25' => '¼',
+									'0.5' => '½',
+									'0.66' => '¾',
+									'1' => 'Full',
 								),
-								'default_value' => 'full',
+								'default_value' => '0.25',
 								'layout' => 'horizontal'
-							),
-							array (
-								'key' => 'pc_ha_014-2-3-3',
-								'label' => 'HR Image',
-								'name' => 'pc_ha_2-tit_hr-i',
-								'type' => 'image',
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'pc_ha_014-1-2',
-											'operator' => '==',
-											'value' => 1,
-										),
-									),
-								),
-								'wrapper' => array (
-									'width' => '33.33'
-								),
-								'preview_size' => 'medium',
-								'library' => 'uploadedTo',
-								'return_format' => 'url'
 							),
 
 							array (
@@ -718,7 +701,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_015-2-3-1',
 								'label' => 'HR Color',
 								'name' => 'pc_ha_3-tit_hr-c',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -752,34 +735,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'width' => '33.33'
 								),
 								'choices' => array (
-									'quarter' => '¼',
-									'half' => '½',
-									'third' => '¾',
-									'full' => 'Full',
+									'0.25' => '¼',
+									'0.5' => '½',
+									'0.66' => '¾',
+									'1' => 'Full',
 								),
-								'default_value' => 'full',
+								'default_value' => '0.25',
 								'layout' => 'horizontal',
-							),
-							array (
-								'key' => 'pc_ha_015-2-3-3',
-								'label' => 'HR Image',
-								'name' => 'pc_ha_3-tit_hr-i',
-								'type' => 'image',
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'pc_ha_015-1-2',
-											'operator' => '==',
-											'value' => 1,
-										),
-									),
-								),
-								'wrapper' => array (
-									'width' => '33.33'
-								),
-								'preview_size' => 'medium',
-								'library' => 'uploadedTo',
-								'return_format' => 'url'
 							),
 							
 							array (
@@ -987,10 +949,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'conditional_logic' => array (
 									array (
 										array (
-											'field' => 'ha_015-a',
+											'field' => 'pc_ha_015-a',
 											'operator' => '==',
 											'value' => 1,
-										),
+										)
 									),
 								),
 								'wrapper' => array (

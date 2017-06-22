@@ -82,7 +82,7 @@ include THEME_INC_PATH . '/post-types/testimonial.php';
  * 1. Include ACF Pro
  * 2. Include ACF Accordion
  */
-include THEME_INC_PATH . '/common/acf.php';
+include_once THEME_INC_PATH . '/common/acf.php';
 
 
 /**
