@@ -84,6 +84,7 @@ if ( have_rows( 'hero_area' ) ) :
 		$classes_searchbox    = "hero-area--search__form hero-area--search__$type_searchbox";
 		$content_searchbox    = $is_searchbox ? get_heroarea_searchbox_from_acf( $the_row ) : '';
 
+
 		//button variables   
 		$hero_button_label    = get_sub_field( 'cta_button_text' ) ? get_sub_field( 'cta_button_text' ) : 'Book now';
 
