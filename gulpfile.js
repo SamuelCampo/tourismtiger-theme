@@ -181,9 +181,11 @@ gulp.task('style:build', function () {
         .pipe(less()) 
         .pipe(prefixer())
         .pipe(gulp.dest(path.build.css))
-        .pipe(mmq( { log: true } ))
         .pipe(rename('main.min.css'))
-        .pipe(mmq( { use_external: true } ))
+        .pipe(mmq( { 
+            log: true,
+            use_external: true 
+        } ))
         .pipe(cssmin())
         .pipe(gulp.dest(path.build.css))
         .pipe(reload({stream: true}))

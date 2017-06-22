@@ -530,6 +530,7 @@
 }
 
 
+
 /**
  * Tags styles
  */
@@ -540,12 +541,11 @@ input[type='tel'],
 input[type='text'],
 input[type='url'],
 textarea {
-	padding: 8px 9px;
-	border: 1px solid #CCC;
-	border-bottom-color: #B3B3B3;
-	border-radius: 4px;
-	font: 14px Arial, sans-serif;
-	color: #333;
+	padding: 1rem 2rem;
+	border: 1px solid lighten(@color-spacegray, 10%);
+	font-size: 2rem;
+	border-radius: 0;
+	color: @color-spacegray;
 }
 
 input[type='search'] {
@@ -563,7 +563,7 @@ input[type='tel']:hover,
 input[type='text']:hover,
 input[type='url']:hover,
 textarea.styler:hover {
-	border-color: #B3B3B3;
+	border-color: lighten(@color-spacegray, 5%);
 }
 
 input[type='email']:focus,
@@ -573,8 +573,7 @@ input[type='tel']:focus,
 input[type='text']:focus,
 input[type='url']:focus,
 textarea.styler:focus {
-	border-color: #CCC;
-	border-top-color: #B3B3B3;
+	border-color: @color-spacegray;
 	outline: none;
 }
 
@@ -583,16 +582,11 @@ input[type='button'],
 input[type='submit'],
 input[type='reset'] {
 	overflow: visible;
-	padding: 8px 11px;
-	border: 1px solid #CCC;
-	border-bottom-color: #B3B3B3;
-	border-radius: 4px;
+	border-radius: 0;
 	outline: none;
-	background: #F5F5F5;
-	font: 14px Arial, sans-serif;
-	color: #333;
-	text-shadow: 1px 1px #FFF;
 	cursor: pointer;
+	border-radius: 0;
+	.button;
 }
 
 button::-moz-focus-inner,
@@ -603,25 +597,34 @@ input[type='reset']::-moz-focus-inner {
 	border: 0;
 }
 
-button:not([disabled]):hover,
-input[type='button']:not([disabled]):hover,
-input[type='submit']:not([disabled]):hover,
-input[type='reset']:hover {
-	background: #E6E6E6;
-}
-
-button:not([disabled]):active,
-input[type='button']:not([disabled]):active,
-input[type='submit']:not([disabled]):active,
-input[type='reset']:active {
-	background: #F5F5F5;
-}
-
 button[disabled],
 input[type='button'][disabled],
 input[type='submit'][disabled] {
-	border-color: #CCC;
-	background: #F5F5F5;
-	box-shadow: none;
-	color: #888;
+	opacity: .5;
+}
+
+
+/**	
+ * Datepicker
+ */
+.pickmeup {
+	z-index: 50;
+	margin-top: 15px;
+	background-color: #f1f1f1;
+	box-shadow: 2px 2px 7px -3px rgba(0,0,0,.3);
+
+	.pmu-instance {
+		.pmu-button {
+			color: @color-spacegray;
+		}
+
+		.pmu-today {
+			color: #fff;
+			background-color: @color-spacegray;
+		}
+
+		.pmu-not-in-month {
+			color: lighten(@color-spacegray, 30%);
+		}
+	}
 }

@@ -1,48 +1,69 @@
-<div id="hero-area" class="hero-area">
+<div id="hero-area" class="hero-area style-one">
 	<section class="hero-area--banner">
 		<div class="hero-area--banner__layout width_full">
+			
 			<div class="hero-area--bg">
-				<div class="hero-area--bg__wrap">
-					<div class="hero-area--bg__slide">
-						<img 
-							class="hero-area--bg__image"
-							src="//borasite2.lightningbasehosted.com/wp-content/uploads/2016/12/papers_co-ml63-mountain-high-sky-nature-rocky-22-wallpaper-1-1920x650.jpg" 
-							alt="" />
+				<div class="hero-area--bg__wrap slick-initialized slick-slider">
+					
+					<div aria-live="polite" class="slick-list draggable">
+						<div class="slick-track" role="listbox" style="opacity: 1; width: 1583px;">
+							<div class="hero-area--bg__slide">
+								<img width="1920" height="661" src="http://dev.etrange.eu/wp-content/uploads/2017/06/etr2.jpg" class="hero-area--bg__image" alt="" srcset="http://dev.etrange.eu/wp-content/uploads/2017/06/etr2.jpg 1920w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-300x103.jpg 300w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-768x264.jpg 768w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-1024x353.jpg 1024w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-1450x499.jpg 1450w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-1150x396.jpg 1150w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-1000x344.jpg 1000w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-850x293.jpg 850w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-700x241.jpg 700w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-500x172.jpg 500w, http://dev.etrange.eu/wp-content/uploads/2017/06/etr2-350x120.jpg 350w" sizes="(max-width: 1920px) 100vw, 1920px">				
+							</div>
+						</div>
 					</div>
 
-					<div class="hero-area--bg__slide">
-						<img 
-							class="hero-area--bg__image"
-							src="//tofinopaddlesurf.com/wp-content/uploads/2017/05/JK__9371-e1497370264629-1920x650.jpg" 
-							alt="" />
-					</div>
 				</div>
 			</div>
-
-			<div class="hero-area--overlay"></div>
 
 			<div class="hero-area--container">
-				<div class="hero-area--container__inner width_full height_tall align_center vertical-align_middle">
+				<div class="hero-area--container__inner height_tall width_third align_center align-text_center vertical-align_middle">
 					<div class="hero-area--content wysiwyg">
-						<h1>Heroarea title</h1>
-						<p>Wellcome to Hero area</p>
+						<div class="hero-area--title hero-area--title_1">
+							<h2>Title</h2>
+						</div>
+
+						<div class="hero-area--title hero-area--title_2">
+							<h2>Two</h2>
+						</div>
+
+						<div class="hero-area--title hero-area--title_3">
+							<h2>The last</h2>	
+						</div>	
 					</div>
 				</div>
-			</div>
-
-			<div class="hero-area--divider">
-				<img src="assets/img/temperary/divider.png" alt="" class="hero-area--divider__image" />
 			</div>
 
 			<div class="hero-area--nav">
-				<a href="#." class="hero-area--nav__down">
-					<img src="assets/img/icons/hero-area/down.svg" />
+				<a href="javascript:" class="hero-area--nav__down">
+					<img src="http://dev.etrange.eu/wp-content/themes/tourismtiger-theme/assets/img/icons/hero-area/down.svg">
 				</a> 
 			</div>
 		</div>
 	</section>
 
 	<div class="hero-area--search">
-		
+		<div class="hero-area--search__box box">
+			<form class="hero-area--search__form">
+				<input type="text" class="hero-area--search__field hero-area--search__single" data-pmu-format="Y-m-d" />
+				<button type="submit">Book now</button>
+			</form>
+		</div>
 	</div>
+
+	<div class="hero-area--search">
+		<div class="hero-area--search__box box">
+			<form class="hero-area--search__form hero-area--search__range">
+				<input type="text" class="hero-area--search__field hero-area--search__start" data-pmu-format="Y-m-d" />
+				<input type="text" class="hero-area--search__field hero-area--search__end" data-pmu-format="Y-m-d" />
+				<button type="submit">Book now</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="hero-area--panel">
+		<div class="hero-area--panel__box box">
+			<a class="button" href="#.">Book now</a>
+		</div>
+	</div>	
 </div>

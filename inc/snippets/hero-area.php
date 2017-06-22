@@ -30,7 +30,7 @@ function get_heroarea_title_from_acf( $the_row = array() ) {
         if ( $text ) : 
             $is_hr = $the_row["pc_ha_0{$ii}-1-2"];
             $tag   = $the_row["pc_ha_0{$ii}-1-3"];
-            $html .= "<$tag>$text</$tag>";
+            $html .= "<div class='hero-area--title hero-area--title_$i'><$tag>$text</$tag></div>";
 
             // add hr if it's checked
             if ( $is_hr ) : 
@@ -81,4 +81,23 @@ function get_heroarea_bg_from_acf( $the_row = array() ) {
     endif;
 
     return $data;
+}
+
+
+function get_heroarea_searchbox_from_acf( $the_row = array() ) {
+    $html        = '';
+    $date_format = 'Y-m-d';
+
+    if ( $the_row['pc_ha_014_1'] === 'range' ) :
+        $html .= '<input type="text" class="hero-area--search__field hero-area--search__start" data-pmu-format="'.$date_format.'" />';
+        $html .= '<input type="text" class="hero-area--search__field hero-area--search__end" data-pmu-format="'.$date_format.'" />';
+
+    elseif ( $the_row['pc_ha_014_1'] === 'range' ) :
+        $html .= '<input type="text" class="hero-area--search__field hero-area--search__single" data-pmu-format="'.$date_format.'" />';
+
+    endif;
+
+    $html .= '<button type="submit">'.$the_row['pc_ha_013'].'</button>';
+
+    return $html;
 }

@@ -68,8 +68,22 @@ if ( have_rows( 'hero_area' ) ) :
 			'content'    => $is_content ? 'content' : false,
 			'overlay'    => $is_overlay ? 'overlay' : false,
 			'divider'    => $is_border_divider ? 'divider' : false,
-			'arrow'      => $is_arrow ? 'arrow' : false,
+			'arrow'      => $is_arrow ? 'arrow' : false
 		);
+
+
+		// Bottom panel variables
+		$is_panel             = ( wp_is_mobile() && get_sub_field( 'ha_action_button' ) ); 
+		$panel_button_label   = get_sub_field( 'action_button_label' ) ? get_sub_field( 'action_button_label' ) : 'Book now'; 
+		$panel_button_url     = get_sub_field( 'action_button_url' ) ? get_sub_field( 'action_button_url' ) : '#.'; 
+
+
+		// searchbox variables
+		$is_searchbox         = get_sub_field( 'button_link_type' ) === 'searchbox'; 
+		$type_searchbox       = get_sub_field( 'search_settings_type' );
+		$classes_searchbox    = "hero-area--search__form hero-area--search__$type_searchbox";
+		$content_searchbox    = $is_searchbox ? get_heroarea_searchbox_from_acf( $the_row ) : '';
+		$hero_button_label    = get_sub_field( 'cta_button_text' ) ? get_sub_field( 'cta_button_text' ) : 'Book now';
 
 		include THEME_VIEWS . 'core/hero-area.php';
 
