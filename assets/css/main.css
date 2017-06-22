@@ -2056,6 +2056,10 @@ input[type='submit'][disabled] {
       -ms-flex-pack: center;
           justify-content: center;
 }
+.hero-area--panel__box .button {
+  width: 100%;
+  text-align: center;
+}
 .hero-area--search {
   padding-top: 2rem;
   padding-bottom: 2rem;
