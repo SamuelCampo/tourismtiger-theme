@@ -1858,6 +1858,26 @@ input[type='submit'][disabled] {
   font-weight: inherit;
   line-height: inherit;
 }
+@media (max-width: 1150px) {
+  .hero-area--title > * {
+    font-size: .95em;
+  }
+}
+@media (max-width: 992px) {
+  .hero-area--title > * {
+    font-size: .9em;
+  }
+}
+@media (max-width: 768px) {
+  .hero-area--title > * {
+    font-size: .85em;
+  }
+}
+@media (max-width: 568px) {
+  .hero-area--title > * {
+    font-size: .8em;
+  }
+}
 .hero-area--content {
   width: 100%;
 }
