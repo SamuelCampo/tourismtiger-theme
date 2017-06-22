@@ -94,10 +94,12 @@ function get_heroarea_bg_from_acf( $the_row = array() ) {
 }
 
 
+
 /**
  * Generate searchbox html 
  * @return string
  */
+
 function get_heroarea_searchbox_from_acf( $the_row = array() ) {
     $html        = '';
     $date_format = 'Y-m-d';
@@ -115,6 +117,7 @@ function get_heroarea_searchbox_from_acf( $the_row = array() ) {
                 <i class="fa fa-calendar" aria-hidden="true"></i>
             </div>
         ';
+
 
     elseif ( $the_row['pc_ha_014_1'] === 'single' ) :
         $html .= '

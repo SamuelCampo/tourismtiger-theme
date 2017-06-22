@@ -949,7 +949,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'conditional_logic' => array (
 									array (
 										array (
-											'field' => 'pc_ha_015-a',
+											'field' => 'ha_015-a',
 											'operator' => '==',
 											'value' => 1,
 										)
