@@ -1,0 +1,15 @@
+/*  =========================
+    Button */
+
+.button {
+	display: inline-block;
+	padding: 1rem 2.5rem;
+	color: #fff;
+	background-color: @color-spacegray;
+	font-size: 2rem;
+	.mx-transition(.3s);
+
+	&:hover {
+		background-color: darken(@color-spacegray, 10%);
+	}
+}

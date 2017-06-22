@@ -6,6 +6,8 @@
 	z-index: 50;
 
 	&--banner {
+		position: relative;
+
 		&__layout {
 			margin: 0 auto;
 			max-width: 100%;
@@ -64,9 +66,21 @@
 		    padding: 10vh 7rem;
 			max-width: 100%;
 
+			@media (max-width: @laptop) {
+				padding: 10vh 5rem;
+			}
+
+			@media (max-width: @pad) {
+				padding: 10vh 2rem;
+			}
+
 			&.width {
 				&_half {
 					width: 50%;
+
+					@media (max-width: @pad) {
+						width: 66%;
+					}
 
 					@media (max-width: @padmini) {
 						width: 100%;
@@ -76,7 +90,7 @@
 				&_third {
 					width: 66%;
 
-					@media (max-width: @padmini) {
+					@media (max-width: @pad) {
 						width: 100%;
 					}
 				}
@@ -88,15 +102,31 @@
 
 			&.height {
 				&_short {
-					min-height: 250px;
+					min-height: 25rem;
 				}
 
 				&_medium {
-					min-height: 450px;
+					min-height: 45rem;
+
+					@media (max-width: @padmini) {
+						min-height: 35rem;
+					}
+
+					@media (max-width: @mobile) {
+						min-height: 30rem;
+					}
 				}
 
 				&_tall {
-					min-height: 650px;
+					min-height: 65rem;
+
+					@media (max-width: @padmini) {
+						min-height: 55rem;
+					}
+
+					@media (max-width: @mobile) {
+						min-height: 45rem;
+					}
 				}
 			}
 
@@ -145,6 +175,19 @@
 		}
 	}
 
+	&--title {
+		font-size: 3rem;
+		line-height: 1.25;
+		font-weight: 400;
+		color: @color-light;
+
+		> * {
+			font-size: 1em;
+			font-weight: inherit;
+			line-height: inherit;
+		}
+	}
+
 	&--content {
 		width: 100%;
 	}
@@ -187,6 +230,17 @@
 		&__gradient {
 			width: 100%;
 			height: 10vh;
+		}
+	}
+
+	&--panel {
+		.mx-box(2rem);
+		background-color: #eee;
+
+		&__box {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	}
 }

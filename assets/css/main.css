@@ -1678,10 +1678,26 @@ input[type='submit'][disabled] {
   color: #888;
 }
 /*  =========================
+    Button */
+.button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  color: #fff;
+  background-color: #607d8b;
+  font-size: 2rem;
+  transition: ease 0.3s;
+}
+.button:hover {
+  background-color: #4b626d;
+}
+/*  =========================
     Hero Area UI */
 .hero-area {
   position: relative;
   z-index: 50;
+}
+.hero-area--banner {
+  position: relative;
 }
 .hero-area--banner__layout {
   margin: 0 auto;
@@ -1734,8 +1750,23 @@ input[type='submit'][disabled] {
   padding: 10vh 7rem;
   max-width: 100%;
 }
+@media (max-width: 1150px) {
+  .hero-area--container__inner {
+    padding: 10vh 5rem;
+  }
+}
+@media (max-width: 992px) {
+  .hero-area--container__inner {
+    padding: 10vh 2rem;
+  }
+}
 .hero-area--container__inner.width_half {
   width: 50%;
+}
+@media (max-width: 992px) {
+  .hero-area--container__inner.width_half {
+    width: 66%;
+  }
 }
 @media (max-width: 768px) {
   .hero-area--container__inner.width_half {
@@ -1745,7 +1776,7 @@ input[type='submit'][disabled] {
 .hero-area--container__inner.width_third {
   width: 66%;
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .hero-area--container__inner.width_third {
     width: 100%;
   }
@@ -1754,13 +1785,33 @@ input[type='submit'][disabled] {
   width: 100%;
 }
 .hero-area--container__inner.height_short {
-  min-height: 250px;
+  min-height: 25rem;
 }
 .hero-area--container__inner.height_medium {
-  min-height: 450px;
+  min-height: 45rem;
+}
+@media (max-width: 768px) {
+  .hero-area--container__inner.height_medium {
+    min-height: 35rem;
+  }
+}
+@media (max-width: 568px) {
+  .hero-area--container__inner.height_medium {
+    min-height: 30rem;
+  }
 }
 .hero-area--container__inner.height_tall {
-  min-height: 650px;
+  min-height: 65rem;
+}
+@media (max-width: 768px) {
+  .hero-area--container__inner.height_tall {
+    min-height: 55rem;
+  }
+}
+@media (max-width: 568px) {
+  .hero-area--container__inner.height_tall {
+    min-height: 45rem;
+  }
 }
 .hero-area--container__inner.align_left {
   margin-right: auto;
@@ -1795,6 +1846,17 @@ input[type='submit'][disabled] {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+.hero-area--title {
+  font-size: 3rem;
+  line-height: 1.25;
+  font-weight: 400;
+  color: #f9f9f9;
+}
+.hero-area--title > * {
+  font-size: 1em;
+  font-weight: inherit;
+  line-height: inherit;
 }
 .hero-area--content {
   width: 100%;
@@ -1839,6 +1901,22 @@ input[type='submit'][disabled] {
 .hero-area--divider__gradient {
   width: 100%;
   height: 10vh;
+}
+.hero-area--panel {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: #eee;
+}
+.hero-area--panel__box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*  =========================
     Section UI */
