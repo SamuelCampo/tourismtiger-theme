@@ -62,13 +62,19 @@ if ( have_rows( 'hero_area' ) ) :
 		$is_background        = get_heroarea_bg_from_acf( $the_row ); 
 
 
+		// Background variables
+		$is_panel             = ( wp_is_mobile() && get_sub_field( 'ha_action_button' ) ); 
+		$panel_button_label   = get_sub_field( 'action_button_label' ) ? get_sub_field( 'action_button_label' ) : 'Book now'; 
+		$panel_button_url     = get_sub_field( 'action_button_url' ) ? get_sub_field( 'action_button_url' ) : '#.'; 
+
+
 		// Components order
 		$hero_order           = array(
 			'background' => $is_background ? 'background' : false,
 			'content'    => $is_content ? 'content' : false,
 			'overlay'    => $is_overlay ? 'overlay' : false,
 			'divider'    => $is_border_divider ? 'divider' : false,
-			'arrow'      => $is_arrow ? 'arrow' : false,
+			'arrow'      => $is_arrow ? 'arrow' : false
 		);
 
 		include THEME_VIEWS . 'core/hero-area.php';

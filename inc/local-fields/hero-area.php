@@ -994,7 +994,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_015-a',
 								'label' => 'Action button',
-								'name' => 'pc_ha_action_button',
+								'name' => 'ha_action_button',
 								'type' => 'true_false',
 								'required' => 0,
 								'wrapper' => array (
@@ -1006,13 +1006,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_015-b',
 								'label' => 'Label',
-								'name' => 'pc_ha_action_button_label',
+								'name' => 'action_button_label',
 								'type' => 'text',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
 										array (
-											'field' => 'pc_ha_015-a',
+											'field' => 'ha_015-a',
 											'operator' => '==',
 											'value' => 1,
 										),
@@ -1026,7 +1026,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_015-c',
 								'label' => 'Destination',
-								'name' => 'pc_ha_action_button_url',
+								'name' => 'action_button_url',
 								'type' => 'text',
 								'required' => 0,
 								'conditional_logic' => array (

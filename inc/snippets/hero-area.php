@@ -30,7 +30,7 @@ function get_heroarea_title_from_acf( $the_row = array() ) {
         if ( $text ) : 
             $is_hr = $the_row["pc_ha_0{$ii}-1-2"];
             $tag   = $the_row["pc_ha_0{$ii}-1-3"];
-            $html .= "<$tag>$text</$tag>";
+            $html .= "<div class='hero-area--title hero-area--title_$i'><$tag>$text</$tag></div>";
 
             // add hr if it's checked
             if ( $is_hr ) : 

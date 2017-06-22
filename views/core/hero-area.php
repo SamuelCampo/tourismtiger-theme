@@ -31,4 +31,12 @@
 	<div class="hero-area--search">
 		
 	</div>
+
+	<?php 
+	/**
+	 * Include additional panel on mobile devices
+	 */
+	if ( $is_panel ) 
+		include THEME_VIEWS . "core/hero-area/panel.php";
+	?>
 </div>
