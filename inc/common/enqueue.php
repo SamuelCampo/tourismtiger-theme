@@ -15,7 +15,7 @@
 function wordpress_kit_scripts() {
 	wp_enqueue_style( 'wordpress-kit-main', get_template_directory_uri() . '/assets/css/main.min.css', array(), null, 'all' );
 	wp_enqueue_style( 'wordpress-kit-responsive', get_template_directory_uri() . '/assets/css/main.min.responsive.css', array(), null, '(max-width:1230px)' );
-	wp_enqueue_script( 'wordpress-kit', get_template_directory_uri() . '/assets/js/main.min.js', array(), null, false );
+	wp_enqueue_script( 'wordpress-kit', get_template_directory_uri() . '/assets/js/main.min.js', array(), null, true );
 }
 add_action( 'wp_enqueue_scripts', 'wordpress_kit_scripts' );
 
@@ -25,7 +25,7 @@ add_action( 'wp_enqueue_scripts', 'wordpress_kit_scripts' );
 function global_js_variables(){
 	global $post;
 
-	wp_localize_script('wordpress-kit-js', 'global', 
+	wp_localize_script('wordpress-kit', 'global', 
 		array(
 			'url'       => admin_url('admin-ajax.php'),
 			'post_id'   => $post->ID,

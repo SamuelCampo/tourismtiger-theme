@@ -51,19 +51,24 @@ if ( $('.hero-area--overlay__color').length > 0 ) {
 /**
  * Searchbox
  */
+var now = new Date;
+
 pickmeup('.hero-area--search__single', {
 	position       : 'bottom',
-	hide_on_select : true
+	hide_on_select : true,
+	min            : now
 });
 
 pickmeup('.hero-area--search__start', {
 	position       : 'bottom',
-	hide_on_select : true
+	hide_on_select : true,
+	min            : now
 });
 
 pickmeup('.hero-area--search__end', {
 	position       : 'bottom',
-	hide_on_select : true
+	hide_on_select : true,
+	min            : now
 });
 
 

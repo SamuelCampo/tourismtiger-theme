@@ -46,6 +46,13 @@ function acf_rgba_color_dir( $dir ) {
 
     return $dir;
 }
+
+add_filter( 'acf/typography/dir', 'acf_typography_dir' );
+function acf_typography_dir( $dir ) {
+    $dir = get_stylesheet_directory_uri() . '/includes/plugins/acf-typography/';
+
+    return $dir;
+}
  
 
 // 4. Hide ACF field group menu item
@@ -53,8 +60,10 @@ function acf_rgba_color_dir( $dir ) {
 
 
 // 4. Include ACF
-include_once( get_template_directory() . '/plugins/acf/acf.php' );
-include_once( get_template_directory() . '/plugins/acf-accordion/acf-accordion.php' );
-include_once( get_template_directory() . '/plugins/acf-rgba-color/acf-rgba-color.php' );
+include_once( THEME_PATH . '/plugins/acf/acf.php' );
+include_once( THEME_PATH . '/plugins/acf-accordion/acf-accordion.php' );
+include_once( THEME_PATH . '/plugins/acf-rgba-color/acf-rgba-color.php' );
+include_once( THEME_PATH . '/plugins/acf-typography/acf-typography.php' );
+include_once( THEME_PATH . '/plugins/acf-styling-manager-field/acf-styling-manager.php' );
 
 ?>

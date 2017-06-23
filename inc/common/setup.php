@@ -71,7 +71,7 @@ add_action('login_head', 'loginLogo');
  */
 function true_change_admin_footer () {
 	$footer_text = array(
-		'Thanks you for сooperation with <a href="http://etrange.eu" target="_blank">Etrange Creative Agency</a>'
+		'Thanks you for сooperation with <a href="javascript:" target="_blank">Tourism Tiger</a>'
 	);
 	return implode( ' &bull; ', $footer_text);
 }

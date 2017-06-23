@@ -105,12 +105,27 @@ function get_heroarea_searchbox_from_acf( $the_row = array() ) {
     $date_format = 'Y-m-d';
 
     if ( $the_row['pc_ha_014_1'] === 'range' ) :
-        $html .= '<input type="text" class="hero-area--search__field hero-area--search__start" data-pmu-format="'.$date_format.'" />';
-        $html .= '<input type="text" class="hero-area--search__field hero-area--search__end" data-pmu-format="'.$date_format.'" />';
+        $html .= '
+            <div class="input-wrap">
+                <input type="text" class="hero-area--search__field hero-area--search__start" data-pmu-format="'.$date_format.'" />
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+        ';
+        $html .= '
+            <div class="input-wrap">
+                <input type="text" class="hero-area--search__field hero-area--search__end" data-pmu-format="'.$date_format.'" />
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+        ';
 
 
     elseif ( $the_row['pc_ha_014_1'] === 'single' ) :
-        $html .= '<input type="text" class="hero-area--search__field hero-area--search__single" data-pmu-format="'.$date_format.'" />';
+        $html .= '
+            <div class="input-wrap">
+                <input type="text" class="hero-area--search__field hero-area--search__single" data-pmu-format="'.$date_format.'" />
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+        ';
 
     endif;
 

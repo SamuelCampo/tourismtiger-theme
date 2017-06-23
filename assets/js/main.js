@@ -13275,19 +13275,24 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 			/**
 			 * Searchbox
 			 */
+			var now = new Date;
+			
 			pickmeup('.hero-area--search__single', {
 				position       : 'bottom',
-				hide_on_select : true
+				hide_on_select : true,
+				min            : now
 			});
 			
 			pickmeup('.hero-area--search__start', {
 				position       : 'bottom',
-				hide_on_select : true
+				hide_on_select : true,
+				min            : now
 			});
 			
 			pickmeup('.hero-area--search__end', {
 				position       : 'bottom',
-				hide_on_select : true
+				hide_on_select : true,
+				min            : now
 			});
 			
 			

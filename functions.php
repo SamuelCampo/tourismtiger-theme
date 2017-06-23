@@ -209,3 +209,9 @@ include THEME_INC_PATH . '/snippets/paningation.php';
  * - get_heroarea_bg_from_acf()
  */
 include THEME_INC_PATH . '/snippets/hero-area.php';
+
+
+/**
+ * Theme option styling pages
+ */
+include_once THEME_INC_PATH . '/stylings/init.php';
