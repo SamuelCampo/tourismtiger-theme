@@ -32,9 +32,10 @@ function get_styling_json_path() {
 function add_acf_style_row( $name = '' ) {
 	$slug     = transform_name( $name, '_' );
 	$path     = get_styling_json_path() . 'styles-count.json';
-	$json     = file_get_contents( $path );
+	$is_json  = file_exists( $path );
 
-	if ( $json ) :
+	if ( $is_json ) :
+		$json     = file_get_contents( $path );
 		$jsonData = json_decode( $json, true );
 
 		/**
@@ -47,7 +48,7 @@ function add_acf_style_row( $name = '' ) {
 			$jsonData[$slug]++;
 		endif;
 
-		$handle = fopen($path, 'w');
+		$handle = fopen($path, 'w+');
 		fwrite($handle, $jsonData);
 		fclose($handle);
 	endif;
@@ -65,9 +66,10 @@ function add_acf_style_row( $name = '' ) {
 function remove_acf_style_row( $name = '' ) {
 	$slug     = transform_name( $name, '_' );
 	$path     = get_styling_json_path() . 'styles-count.json';
-	$json     = file_get_contents( $path );
+	$is_json  = file_exists( $path );
 
-	if ( $json ) :
+	if ( $is_json ) :
+		$json     = file_get_contents( $path );
 		$jsonData = json_decode( $json, true );
 
 		/**
@@ -80,7 +82,7 @@ function remove_acf_style_row( $name = '' ) {
 			$jsonData[$slug]--;
 		endif;
 
-		$handle = fopen($path, 'w');
+		$handle = fopen($path, 'w+');
 		fwrite($handle, $jsonData);
 		fclose($handle);
 	endif;
@@ -97,26 +99,30 @@ function remove_acf_style_row( $name = '' ) {
 function get_acf_styles_count( $name = '' ) {
 	$slug     = transform_name( $name, '_' );
 	$path     = get_styling_json_path() . 'styles-count.json';
-	$json     = file_get_contents( $path );
-	$jsonData = json_decode( $json, true );
+	$is_json  = file_exists( $path );
 	$count    = 1;
 
+	if ( $is_json ) : 
+		$json     = file_get_contents( $path );
+		$jsonData = json_decode( $json, true );
 
-	/**
-	 * If there isn't current class data
-	 * set initial value and rewrite a file
-	 */
-	if ( !$jsonData[$slug] ) :
-		$jsonData[$slug] = $count;
-		$handle = fopen($path, 'w');
-		fwrite($handle, $jsonData);
-		fclose($handle);
 
-	/**
-	 * Just get a count
-	 */
-	elseif ( $jsonData[$slug] ) :
-		$count = $jsonData[$slug];
+		/**
+		 * If there isn't current class data
+		 * set initial value and rewrite a file
+		 */
+		if ( !$jsonData[$slug] ) :
+			$jsonData[$slug] = $count;
+			$handle = fopen($path, 'w+');
+			fwrite($handle, $jsonData);
+			fclose($handle);
+
+		/**
+		 * Just get a count
+		 */
+		elseif ( $jsonData[$slug] ) :
+			$count = $jsonData[$slug];
+		endif;
 	endif;
 
 	return $count;
@@ -253,17 +259,15 @@ add_action( 'wp_ajax_get_acf_styles_count', 'get_acf_styles_count' );
 /* Enqueue AJAX functions on manage option page */
 add_action( 'admin_print_footer_scripts', 'acf_styles_ajax_option_page', 99 );
 
-
-/**
- * Custom acf field type
- * which adds configure buttons to sidebar of all Styling Pages.
- */
-include_once( THEME_PATH . '/plugins/acf-styling-manager-field/acf-styling-manager.php' );
-
 /**
  * Abstract class StylingCard
  */
 include_once( THEME_INC_PATH . 'stylings/class-styling-card.php' );
+
+/**
+ * Hero Area Styling Class
+ */
+include_once( THEME_INC_PATH . 'stylings/class-styling-heroarea.php' );
 
 
 
