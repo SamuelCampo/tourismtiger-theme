@@ -12,6 +12,12 @@ abstract class StylingCard {
 	public $name = '';
 	public $slug = '';
 	public $url ='';
+	public $devices = array( 
+		'Laptop'  => '1150',
+		'Netbook' => '992',
+		'iPad'    => '768',
+		'Mobile'  => '568'
+	);
 
 
 	function __construct( $name ){
@@ -118,21 +124,7 @@ abstract class StylingCard {
 	 * Init ACF Fields
 	 * @return array
 	 */
-	protected function init_acf_fields() {
-
-		$styles = get_acf_styles_count( $this->slug );
-		$rows   = array();
-
-		for ( $i = 1; $i <= $styles; $i++ ) :
-			$c = create_style_prefix($i);
-
-			$rows[] = $this->return_acf_accordion( $i );
-			$rows[] = $this->return_acf_group( $i, $c );
-		endfor;
-
-		return $rows;
-
-	}
+	abstract protected function init_acf_fields();
 
 
 	/**
@@ -163,12 +155,179 @@ abstract class StylingCard {
 
 
 	/**
-	 * Return Fields. ACF Fields array.
-	 * Each extended class must rewrite current method.
+	 * Button repeater array
 	 * 
 	 * @return array
 	 */
-	abstract protected function return_acf_group( $i = '', $c = '' );
+	protected function get_button_layouts( $i = 0, $id = '' ) {
+		$key = $this->slug . $i . $id . 'btn';
+
+		$output = array(
+			array (
+				'key' => $key . 'style',
+				'label' => 'Style',
+				'name' => 'style',
+				'type' => 'select',
+				'required' => 0,
+				'choices' => array (
+					'text' => 'Text',
+					'square' => 'Square',
+					'round' => 'Round',
+					'corner' => 'Round Corner',
+				),
+				'wrapper' => array (
+					'width' => '25'
+				),
+				'default_value' => 'text'
+			),
+			array (
+				'key' => $key . 'hover',
+				'label' => 'On Mouseover effect',
+				'name' => 'hover',
+				'type' => 'checkbox',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => '',
+				'choices' => array (
+					'color' => 'Color Invert',
+					'text' => 'Text Decoration',
+				),
+				'default_value' => array (
+				),
+				'wrapper' => array (
+					'width' => '40'
+				),
+				'layout' => 'horizontal',
+				'toggle' => 1,
+			),
+			array (
+				'key' => $key . 'bg',
+				'label' => 'Button Background',
+				'name' => 'background',
+				'type' => 'rgba_color',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => '',
+				'rgba' => '',
+				'return_value' => 0,
+				'wrapper' => array (
+					'width' => '35'
+				),
+			),
+			array (
+				'key' => $key . 'font',
+				'label' => 'Button Label Font',
+				'name' => 'font',
+				'type' => 'typography',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'show_font_familys' => 1,
+				'font-family' => 'Roboto',
+				'show_font_weight' => 1,
+				'font-weight' => 400,
+				'show_backup_font' => 1,
+				'backup-font' => 'Arial, Helvetica, sans-serif',
+				'show_text_align' => 0,
+				'text_align' => 0,
+				'show_text_direction' => 0,
+				'direction' => 'ltr',
+				'show_font_size' => 1,
+				'font_size' => 20,
+				'show_line_height' => 1,
+				'line_height' => 25,
+				'show_letter_spacing' => 1,
+				'letter_spacing' => 0,
+				'show_color_picker' => 0,
+				'text_color' => '#000000',
+				'show_font_style' => 1,
+				'font_style' => 'normal',
+				'show_preview_text' => 0
+			),
+			array (
+				'key' => $key . 'color',
+				'label' => 'Button Label Font color',
+				'name' => 'color',
+				'type' => 'rgba_color',
+				'required' => 0,
+				'wrapper' => array(
+					'width' => 25
+				)
+			),
+			array (
+				'key' => $key . 'shadow',
+				'label' => 'Dropshadow',
+				'name' => 'shadow',
+				'type' => 'true_false',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => '',
+				'message' => 'Enable Dropshadow',
+				'default_value' => 0,
+				'wrapper' => array(
+					'width' => 25
+				)
+			),
+			array (
+				'key' => $key . 'border',
+				'label' => 'Border',
+				'name' => 'border',
+				'type' => 'select',
+				'required' => 0,
+				'choices' => array (
+					'no' => 'No',
+					'yes' => 'Yes',
+					'hover' => 'On Mouseover',
+				),
+				'wrapper' => array (
+					'width' => '25'
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'save_other_choice' => 0,
+				'default_value' => 'no',
+				'layout' => 'horizontal',
+			),
+			array (
+				'key' => $key . 'borwid',
+				'label' => 'Thickness',
+				'name' => 'border-width',
+				'type' => 'number',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => array (
+					array (
+						array (
+							'field' => $key . 'border',
+							'operator' => '==',
+							'value' => 'yes',
+						),
+					),
+					array (
+						array (
+							'field' => $key . 'border',
+							'operator' => '==',
+							'value' => 'hover',
+						),
+					),
+				),
+				'default_value' => 1,
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => 'px',
+				'min' => 1,
+				'max' => 5,
+				'step' => '',
+				'readonly' => 0,
+				'disabled' => 0,
+				'wrapper' => array (
+					'width' => '25'
+				),
+			),
+		);
+
+		return $output;
+	}
 
 
 	/**
