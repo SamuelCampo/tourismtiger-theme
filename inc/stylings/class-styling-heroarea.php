@@ -97,7 +97,13 @@ class HeroArea extends StylingCard {
 	}
 
 
-
+	/**
+	 * Generate tag layouts
+	 * 
+	 * @param  integer $id  - title id, to difference first and second titles.
+	 * @param  integer $i   
+	 * @return array
+	 */
 	protected function get_tags_layouts( $id = 1, $i = 1 ) {
 		$output = array();
 		$tags   = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p' );
@@ -362,12 +368,12 @@ class HeroArea extends StylingCard {
 	 * Return Button 
 	 * @return array
 	 */
-	protected function return_acf_button_group( $i = '', $c = '', $a = 1 ) {
+	protected function return_acf_button_group( $i = '', $a = 1 ) {
 
 		$fc_options_array = array (
-			'key' => $this->slug . '_style-' . $c . $a,
+			'key' => $this->slug . '_style-' . $i . $a,
 			'label' => 'Button',
-			'name' => $this->slug . '_style-' . $c . $a,
+			'name' => $this->slug . $i . $a,
 			'type' => 'repeater',
 			'required' => 0,
 			'collapsed' => '',
@@ -375,7 +381,7 @@ class HeroArea extends StylingCard {
 			'max' => 1,
 			'layout' => 'block',
 			'button_label' => 'Add Row',
-			'sub_fields' => $this->get_button_layouts( $i, $a . $c ),
+			'sub_fields' => $this->get_button_layouts( $i, $a ),
 		);	
 
 		return $fc_options_array;
@@ -552,9 +558,9 @@ class HeroArea extends StylingCard {
 			$c = create_style_prefix($i);
 
 			$rows[] = $this->return_acf_accordion( $i );
-			$rows[] = $this->return_acf_titles_group( $i, $c, 1 );
-			$rows[] = $this->return_acf_button_group( $i, $c, 2 );
-			$rows[] = $this->return_acf_search_group( $i, $c, 3 );
+			$rows[] = $this->return_acf_titles_group( $i, 1 );
+			$rows[] = $this->return_acf_button_group( $i, 'btn' );
+			$rows[] = $this->return_acf_search_group( $i, 3 );
 		endfor;
 
 		return $rows;

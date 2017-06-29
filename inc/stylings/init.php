@@ -14,9 +14,19 @@
  * @return string
  */
 function get_styling_json_path() {
-	$site_url = get_bloginfo( 'url' );
-	$site_url = explode( '://', $site_url )[1];
-	$path     = get_template_directory() . '/json/' . $site_url . '/';
+	$site_url  = get_bloginfo( 'url' );
+	$site_url  = explode( '://', $site_url )[1];
+	$json_path = get_template_directory() . '/json';
+	$site_path = $json_path . '/' . $site_url;
+	$path      = $site_path . '/';
+
+	/* Check json dir, create that */
+	if ( !is_dir( $json_path ) )
+	    mkdir( $json_path, 0777, true );
+
+	/* Check site dir, create that */
+	if ( !is_dir( $site_path ) )
+	    mkdir( $site_path, 0777, true );
 
 	return $path;
 }
@@ -29,8 +39,11 @@ function get_styling_json_path() {
  * 
  * @return intenger
  */
-function add_acf_style_row( $name = '' ) {
-	$slug     = transform_name( $name, '_' );
+function add_acf_style_row( $slug = '' ) {
+	
+	if ( $slug === '' ) 
+		$slug = isset( $_POST['slug'] ) ? $_POST['slug'] : 'empty';
+
 	$path     = get_styling_json_path() . 'styles-count.json';
 	$is_json  = file_exists( $path );
 
@@ -42,14 +55,15 @@ function add_acf_style_row( $name = '' ) {
 		 * If there isn't current class data
 		 * set initial value and rewrite a file
 		 */
-		if ( !$jsonData[$slug] ) :
+		if ( ! array_key_exists( $slug, $jsonData ) ) :
 			$jsonData[$slug] = 1;
-		elseif ( $jsonData[$slug] && $jsonData[$slug] < 11 ) :
-			$jsonData[$slug]++;
+		elseif ( $jsonData[$slug] < 11 ) :
+			$jsonData[$slug] = $jsonData[$slug] + 1;
 		endif;
 
-		$handle = fopen($path, 'w+');
-		fwrite($handle, $jsonData);
+		$jsonEncoded = json_encode( $jsonData );
+		$handle      = fopen($path, 'w+');
+		fwrite($handle, $jsonEncoded);
 		fclose($handle);
 	endif;
 
@@ -63,8 +77,11 @@ function add_acf_style_row( $name = '' ) {
  * 
  * @return intenger
  */
-function remove_acf_style_row( $name = '' ) {
-	$slug     = transform_name( $name, '_' );
+function remove_acf_style_row( $slug = '' ) {
+	
+	if ( $slug === '' ) 
+		$slug = isset( $_POST['slug'] ) ? $_POST['slug'] : 'empty';
+
 	$path     = get_styling_json_path() . 'styles-count.json';
 	$is_json  = file_exists( $path );
 
@@ -76,15 +93,21 @@ function remove_acf_style_row( $name = '' ) {
 		 * If there isn't current class data
 		 * set initial value and rewrite a file
 		 */
-		if ( !$jsonData[$slug] ) :
-			$jsonData[$slug] = 1;
-		elseif ( $jsonData[$slug] && $jsonData[$slug] > 1 ) :
-			$jsonData[$slug]--;
-		endif;
+		if ( $json ) :
+			if ( ! array_key_exists( $slug, $jsonData ) ) :
+				$jsonData[$slug] = 1;
 
-		$handle = fopen($path, 'w+');
-		fwrite($handle, $jsonData);
-		fclose($handle);
+				$handle = fopen($path, 'w+');
+				fwrite($handle, $jsonData);
+				fclose($handle);
+			elseif ( $jsonData[$slug] > 1 ) :
+				$jsonData[$slug] = $jsonData[$slug] - 1;
+
+				$handle = fopen($path, 'w+');
+				fwrite($handle, $jsonData);
+				fclose($handle);
+			endif;
+		endif;
 	endif;
 
 	return null;
@@ -96,8 +119,11 @@ function remove_acf_style_row( $name = '' ) {
  * 
  * @return integer 
  */
-function get_acf_styles_count( $name = '' ) {
-	$slug     = transform_name( $name, '_' );
+function get_acf_styles_count( $slug = '' ) {
+	
+	if ( $slug === '' ) 
+		$slug = isset( $_POST['slug'] ) ? $_POST['slug'] : 'empty';
+
 	$path     = get_styling_json_path() . 'styles-count.json';
 	$is_json  = file_exists( $path );
 	$count    = 1;
@@ -107,20 +133,25 @@ function get_acf_styles_count( $name = '' ) {
 		$jsonData = json_decode( $json, true );
 
 
+		if ( $jsonData === null ) {
+			return 1;
+		}
+
 		/**
 		 * If there isn't current class data
 		 * set initial value and rewrite a file
 		 */
-		if ( !$jsonData[$slug] ) :
+		if ( ! array_key_exists( $slug, $jsonData ) ) :
 			$jsonData[$slug] = $count;
+			$jsonEncoded     = json_encode( $jsonData );
 			$handle = fopen($path, 'w+');
-			fwrite($handle, $jsonData);
+			fwrite($handle, $jsonEncoded);
 			fclose($handle);
 
 		/**
 		 * Just get a count
 		 */
-		elseif ( $jsonData[$slug] ) :
+		elseif ( array_key_exists( $slug, $jsonData ) ) :
 			$count = $jsonData[$slug];
 		endif;
 	endif;
@@ -160,7 +191,7 @@ function acf_styles_ajax_option_page() {
 
 				var data = {
 					action: 'add_acf_style_row',
-					object: object
+					slug: object
 				};
 
 				request_styles( data, true );
@@ -176,7 +207,7 @@ function acf_styles_ajax_option_page() {
 
 				var data = {
 					action: 'remove_acf_style_row',
-					object: object
+					slug: object
 				};
 
 				request_styles( data, true );
@@ -196,8 +227,9 @@ function acf_styles_ajax_option_page() {
  * @return array       
  */
 function get_acf_styles_list( $name = '' ) {
+	$name  = transform_name( $name, '_' );
 	$count = get_acf_styles_count( $name );
-	$list = array();
+	$list  = array();
 
 	for ( $i = 1; $i <= $count; $i++ ) {
 		$number = $name . '_style-' . create_style_prefix($i);
@@ -258,6 +290,11 @@ add_action( 'wp_ajax_get_acf_styles_count', 'get_acf_styles_count' );
 
 /* Enqueue AJAX functions on manage option page */
 add_action( 'admin_print_footer_scripts', 'acf_styles_ajax_option_page', 99 );
+
+/**
+ * Functions which generate css code
+ */
+include_once( THEME_INC_PATH . 'stylings/api.php' );
 
 /**
  * Abstract class StylingCard
