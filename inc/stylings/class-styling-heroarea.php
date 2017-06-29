@@ -191,12 +191,12 @@ class HeroArea extends StylingCard {
 	 * Return Titles 
 	 * @return array
 	 */
-	protected function return_acf_titles_group( $i = '', $c = '', $a = 1 ) {
+	protected function return_acf_titles_group( $i = '', $a = 1 ) {
 
 		$fc_options_array = array (
-			'key' => $this->slug . '_style-' . $c . $a,
+			'key' => $this->slug . '_style-' . $i . $a,
 			'label' => 'Titles',
-			'name' => $this->slug . '_style-' . $c . $a,
+			'name' => $this->slug . $i . $a,
 			'type' => 'repeater',
 			'required' => 0,
 			'collapsed' => '',
@@ -246,7 +246,7 @@ class HeroArea extends StylingCard {
 				array (
 					'key' => $this->slug . $i . '_1-title-gr',
 					'label' => 'Text rules',
-					'name' => 'first_title_group',
+					'name' => '1_title_group',
 					'type' => 'flexible_content',
 					'required' => 0,
 					'button_label' => 'Add group',
@@ -297,7 +297,7 @@ class HeroArea extends StylingCard {
 				array (
 					'key' => $this->slug . $i . '_2-title-gr',
 					'label' => 'Text rules',
-					'name' => 'second_title_group',
+					'name' => '2_title_group',
 					'type' => 'flexible_content',
 					'required' => 0,
 					'button_label' => 'Add group',
@@ -348,7 +348,7 @@ class HeroArea extends StylingCard {
 				array (
 					'key' => $this->slug . $i . '_3-title-gr',
 					'label' => 'Text rules',
-					'name' => 'third_title_group',
+					'name' => '3_title_group',
 					'type' => 'flexible_content',
 					'required' => 0,
 					'button_label' => 'Add group',
@@ -361,6 +361,93 @@ class HeroArea extends StylingCard {
 
 		return $fc_options_array;
 
+	}
+
+
+	/**
+	 * Get titles css rules
+	 * 
+	 * @param  integer $i style number
+	 * @param  integer $a spesial id
+	 * 
+	 * @return string
+	 */
+	static public function get_titles_css( $i = 1, $a = 1, $class = '.title' ) {
+		$output     = '';
+		$titles_sum = 3;
+		$slug       = 'hero_area';
+		$key        = $slug . $i . $a;
+
+		if ( have_rows( $key, 'styles' ) ) :
+			while ( have_rows( $key, 'styles' ) ) :
+				the_row();
+
+				/* Loop each title */
+				for ( $num = 1; $num <= $titles_sum; $num++ ) : 
+
+					/* Sub field names */
+					$font             = get_font_rules( get_sub_field( $titles_sum . '-font' ) );
+					$group_field_name = $slug . $i . '_' . $num . '-title-gr';
+					$self_class       = "{$class}-{$num}"; 
+					$css              = '';
+
+					$css .= $font;
+
+					/* Add something like .title-class-1 { font-rules } */
+					$output .= $font ? ".{$slug}-{$i} {$self_class} {{$css}}" : '';
+
+					if ( have_rows( $group_field_name, 'styles' ) ) :
+						while ( have_rows( $group_field_name, 'styles' ) ) :
+							the_row();
+
+							/* Tag's values */
+							$tag       = get_row_layout();
+							$font      = get_font_rules( get_sub_field( 'font' ) );
+							$color     = get_sub_field( 'color' );
+							$shadow    = get_sub_field( 'shadow' );
+							$tag_class = ".{$slug}-{$i} {$tag}{$self_class}";
+							$css       = '';
+
+							/* Set variables */
+							$css .= $font;
+							$css .= $color ? "color:{$color};" : '';
+							$css .= $shadow ? 'text-shadow: 1px 1px 3px rgba(0,0,0,.3), 1px 1px 3px rgba(0,0,0,.3);' : '';
+
+							/* Add something like h1.title-class-h1 { rules } */
+							$output .= $font ? "{$tag_class} { $css }" : '';
+
+							/**
+							 * Loop media queries
+							 */
+							if ( have_rows( 'media', 'styles' ) ) :
+								while ( have_rows( 'media', 'styles' ) ) :
+									the_row();
+
+									/* Media properties */
+									$device        = get_row_layout();
+									$font          = get_font_rules( get_sub_field( 'font' ) );
+									$margin_top    = get_sub_field( 'margin-top' );
+									$margin_bottom = get_sub_field( 'margin-bottom' );
+									$css           = '';
+
+									/* Css rules */
+									$css .= $font;
+									$css .= $margin_top ? "margin-top:{margin_top}px;" : '';
+									$css .= $margin_bottom ? "margin-bottom:{margin_bottom}px;" : '';
+
+									$output .= "@media (max-width: {$device}px) { {$tag_class} {{$css}} }";
+								endwhile;
+							endif;
+
+						endwhile;
+					endif;
+
+				endfor;
+
+			endwhile;
+		endif;
+
+		return $output;
 	}
 
 
@@ -393,13 +480,13 @@ class HeroArea extends StylingCard {
 	 * Return search 
 	 * @return array
 	 */
-	protected function return_acf_search_group( $i = '', $c = '', $a = 1 ) {
+	protected function return_acf_search_group( $i = '', $a = 1 ) {
 		$key = $this->slug . $i . 'sb';
 
 		$fc_options_array = array (
-			'key' => $this->slug . '_style-' . $c . $a,
+			'key' => $this->slug . '_style-' . $i . $a,
 			'label' => 'Searchbox',
-			'name' => $this->slug . '_style-' . $c . $a,
+			'name' => $this->slug . $i . $a,
 			'type' => 'repeater',
 			'required' => 0,
 			'collapsed' => '',
@@ -547,6 +634,65 @@ class HeroArea extends StylingCard {
 
 
 	/**
+	 * Get titles css rules
+	 * 
+	 * @param  integer $i style number
+	 * @param  integer $a spesial id
+	 * 
+	 * @return string
+	 */
+	static public function get_searchbox_css( $i = 1, $a = 1, $class = '.searchbox' ) {
+		$slug       = 'hero_area';
+		$key        = $slug . '_style-' . $i . $a;
+		$key_button = $slug . $i . 'sbbutton';
+		$output     = '';
+		$tag        = ".{$slug}-{$i} {$class}";
+
+		if ( have_rows( $key, 'styles' ) ) :
+			while ( have_rows( $key, 'styles' ) ) :
+				the_row();
+
+				/* Sub fields variables */
+				$font            = get_font_rules( get_sub_field( 'font' ) );
+				$border_color    = get_sub_field( 'border-color' );
+				$background      = get_sub_field( 'background' );
+				$color           = get_sub_field( 'text-color' );
+				$placeholder     = get_sub_field( 'placeholder' );
+				$base_color      = get_sub_field( 'base-color' );
+				$backgroun_color = get_sub_field( 'background-color' );
+
+				$button          = get_button_css( $key_button );
+
+				/* Common */
+				$css  = '';
+				$css .= $base_color ? "color:{$base_color};" : '';
+				$css .= $backgroun_color ? "background-color:{$backgroun_color};" : '';
+
+				$output .= $css ? "{$tag} {{$css}}" : '';
+
+				/* Inputs */
+				$css  = '';
+				$css .= $font;
+				$css .= $border_color ? "border-color:{$border_color};" : '';
+				$css .= $background ? "background:{$background};" : '';
+				$css .= $color ? "color:{$color};" : '';
+
+				$output .= $css ? "{$tag} input {{$css}}" : '';
+
+				/* Button */
+				$css  = '';
+				$css .= $button;
+
+				$output .= $css ? "{$tag} button {{$css}}" : '';
+
+			endwhile;
+		endif;
+
+		return $output;
+	}
+
+
+	/**
 	 * Init ACF Fields
 	 * @return array
 	 */
@@ -558,14 +704,38 @@ class HeroArea extends StylingCard {
 			$c = create_style_prefix($i);
 
 			$rows[] = $this->return_acf_accordion( $i );
-			$rows[] = $this->return_acf_titles_group( $i, 1 );
+			$rows[] = $this->return_acf_titles_group( $i, 'tit' );
 			$rows[] = $this->return_acf_button_group( $i, 'btn' );
-			$rows[] = $this->return_acf_search_group( $i, 3 );
+			$rows[] = $this->return_acf_search_group( $i, 'sea' );
 		endfor;
 
 		return $rows;
 	}
 	
+
+	/**
+	 * Get css rules
+	 * @return string
+	 */
+	static public function get_css( $slug = 'hero_area' ) {
+		$output = '';
+		$styles = get_acf_styles_count( $slug );
+
+		for ( $i = 1; $i <= $styles; $i++ ) :
+
+			/* Titles */
+			$output .= self::get_titles_css( $i, 'tit', '.title' );
+
+			/* Button */
+			$output .= get_button_css( $slug . $i . 'btn', ".{$slug}-{$i} .button");
+
+			/* Searchbox */
+			$output .= self::get_searchbox_css( $i, 'sea', '.searchbox' );
+
+		endfor;
+
+		return $output;
+	}
 }
 
 new HeroArea( 'Hero Area' );
