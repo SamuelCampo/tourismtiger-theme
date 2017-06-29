@@ -134,6 +134,7 @@ abstract class StylingCard {
 			'page_title' 	=> $this->name . ' Styles',
 			'menu_title' 	=> $this->name . ' Styles',
 			'parent_slug' 	=> 'acf-theme-styles',
+			'post_id'       => 'styles'
 		) );
 
 	}
@@ -197,7 +198,7 @@ abstract class StylingCard {
 				'wrapper' => array (
 					'width' => '25'
 				),
-				'default_value' => 'text'
+				'default_value' => 'square'
 			),
 			array (
 				'key' => $key . 'hover',
@@ -310,7 +311,7 @@ abstract class StylingCard {
 			array (
 				'key' => $key . 'borwid',
 				'label' => 'Thickness',
-				'name' => 'border-width',
+				'name' => 'border_width',
 				'type' => 'number',
 				'instructions' => '',
 				'required' => 0,

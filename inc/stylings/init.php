@@ -292,6 +292,11 @@ add_action( 'wp_ajax_get_acf_styles_count', 'get_acf_styles_count' );
 add_action( 'admin_print_footer_scripts', 'acf_styles_ajax_option_page', 99 );
 
 /**
+ * Functions which generate css code
+ */
+include_once( THEME_INC_PATH . 'stylings/api.php' );
+
+/**
  * Abstract class StylingCard
  */
 include_once( THEME_INC_PATH . 'stylings/class-styling-card.php' );
