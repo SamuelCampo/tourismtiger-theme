@@ -26,6 +26,9 @@ abstract class StylingCard {
 		$this->slug    = transform_name( $this->name, '_' );
 		$this->url     = transform_name( $this->name, '-' );
 
+		/* Init json file where a data will be stored */
+		$this->create_json();
+
 		/* Init ACF Option pages */
 		$this->init_acf_option_page();
 
@@ -42,34 +45,50 @@ abstract class StylingCard {
 	 * @return null
 	 */
 	public function create_json() {
-		$path = get_styling_json_path() . 'styles-count.json';
-		$json = file_get_contents( $path );
+		$path    = get_styling_json_path() . 'styles-count.json';
+		$is_json = file_exists( $path );
 
 		/**
 		 * Create file and white the first value
 		 */
-		if ( !$json ) :
-			$jsonData = array( $this->slug => 1 );
-			$jsonData = json_encode($jsonData);
-			$handle   = fopen($path, 'w');
+		if ( !$is_json ) :
+			$jsonData    = array( $this->slug => 1 );
+			$jsonEncoded = json_encode($jsonData);
+			$handle      = fopen($path, 'w+');
 
-			fwrite($handle, $jsonData);
+			fwrite($handle, $jsonEncoded);
 			fclose($handle);
 
 		/**
 		 * Decode file from json to php array 
 		 */
-		elseif ( $json ) :
-			$jsonData = json_decode( $json, true );
+		elseif ( $is_json ) :
+			$json = file_get_contents( $path );
 
-			/**
-			 * If there isn't current class data
-			 * set initial value and rewrite a file
-			 */
-			if ( !$jsonData[$this->slug] ) :
-				$jsonData[$this->slug] = 1;
-				$handle = fopen($path, 'w');
-				fwrite($handle, $jsonData);
+			if ( $json != '' ) :
+				$jsonData = json_decode( $json, true );
+
+				if ( $jsonData === null ) 
+					return null;
+
+				/**
+				 * If there isn't current class data
+				 * set initial value and rewrite a file
+				 */
+				if ( ! array_key_exists( $this->slug, $jsonData ) ) :
+					$jsonData[$this->slug] = 1;
+					$jsonEncoded           = json_encode( $jsonData );
+					$handle                = fopen($path, 'w+');
+					fwrite($handle, $jsonEncoded);
+					fclose($handle);
+				endif;
+
+			else :
+				$jsonData    = array( $this->slug => 1 );
+				$jsonEncoded = json_encode($jsonData);
+				$handle      = fopen($path, 'w+');
+
+				fwrite($handle, $jsonEncoded);
 				fclose($handle);
 			endif;
 		endif;
@@ -380,7 +399,7 @@ abstract class StylingCard {
 					array (
 						'param' => 'options_page',
 						'operator' => '==',
-						'value' => 'acf-theme-' . $this->url . '-styles',
+						'value' => 'acf-options-' . $this->url . '-styles',
 					),
 				),
 			),

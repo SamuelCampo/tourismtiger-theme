@@ -97,7 +97,13 @@ class HeroArea extends StylingCard {
 	}
 
 
-
+	/**
+	 * Generate tag layouts
+	 * 
+	 * @param  integer $id  - title id, to difference first and second titles.
+	 * @param  integer $i   
+	 * @return array
+	 */
 	protected function get_tags_layouts( $id = 1, $i = 1 ) {
 		$output = array();
 		$tags   = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p' );
