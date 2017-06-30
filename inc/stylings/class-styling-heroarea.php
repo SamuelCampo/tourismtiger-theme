@@ -386,7 +386,7 @@ class HeroArea extends StylingCard {
 				for ( $num = 1; $num <= $titles_sum; $num++ ) : 
 
 					/* Sub field names */
-					$font             = get_font_rules( get_sub_field( $titles_sum . '-font' ) );
+					$font             = get_font_rules( get_sub_field( $num . '-font' ) );
 					$group_field_name = $slug . $i . '_' . $num . '-title-gr';
 					$self_class       = "{$class}-{$num}"; 
 					$css              = '';
@@ -394,7 +394,7 @@ class HeroArea extends StylingCard {
 					$css .= $font;
 
 					/* Add something like .title-class-1 { font-rules } */
-					$output .= $font ? ".{$slug}-{$i} {$self_class} {{$css}}" : '';
+					$output .= $font ? ".{$slug}-{$i} {$self_class}{{$css}}" : '';
 
 					if ( have_rows( $group_field_name, 'styles' ) ) :
 						while ( have_rows( $group_field_name, 'styles' ) ) :
@@ -414,7 +414,7 @@ class HeroArea extends StylingCard {
 							$css .= $shadow ? 'text-shadow: 1px 1px 3px rgba(0,0,0,.3), 1px 1px 3px rgba(0,0,0,.3);' : '';
 
 							/* Add something like h1.title-class-h1 { rules } */
-							$output .= $font ? "{$tag_class} { $css }" : '';
+							$output .= $font ? "{$tag_class}{{$css}}" : '';
 
 							/**
 							 * Loop media queries
@@ -435,7 +435,7 @@ class HeroArea extends StylingCard {
 									$css .= $margin_top ? "margin-top:{margin_top}px;" : '';
 									$css .= $margin_bottom ? "margin-bottom:{margin_bottom}px;" : '';
 
-									$output .= "@media (max-width: {$device}px) { {$tag_class} {{$css}} }";
+									$output .= "@media (max-width:{$device}px){{$tag_class}{{$css}}}";
 								endwhile;
 							endif;
 

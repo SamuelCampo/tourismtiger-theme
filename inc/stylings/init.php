@@ -184,7 +184,7 @@ function acf_styles_ajax_option_page() {
 			}
 
 			/**
-			 * Add flexi style
+			 * Add styling group
 			 */
 			$('#add-style').click(function(){
 				var object = $(this).attr('data-style-object');
@@ -200,7 +200,7 @@ function acf_styles_ajax_option_page() {
 			});
 
 			/**
-			 * Remove flexi style
+			 * Remove stuling group
 			 */
 			$('#remove-style').click(function(){
 				var object = $(this).attr('data-style-object');
@@ -208,6 +208,19 @@ function acf_styles_ajax_option_page() {
 				var data = {
 					action: 'remove_acf_style_row',
 					slug: object
+				};
+
+				request_styles( data, true );
+
+				return false;
+			});
+
+			/**
+			 * Refresh styles
+			 */
+			$('#refresh-style').click(function(){
+				var data = {
+					action: 'refresh_styling_cache'
 				};
 
 				request_styles( data, true );
@@ -246,36 +259,121 @@ function get_acf_styles_list( $name = '' ) {
  */
 function render_styles_option_page( $field = array() ) {
 
-	$other_attributes = array( 'data-style-object' => $field['styling_group'] );
-
-	$button_add = get_submit_button( 
-		'Add style', 
-		'primary', 
-		'add-style', 
-		false,
-		$other_attributes
-	);
-
 	$count = get_acf_styles_count( $field['styling_group'] );
 
-	if ( $count <= 1 ) 
-		$other_attributes['disabled'] = 'disabled';
+	/* Add button */
+	$attributes = array( 'data-style-object' => $field['styling_group'] );
+	$button_add = get_submit_button( 
+		'Add style', 
+		'delete', 
+		'add-style', 
+		false,
+		$attributes
+	);
+
+
+	/* Remove button */
+	$attributes = array( 'data-style-object' => $field['styling_group'] );
+	if ( $count <= 1 ) $attributes['disabled'] = 'disabled';
 
 	$button_remove = get_submit_button( 
 		'Remove latest group', 
 		'delete', 
 		'remove-style', 
 		false,
-		$other_attributes
+		$attributes
+	); 
+
+
+	/* Refresh button */
+	$attributes = array( 'style' => 'width:100%;' );
+	$button_refresh = get_submit_button( 
+		'Refresh styles cache', 
+		'primary', 
+		'refresh-style', 
+		false,
+		$attributes
 	); 
 
 ?>
 
 	<form metod="POST">
 		<p><?php echo $button_add . ' ' . $button_remove; ?></p>
+		<p><?php echo $button_refresh; ?></p>
 	</form>
 
 <?php 
+}
+
+
+/**
+ * Get style sheet
+ */
+function get_styling_stylesheet_file() {
+	$site_url      = get_bloginfo( 'url' );
+	$site_name     = explode( '://', $site_url )[1];
+	$assets_path   = get_template_directory() . '/assets';
+	$css_path      = $assets_path . '/css';
+	$self_css_dir  = $css_path . '/' . $site_name;
+	$self_css_file = $self_css_dir . '/styling.css';
+
+	/* Check assets dir, create that */
+	if ( !is_dir( $assets_path ) )
+	    mkdir( $assets_path, 0777, true );
+
+	/* Check css dir, create that */
+	if ( !is_dir( $css_path ) )
+	    mkdir( $css_path, 0777, true );
+
+	/* Check self dir, create that */
+	if ( !is_dir( $self_css_dir ) )
+	    mkdir( $self_css_dir, 0777, true );
+
+	/* Create file */
+	if ( !file_exists( $self_css_file ) ) {
+		$fp = fopen($self_css_file, "w"); 
+	    fwrite($fp, "// Init");
+	    fclose($fp);
+	}
+
+	return $self_css_file;	
+}
+
+
+/**
+ * Get stylesheet uri
+ *
+ * @return string
+ */
+function get_styling_stylesheet_uri() {
+	$site_url   = get_bloginfo( 'url' );
+	$site_name  = explode( '://', $site_url )[1];
+	$output     = get_template_directory_uri() . '/assets/css/' . $site_name;
+
+	return $output;
+}
+
+
+/**
+ * Re-build css and input that to styling file
+ *  
+ * @return bool true
+ */
+function refresh_styling_cache() {
+	$file = get_styling_stylesheet_file();
+
+	// Generate css
+	$objects = array (
+		HeroArea::get_css()
+	);
+
+	$input = implode($objects);
+
+	$handle = fopen($file, 'w');
+	fwrite($handle, $input);
+	fclose($handle);
+
+	return true;
 }
 
 
@@ -290,6 +388,12 @@ add_action( 'wp_ajax_get_acf_styles_count', 'get_acf_styles_count' );
 
 /* Enqueue AJAX functions on manage option page */
 add_action( 'admin_print_footer_scripts', 'acf_styles_ajax_option_page', 99 );
+
+/* Create styling file */
+add_action( 'init', 'get_styling_stylesheet_file' );
+
+/* Refresh styling cache */
+add_action( 'wp_ajax_refresh_styling_cache', 'refresh_styling_cache' );
 
 /**
  * Functions which generate css code
