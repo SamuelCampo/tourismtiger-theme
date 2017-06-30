@@ -4363,6 +4363,9 @@ input[type='submit'][disabled] {
 .hero-area--content {
   width: 100%;
 }
+.hero-area--content .hero-area--button {
+  display: inline-block;
+}
 .hero-area--nav {
   position: absolute;
   z-index: 20;

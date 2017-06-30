@@ -13273,6 +13273,12 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 			
 			
 			/**
+			 * Add style number class to Calendar picker 
+			 */
+			var heroAreaStyle = $('#hero-area').attr('data-style');
+			
+			
+			/**
 			 * Searchbox
 			 */
 			var now = new Date;
@@ -13280,19 +13286,22 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 			pickmeup('.hero-area--search__single', {
 				position       : 'bottom',
 				hide_on_select : true,
-				min            : now
+				min            : now,
+				class_name     : heroAreaStyle
 			});
 			
 			pickmeup('.hero-area--search__start', {
 				position       : 'bottom',
 				hide_on_select : true,
-				min            : now
+				min            : now,
+				class_name     : heroAreaStyle
 			});
 			
 			pickmeup('.hero-area--search__end', {
 				position       : 'bottom',
 				hide_on_select : true,
-				min            : now
+				min            : now,
+				class_name     : heroAreaStyle
 			});
 			
 			
