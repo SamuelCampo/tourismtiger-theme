@@ -2,10 +2,13 @@
 /**
  * Initialization Styling Cards Classes
  *
- * This file does next^
+ * This file does following things:
  * - Register functions related to styles Classes
  * - Hang wordpress hooks
  * - Includes Styling Classes
+ *
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 

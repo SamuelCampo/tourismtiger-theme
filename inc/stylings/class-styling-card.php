@@ -2,8 +2,11 @@
 /**
  * Styling Cards Class
  *
- * TODO:
- * - Init create_json()
+ * This class allows you to create styling extend classes.
+ * For example: Hero Area and Primary area
+ *
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 abstract class StylingCard {
@@ -11,7 +14,6 @@ abstract class StylingCard {
 
 	public $name = '';
 	public $slug = '';
-	public $pref = '';
 	public $url ='';
 	public $devices = array( 
 		'Laptop'  => '1150',

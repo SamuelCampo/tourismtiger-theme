@@ -1,6 +1,9 @@
 <?php
 /**
  * Hero Area Class Extend
+ *
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
  
 class HeroArea extends StylingCard {
@@ -641,7 +644,7 @@ class HeroArea extends StylingCard {
 	 * 
 	 * @return string
 	 */
-	static public function get_searchbox_css( $i = 1, $a = 1, $class = '.searchbox' ) {
+	static public function get_searchbox_css( $i = 1, $a = 1, $class = '.hero-area--search' ) {
 		$slug       = 'hero_area';
 		$key        = $slug . '_style-' . $i . $a;
 		$key_button = $slug . $i . 'sbbutton';
@@ -668,7 +671,7 @@ class HeroArea extends StylingCard {
 				$css .= $base_color ? "color:{$base_color};" : '';
 				$css .= $backgroun_color ? "background-color:{$backgroun_color};" : '';
 
-				$output .= $css ? "{$tag} {{$css}}" : '';
+				$output .= $css ? "{$tag}{{$css}}" : '';
 
 				/* Inputs */
 				$css  = '';
@@ -677,13 +680,13 @@ class HeroArea extends StylingCard {
 				$css .= $background ? "background:{$background};" : '';
 				$css .= $color ? "color:{$color};" : '';
 
-				$output .= $css ? "{$tag} input {{$css}}" : '';
+				$output .= $css ? "{$tag} input{{$css}}" : '';
 
 				/* Button */
 				$css  = '';
 				$css .= $button;
 
-				$output .= $css ? "{$tag} button {{$css}}" : '';
+				$output .= $css ? "{$tag} button{{$css}}" : '';
 
 			endwhile;
 		endif;
@@ -727,7 +730,7 @@ class HeroArea extends StylingCard {
 			$output .= self::get_titles_css( $i, 'tit', '.title' );
 
 			/* Button */
-			$output .= get_button_css( $slug . $i . 'btn', ".{$slug}-{$i} .button");
+			$output .= get_button_css( $slug . $i . 'btn', ".{$slug}-{$i} .hero-area--button");
 
 			/* Searchbox */
 			$output .= self::get_searchbox_css( $i, 'sea', '.searchbox' );
