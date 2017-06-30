@@ -2,10 +2,13 @@
 /**
  * Initialization Styling Cards Classes
  *
- * This file does next^
+ * This file does following things:
  * - Register functions related to styles Classes
  * - Hang wordpress hooks
  * - Includes Styling Classes
+ *
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
 
 
@@ -157,6 +160,23 @@ function get_acf_styles_count( $slug = '' ) {
 	endif;
 
 	return $count;
+}
+
+
+/**
+ * Get list of available style groups.
+ * Used for local fields choise lists
+ */
+function get_available_styles_list( $slug = '' ) {
+	$count = get_acf_styles_count( $slug );
+	$array = array();
+
+	for ( $i = 1; $i <= $count; $i++ ) :
+		$class = "{$slug}-{$i}";
+		$array[$class] = "Style {$i}";
+	endfor;
+
+	return $array;
 }
 
 

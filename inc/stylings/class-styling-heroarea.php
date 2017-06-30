@@ -1,6 +1,9 @@
 <?php
 /**
  * Hero Area Class Extend
+ *
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
  */
  
 class HeroArea extends StylingCard {
@@ -405,7 +408,7 @@ class HeroArea extends StylingCard {
 							$font      = get_font_rules( get_sub_field( 'font' ) );
 							$color     = get_sub_field( 'color' );
 							$shadow    = get_sub_field( 'shadow' );
-							$tag_class = ".{$slug}-{$i} {$tag}{$self_class}";
+							$tag_class = ".{$slug}-{$i} {$self_class} {$tag}";
 							$css       = '';
 
 							/* Set variables */
@@ -641,12 +644,13 @@ class HeroArea extends StylingCard {
 	 * 
 	 * @return string
 	 */
-	static public function get_searchbox_css( $i = 1, $a = 1, $class = '.searchbox' ) {
-		$slug       = 'hero_area';
-		$key        = $slug . '_style-' . $i . $a;
-		$key_button = $slug . $i . 'sbbutton';
-		$output     = '';
-		$tag        = ".{$slug}-{$i} {$class}";
+	static public function get_searchbox_css( $i = 1, $a = 1, $class = '.hero-area--search' ) {
+		$slug           = 'hero_area';
+		$key            = $slug . '_style-' . $i . $a;
+		$key_button     = $slug . $i . 'sbbutton';
+		$output         = '';
+		$tag            = ".{$slug}-{$i} {$class}";
+		$calendar_class = ".{$slug}-{$i}.pickmeup";
 
 		if ( have_rows( $key, 'styles' ) ) :
 			while ( have_rows( $key, 'styles' ) ) :
@@ -661,29 +665,32 @@ class HeroArea extends StylingCard {
 				$base_color      = get_sub_field( 'base-color' );
 				$backgroun_color = get_sub_field( 'background-color' );
 
-				$button          = get_button_css( $key_button );
 
 				/* Common */
-				$css  = '';
-				$css .= $base_color ? "color:{$base_color};" : '';
-				$css .= $backgroun_color ? "background-color:{$backgroun_color};" : '';
-
-				$output .= $css ? "{$tag} {{$css}}" : '';
+				$css     = '';
+				$css    .= $base_color ? "color:{$base_color};" : '';
+				$css    .= $backgroun_color ? "background-color:{$backgroun_color};" : '';
+				$output .= $css ? "{$tag}{{$css}}" : '';
 
 				/* Inputs */
-				$css  = '';
-				$css .= $font;
-				$css .= $border_color ? "border-color:{$border_color};" : '';
-				$css .= $background ? "background:{$background};" : '';
-				$css .= $color ? "color:{$color};" : '';
-
-				$output .= $css ? "{$tag} input {{$css}}" : '';
+				$css     = '';
+				$css    .= $font;
+				$css    .= $border_color ? "border-color:{$border_color};" : '';
+				$css    .= $background ? "background:{$background};" : '';
+				$css    .= $color ? "color:{$color};" : '';
+				$output .= $css ? "{$tag} input{{$css}}" : '';
 
 				/* Button */
-				$css  = '';
-				$css .= $button;
+				$output .= get_button_css( $key_button );
 
-				$output .= $css ? "{$tag} button {{$css}}" : '';
+				/* Calendar */
+				$css     = '';
+				$css    .= $base_color ? "color:{$base_color};" : '';
+				$output .= "{$calendar_class} .pmu-instance .pmu-button{{$css}}";
+
+				$css     = '';
+				$css    .= $backgroun_color ? "background-color:{$backgroun_color};" : '';
+				$output .= "{$calendar_class} .pmu-instance .pmu-selected{{$css}}";
 
 			endwhile;
 		endif;
@@ -727,10 +734,10 @@ class HeroArea extends StylingCard {
 			$output .= self::get_titles_css( $i, 'tit', '.title' );
 
 			/* Button */
-			$output .= get_button_css( $slug . $i . 'btn', ".{$slug}-{$i} .button");
+			$output .= get_button_css( $slug . $i . 'btn', ".{$slug}-{$i} .hero-area--button" );
 
 			/* Searchbox */
-			$output .= self::get_searchbox_css( $i, 'sea', '.searchbox' );
+			$output .= self::get_searchbox_css( $i, 'sea', '.hero-area--search' );
 
 		endfor;
 
