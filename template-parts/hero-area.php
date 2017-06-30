@@ -11,9 +11,6 @@
 
 if ( have_rows( 'hero_area' ) ) : 
 
-	// Generate css
-	echo '<style>' . HeroArea::get_css() . '</style>';
-
 	while ( have_rows( 'hero_area' ) ) : 
 		$the_row = the_row();
 

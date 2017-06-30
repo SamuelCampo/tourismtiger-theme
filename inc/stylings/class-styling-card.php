@@ -11,6 +11,7 @@ abstract class StylingCard {
 
 	public $name = '';
 	public $slug = '';
+	public $pref = '';
 	public $url ='';
 	public $devices = array( 
 		'Laptop'  => '1150',
@@ -25,6 +26,7 @@ abstract class StylingCard {
 		$this->name    = $name;
 		$this->slug    = transform_name( $this->name, '_' );
 		$this->url     = transform_name( $this->name, '-' );
+		$this->pref    = explode( $this->slug, 2 );
 
 		/* Init json file where a data will be stored */
 		$this->create_json();
@@ -388,7 +390,7 @@ abstract class StylingCard {
 			'fields' => array (
 				array (
 					'key' => $this->slug . '-manager',
-					'label' => 'Add/remove',
+					'label' => 'Configuration',
 					'name' => $this->url . '-manager',
 					'type' => 'styling_manager',
 					'required' => 0,
