@@ -16,7 +16,8 @@ if ( have_rows( 'hero_area' ) ) :
 
 		// Core classes
 		$core_classes        = array(); 
-		$core_classes[]      = get_sub_field( 'hero_area-style' ) ? get_sub_field( 'hero_area-style' ) : 'style-default';
+		$core_classes[]      = 'hero-area';
+		$core_classes[]      = get_sub_field( 'hero_area-style' ) ? get_sub_field( 'hero_area-style' ) : 'empty-style';
 		$core_classes        = generate_classlist( $core_classes );
 
 

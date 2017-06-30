@@ -134,7 +134,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 													),
 												),
 												'choices' => '',
-												'default_value' => 'fc_style-one',
+												'default_value' => 'style-one',
 												'layout' => 'horizontal',
 											),
 											array (

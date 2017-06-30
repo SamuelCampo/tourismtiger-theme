@@ -405,7 +405,7 @@ class HeroArea extends StylingCard {
 							$font      = get_font_rules( get_sub_field( 'font' ) );
 							$color     = get_sub_field( 'color' );
 							$shadow    = get_sub_field( 'shadow' );
-							$tag_class = ".{$slug}-{$i} {$tag}{$self_class}";
+							$tag_class = ".{$slug}-{$i} {$self_class} {$tag}";
 							$css       = '';
 
 							/* Set variables */

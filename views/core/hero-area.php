@@ -12,7 +12,7 @@
  */
 ?>
 
-<div id="hero-area" class="hero-area <?=$core_classes;?>">
+<div id="hero-area" class="<?=$core_classes;?>">
 	<section class="hero-area--banner">
 		<div class="hero-area--banner__layout <?=$layout_classes;?>">
 
