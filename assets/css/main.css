@@ -4365,6 +4365,8 @@ input[type='submit'][disabled] {
 }
 .hero-area--content .hero-area--button {
   display: inline-block;
+  padding: .4em .8em;
+  text-decoration: none;
 }
 .hero-area--nav {
   position: absolute;
