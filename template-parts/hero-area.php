@@ -14,11 +14,18 @@ if ( have_rows( 'hero_area' ) ) :
 	while ( have_rows( 'hero_area' ) ) : 
 		$the_row = the_row();
 
+		$style               = get_sub_field( 'hero_area-style' ) ? get_sub_field( 'hero_area-style' ) : 'empty-style';
+
 		// Core classes
 		$core_classes        = array(); 
 		$core_classes[]      = 'hero-area';
-		$core_classes[]      = get_sub_field( 'hero_area-style' ) ? get_sub_field( 'hero_area-style' ) : 'empty-style';
+		$core_classes[]      = $style;
 		$core_classes        = generate_classlist( $core_classes );
+
+		// Core attr
+		$core_attrs        = array(); 
+		$core_attrs[]      = "data-style='{$style}'";
+		$core_attrs        = generate_classlist( $core_attrs );
 
 
 		// Layout classes
