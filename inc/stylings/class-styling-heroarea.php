@@ -253,7 +253,6 @@ class HeroArea extends StylingCard {
 					'type' => 'flexible_content',
 					'required' => 0,
 					'button_label' => 'Add group',
-					'max' => 1,
 					'display' => 'block',
 					'layouts' => $this->get_tags_layouts( 1, $i )
 				),
