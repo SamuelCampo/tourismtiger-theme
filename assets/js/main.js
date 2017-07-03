@@ -13343,8 +13343,9 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 			/*  =========================
 				Open popup */
 			
-			$('[data-open-popup]').on('click', function(){
+			$('[data-open-popup]').on('click', function(e){
 				if ( $(window).width() > 768 ) {
+					e.preventDefault();
 			
 					var $button   = $(this);
 					var reference = $button.attr('href');
@@ -13353,6 +13354,7 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 					$('body').append('<iframe src="'+reference+'" id="iframe-popup" style="opacity:0;pointer-events:none;" class="iframe-popup"></iframe>');
 			
 					$('#iframe-popup').load(function(){
+			
 						$('body').css({
 							'overflow': 'hidden'
 						});
