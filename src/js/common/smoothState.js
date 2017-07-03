@@ -7,7 +7,7 @@ function addBlacklistClass() {
             this.href.indexOf('/wp-admin/') !== -1 || 
             this.href.indexOf('/wp-login.php') !== -1 || 
             $(this).find('img').closest('.wysiwyg').length > 0 ||
-            $(this).attr('data-open-popup') 
+            $(this).attr('data-open-popup') == ''
         ) {
             $(this).addClass('wp-link');
         }
