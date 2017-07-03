@@ -13357,32 +13357,6 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 							'overflow': 'hidden'
 						});
 			
-						$('.iframe-popup__close').css({
-							'position': 'fixed',
-							'top': '0',
-							'left': '0',
-							'width': '100%',
-							'height': '100%',
-							'z-index': '19999998',
-							'background-color': 'rgba(0,0,0,.8)',
-							'opacity': 1,
-							'pointer-events': 'all'
-						});
-			
-						$('#iframe-popup').css({
-							'position': 'fixed',
-							'left': '5vw',
-							'width': '90vw',
-							'top': '5vh',
-							'height': '80vh',
-							'max-height': '80vh',
-							'z-index': '19999999',
-							'background-color': '#fff',
-							'overflow-x': 'auto',
-							'opacity': 1,
-							'pointer-events': 'all'
-						});
-			
 						$('.iframe-popup__close').on('click', function() {
 							$('.iframe-popup__close').detach();
 							$('.iframe-popup').detach();
