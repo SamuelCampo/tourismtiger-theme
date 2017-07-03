@@ -779,7 +779,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							),
 							array (
 								'key' => 'pc2131012133',
-								'label' => 'CTA Button link',
+								'label' => 'Link',
 								'name' => 'pc_cta_button_url',
 								'type' => 'text',
 								'required' => 0,
@@ -794,7 +794,54 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								'placeholder' => 'https://example.com',
 								'formatting' => 'none',
+								'wrapper' => array(
+									'width' => 70
+								)
 							),
+							array (
+								'key' => 'pc2lohacal10121-group3btn3',
+								'label' => 'Where open',
+								'name' => 'pc_cta_button_open',
+								'type' => 'select',
+								'required' => 0,
+								'conditional_logic' => array (
+									array (
+										array (
+											'field' => 'pc_ha_014',
+											'operator' => '==',
+											'value' => 'custom' 
+										)
+									)
+								),
+								'choices' => array(
+									'current'    => 'Current window',
+									'new-window' => 'New window',
+									'popup'      => 'iFrame popup',
+								),
+								'default_value' => 'current',
+								'wrapper' => array(
+									'width' => 30
+								)
+							),
+
+							array (
+								'key' => 'field_594905dcbef98',
+								'label' => '',
+								'name' => 'separator_5',
+								'type' => 'message',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array (
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'message' => '<hr />',
+								'new_lines' => '',
+								'esc_html' => 0,
+							),
+
 							array (
 								'key' => 'pc_ha_014_1',
 								'label' => 'Search settings',
