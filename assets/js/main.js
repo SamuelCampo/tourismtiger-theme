@@ -13350,11 +13350,10 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 					var $button   = $(this);
 					var reference = $button.attr('href');
 			
-					$('body').append('<a href="javascript:" class="iframe-popup__close" style="opacity:0;pointer-events:none;"></a>');
-					$('body').append('<iframe src="'+reference+'" id="iframe-popup" style="opacity:0;pointer-events:none;" class="iframe-popup"></iframe>');
+					$('body').append('<a href="javascript:" class="iframe-popup__close"></a>');
+					$('body').append('<iframe src="'+reference+'" id="iframe-popup" class="iframe-popup">Loading...</iframe>');
 			
 					$('#iframe-popup').load(function(){
-			
 						$('body').css({
 							'overflow': 'hidden'
 						});
