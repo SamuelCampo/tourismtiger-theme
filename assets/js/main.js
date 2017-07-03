@@ -13353,20 +13353,11 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 					$('body').append('<a href="javascript:" class="iframe-popup__close"></a>');
 					$('body').append('<iframe src="'+reference+'" id="iframe-popup" class="iframe-popup">Loading...</iframe>');
 			
-					$('#iframe-popup').load(function(){
-						$('body').css({
-							'overflow': 'hidden'
-						});
+					$('.iframe-popup__close').on('click', function() {
+						$('.iframe-popup__close').detach();
+						$('.iframe-popup').detach();
 			
-						$('.iframe-popup__close').on('click', function() {
-							$('.iframe-popup__close').detach();
-							$('.iframe-popup').detach();
-							$('body').css({
-								'overflow': 'auto'
-							});
-			
-							return false;
-						});
+						return false;
 					});
 			
 				} else {
