@@ -45,6 +45,7 @@
 
 			//= common/hero-area.js
 			//= common/slider.js
+			//= common/open-popup.js
 
 		}
 	};
