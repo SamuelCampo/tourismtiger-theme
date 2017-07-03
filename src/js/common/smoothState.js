@@ -3,10 +3,13 @@
 
 function addBlacklistClass() {
     $( 'a' ).each( function() {
-        if ( this.href.indexOf('/wp-admin/') !== -1 || 
-             this.href.indexOf('/wp-login.php') !== -1 ) || 
-            $(this).find('img').closest('.wysiwyg').length > 0  {
-            $( this ).addClass( 'wp-link' );
+        if ( 
+            this.href.indexOf('/wp-admin/') !== -1 || 
+            this.href.indexOf('/wp-login.php') !== -1 || 
+            $(this).find('img').closest('.wysiwyg').length > 0 ||
+            $(this).attr('data-open-popup') == ''
+        ) {
+            $(this).addClass('wp-link');
         }
     });
 }

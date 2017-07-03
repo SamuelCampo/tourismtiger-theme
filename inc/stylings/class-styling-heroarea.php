@@ -118,8 +118,6 @@ class HeroArea extends StylingCard {
 				'key' => $key,
 				'name' => $tag,
 				'label' => strtoupper($tag),
-				'min' => 0,
-				'max' => 1,
 				'sub_fields' => array (
 					array (
 						'key' => $key . 'font',
