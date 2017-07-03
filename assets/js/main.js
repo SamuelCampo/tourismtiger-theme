@@ -13343,9 +13343,7 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 			/*  =========================
 				Open popup */
 			
-			$('[data-open-popup]').click(function(e){
-				e.preventDefault();
-			
+			$('[data-open-popup]').on('click', function(){
 				if ( $(window).width() > 768 ) {
 			
 					var $button   = $(this);
