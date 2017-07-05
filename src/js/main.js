@@ -13,6 +13,7 @@
 //= ../../bower_components/slick-carousel/slick/slick.js
 // ../../bower_components/wow/dist/wow.min.js
 //= ../../bower_components/pickmeup/dist/pickmeup.min.js
+//= ../../bower_components/aload/dist/aload.min.js
 
 
 /*  =========================
@@ -44,6 +45,7 @@
     	 */
 		init: function () {
 
+			//= common/aload.js
 			//= common/primary-content.js
 			//= common/slider.js
 			//= common/open-popup.js
