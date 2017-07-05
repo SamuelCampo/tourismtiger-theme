@@ -13196,7 +13196,7 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 /**
  * Load Google Maps API using 
  */
-$.getScript( "https://maps.googleapis.com/maps/api/js?key=" + global_var.google_maps_key + "&callback=initMap" )
+$.getScript( "https://maps.googleapis.com/maps/api/js?key=" + global_var.google_maps_key )
   .done(function( script, textStatus ) {
     console.log( textStatus );
   })
