@@ -13193,16 +13193,6 @@ prev:d.bound.prev,next:d.bound.next,get_date:d.bound.get_date,set_date:d.bound.s
 daysShort:"Sun Mon Tue Wed Thu Fri Sat".split(" "),daysMin:"Su Mo Tu We Th Fr Sa".split(" "),months:"January February March April May June July August September October November December".split(" "),monthsShort:"Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ")}},instance_template:function(a){var b=a.locales[a.locale].daysMin.slice();a.first_day&&b.push(b.shift());return'\x3cdiv class\x3d"pmu-instance"\x3e\x3cnav\x3e\x3cdiv class\x3d"pmu-prev pmu-button"\x3e'+a.prev+'\x3c/div\x3e\x3cdiv class\x3d"pmu-month pmu-button"\x3e\x3c/div\x3e\x3cdiv class\x3d"pmu-next pmu-button"\x3e'+
 a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3e'+b.join("\x3c/div\x3e\x3cdiv\x3e")+"\x3c/div\x3e\x3c/nav\x3e\x3c/div\x3e"},instance_content_template:function(a,b){var c=document.createElement("div");g(c,b);for(b=0;b<a.length;++b)g(a[b],"pmu-button"),c.appendChild(a[b]);return c}};return E});
 
-/**
- * Load Google Maps API using 
- */
-$.getScript( "https://maps.googleapis.com/maps/api/js?key=" + global_var.google_maps_key )
-  .done(function( script, textStatus ) {
-    console.log( textStatus );
-  })
-  .fail(function( jqxhr, settings, exception ) {
-    console.warn( textStatus );
-});
 
 /*  =========================
 	W P K I T
