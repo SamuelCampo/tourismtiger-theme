@@ -206,9 +206,6 @@ function insert_recaptcha_html() {
 
 /**
  * Crop content
- *
- * @package TourismTiger_Theme
- * @author  tourismtiger
  */
 
 function crop_content( $charlength = 50, $text = '', $end = '[...]' ) {
@@ -255,4 +252,45 @@ function generate_classlist( $array ) {
     endforeach;
 
     return $classlist;
+}
+
+
+/**
+ * Generate video background html
+ * 
+ * @param  string $webm   
+ * @param  string $ogv    
+ * @param  string $mp4    
+ * @param  array  $poster [0] - url 
+ * @param  bool   echo
+ * @param  bool   autolay attr
+ * @param  bool   loop attr
+ * 
+ * @return string
+ */
+function generate_video_bg_html( $webm = '', $ogv = '', $mp4 = '', $poster = '', $echo = false, $autoplay = true, $loop = true ) {
+    $attr_auto   = $autoplay ? 'autoplay' : '';
+    $attr_loop   = $loop ? 'loop' : '';
+    $attr_poster = $poster[0] ? "poster='{$poster[0]}'" : '';
+    $source_webm = $webm ? "<source src='{$webm}' type='video/mp4' />" : '';
+    $source_ogv  = $ogv ? "<source src='{$ogv}' type='video/webm' />" : '';
+    $source_mp4  = $mp4 ? "<source src='{$mp4}' type='video/ogg' />" : '';
+    $img_poster  = $poster[0] ? "<img src='{$poster[0]}' alt='' />" : '';
+    $is_sources  = ($source_webm || $source_ogv || $source_mp4 || $poster);
+
+    /* If there is anything that we can show, go on */
+    $output = $is_sources ? "
+        <video class='background-video' {$attr_poster} {$attr_auto} {$attr_loop}>
+            {$source_webm}
+            {$source_ogv}
+            {$source_mp4}
+            {$img_poster}
+        </video>       
+    " : '';
+
+    if ($echo) :
+        echo $output;
+    else : 
+        return $output;
+    endif;
 }

@@ -14,6 +14,7 @@
 // ../../bower_components/wow/dist/wow.min.js
 //= ../../bower_components/pickmeup/dist/pickmeup.min.js
 
+
 /*  =========================
 	W P K I T
     ========================= */
@@ -43,9 +44,11 @@
     	 */
 		init: function () {
 
-			//= common/hero-area.js
+			//= common/primary-content.js
 			//= common/slider.js
 			//= common/open-popup.js
+			//= common/hero-area.js
+			//= common/acf-googlemap.js
 
 		}
 	};
@@ -73,8 +76,9 @@
 
 	/**
 	 * Iclude javascript functions 
-	 * which doesn't requery DOM reload 
+	 * which doesn't re-query DOM reload 
 	 */
+	//= functions/acf-globals.js
 	// functions/ajax-acf.js
 	// components/smoothState.js
 

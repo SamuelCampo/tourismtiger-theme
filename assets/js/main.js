@@ -13193,6 +13193,7 @@ prev:d.bound.prev,next:d.bound.next,get_date:d.bound.get_date,set_date:d.bound.s
 daysShort:"Sun Mon Tue Wed Thu Fri Sat".split(" "),daysMin:"Su Mo Tu We Th Fr Sa".split(" "),months:"January February March April May June July August September October November December".split(" "),monthsShort:"Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ")}},instance_template:function(a){var b=a.locales[a.locale].daysMin.slice();a.first_day&&b.push(b.shift());return'\x3cdiv class\x3d"pmu-instance"\x3e\x3cnav\x3e\x3cdiv class\x3d"pmu-prev pmu-button"\x3e'+a.prev+'\x3c/div\x3e\x3cdiv class\x3d"pmu-month pmu-button"\x3e\x3c/div\x3e\x3cdiv class\x3d"pmu-next pmu-button"\x3e'+
 a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3e'+b.join("\x3c/div\x3e\x3cdiv\x3e")+"\x3c/div\x3e\x3c/nav\x3e\x3c/div\x3e"},instance_content_template:function(a,b){var c=document.createElement("div");g(c,b);for(b=0;b<a.length;++b)g(a[b],"pmu-button"),c.appendChild(a[b]);return c}};return E});
 
+
 /*  =========================
 	W P K I T
     ========================= */
@@ -13223,8 +13224,99 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 		init: function () {
 
 			/*  =========================
-				Hero area */
+				Primary content */
 			
+			var $primaryContent = $('.primary-content');
+			
+			$primaryContent.each(function(){
+				var $self = $(this);
+			
+				/**
+				 * Check whether that section wasn't loaded
+				 */
+				if (!$self.hasClass('js-loaded')) {
+			
+			
+					/**
+					 * Set background image
+					 */
+					if ($self.attr('data-section-image')) {
+						var url  = $self.attr('data-section-image');
+						var attr = 'url('+url+')';
+				        var img = new Image();
+			
+			
+						/**
+						 * Expanable image
+						 */
+						if ($self.attr('data-section-expanded') == '1') {
+					        img.onload = function(){
+					            var img_percent = img.height / img.width * 100;
+					            var img_height = screen.width / 100 * img_percent;
+			
+					            $self.css('background-image', attr).animate({
+					              'min-height': img_height, 
+					            }, 100);
+							};
+					    }
+			
+					    // assign url to new image 
+				        img.src = url;
+			
+						// Set background image
+			            $self.css('background-image', attr);
+					}
+			
+			
+					/**
+					 * Generate google maps background
+					 */
+					if ($self.attr('data-section-lat') && $self.attr('data-section-lng')) {
+						var lat = $self.attr('data-section-lat');
+						var lng = $self.attr('data-section-lng');
+			
+						$self.prepend("<div class='acf-map primary-content--bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
+					}
+			
+					/**
+					 * Add indicator-class to avoid reworking 
+					 * that file during ajax request
+					 */
+					$self.addClass('js-loaded');
+				}
+			});
+			/*  =========================
+				Slider UX */
+			
+			$('.is-slider [data-slick]').slick();
+			/*  =========================
+				Open popup */
+			
+			$('[data-open-popup]').on('click', function(e){
+				if ( $(window).width() > 768 ) {
+					e.preventDefault();
+			
+					var $button   = $(this);
+					var reference = $button.attr('href');
+			
+					$('body').append('<a href="javascript:" class="iframe-popup__close"></a>');
+					$('body').append('<iframe src="'+reference+'" id="iframe-popup" class="iframe-popup">Loading...</iframe>');
+			
+					$('.iframe-popup__close').on('click', function() {
+						$('.iframe-popup__close').detach();
+						$('.iframe-popup').detach();
+			
+						return false;
+					});
+			
+				} else {
+					document.location.href = reference;
+				}
+			
+				return false;
+			});
+			/*  =========================
+				Hero area */
 			
 			/**
 			 * Scroll down arrow
@@ -13323,48 +13415,45 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 					});
 				});
 			}
-			/*  =========================
-				Slider UX */
-			
-			$('.is-slider [data-slick]').slick();
 			
 			/**
 			 * Hero area slider
 			 */
-			$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
-			$('.hero-area--bg__wrap').slick({
-				arrows: false,
-				slidesToScroll: 1,
-				autoplay: true,
-				autoplaySpeed: 5000,
-				speed: 1500,
-				fade: true,
-			});
+			if ($('.hero-area--bg__wrap').length > 0) {
+				$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
+				$('.hero-area--bg__wrap').slick({
+					arrows: false,
+					slidesToScroll: 1,
+					autoplay: true,
+					autoplaySpeed: 5000,
+					speed: 1500,
+					fade: true,
+				});
+			}
 			/*  =========================
-				Open popup */
+				ACF Google map
+			    @package Art_Forja
+			    ========================= */
 			
-			$('[data-open-popup]').on('click', function(e){
-				if ( $(window).width() > 768 ) {
-					e.preventDefault();
+			/*
+			*  This function will render each map when the document is ready (page has loaded)
+			*
+			*  @type	function
+			*  @date	8/11/2013
+			*  @since	5.0.0
+			*
+			*  @param	n/a
+			*  @return	n/a
+			*/
 			
-					var $button   = $(this);
-					var reference = $button.attr('href');
+			var map = null;
 			
-					$('body').append('<a href="javascript:" class="iframe-popup__close"></a>');
-					$('body').append('<iframe src="'+reference+'" id="iframe-popup" class="iframe-popup">Loading...</iframe>');
 			
-					$('.iframe-popup__close').on('click', function() {
-						$('.iframe-popup__close').detach();
-						$('.iframe-popup').detach();
+			$('.acf-map').each(function(){
 			
-						return false;
-					});
+				// create map
+				map = new_map( $(this) );
 			
-				} else {
-					document.location.href = reference;
-				}
-			
-				return false;
 			});
 
 		}
@@ -13393,8 +13482,155 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 
 	/**
 	 * Iclude javascript functions 
-	 * which doesn't requery DOM reload 
+	 * which doesn't re-query DOM reload 
 	 */
+	/*
+	 ACF Functions
+	 */
+	
+	/**
+	 * ACF Google maps
+	 *
+	 *
+	 *
+	 * new_map
+	 *
+	 * This function will render a Google Map onto the selected jQuery element
+	 *
+	 * @type	function
+	 * @date	8/11/2013
+	 * @since	4.3.0
+	 *
+	 * @param	$el (jQuery element)
+	 * @return	n/a
+	 */
+	
+	function new_map( $el ) {
+		
+		// var
+		var $markers = $el.find('.marker');
+		
+		
+		// vars
+		var args = {
+			zoom		: 16,
+			center		: new google.maps.LatLng(0, 0),
+			mapTypeId	: google.maps.MapTypeId.ROADMAP
+		};
+		
+		
+		// create map	        	
+		var map = new google.maps.Map( $el[0], args);
+		
+		
+		// add a markers reference
+		map.markers = [];
+		
+		
+		// add markers
+		$markers.each(function(){
+			
+	    	add_marker( $(this), map );
+			
+		});
+		
+		
+		// center map
+		center_map( map );
+		
+		
+		// return
+		return map;
+		
+	}
+	
+	/*
+	*  add_marker
+	*
+	*  This function will add a marker to the selected Google Map
+	*
+	*  @type	function
+	*  @date	8/11/2013
+	*  @since	4.3.0
+	*
+	*  @param	$marker (jQuery element)
+	*  @param	map (Google Map object)
+	*  @return	n/a
+	*/
+	
+	function add_marker( $marker, map ) {
+	
+		// var
+		var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+	
+		// create marker
+		var marker = new google.maps.Marker({
+			position	: latlng,
+			map			: map
+		});
+	
+		// add to array
+		map.markers.push( marker );
+	
+		// if marker contains HTML, add it to an infoWindow
+		if( $marker.html() )
+		{
+			// create info window
+			var infowindow = new google.maps.InfoWindow({
+				content		: $marker.html()
+			});
+	
+			// show info window when marker is clicked
+			google.maps.event.addListener(marker, 'click', function() {
+	
+				infowindow.open( map, marker );
+	
+			});
+		}
+	
+	}
+	
+	/*
+	*  center_map
+	*
+	*  This function will center the map, showing all markers attached to this map
+	*
+	*  @type	function
+	*  @date	8/11/2013
+	*  @since	4.3.0
+	*
+	*  @param	map (Google Map object)
+	*  @return	n/a
+	*/
+	
+	function center_map( map ) {
+	
+		// vars
+		var bounds = new google.maps.LatLngBounds();
+	
+		// loop through all markers and create bounds
+		$.each( map.markers, function( i, marker ){
+	
+			var latlng = new google.maps.LatLng( marker.position.lat(), marker.position.lng() );
+	
+			bounds.extend( latlng );
+	
+		});
+	
+		// only 1 marker?
+		if( map.markers.length == 1 )
+		{
+			// set center of map
+		    map.setCenter( bounds.getCenter() );
+		    map.setZoom( 16 );
+		}
+		else
+		{
+			// fit to bounds
+			map.fitBounds( bounds );
+		}
+	
+	}
 	// functions/ajax-acf.js
 	// components/smoothState.js
 
