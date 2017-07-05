@@ -1,7 +1,6 @@
 /*  =========================
 	Hero area */
 
-
 /**
  * Scroll down arrow
  */
@@ -97,5 +96,20 @@ if ( $('.hero-area--hr').length > 0 ) {
 			'color': color,
 			'width': width
 		});
+	});
+}
+
+/**
+ * Hero area slider
+ */
+if ($('.hero-area--bg__wrap').length > 0) {
+	$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
+	$('.hero-area--bg__wrap').slick({
+		arrows: false,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 5000,
+		speed: 1500,
+		fade: true,
 	});
 }

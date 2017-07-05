@@ -14,6 +14,17 @@
 // ../../bower_components/wow/dist/wow.min.js
 //= ../../bower_components/pickmeup/dist/pickmeup.min.js
 
+/**
+ * Load Google Maps API using 
+ */
+$.getScript( "https://maps.googleapis.com/maps/api/js?key=" + global_var.google_maps_key + "&callback=initMap" )
+  .done(function( script, textStatus ) {
+    console.log( textStatus );
+  })
+  .fail(function( jqxhr, settings, exception ) {
+    console.warn( textStatus );
+});
+
 /*  =========================
 	W P K I T
     ========================= */
@@ -43,9 +54,11 @@
     	 */
 		init: function () {
 
-			//= common/hero-area.js
+			//= common/primary-content.js
 			//= common/slider.js
 			//= common/open-popup.js
+			//= common/hero-area.js
+			//= common/acf-googlemap.js
 
 		}
 	};
