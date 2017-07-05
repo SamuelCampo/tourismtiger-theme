@@ -236,7 +236,7 @@ function crop_content( $charlength = 50, $text = '', $end = '[...]' ) {
  * Generate classlist from array
  */
 function generate_classlist( $array ) {
-    if ( !is_array( $array ) ) 
+    if ( !is_array( $array ) || empty( $array ) ) 
         return '';
 
     // That will be returned
@@ -244,10 +244,13 @@ function generate_classlist( $array ) {
     $counter   = 0;
 
     foreach ( $array as $class ) :
-        if ( $counter !== 0 )  
-            $classlist .= ' ';
+        if ( $class != '' ) : 
+            if ( $counter !== 0 )  
+                $classlist .= ' ';
 
-        $classlist .= "{$class}";
+            $classlist .= "{$class}";
+        endif;
+        
         $counter++;
     endforeach;
 
