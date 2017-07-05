@@ -13494,6 +13494,7 @@ $.getScript( "https://maps.googleapis.com/maps/api/js?key=" + global_var.google_
 	 * Iclude javascript functions 
 	 * which doesn't requery DOM reload 
 	 */
+	// functions/acf-globals.js
 	// functions/ajax-acf.js
 	// components/smoothState.js
 
