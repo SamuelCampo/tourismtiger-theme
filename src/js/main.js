@@ -14,16 +14,6 @@
 // ../../bower_components/wow/dist/wow.min.js
 //= ../../bower_components/pickmeup/dist/pickmeup.min.js
 
-/**
- * Load Google Maps API using 
- */
-$.getScript( "https://maps.googleapis.com/maps/api/js?key=" + global_var.google_maps_key )
-  .done(function( script, textStatus ) {
-    console.log( textStatus );
-  })
-  .fail(function( jqxhr, settings, exception ) {
-    console.warn( textStatus );
-});
 
 /*  =========================
 	W P K I T
