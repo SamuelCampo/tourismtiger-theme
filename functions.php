@@ -82,56 +82,13 @@ include THEME_INC_PATH . '/post-types/testimonial.php';
  * 1. Include ACF Pro
  * 2. Include ACF Accordion
  */
-include THEME_INC_PATH . '/common/acf.php';
+include_once THEME_INC_PATH . '/common/acf.php';
 
 
 /**
  * ACF Option page: Primary Styles
  */
 include THEME_INC_PATH . '/option-pages/primary-styles.php';
-
-
-/**
- * ACF Local Fields for Primary Content 
- */
-include THEME_INC_PATH . '/local-fields/primary-content.php';
-
-
-/**
- * ACF Local Fields for Hero Area
- */
-include THEME_INC_PATH . '/local-fields/hero-area.php';
-
-
-/**
- * ACF Local Fields for Product page
- */
-include THEME_INC_PATH . '/local-fields/product-page.php';
-
-
-/**
- * ACF Local Fields for Testimonials page
- */
-include THEME_INC_PATH . '/local-fields/testimonials-page.php';
-
-
-/**
- * Plugin activation
- *
- * This code can force-activate nessesarily files.
- * Also it can make plugins "recomended to install" 
- *
- * Plugins which will be recomended after setup this theme:
- * 1. SEO Yoast and add-on ACF Content Analysis
- * 2. Dublicate page
- * 3. Polylang
- * 4. Rus to lat
- * 5. True Instagram
- * 6. Types
- * 7. WP BackitUP
- * 8. GitHub Updater
- */
-include THEME_INC_PATH . '/common/class-tgm-plugin-activation.php';
 
 
 /**
@@ -186,19 +143,58 @@ include THEME_INC_PATH . '/snippets/breadcrumbs.php';
 include THEME_INC_PATH . '/snippets/common.php';
 
 /**
- * ACF css helper functions 
- *
- * Full list:
- * - get_font_css()
- * - get_font_corner_style()
- * - get_font_border_styles()
- */
-include THEME_INC_PATH . '/snippets/acf-css-functions.php';
-
-/**
  * Paningation
  */
 include THEME_INC_PATH . '/snippets/paningation.php';
+
+
+/**
+ * Theme option styling pages
+ */
+include_once THEME_INC_PATH . '/stylings/init.php';
+
+
+/**
+ * ACF Local Fields for Primary Content 
+ */
+include THEME_INC_PATH . '/local-fields/primary-content.php';
+
+
+/**
+ * ACF Local Fields for Hero Area
+ */
+include THEME_INC_PATH . '/local-fields/hero-area.php';
+
+
+/**
+ * ACF Local Fields for Product page
+ */
+include THEME_INC_PATH . '/local-fields/product-page.php';
+
+
+/**
+ * ACF Local Fields for Testimonials page
+ */
+include THEME_INC_PATH . '/local-fields/testimonials-page.php';
+
+
+/**
+ * Plugin activation
+ *
+ * This code can force-activate nessesarily files.
+ * Also it can make plugins "recomended to install" 
+ *
+ * Plugins which will be recomended after setup this theme:
+ * 1. SEO Yoast and add-on ACF Content Analysis
+ * 2. Dublicate page
+ * 3. Polylang
+ * 4. Rus to lat
+ * 5. True Instagram
+ * 6. Types
+ * 7. WP BackitUP
+ * 8. GitHub Updater
+ */
+include THEME_INC_PATH . '/common/class-tgm-plugin-activation.php';
 
 
 /**
@@ -208,4 +204,13 @@ include THEME_INC_PATH . '/snippets/paningation.php';
  * - get_heroarea_title_from_acf()
  * - get_heroarea_bg_from_acf()
  */
-include THEME_INC_PATH . '/snippets/hero-area.php';
+include THEME_INC_PATH . '/api/hero-area.php';
+
+
+/**
+ * Functions related exclusively with Hero Area
+ *
+ * List of functons:
+ * - get_section_background_attrs()
+ */
+include THEME_INC_PATH . '/api/primary-content.php';

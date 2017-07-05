@@ -12,7 +12,7 @@
  */
 ?>
 
-<div id="hero-area" class="hero-area <?=$core_classes;?>">
+<div id="hero-area" class="<?=$core_classes;?>" <?=$core_attrs;?>>
 	<section class="hero-area--banner">
 		<div class="hero-area--banner__layout <?=$layout_classes;?>">
 
@@ -28,7 +28,18 @@
 		</div>
 	</section>
 
-	<div class="hero-area--search">
-		
-	</div>
+	<?php 
+	/**
+	 * Include searchbox
+	 */
+	if ( $is_searchbox ) 
+		include THEME_VIEWS . "core/hero-area/searchbox.php";
+
+
+	/**
+	 * Include additional panel on mobile devices
+	 */
+	if ( $is_panel ) 
+		include THEME_VIEWS . "core/hero-area/panel.php";
+	?>
 </div>

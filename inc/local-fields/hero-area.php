@@ -41,8 +41,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'name' => 'hero_area-style',
 								'type' => 'select',
 								'required' => 0,
-								'choices' => '',
-								'default_value' => 'style-one',
+								'choices' => get_available_styles_list( 'hero_area' ),
+								'default_value' => 'Style 1',
 							),
 							array (
 								'key' => 'pc_ha_003-width',
@@ -213,7 +213,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_010-2-3-1',
 								'label' => 'Bottom divider',
 								'name' => 'border-divider_color',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -226,7 +226,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								'wrapper' => array (
 									'width' => '50'
-								)
+								),
+								'rgba' => '',
+								'return_value' => 0,
+								'ext_value' => array (
+								),
 							),
 							array (
 								'key' => 'pc_ha_010-3',
@@ -248,7 +252,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_010-3-1',
 								'label' => 'Color',
 								'name' => 'hero-area_overlay_color',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -483,7 +487,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_013-2-3-1',
 								'label' => 'HR Color',
 								'name' => 'pc_ha_1-tit_hr-c',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -517,12 +521,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'width' => '33.33'
 								),
 								'choices' => array (
-									'quarter' => '¼',
-									'half' => '½',
-									'third' => '¾',
-									'full' => 'Full',
+									'0.25' => '¼',
+									'0.5' => '½',
+									'0.66' => '¾',
+									'1' => 'Full',
 								),
-								'default_value' => 'full',
+								'default_value' => '0.25',
 								'layout' => 'horizontal',
 							),
 
@@ -590,7 +594,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_014-2-3-1',
 								'label' => 'HR Color',
 								'name' => 'pc_ha_2-tit_hr-c',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -624,34 +628,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'width' => '33.33'
 								),
 								'choices' => array (
-									'quarter' => '¼',
-									'half' => '½',
-									'third' => '¾',
-									'full' => 'Full',
+									'0.25' => '¼',
+									'0.5' => '½',
+									'0.66' => '¾',
+									'1' => 'Full',
 								),
-								'default_value' => 'full',
+								'default_value' => '0.25',
 								'layout' => 'horizontal'
-							),
-							array (
-								'key' => 'pc_ha_014-2-3-3',
-								'label' => 'HR Image',
-								'name' => 'pc_ha_2-tit_hr-i',
-								'type' => 'image',
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'pc_ha_014-1-2',
-											'operator' => '==',
-											'value' => 1,
-										),
-									),
-								),
-								'wrapper' => array (
-									'width' => '33.33'
-								),
-								'preview_size' => 'medium',
-								'library' => 'uploadedTo',
-								'return_format' => 'url'
 							),
 
 							array (
@@ -718,7 +701,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'key' => 'pc_ha_015-2-3-1',
 								'label' => 'HR Color',
 								'name' => 'pc_ha_3-tit_hr-c',
-								'type' => 'color_picker',
+								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -752,34 +735,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'width' => '33.33'
 								),
 								'choices' => array (
-									'quarter' => '¼',
-									'half' => '½',
-									'third' => '¾',
-									'full' => 'Full',
+									'0.25' => '¼',
+									'0.5' => '½',
+									'0.66' => '¾',
+									'1' => 'Full',
 								),
-								'default_value' => 'full',
+								'default_value' => '0.25',
 								'layout' => 'horizontal',
-							),
-							array (
-								'key' => 'pc_ha_015-2-3-3',
-								'label' => 'HR Image',
-								'name' => 'pc_ha_3-tit_hr-i',
-								'type' => 'image',
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'pc_ha_015-1-2',
-											'operator' => '==',
-											'value' => 1,
-										),
-									),
-								),
-								'wrapper' => array (
-									'width' => '33.33'
-								),
-								'preview_size' => 'medium',
-								'library' => 'uploadedTo',
-								'return_format' => 'url'
 							),
 							
 							array (
@@ -792,7 +754,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_013',
 								'label' => 'CTA Button text',
-								'name' => 'pc_cta_button_text',
+								'name' => 'cta_button_text',
 								'type' => 'text',
 								'required' => 0,
 								'formatting' => 'none',
@@ -803,12 +765,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_014',
 								'label' => 'Button link type',
-								'name' => 'pc_button_link_type',
+								'name' => 'button_link_type',
 								'type' => 'radio',
 								'required' => 0,
 								'choices' => array (
-									'Custom' => 'Custom',
-									'Search Box' => 'Search Box',
+									'custom' => 'Custom',
+									'searchbox' => 'Search Box',
 								),
 								'layout' => 'horizontal',
 								'wrapper' => array (
@@ -817,7 +779,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							),
 							array (
 								'key' => 'pc2131012133',
-								'label' => 'CTA Button link',
+								'label' => 'Link',
 								'name' => 'pc_cta_button_url',
 								'type' => 'text',
 								'required' => 0,
@@ -826,13 +788,60 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_014',
 											'operator' => '==',
-											'value' => 'Custom' 
+											'value' => 'custom' 
 										)
 									)
 								),
 								'placeholder' => 'https://example.com',
 								'formatting' => 'none',
+								'wrapper' => array(
+									'width' => 70
+								)
 							),
+							array (
+								'key' => 'pc2lohacal10121-group3btn3',
+								'label' => 'Where open',
+								'name' => 'pc_cta_button_open',
+								'type' => 'select',
+								'required' => 0,
+								'conditional_logic' => array (
+									array (
+										array (
+											'field' => 'pc_ha_014',
+											'operator' => '==',
+											'value' => 'custom' 
+										)
+									)
+								),
+								'choices' => array(
+									'current'    => 'Current window',
+									'new-window' => 'New window',
+									'popup'      => 'iFrame popup',
+								),
+								'default_value' => 'current',
+								'wrapper' => array(
+									'width' => 30
+								)
+							),
+
+							array (
+								'key' => 'field_594905dcbef98',
+								'label' => '',
+								'name' => 'separator_5',
+								'type' => 'message',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array (
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'message' => '<hr />',
+								'new_lines' => '',
+								'esc_html' => 0,
+							),
+
 							array (
 								'key' => 'pc_ha_014_1',
 								'label' => 'Search settings',
@@ -844,18 +853,18 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_014',
 											'operator' => '==',
-											'value' => 'Search Box',
+											'value' => 'searchbox',
 										),
 									),
 								),
 								'wrapper' => array (
-									'width' => '25'
+									'width' => '20'
 								),
 								'choices' => array (
-									'date-range' => 'Search by date range',
-									'date-single' => 'Search by one date',
+									'range' => 'Search by date range',
+									'single' => 'Search by one date',
 								),
-								'default_value' => 'date-single',
+								'default_value' => 'single',
 							),
 							array (
 								'key' => 'pc_ha_014_2',
@@ -868,12 +877,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_014',
 											'operator' => '==',
-											'value' => 'Search Box',
+											'value' => 'searchbox',
 										),
 									),
 								),
 								'wrapper' => array (
-									'width' => '25'
+									'width' => '20'
 								),
 								'message' => 'Just do it',
 								'default_value' => 0,
@@ -889,40 +898,15 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_014',
 											'operator' => '==',
-											'value' => 'Search Box',
+											'value' => 'searchbox',
 										)
 									)
 								),
 								'wrapper' => array (
-									'width' => '25'
+									'width' => '60'
 								),
-								'rows' => 3,
+								'rows' => 2,
 								'new_lines' => '',
-							),
-							array (
-								'key' => 'field_589c6dc1d2748_datepicker_position_pc',
-								'label' => 'Datepicker position',
-								'name' => 'search_settings_type_datepicker_position',
-								'type' => 'checkbox',
-								'instructions' => 'Default drop down and open right',
-								'required' => 0,
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'pc_ha_014',
-											'operator' => '==',
-											'value' => 'Search Box',
-										),
-									),
-								),
-								'choices' => array (
-									'drop-up' => 'Drop up'
-								),
-								'layout' => 'horizontal',
-								'toggle' => 0,
-								'wrapper' => array (
-									'width' => '25'
-								),
 							),
 							array (
 								'key' => 'pc_ha_014_3',
@@ -940,7 +924,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_014',
 											'operator' => '==',
-											'value' => 'Search Box',
+											'value' => 'searchbox',
 										),
 									),
 								),
@@ -974,7 +958,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										array (
 											'field' => 'pc_ha_014',
 											'operator' => '==',
-											'value' => 'Search Box',
+											'value' => 'searchbox',
 										),
 									),
 								),
@@ -994,7 +978,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_015-a',
 								'label' => 'Action button',
-								'name' => 'pc_ha_action_button',
+								'name' => 'ha_action_button',
 								'type' => 'true_false',
 								'required' => 0,
 								'wrapper' => array (
@@ -1006,16 +990,16 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_015-b',
 								'label' => 'Label',
-								'name' => 'pc_ha_action_button_label',
+								'name' => 'action_button_label',
 								'type' => 'text',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
 										array (
-											'field' => 'pc_ha_015-a',
+											'field' => 'ha_015-a',
 											'operator' => '==',
 											'value' => 1,
-										),
+										)
 									),
 								),
 								'wrapper' => array (
@@ -1026,7 +1010,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'pc_ha_015-c',
 								'label' => 'Destination',
-								'name' => 'pc_ha_action_button_url',
+								'name' => 'action_button_url',
 								'type' => 'text',
 								'required' => 0,
 								'conditional_logic' => array (

@@ -15,15 +15,15 @@ get_header();
 			/**
 			 * Set post variables and output template
 			 */
-			$title   = get_the_title();
-			$content = get_the_content();
-			$wysiwyg = "
-				<h1>$title</h1>
-				<div class='wysiwyg'>$content</div>
-			";
-			$classes = '';
+			// $title   = get_the_title();
+			// $content = get_the_content();
+			// $wysiwyg = "
+			// 	<h1>$title</h1>
+			// 	<div class='wysiwyg'>$content</div>
+			// ";
+			// $classes = '';
 
-			include THEME_VIEWS . 'common/wysiwyg.php';
+			// include THEME_VIEWS . 'common/wysiwyg.php';
 
 		endwhile;
 	endif;
