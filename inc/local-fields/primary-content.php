@@ -19,15 +19,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			array (
 				'key' => 'field_5821d29cf2cca',
 				'label' => 'Primary Content',
-				'name' => 'tour_primary-content',
+				'name' => 'primary-content',
 				'type' => 'flexible_content',
-				'instructions' => 'Within a section you should add rows of content. Within rows you should add columns.',
 				'required' => 0,
 				'button_label' => 'Add section',
 				'layouts' => array (
 					array (
 						'key' => '5821d2b10e742',
-						'name' => 'tour_pc-section',
+						'name' => 'section',
 						'label' => 'Section',
 						'display' => 'block',
 						'sub_fields' => array (
@@ -39,39 +38,18 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'required' => 0,
 								'placement' => 'top',
 							),
-							array (
-								'key' => 'field_1111e711149fe',
-								'label' => 'Enable paddings for section?',
-								'name' => 'tour_pc-section_pad',
-								'type' => 'checkbox',
-								'required' => 0,
-								'choices' => array (
-									'pc--s__left-paddings' => 'Left',
-									'pc--s__right-paddings' => 'Right',
-									'pc--s__top-paddings' => 'Top',
-									'pc--s__bottom-paddings' => 'Bottom',
-								),
-								'default_value' => array (
-									0 => 'pc--s__left-paddings',
-									1 => 'pc--s__right-paddings',
-									2 => 'pc--s__top-paddings',
-									3 => 'pc--s__bottom-paddings'
-								),
-								'layout' => 'horizontal',
-								'toggle' => 1,
-							),
 
 							array (
 								'key' => 'field_5821e254f6599',
 								'label' => 'Rows of content',
-								'name' => 'tour_pc-rows',
+								'name' => 'rows',
 								'type' => 'flexible_content',
 								'required' => 0,
 								'button_label' => 'Add Row',
 								'layouts' => array (
 									array (
 										'key' => '5821e26955f33',
-										'name' => 'tour_pc-row',
+										'name' => 'row',
 										'label' => 'Row',
 										'display' => 'block',
 										'sub_fields' => array (
@@ -93,9 +71,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 													'blog' => 'Blog',
 													'content' => 'Content',
 												),
-												'allow_null' => 0,
-												'other_choice' => 0,
-												'save_other_choice' => 0,
+												'wrapper' => array(
+													'width' => 50
+												),
 												'default_value' => 'content',
 												'layout' => 'horizontal',
 											),
@@ -116,13 +94,16 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 												),
 												'default_value' => 1,
 												'min' => 1,
-												'step' => 1
+												'step' => 1,
+												'wrapper' => array(
+													'width' => 25
+												),
 											),
 											array (
 												'key' => 'field_blogchoose-style',
 												'label' => 'Column Style',
 												'name' => 'tour_blog-style',
-												'type' => 'radio',
+												'type' => 'select',
 												'required' => 0,
 												'conditional_logic' => array (
 													array (
@@ -133,14 +114,17 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 														),
 													),
 												),
-												'choices' => '',
+												'choices' => array( 'style-one' => 'Style one' ),
 												'default_value' => 'style-one',
 												'layout' => 'horizontal',
+												'wrapper' => array(
+													'width' => 25
+												),
 											),
 											array (
 												'key' => 'field_5821e799d4a00',
 												'label' => 'Show Info',
-												'name' => 'tour_pc-rowtype--blog-show',
+												'name' => 'blog-show',
 												'type' => 'checkbox',
 												'required' => 0,
 												'conditional_logic' => array (
@@ -152,22 +136,26 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 														),
 													),
 												),
+												'wrapper' => array(
+													'width' => 100
+												),
 												'choices' => array (
-													'blog-image' => 'Featured Image',
-													'blog-date' => 'Date',
-													'blog-excerpt' => 'Excerpt',
-													'blog-button' => 'Button'
+													'image' => 'Featured Image',
+													'date' => 'Date',
+													'excerpt' => 'Excerpt',
+													'button' => 'Button'
 												),
 												'default_value' => array (
-													0 => 'blog-image',
+													0 => 'image',
 												),
 												'layout' => 'horizontal',
 												'toggle' => 1,
 											),
+
 											array (
 												'key' => 'field_5821f6a6269db',
 												'label' => 'Content in Row',
-												'name' => 'tour_pc-col',
+												'name' => 'column',
 												'type' => 'flexible_content',
 												'required' => 0,
 												'conditional_logic' => array (
@@ -2061,6 +2049,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									)
 								)
 							),
+
 							array (
 								'key' => 'field_5821d6ba6de39',
 								'label' => 'Background Options',
@@ -2069,26 +2058,64 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'required' => 0
 							),
 							array (
+								'key' => 'field_1111e711149fe',
+								'label' => 'Enable paddings for section?',
+								'name' => 'paddings',
+								'type' => 'checkbox',
+								'required' => 0,
+								'choices' => array (
+									'left' => 'Left',
+									'right' => 'Right',
+									'top' => 'Top',
+									'bottom' => 'Bottom',
+								),
+								'default_value' => array (
+									0 => 'left',
+									1 => 'right',
+									2 => 'top',
+									3 => 'bottom'
+								),
+								'layout' => 'horizontal',
+								'toggle' => 1,
+								'wrapper' => array(
+									'width' => 40
+								),
+							),
+							array (
 								'key' => 'field_5821d316e18e2',
 								'label' => 'Choose Background Type',
-								'name' => 'tour_pc-bg__select',
+								'name' => 'background',
 								'type' => 'select',
 								'required' => 0,
 								'choices' => array (
+									'color' => 'Just color',
 									'image' => 'Image',
 									'texture' => 'Texture',
-									'color' => 'Color',
 									'map' => 'Map',
-									'video' => 'Video, this will be a moving video background',
+									'video' => 'Video',
 									'video-embed' => 'Video Embed',
 								),
+								'wrapper' => array(
+									'width' => 30
+								),
+								'default_value' => 'color'
+							),
+							array (
+								'key' => 'field_5821d89ecaee3',
+								'label' => 'Color',
+								'name' => 'bg-color',
+								'type' => 'rgba_color',
+								'required' => 0,
+								'wrapper' => array(
+									'width' => 30
+								),
+								'rgba' => 'rgba(255,255,255,1)'
 							),
 							array (
 								'key' => 'field_5821d6db6de3a',
 								'label' => 'Background Image',
-								'name' => 'tour_pc-bg__select-image--image',
+								'name' => 'bg-image',
 								'type' => 'image',
-								'instructions' => 'If you don\'t attach any image, we will return gray color.',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -2098,17 +2125,30 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 											'value' => 'image',
 										),
 									),
+									array (
+										array (
+											'field' => 'field_5821d316e18e2',
+											'operator' => '==',
+											'value' => 'texture',
+										),
+									),
+									array (
+										array (
+											'field' => 'field_5821d316e18e2',
+											'operator' => '==',
+											'value' => 'video',
+										),
+									),
 								),
 								'return_format' => 'url',
-								'preview_size' => 'medium',
+								'preview_size' => 'full',
 								'library' => 'all',
 							),
 							array (
 								'key' => 'field_5821d7db6de3b',
 								'label' => 'Fixed position',
-								'name' => 'tour_pc-bg__select-image--fixed',
+								'name' => 'bg-image--fixed',
 								'type' => 'radio',
-								'instructions' => 'The image keeps a fixed position while you scroll.',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -2121,17 +2161,19 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								'choices' => array (
 									'yep' => 'Yes, Background is fixed',
-									'nope' => 'No',
+									'nope' => 'Nope',
 								),
 								'default_value' => 'yep',
 								'layout' => 'horizontal',
+								'wrapper' => array(
+									'width' => 50
+								)
 							),
 							array (
 								'key' => 'field_582si7ez6imbg',
 								'label' => 'Expande the section',
 								'name' => 'tour_pc-bg__select-image--expanded',
 								'type' => 'radio',
-								'instructions' => 'Section takes the size of its background image.',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -2151,49 +2193,16 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'nope' => 'No',
 									'yep' => 'Yes',
 								),
-								'default_value' => 'no',
+								'default_value' => 'nope',
 								'layout' => 'horizontal',
-							),
-							array (
-								'key' => 'field_5821d86bcaee2',
-								'label' => 'Texture Crop',
-								'name' => 'tour_pc-bg__select-texture--image',
-								'type' => 'image',
-								'instructions' => 'This would be a repeater image.',
-								'required' => 0,
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'field_5821d316e18e2',
-											'operator' => '==',
-											'value' => 'texture',
-										),
-									),
-								),
-								'return_format' => 'url',
-								'preview_size' => 'medium',
-								'library' => 'all',
-							),
-							array (
-								'key' => 'field_5821d89ecaee3',
-								'label' => 'Choose Background Color',
-								'name' => 'tour_pc-bg__select-color',
-								'type' => 'rgba_color',
-								'required' => 0,
-								'conditional_logic' => array (
-									array (
-										array (
-											'field' => 'field_5821d316e18e2',
-											'operator' => '==',
-											'value' => 'color',
-										)
-									)
+								'wrapper' => array(
+									'width' => 50
 								)
 							),
 							array (
 								'key' => 'field_5821d8c5caee4',
 								'label' => 'Input location',
-								'name' => 'tour_pc-bg__select-map',
+								'name' => 'bg-map',
 								'type' => 'google_map',
 								'required' => 0,
 								'conditional_logic' => array (
@@ -2207,11 +2216,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								)
 							),
 							array (
-								'key' => 'field_5821d8ebcaee5',
-								'label' => 'Poster Image',
-								'name' => 'tour_pc-bg__select-video--image',
-								'type' => 'image',
+								'key' => 'field_5821d944caee7',
+								'label' => 'Webm Type',
+								'name' => 'bg-video--webm',
+								'type' => 'text',
 								'required' => 0,
+								'wrapper' => array(
+									'width' => 33
+								),
 								'conditional_logic' => array (
 									array (
 										array (
@@ -2221,16 +2233,16 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 									),
 								),
-								'return_format' => 'url',
-								'preview_size' => 'full',
-								'library' => 'all',
 							),
 							array (
-								'key' => 'field_5821d913caee6',
-								'label' => 'Input video links',
-								'name' => 'tour_pc-bg__select-video--video-links',
-								'type' => 'repeater',
+								'key' => 'field_5821d972caee8',
+								'label' => 'OGV Type',
+								'name' => 'bg-video--ogv',
+								'type' => 'text',
 								'required' => 0,
+								'wrapper' => array(
+									'width' => 33
+								),
 								'conditional_logic' => array (
 									array (
 										array (
@@ -2240,38 +2252,30 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 									),
 								),
-								'min' => 1,
-								'max' => 1,
-								'layout' => 'row',
-								'button_label' => 'Disabled',
-								'sub_fields' => array (
+							),
+							array (
+								'key' => 'field_5821d983caee9',
+								'label' => 'MP4 Type',
+								'name' => 'bg-video--mp4',
+								'type' => 'text',
+								'required' => 0,
+								'wrapper' => array(
+									'width' => 33
+								),
+								'conditional_logic' => array (
 									array (
-										'key' => 'field_5821d944caee7',
-										'label' => 'Webm Type',
-										'name' => 'tour_pc-bg__select-video--video-links--webm',
-										'type' => 'text',
-										'required' => 0,
-									),
-									array (
-										'key' => 'field_5821d972caee8',
-										'label' => 'OGV Type',
-										'name' => 'tour_pc-bg__select-video--video-links--ogv',
-										'type' => 'text',
-										'required' => 0,
-									),
-									array (
-										'key' => 'field_5821d983caee9',
-										'label' => 'MP4 Type',
-										'name' => 'tour_pc-bg__select-video--video-links--mp4',
-										'type' => 'text',
-										'required' => 0,
+										array (
+											'field' => 'field_5821d316e18e2',
+											'operator' => '==',
+											'value' => 'video',
+										),
 									),
 								),
 							),
 							array (
 								'key' => 'field_5821d9b6caeea',
 								'label' => 'Video Embed',
-								'name' => 'tour_pc-bg__select-videoembed',
+								'name' => 'bg-embed',
 								'type' => 'oembed',
 								'required' => 0,
 								'conditional_logic' => array (
@@ -2286,8 +2290,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							),
 							array (
 								'key' => 'field_5821da4aabd7c',
-								'label' => 'Top Divider Options',
-								'name' => 'Top_Divider_Options_tab',
+								'label' => 'Divider Options',
+								'name' => 'Divider_Options_tab',
 								'type' => 'tab',
 								'required' => 0,
 								'placement' => 'top',
@@ -2295,11 +2299,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'field_5821df8eabd7d',
 								'label' => 'Top Divider Type',
-								'name' => 'tour_pc-td--select',
+								'name' => 'top-divider',
 								'type' => 'select',
 								'required' => 0,
 								'wrapper' => array (
-									'width' => '100'
+									'width' => '20'
 								),
 								'choices' => array (
 									'none' => 'None',
@@ -2314,7 +2318,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'tour_pc-td--line-color',
 								'label' => 'Top divider color',
-								'name' => 'tour_pc-td--line-color',
+								'name' => 'top-divider--color',
 								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
@@ -2327,14 +2331,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									),
 								),
 								'wrapper' => array (
-									'width' => '50',
+									'width' => '40',
 								),
 								'rgba' => 'rgba(194, 194, 194, 1)',
 							),
 							array (
 								'key' => 'tour_pc-td--line-thickess',
 								'label' => 'Top divider thickness',
-								'name' => 'tour_pc-td--line-thickness',
+								'name' => 'top-divider--width',
 								'type' => 'number',
 								'required' => 0,
 								'conditional_logic' => array (
@@ -2347,7 +2351,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									),
 								),
 								'wrapper' => array (
-									'width' => '50'
+									'width' => '40'
 								),
 								'append' => 'px',
 								'min' => 1,
@@ -2357,9 +2361,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'field_5821e00cabd7e',
 								'label' => 'Image Repeater',
-								'name' => 'tour_pc-td--select__repeater',
+								'name' => 'top-divider--image',
 								'type' => 'image',
-								'instructions' => 'It will repeat',
 								'required' => 0,
 								'conditional_logic' => array (
 									array (
@@ -2369,19 +2372,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 											'value' => 'repeater',
 										),
 									),
-								),
-								'return_format' => 'url',
-								'preview_size' => 'rpwe-thumbnail',
-								'library' => 'all'
-							),
-							array (
-								'key' => 'field_5821e070abd7f',
-								'label' => 'Image',
-								'name' => 'tour_pc-td--select__image',
-								'type' => 'image',
-								'instructions' => 'This image stretches the full width of the section. ',
-								'required' => 0,
-								'conditional_logic' => array (
 									array (
 										array (
 											'field' => 'field_5821df8eabd7d',
@@ -2391,25 +2381,39 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									),
 								),
 								'return_format' => 'url',
-								'preview_size' => 'thumbnail',
+								'preview_size' => 'rpwe-thumbnail',
 								'library' => 'all',
+								'wrapper' => array (
+									'width' => '60'
+								),
 							),
+
 							array (
-								'key' => 'field_5821e135d0f10',
-								'label' => 'Bottom Divider Options',
-								'name' => 'Bottom_Divider_Options_Tab',
-								'type' => 'tab',
-								'required' => '',
-								'placement' => 'top',
+								'key' => 'field-594905dcbef94',
+								'label' => '',
+								'name' => 'separator_1',
+								'type' => 'message',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array (
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'message' => '<hr />',
+								'new_lines' => '',
+								'esc_html' => 0,
 							),
+
 							array (
 								'key' => 'field_5821e14dd0f11',
 								'label' => 'Bottom Divider Type',
-								'name' => 'tour_pc-bd--select',
+								'name' => 'bottom-divider',
 								'type' => 'select',
 								'required' => '',
 								'wrapper' => array (
-									'width' => '100'
+									'width' => '20'
 								),
 								'choices' => array (
 									'none' => 'None',
@@ -2424,7 +2428,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'tour_pc-bd--line-color',
 								'label' => 'Bottom divider color',
-								'name' => 'tour_pc-bd--line-color',
+								'name' => 'bottom-divider--color',
 								'type' => 'rgba_color',
 								'required' => 0,
 								'conditional_logic' => array (
@@ -2437,14 +2441,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									),
 								),
 								'wrapper' => array (
-									'width' => '50'
+									'width' => '40'
 								),
 								'rgba' => 'rgba(194, 194, 194, 1)',
 							),
 							array (
 								'key' => 'tour_pc-bd--line-thickess',
 								'label' => 'Bottom divider thickness',
-								'name' => 'tour_pc-bd--line-thickness',
+								'name' => 'bottom-divider--width',
 								'type' => 'number',
 								'required' => 0,
 								'conditional_logic' => array (
@@ -2457,7 +2461,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									),
 								),
 								'wrapper' => array (
-									'width' => '50'
+									'width' => '40'
 								),
 								'default_value' => 1,
 								'append' => 'px',
@@ -2468,7 +2472,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							array (
 								'key' => 'field_5821e1b1d0f13',
 								'label' => 'Image Repeater',
-								'name' => 'tour_pc-bd--select__repeater',
+								'name' => 'bottom-divider--image',
 								'type' => 'image',
 								'required' => 0,
 								'conditional_logic' => array (
@@ -2479,19 +2483,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 											'value' => 'repeater',
 										),
 									),
-								),
-								'return_format' => 'url',
-								'preview_size' => 'rpwe-thumbnail',
-								'library' => 'all'
-							),
-							array (
-								'key' => 'field_5821e1c6d0f14',
-								'label' => 'Image',
-								'name' => 'tour_pc-bd--select__image',
-								'type' => 'image',
-								'instructions' => 'This image stretches the full width of the section. ',
-								'required' => 0,
-								'conditional_logic' => array (
 									array (
 										array (
 											'field' => 'field_5821e14dd0f11',
@@ -2503,6 +2494,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'return_format' => 'url',
 								'preview_size' => 'rpwe-thumbnail',
 								'library' => 'all',
+								'wrapper' => array (
+									'width' => '60'
+								),
 							)
 						)
 					)
