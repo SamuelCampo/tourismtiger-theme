@@ -1,23 +1,31 @@
-/*  =========================
- *
- *	D E P E N D E N C E S
+/**
+ *	Main.js
  *
  *  @package TourismTiger_Theme
  *  @author  tourismtiger
- *  ========================= */
+ */
 
+/* 
+	Third parts 
+*/
 //= ../../bower_components/jquery/dist/jquery.js
+//= ../../bower_components/slick-carousel/slick/slick.js
+//= ../../bower_components/pickmeup/dist/pickmeup.min.js
+//= ../../bower_components/aload/dist/aload.min.js
+
+// ../../bower_components/wow/dist/wow.min.js
 // ../../bower_components/smoothstate/jquery.smoothState.min.js
 // ../../bower_components/jquery-mask-plugin/dist/jquery.mask.js
 // ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js
-//= ../../bower_components/slick-carousel/slick/slick.js
-// ../../bower_components/wow/dist/wow.min.js
-//= ../../bower_components/pickmeup/dist/pickmeup.min.js
 
 
-/*  =========================
-	W P K I T
-    ========================= */
+/**
+  	Common functions
+ */
+//= common/primary-content.js
+//= common/popup.js
+//= common/hero-area.js
+//= common/acf-api.js
 
 (function(factory) {
     'use strict';
@@ -44,12 +52,11 @@
     	 */
 		init: function () {
 
-			//= common/primary-content.js
-			//= common/slider.js
-			//= common/open-popup.js
-			//= common/hero-area.js
-			//= common/acf-googlemap.js
-
+			aload();
+			$(document).primaryContent('init');
+			$(document).popup('init');
+			$(document).heroArea('init');
+			$(document).acfApi('init');
 		}
 	};
 
@@ -57,29 +64,20 @@
 	 * Include javascript files
 	 * which requery DOM reload
 	 */
-	$.fn.tourtigerController = function( method ) {
+	$.fn.controller = function( method ) {
 
         if ( methods[method] ) {
           return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
         } else if ( typeof method === 'object' || ! method ) {
           return methods.init.apply( this, arguments );
         } else {
-          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.primaryContent' );
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.controller' );
         } 
 
     };
 
 	$(function(){
-		$(window).tourtigerController('init');
+		$(window).controller('init');
 	});
-
-
-	/**
-	 * Iclude javascript functions 
-	 * which doesn't re-query DOM reload 
-	 */
-	//= functions/acf-globals.js
-	// functions/ajax-acf.js
-	// components/smoothState.js
 
 }));

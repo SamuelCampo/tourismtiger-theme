@@ -1,11 +1,13 @@
-/*  =========================
- *
- *	D E P E N D E N C E S
+/**
+ *	Main.js
  *
  *  @package TourismTiger_Theme
  *  @author  tourismtiger
- *  ========================= */
+ */
 
+/* 
+	Third parts 
+*/
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -10259,9 +10261,6 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
-// ../../bower_components/smoothstate/jquery.smoothState.min.js
-// ../../bower_components/jquery-mask-plugin/dist/jquery.mask.js
-// ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js
 /*
      _ _      _       _
  ___| (_) ___| | __  (_)___
@@ -13154,7 +13153,6 @@ return jQuery;
     };
 
 }));
-// ../../bower_components/wow/dist/wow.min.js
 /*
  Copyright (c) 2013-2016, Nazar Mokrynskyi
  @copyright Copyright (c) 2008-2009, Stefan Petre
@@ -13192,11 +13190,544 @@ n="";for(c=0;c<d.calendars;++c)n+=e;b.innerHTML=n;t(a,b,"click",d.bound.click);t
 prev:d.bound.prev,next:d.bound.next,get_date:d.bound.get_date,set_date:d.bound.set_date,destroy:d.bound.destroy}}E.defaults={current:null,date:new Date,default_date:new Date,flat:!1,first_day:1,prev:"\x26#9664;",next:"\x26#9654;",mode:"single",select_year:!0,select_month:!0,select_day:!0,view:"days",calendars:1,format:"d-m-Y",title_format:"B, Y",position:"bottom",class_name:"",separator:" - ",hide_on_select:!1,min:null,max:null,render:function(){},locale:"en",locales:{en:{days:"Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),
 daysShort:"Sun Mon Tue Wed Thu Fri Sat".split(" "),daysMin:"Su Mo Tu We Th Fr Sa".split(" "),months:"January February March April May June July August September October November December".split(" "),monthsShort:"Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ")}},instance_template:function(a){var b=a.locales[a.locale].daysMin.slice();a.first_day&&b.push(b.shift());return'\x3cdiv class\x3d"pmu-instance"\x3e\x3cnav\x3e\x3cdiv class\x3d"pmu-prev pmu-button"\x3e'+a.prev+'\x3c/div\x3e\x3cdiv class\x3d"pmu-month pmu-button"\x3e\x3c/div\x3e\x3cdiv class\x3d"pmu-next pmu-button"\x3e'+
 a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3e'+b.join("\x3c/div\x3e\x3cdiv\x3e")+"\x3c/div\x3e\x3c/nav\x3e\x3c/div\x3e"},instance_content_template:function(a,b){var c=document.createElement("div");g(c,b);for(b=0;b<a.length;++b)g(a[b],"pmu-button"),c.appendChild(a[b]);return c}};return E});
+function aload(t){"use strict";var e="data-aload";return t=t||window.document.querySelectorAll("["+e+"]"),void 0===t.length&&(t=[t]),[].forEach.call(t,function(t){t["LINK"!==t.tagName?"src":"href"]=t.getAttribute(e),t.removeAttribute(e)}),t}
+
+// ../../bower_components/wow/dist/wow.min.js
+// ../../bower_components/smoothstate/jquery.smoothState.min.js
+// ../../bower_components/jquery-mask-plugin/dist/jquery.mask.js
+// ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js
 
 
+/**
+  	Common functions
+ */
 /*  =========================
-	W P K I T
+	Primary content */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	var methods = {
+
+		/**
+		 * Handle each section layout
+		 */
+		init: function () {
+			var $primaryContent = $('.primary-content');
+
+			$primaryContent.each(function(){
+				var $self = $(this);
+
+				/**
+				 * Check whether that section wasn't loaded
+				 */
+				if (!$self.hasClass('js-handled')) {
+
+
+					/**
+					 * Set background image
+					 */
+					if ($self.attr('data-section-image')) {
+						var url  = $self.attr('data-section-image');
+						var attr = 'url('+url+')';
+				        var img = new Image();
+
+
+						/**
+						 * Expanable image
+						 */
+						if ($self.attr('data-section-expanded') == '1') {
+					        img.onload = function(){
+					            var img_percent = img.height / img.width * 100;
+					            var img_height = screen.width / 100 * img_percent;
+
+					            $self.css('background-image', attr).animate({
+					              'min-height': img_height, 
+					            }, 100);
+							};
+					    }
+
+					    // assign url to new image 
+				        img.src = url;
+
+						// Set background image
+			            $self.css('background-image', attr);
+					}
+
+
+					/**
+					 * Generate google maps background
+					 */
+					if ($self.attr('data-section-lat') && $self.attr('data-section-lng')) {
+						var lat = $self.attr('data-section-lat');
+						var lng = $self.attr('data-section-lng');
+
+						$self.prepend("<div class='acf-map primary-content--bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
+					}
+
+					/**
+					 * Add indicator-class to avoid reworking 
+					 * that file during ajax request
+					 */
+					$self.addClass('js-handled');
+				}
+			});
+		}
+
+	};
+
+	/** 
+	 * Init method
+	 */
+	$.fn.primaryContent = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.primaryContent' );
+        } 
+
+    };
+
+}));
+/*  =========================
+	Popup */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	var methods = {
+
+		init: function () {
+
+			// Init open popup data attr
+			$('[data-open-popup]').on('click', function(e){
+				if ( $(window).width() > 768 ) {
+					e.preventDefault();
+
+					var $button   = $(this);
+					var reference = $button.attr('href');
+
+					$('body').append('<a href="javascript:" class="iframe-popup__close"></a>');
+					$('body').append('<iframe src="'+reference+'" id="iframe-popup" class="iframe-popup">Loading...</iframe>');
+
+					$('.iframe-popup__close').on('click', function() {
+						$('.iframe-popup__close').detach();
+						$('.iframe-popup').detach();
+
+						return false;
+					});
+
+				} else {
+					document.location.href = reference;
+				}
+
+				return false;
+			});
+
+		}
+
+	};
+
+	/** 
+	 * Include javascript files
+	 * which requery DOM reload
+	 */
+	$.fn.popup = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.popup' );
+        } 
+
+    };
+
+}));
+/*  =========================
+	Hero area */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	var methods = {
+
+		init: function () {
+
+			/**
+			 * Scroll down arrow
+			 */
+			$('.hero-area--nav__down').click(function(){
+				var $self     = $(this);
+				var $heroArea = $('#hero-area').find('.hero-area--banner');
+				var distance  = $heroArea.height() + $heroArea.offset().top;
+
+				$('html, body').animate({ scrollTop: distance }, 750);
+			});
+
+
+			/**
+			 * Styling the border divider
+			 */
+			if ( $('.hero-area--divider__repeater').length > 0 ) { 
+				var $self    = $('.hero-area--divider__repeater');
+				var repeater = $self.attr('data-repeater');
+
+				$self.css('background-image', 'url(' + repeater + ')');
+			}
+
+			if ( $('.hero-area--divider__gradient').length > 0 ) { 
+				var $self    = $('.hero-area--divider__gradient');
+				var gradient = $self.attr('data-gradient');
+
+				$self.css({
+					'background': gradient,
+					'background': '-moz-linear-gradient(top, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
+					'background': '-webkit-linear-gradient(top, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
+					'background': 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
+				});
+			}
+
+
+			/**
+			 * Styling overlay
+			 */
+			if ( $('.hero-area--overlay__color').length > 0 ) {
+				var $self = $('.hero-area--overlay__color');
+				var color = $self.attr('data-color');
+
+				$self.css('background-color', color);
+			}
+
+
+			/**
+			 * Add style number class to Calendar picker 
+			 */
+			var heroAreaStyle = $('#hero-area').attr('data-style');
+
+
+			/**
+			 * Searchbox
+			 */
+			var now = new Date;
+
+			pickmeup('.hero-area--search__single', {
+				position       : 'bottom',
+				hide_on_select : true,
+				min            : now,
+				class_name     : heroAreaStyle
+			});
+
+			pickmeup('.hero-area--search__start', {
+				position       : 'bottom',
+				hide_on_select : true,
+				min            : now,
+				class_name     : heroAreaStyle
+			});
+
+			pickmeup('.hero-area--search__end', {
+				position       : 'bottom',
+				hide_on_select : true,
+				min            : now,
+				class_name     : heroAreaStyle
+			});
+
+
+			/**
+			 * Generate HR lines
+			 */
+			if ( $('.hero-area--hr').length > 0 ) { 
+				var $heroAreaHr = $('.hero-area--hr');
+				var fullWidth   = $('.hero-area--content').width();
+
+				$heroAreaHr.map(function(){
+					var $self = $(this);
+					var color = $self.attr('data-color');
+					var width = $self.attr('data-width') * fullWidth;
+
+					$self.css({
+						'color': color,
+						'width': width
+					});
+				});
+			}
+
+			/**
+			 * Hero area slider
+			 */
+			if ($('.hero-area--bg__wrap').length > 0) {
+				$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
+				$('.hero-area--bg__wrap').slick({
+					arrows: false,
+					slidesToScroll: 1,
+					autoplay: true,
+					autoplaySpeed: 5000,
+					speed: 1500,
+					fade: true,
+				});
+			}
+
+		}
+
+	};
+
+	/** 
+	 * Init method
+	 */
+	$.fn.heroArea = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.heroArea' );
+        } 
+
+    };
+}));
+/*  =========================
+	ACF API
     ========================= */
+
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+    /**
+     * ACF Google maps
+     * new_map
+     */
+
+    function new_map( $el ) {
+        
+        // var
+        var $markers = $el.find('.marker');
+        
+        
+        // vars
+        var args = {
+            zoom        : 16,
+            center      : new google.maps.LatLng(0, 0),
+            mapTypeId   : google.maps.MapTypeId.ROADMAP
+        };
+        
+        
+        // create map               
+        var map = new google.maps.Map( $el[0], args);
+        
+        
+        // add a markers reference
+        map.markers = [];
+        
+        
+        // add markers
+        $markers.each(function(){
+            
+            add_marker( $(this), map );
+            
+        });
+        
+        
+        // center map
+        center_map( map );
+        
+        
+        // return
+        return map;
+        
+    }
+
+    /*
+    *  add_marker
+    */
+
+    function add_marker( $marker, map ) {
+
+        // var
+        var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+
+        // create marker
+        var marker = new google.maps.Marker({
+            position    : latlng,
+            map         : map
+        });
+
+        // add to array
+        map.markers.push( marker );
+
+        // if marker contains HTML, add it to an infoWindow
+        if( $marker.html() )
+        {
+            // create info window
+            var infowindow = new google.maps.InfoWindow({
+                content     : $marker.html()
+            });
+
+            // show info window when marker is clicked
+            google.maps.event.addListener(marker, 'click', function() {
+
+                infowindow.open( map, marker );
+
+            });
+        }
+
+    }
+
+    /*
+    *  center_map
+    *  This function will center the map, showing all markers attached to this map
+    */
+
+    function center_map( map ) {
+
+        // vars
+        var bounds = new google.maps.LatLngBounds();
+
+        // loop through all markers and create bounds
+        $.each( map.markers, function( i, marker ){
+
+            var latlng = new google.maps.LatLng( marker.position.lat(), marker.position.lng() );
+
+            bounds.extend( latlng );
+
+        });
+
+        // only 1 marker?
+        if( map.markers.length == 1 )
+        {
+            // set center of map
+            map.setCenter( bounds.getCenter() );
+            map.setZoom( 16 );
+        }
+        else
+        {
+            // fit to bounds
+            map.fitBounds( bounds );
+        }
+
+    }
+
+
+    /**
+     * Metods will be used in acfApi method
+     */
+	var methods = {
+
+		init: function () {
+
+            /**
+             * Init ACF Google maps
+             */
+			var map = null;
+			$('.acf-map').each(function(){
+				map = new_map( $(this) );
+			});
+
+		},
+
+        loadAjax: function() {
+  
+            var $field      = $(this);                     // Wrapper inside which will be loaded new items
+            var id          = $field.attr('id');           // Wrapper's id
+            var fieldStatus = +$field.data('data-status'); // Status of count printed items inside the wrapper
+            var fieldName   = $field.data('data-field');   // ACF Field name
+            var fieldOffset = +$field.data('data-offset'); // How many fields to print
+            var fieldLack   = +$field.data('data-lack');   // Count of lack fields
+
+            if ( fieldLack > 0 && $(id).length === 1 ) {
+
+                $.post(
+                    myajax.url, {
+                      'action': 'ajax_acf_load',
+                      'post_id': global_var.post_id,
+                      'offset': fieldOffset,
+                      'nonce': global_var.ajaxnonce,
+                      'field': fieldName,
+                      'status': fieldStatus
+                    },
+                    function (json) {
+                        $(id).append(json['content']);
+
+                        // Update data attrs
+                        fieldStatus = json['status'];
+                        fieldLack -= 1;
+                        $field.data('data-total', fieldLack);
+
+                        $(document).controller();
+
+                        if (json['more']) {
+                            $$field.acfApi('loadAjax');
+                        }
+                    },
+                    'json'
+                );
+
+            } else {
+                return false;
+            } 
+
+        }
+
+	};
+
+	/** 
+	 * Include javascript files
+	 * which requery DOM reload
+	 */
+	$.fn.acfApi = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.acfApi' );
+        } 
+
+    };
+
+}));
 
 (function(factory) {
     'use strict';
@@ -13223,239 +13754,11 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
     	 */
 		init: function () {
 
-			/*  =========================
-				Primary content */
-			
-			var $primaryContent = $('.primary-content');
-			
-			$primaryContent.each(function(){
-				var $self = $(this);
-			
-				/**
-				 * Check whether that section wasn't loaded
-				 */
-				if (!$self.hasClass('js-loaded')) {
-			
-			
-					/**
-					 * Set background image
-					 */
-					if ($self.attr('data-section-image')) {
-						var url  = $self.attr('data-section-image');
-						var attr = 'url('+url+')';
-				        var img = new Image();
-			
-			
-						/**
-						 * Expanable image
-						 */
-						if ($self.attr('data-section-expanded') == '1') {
-					        img.onload = function(){
-					            var img_percent = img.height / img.width * 100;
-					            var img_height = screen.width / 100 * img_percent;
-			
-					            $self.css('background-image', attr).animate({
-					              'min-height': img_height, 
-					            }, 100);
-							};
-					    }
-			
-					    // assign url to new image 
-				        img.src = url;
-			
-						// Set background image
-			            $self.css('background-image', attr);
-					}
-			
-			
-					/**
-					 * Generate google maps background
-					 */
-					if ($self.attr('data-section-lat') && $self.attr('data-section-lng')) {
-						var lat = $self.attr('data-section-lat');
-						var lng = $self.attr('data-section-lng');
-			
-						$self.prepend("<div class='acf-map primary-content--bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
-					}
-			
-					/**
-					 * Add indicator-class to avoid reworking 
-					 * that file during ajax request
-					 */
-					$self.addClass('js-loaded');
-				}
-			});
-			/*  =========================
-				Slider UX */
-			
-			$('.is-slider [data-slick]').slick();
-			/*  =========================
-				Open popup */
-			
-			$('[data-open-popup]').on('click', function(e){
-				if ( $(window).width() > 768 ) {
-					e.preventDefault();
-			
-					var $button   = $(this);
-					var reference = $button.attr('href');
-			
-					$('body').append('<a href="javascript:" class="iframe-popup__close"></a>');
-					$('body').append('<iframe src="'+reference+'" id="iframe-popup" class="iframe-popup">Loading...</iframe>');
-			
-					$('.iframe-popup__close').on('click', function() {
-						$('.iframe-popup__close').detach();
-						$('.iframe-popup').detach();
-			
-						return false;
-					});
-			
-				} else {
-					document.location.href = reference;
-				}
-			
-				return false;
-			});
-			/*  =========================
-				Hero area */
-			
-			/**
-			 * Scroll down arrow
-			 */
-			$('.hero-area--nav__down').click(function(){
-				var $self     = $(this);
-				var $heroArea = $('#hero-area').find('.hero-area--banner');
-				var distance  = $heroArea.height() + $heroArea.offset().top;
-			
-				$('html, body').animate({ scrollTop: distance }, 750);
-			});
-			
-			
-			/**
-			 * Styling the border divider
-			 */
-			if ( $('.hero-area--divider__repeater').length > 0 ) { 
-				var $self    = $('.hero-area--divider__repeater');
-				var repeater = $self.attr('data-repeater');
-			
-				$self.css('background-image', 'url(' + repeater + ')');
-			}
-			
-			if ( $('.hero-area--divider__gradient').length > 0 ) { 
-				var $self    = $('.hero-area--divider__gradient');
-				var gradient = $self.attr('data-gradient');
-			
-				$self.css({
-					'background': gradient,
-					'background': '-moz-linear-gradient(top, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
-					'background': '-webkit-linear-gradient(top, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
-					'background': 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
-				});
-			}
-			
-			
-			/**
-			 * Styling overlay
-			 */
-			if ( $('.hero-area--overlay__color').length > 0 ) {
-				var $self = $('.hero-area--overlay__color');
-				var color = $self.attr('data-color');
-			
-				$self.css('background-color', color);
-			}
-			
-			
-			/**
-			 * Add style number class to Calendar picker 
-			 */
-			var heroAreaStyle = $('#hero-area').attr('data-style');
-			
-			
-			/**
-			 * Searchbox
-			 */
-			var now = new Date;
-			
-			pickmeup('.hero-area--search__single', {
-				position       : 'bottom',
-				hide_on_select : true,
-				min            : now,
-				class_name     : heroAreaStyle
-			});
-			
-			pickmeup('.hero-area--search__start', {
-				position       : 'bottom',
-				hide_on_select : true,
-				min            : now,
-				class_name     : heroAreaStyle
-			});
-			
-			pickmeup('.hero-area--search__end', {
-				position       : 'bottom',
-				hide_on_select : true,
-				min            : now,
-				class_name     : heroAreaStyle
-			});
-			
-			
-			/**
-			 * Generate HR lines
-			 */
-			if ( $('.hero-area--hr').length > 0 ) { 
-				var $heroAreaHr = $('.hero-area--hr');
-				var fullWidth   = $('.hero-area--content').width();
-			
-				$heroAreaHr.map(function(){
-					var $self = $(this);
-					var color = $self.attr('data-color');
-					var width = $self.attr('data-width') * fullWidth;
-			
-					$self.css({
-						'color': color,
-						'width': width
-					});
-				});
-			}
-			
-			/**
-			 * Hero area slider
-			 */
-			if ($('.hero-area--bg__wrap').length > 0) {
-				$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
-				$('.hero-area--bg__wrap').slick({
-					arrows: false,
-					slidesToScroll: 1,
-					autoplay: true,
-					autoplaySpeed: 5000,
-					speed: 1500,
-					fade: true,
-				});
-			}
-			/*  =========================
-				ACF Google map
-			    @package Art_Forja
-			    ========================= */
-			
-			/*
-			*  This function will render each map when the document is ready (page has loaded)
-			*
-			*  @type	function
-			*  @date	8/11/2013
-			*  @since	5.0.0
-			*
-			*  @param	n/a
-			*  @return	n/a
-			*/
-			
-			var map = null;
-			
-			
-			$('.acf-map').each(function(){
-			
-				// create map
-				map = new_map( $(this) );
-			
-			});
-
+			aload();
+			$(document).primaryContent('init');
+			$(document).popup('init');
+			$(document).heroArea('init');
+			$(document).acfApi('init');
 		}
 	};
 
@@ -13463,175 +13766,20 @@ a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3
 	 * Include javascript files
 	 * which requery DOM reload
 	 */
-	$.fn.tourtigerController = function( method ) {
+	$.fn.controller = function( method ) {
 
         if ( methods[method] ) {
           return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
         } else if ( typeof method === 'object' || ! method ) {
           return methods.init.apply( this, arguments );
         } else {
-          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.primaryContent' );
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.controller' );
         } 
 
     };
 
 	$(function(){
-		$(window).tourtigerController('init');
+		$(window).controller('init');
 	});
-
-
-	/**
-	 * Iclude javascript functions 
-	 * which doesn't re-query DOM reload 
-	 */
-	/*
-	 ACF Functions
-	 */
-	
-	/**
-	 * ACF Google maps
-	 *
-	 *
-	 *
-	 * new_map
-	 *
-	 * This function will render a Google Map onto the selected jQuery element
-	 *
-	 * @type	function
-	 * @date	8/11/2013
-	 * @since	4.3.0
-	 *
-	 * @param	$el (jQuery element)
-	 * @return	n/a
-	 */
-	
-	function new_map( $el ) {
-		
-		// var
-		var $markers = $el.find('.marker');
-		
-		
-		// vars
-		var args = {
-			zoom		: 16,
-			center		: new google.maps.LatLng(0, 0),
-			mapTypeId	: google.maps.MapTypeId.ROADMAP
-		};
-		
-		
-		// create map	        	
-		var map = new google.maps.Map( $el[0], args);
-		
-		
-		// add a markers reference
-		map.markers = [];
-		
-		
-		// add markers
-		$markers.each(function(){
-			
-	    	add_marker( $(this), map );
-			
-		});
-		
-		
-		// center map
-		center_map( map );
-		
-		
-		// return
-		return map;
-		
-	}
-	
-	/*
-	*  add_marker
-	*
-	*  This function will add a marker to the selected Google Map
-	*
-	*  @type	function
-	*  @date	8/11/2013
-	*  @since	4.3.0
-	*
-	*  @param	$marker (jQuery element)
-	*  @param	map (Google Map object)
-	*  @return	n/a
-	*/
-	
-	function add_marker( $marker, map ) {
-	
-		// var
-		var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
-	
-		// create marker
-		var marker = new google.maps.Marker({
-			position	: latlng,
-			map			: map
-		});
-	
-		// add to array
-		map.markers.push( marker );
-	
-		// if marker contains HTML, add it to an infoWindow
-		if( $marker.html() )
-		{
-			// create info window
-			var infowindow = new google.maps.InfoWindow({
-				content		: $marker.html()
-			});
-	
-			// show info window when marker is clicked
-			google.maps.event.addListener(marker, 'click', function() {
-	
-				infowindow.open( map, marker );
-	
-			});
-		}
-	
-	}
-	
-	/*
-	*  center_map
-	*
-	*  This function will center the map, showing all markers attached to this map
-	*
-	*  @type	function
-	*  @date	8/11/2013
-	*  @since	4.3.0
-	*
-	*  @param	map (Google Map object)
-	*  @return	n/a
-	*/
-	
-	function center_map( map ) {
-	
-		// vars
-		var bounds = new google.maps.LatLngBounds();
-	
-		// loop through all markers and create bounds
-		$.each( map.markers, function( i, marker ){
-	
-			var latlng = new google.maps.LatLng( marker.position.lat(), marker.position.lng() );
-	
-			bounds.extend( latlng );
-	
-		});
-	
-		// only 1 marker?
-		if( map.markers.length == 1 )
-		{
-			// set center of map
-		    map.setCenter( bounds.getCenter() );
-		    map.setZoom( 16 );
-		}
-		else
-		{
-			// fit to bounds
-			map.fitBounds( bounds );
-		}
-	
-	}
-	// functions/ajax-acf.js
-	// components/smoothState.js
 
 }));

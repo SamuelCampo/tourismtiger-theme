@@ -12,7 +12,8 @@
     "wordpress-core-styles": "~1.0.0",
     "socicon": "~3.0.5",
     "pickmeup": "~3.0.0",
-    "components-font-awesome": "~4.7.0"
+    "components-font-awesome": "~4.7.0",
+    "aload": "~1.2.3"
   },
   "private": true
 }
