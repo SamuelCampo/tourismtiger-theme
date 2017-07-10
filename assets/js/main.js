@@ -13807,8 +13807,8 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
     };
 
-	$(function(){
+	window.onload = function(){
 		$(window).controller('init');
-	});
+	};
 
 }));
