@@ -76,8 +76,8 @@
 
     };
 
-	window.onload = function(){
+	$(function(){
 		$(window).controller('init');
-	};
+	});
 
 }));
