@@ -175,14 +175,16 @@
 
                         // Update data attrs
                         fieldStatus = json['status'];
+                        $field.attr('data-status', fieldStatus);
+
                         fieldLack -= 1;
-                        $field.data('data-lack', fieldLack);
+                        $field.attr('data-lack', fieldLack);
 
                         $(document).controller();
 
                         if (json['more']) {
                             try {
-                                $field.acfApi('loadAjax');
+                                $('#'+id).acfApi('loadAjax');
                             } catch (e) {
                                 console.error('Load ajax error.'); // pass exception object to error handler
                             }
