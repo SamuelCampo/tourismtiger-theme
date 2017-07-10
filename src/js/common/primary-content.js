@@ -47,7 +47,7 @@
 					            var img_percent = img.height / img.width * 100;
 					            var img_height = screen.width / 100 * img_percent;
 
-					            $self.css('background-image', attr).animate({
+					            $self.animate({
 					              'min-height': img_height, 
 					            }, 100);
 							};
@@ -71,6 +71,35 @@
 						$self.prepend("<div class='acf-map primary-content--bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
 					}
 
+
+					/**
+					 * Set dividers' background images
+					 */
+					var $divider = $self.find('[data-image]');
+					if ( $divider.length > 0 ) {
+						$divider.each(function(){
+							var $that = $(this);
+							var url   = $that.attr('data-image');
+							var attr  = 'url('+url+')';
+					        var img   = new Image();
+
+					        // Set divider height
+					        img.onload = function(){
+
+					            $that.animate({
+					              'height': img.height, 
+					            }, 100);
+							};
+
+						    // assign url to new image 
+					        img.src = url;
+
+							// Set background image
+				            $that.css('background-image', attr);
+						});
+					}
+
+
 					/**
 					 * Add indicator-class to avoid reworking 
 					 * that file during ajax request
@@ -78,6 +107,20 @@
 					$self.addClass('js-handled');
 				}
 			});
+		},
+
+		/**
+		 * After onload
+		 * @return {[type]} [description]
+		 */
+		onLoad: function () {
+			var $wrapper = $('.primary-content__wrapper');
+
+            try {
+                $wrapper.acfApi('loadAjax');
+            } catch (e) {
+                console.error('Load ajax error: ' + e); // pass exception object to error handler
+            }
 		}
 
 	};

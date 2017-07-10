@@ -13250,7 +13250,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					            var img_percent = img.height / img.width * 100;
 					            var img_height = screen.width / 100 * img_percent;
 
-					            $self.css('background-image', attr).animate({
+					            $self.animate({
 					              'min-height': img_height, 
 					            }, 100);
 							};
@@ -13274,6 +13274,35 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 						$self.prepend("<div class='acf-map primary-content--bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
 					}
 
+
+					/**
+					 * Set dividers' background images
+					 */
+					var $divider = $self.find('[data-image]');
+					if ( $divider.length > 0 ) {
+						$divider.each(function(){
+							var $that = $(this);
+							var url   = $that.attr('data-image');
+							var attr  = 'url('+url+')';
+					        var img   = new Image();
+
+					        // Set divider height
+					        img.onload = function(){
+
+					            $that.animate({
+					              'height': img.height, 
+					            }, 100);
+							};
+
+						    // assign url to new image 
+					        img.src = url;
+
+							// Set background image
+				            $that.css('background-image', attr);
+						});
+					}
+
+
 					/**
 					 * Add indicator-class to avoid reworking 
 					 * that file during ajax request
@@ -13281,6 +13310,20 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					$self.addClass('js-handled');
 				}
 			});
+		},
+
+		/**
+		 * After onload
+		 * @return {[type]} [description]
+		 */
+		onLoad: function () {
+			var $wrapper = $('.primary-content__wrapper');
+
+            try {
+                $wrapper.acfApi('loadAjax');
+            } catch (e) {
+                console.error('Load ajax error: ' + e); // pass exception object to error handler
+            }
 		}
 
 	};
@@ -13486,8 +13529,9 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 			/**
 			 * Hero area slider
 			 */
-			if ($('.hero-area--bg__wrap').length > 0) {
-				$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
+			$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
+			
+			if ($('.hero-area--bg__wrap').length > 0 && global_var.dev != true) {
 				$('.hero-area--bg__wrap').slick({
 					arrows: false,
 					slidesToScroll: 1,
@@ -13659,27 +13703,30 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
             /**
              * Init ACF Google maps
              */
-			var map = null;
-			$('.acf-map').each(function(){
-				map = new_map( $(this) );
-			});
+            if (global_var.dev != true) {
+                var map = null;
+                $('.acf-map').each(function(){
+                    map = new_map( $(this) );
+                });
+            }
 
 		},
 
         loadAjax: function() {
-  
+
             var $field      = $(this);                     // Wrapper inside which will be loaded new items
             var id          = $field.attr('id');           // Wrapper's id
-            var fieldStatus = +$field.data('data-status'); // Status of count printed items inside the wrapper
-            var fieldName   = $field.data('data-field');   // ACF Field name
-            var fieldOffset = +$field.data('data-offset'); // How many fields to print
-            var fieldLack   = +$field.data('data-lack');   // Count of lack fields
+            var fieldStatus = +$field.attr('data-status'); // Status of count printed items inside the wrapper
+            var fieldName   = $field.attr('data-field');   // ACF Field name
+            var fieldOffset = +$field.attr('data-offset'); // How many fields to print
+            var fieldLack   = +$field.attr('data-lack');   // Count of lack fields
+            var fieldMethod = $field.attr('data-method');
 
-            if ( fieldLack > 0 && $(id).length === 1 ) {
+            if ( fieldLack > 0 && $field.length === 1 ) {
 
                 $.post(
-                    myajax.url, {
-                      'action': 'ajax_acf_load',
+                    global_var.ajax, {
+                      'action': fieldMethod,
                       'post_id': global_var.post_id,
                       'offset': fieldOffset,
                       'nonce': global_var.ajaxnonce,
@@ -13687,17 +13734,27 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
                       'status': fieldStatus
                     },
                     function (json) {
-                        $(id).append(json['content']);
+                        $field.append(json['content']);
 
                         // Update data attrs
                         fieldStatus = json['status'];
-                        fieldLack -= 1;
-                        $field.data('data-total', fieldLack);
+                        $field.attr('data-status', fieldStatus);
 
-                        $(document).controller();
+                        fieldLack -= 1;
+                        $field.attr('data-lack', fieldLack);
+
+                        try {
+                            $(document).controller();
+                        } catch (e) {
+                            console.error('During ajax the load controler returned error.'); // pass exception object to error handler
+                        }
 
                         if (json['more']) {
-                            $$field.acfApi('loadAjax');
+                            try {
+                                $('#'+id).acfApi('loadAjax');
+                            } catch (e) {
+                                console.error('Load ajax error.'); // pass exception object to error handler
+                            }
                         }
                     },
                     'json'
@@ -13755,10 +13812,17 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 		init: function () {
 
 			aload();
-			$(document).primaryContent('init');
+            $(document).primaryContent('init');
 			$(document).popup('init');
 			$(document).heroArea('init');
 			$(document).acfApi('init');
+		},
+
+		/**
+		 * Calls after window loaded
+		 */
+		onLoad: function () {
+            $(document).primaryContent('onLoad');
 		}
 	};
 
@@ -13780,6 +13844,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 	$(function(){
 		$(window).controller('init');
+		$(window).controller('onLoad');
 	});
 
 }));

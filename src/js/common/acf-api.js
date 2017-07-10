@@ -140,27 +140,30 @@
             /**
              * Init ACF Google maps
              */
-			var map = null;
-			$('.acf-map').each(function(){
-				map = new_map( $(this) );
-			});
+            if (global_var.dev != true) {
+                var map = null;
+                $('.acf-map').each(function(){
+                    map = new_map( $(this) );
+                });
+            }
 
 		},
 
         loadAjax: function() {
-  
+
             var $field      = $(this);                     // Wrapper inside which will be loaded new items
             var id          = $field.attr('id');           // Wrapper's id
-            var fieldStatus = +$field.data('data-status'); // Status of count printed items inside the wrapper
-            var fieldName   = $field.data('data-field');   // ACF Field name
-            var fieldOffset = +$field.data('data-offset'); // How many fields to print
-            var fieldLack   = +$field.data('data-lack');   // Count of lack fields
+            var fieldStatus = +$field.attr('data-status'); // Status of count printed items inside the wrapper
+            var fieldName   = $field.attr('data-field');   // ACF Field name
+            var fieldOffset = +$field.attr('data-offset'); // How many fields to print
+            var fieldLack   = +$field.attr('data-lack');   // Count of lack fields
+            var fieldMethod = $field.attr('data-method');
 
-            if ( fieldLack > 0 && $(id).length === 1 ) {
+            if ( fieldLack > 0 && $field.length === 1 ) {
 
                 $.post(
-                    myajax.url, {
-                      'action': 'ajax_acf_load',
+                    global_var.ajax, {
+                      'action': fieldMethod,
                       'post_id': global_var.post_id,
                       'offset': fieldOffset,
                       'nonce': global_var.ajaxnonce,
@@ -168,17 +171,27 @@
                       'status': fieldStatus
                     },
                     function (json) {
-                        $(id).append(json['content']);
+                        $field.append(json['content']);
 
                         // Update data attrs
                         fieldStatus = json['status'];
-                        fieldLack -= 1;
-                        $field.data('data-total', fieldLack);
+                        $field.attr('data-status', fieldStatus);
 
-                        $(document).controller();
+                        fieldLack -= 1;
+                        $field.attr('data-lack', fieldLack);
+
+                        try {
+                            $(document).controller();
+                        } catch (e) {
+                            console.error('During ajax the load controler returned error.'); // pass exception object to error handler
+                        }
 
                         if (json['more']) {
-                            $$field.acfApi('loadAjax');
+                            try {
+                                $('#'+id).acfApi('loadAjax');
+                            } catch (e) {
+                                console.error('Load ajax error.'); // pass exception object to error handler
+                            }
                         }
                     },
                     'json'
