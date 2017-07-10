@@ -13725,7 +13725,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
             if ( fieldLack > 0 && $field.length === 1 ) {
 
                 $.post(
-                    myajax.url, {
+                    global_var.ajax, {
                       'action': fieldMethod,
                       'post_id': global_var.post_id,
                       'offset': fieldOffset,
