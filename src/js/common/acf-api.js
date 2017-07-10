@@ -180,7 +180,11 @@
                         fieldLack -= 1;
                         $field.attr('data-lack', fieldLack);
 
-                        $(document).controller();
+                        try {
+                            $(document).controller();
+                        } catch (e) {
+                            console.error('During ajax the load controler returned error.'); // pass exception object to error handler
+                        }
 
                         if (json['more']) {
                             try {
