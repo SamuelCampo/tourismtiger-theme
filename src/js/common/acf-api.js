@@ -159,7 +159,7 @@
             var fieldLack   = +$field.attr('data-lack');   // Count of lack fields
             var fieldMethod = $field.attr('data-method');
 
-            if ( fieldLack > 0 && $(id).length === 1 ) {
+            if ( fieldLack > 0 && $field.length === 1 ) {
 
                 $.post(
                     myajax.url, {
