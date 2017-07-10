@@ -266,3 +266,66 @@ function get_section_bottom_divider( $the_section_row ) {
 
     return $output;
 }
+
+
+add_action('wp_ajax_get_section_ajax', 'get_section_ajax');
+add_action('wp_ajax_nopriv_get_section_ajax', 'get_section_ajax');
+
+function get_section_ajax() {
+    
+    /**
+     * Verify current user
+     */
+    if ( !isset($_POST['nonce']) || !wp_verify_nonce( $_POST['nonce'], 'ajax_nonce' ) ) :
+        echo json_encode( array( 'content' => '(1)Please wait...', 'more' => false, 'offset' => 1 ) );
+        exit;
+    endif;
+    
+    /**
+     * If post ID or offset was missed, return promisse 
+     */
+    if (!isset($_POST['post_id']) || !isset($_POST['offset'])) :
+        echo json_encode( array( 'content' => '(2)Please wait...', 'more' => false, 'offset' => 1 ) );
+        exit;
+    endif;
+
+    /**
+     * Common variables
+     */
+    $start   = $_POST['status'];
+    $post_id = $_POST['post_id'];
+    $field   = $_POST['field'];
+    $offset  = $_POST['offset'];
+    $more = false;
+
+    ob_start();
+
+    if ( have_rows( $field, $post_id ) ) :
+        $total = count( get_field( $field, $post_id  ) );
+        $count = 1;
+        $times = 0;
+
+        while ( have_rows( $field, $post_id ) ) :
+            $the_section_row = the_row();
+
+            if ( $count > $start ) :
+                include get_template_directory() . '/template-parts/section.php';
+                $times++;
+
+                if ( $times >= $offset )
+                    break;
+            endif;
+
+            $count++; 
+        endwhile;
+    endif;
+
+    $content = ob_get_clean();
+
+    if ($total > $count) 
+        $more = true;
+
+    echo json_encode( array( 'content' => $content, 'more' => $more, 'status' => $count ) );
+    exit;
+
+}

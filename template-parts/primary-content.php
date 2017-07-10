@@ -10,39 +10,35 @@
  */
 
 if ( have_rows( 'primary-content' ) ) :
-	while ( have_rows( 'primary-content' ) ) :
-		$the_section_row = the_row();
+	$section_count = count( get_field('primary-content') );
+	$section_lack  = $section_count - 1;
+	?>
 
-		// Common 
-		$attrs      = array();
-		$style      = array();
-		$classes    = array();
-		$classes[]  = 'primary-content';
+	<div 
+		id="primary-content"
+		class="primary-content__wrapper"
+		data-status="1"
+		data-field="primary-content"
+		data-offset="5"
+		data-lack="<?=$section_lack;?>"
+		data-method="get_section_ajax">
 
-		// Paddings 
-		$paddings   = get_sub_field( 'paddings' );
-		$classes[]  = is_array( $paddings ) ? 'padding_' . implode( ' padding_', $paddings ) : '';
+		<?php
+		while ( have_rows( 'primary-content' ) ) :
+			$the_section_row = the_row();
 
-		// Background
-		$type       = get_sub_field( 'background' );
-		$background = get_section_background( $type, $the_section_row ); // Set attrs and get bg videos
-		$attrs[]    = $background['attrs'] ? $background['attrs'] : '';
-		$style[]    = $background['style'] ? $background['style'] : '';
+			/**
+			 * Get section template part
+			 */
+			include get_template_directory() . '/template-parts/section.php';
 
-		// Section dividers 
-		$type       = array( 'top' => get_sub_field('top-divider'), 'bottom' => get_sub_field('bottom-divider') );
-		get_section_dividers( $type, $the_section_row );
+			break;
+		endwhile;
+		?>
 
-		// Compile styles
-		$attr_style = 'style="' . generate_classlist( $style ) . '"';
-		$attrs[]    = $attr_style;
+	</div>
 
-		// Compile classes and attributes
-		$classes    = generate_classlist( $classes );
-		$attrs      = generate_classlist( $attrs );
-
-		include THEME_VIEWS . 'core/section.php';
-	endwhile;
+	<?php
 endif;
 
 ?>
