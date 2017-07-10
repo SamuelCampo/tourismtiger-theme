@@ -158,3 +158,111 @@ function the_section_embed_bg( $the_section_row ) {
 	echo "<div class='primary-content--bg_video'>{$video}</div>";
     return null;
 }
+
+
+/**
+ * Get section dividers
+ *
+ * Returns array of top and bottom divider 
+ * values related with current section, 
+ * besides includes html tags to showing 
+ * dividers on a page.
+ *
+ * @param $type (array) type of top and bottom dividers
+ * @param $the_section_row (array) list of fields' values 
+ *        of current's loop the_row() 
+ */
+function get_section_dividers( $type, $the_section_row ) {
+
+    // Assign action to output top divider if it's exist
+    if ( $type['top'] && $type['top'] != 'none'  ) 
+        add_action( 'after_open_section_tag', 'the_section_top_divider', 20, 1 );
+
+    // Assign action to output bottom divider if it's exist
+    if ( $type['bottom'] && $type['bottom'] != 'none' ) 
+        add_action( 'before_close_section_tag', 'the_section_bottom_divider', 20, 1 );
+
+    return null;
+}
+
+
+/**
+ * Echo scurrent section's top divider
+ * 
+ * @param  $the_section_row (array) current the-_row loop array
+ * @return null && echo html element
+ */
+function the_section_top_divider( $the_section_row ) {
+    $html = get_section_top_divider( $the_section_row );
+    echo $html;
+    return null;
+}
+
+
+/**
+ * Generate html element of top divider
+ * 
+ * @param  $the_section_row (array) current the-_row loop array
+ * @return string - html element 
+ */
+function get_section_top_divider( $the_section_row ) {
+    $output = '';
+
+    if ( $the_section_row['field_5821df8eabd7d'] === 'repeater' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e00cabd7e'], 'full' );
+        $output .= "<div class='top-divider top-divider_repeater' data-image='{$image[0]}'></div>";
+
+    elseif ( $the_section_row['field_5821df8eabd7d'] === 'image' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e00cabd7e'], 'full' );
+        $output .= "<div class='top-divider top-divider_image' data-image='{$image[0]}'></div>";
+
+    elseif ( $the_section_row['field_5821df8eabd7d'] === 'line' ) :
+        $color   = $the_section_row['tour_pc-td--line-color'] ? $the_section_row['tour_pc-td--line-color'] : '#fff';
+        $width   = $the_section_row['tour_pc-td--line-thickess'] ? $the_section_row['tour_pc-td--line-thickess'] : 0;
+        $output .= "<hr class='top-divider top-divider_line' style='border-color:{$color};border-width:{$width}px;' />";
+
+    endif;
+
+    return $output;
+}
+
+
+/**
+ * Echo scurrent section's bottom divider
+ * 
+ * @param  $the_section_row (array) current the-_row loop array
+ * @return null && echo html element
+ */
+function the_section_bottom_divider( $the_section_row ) {
+    $html = get_section_bottom_divider( $the_section_row );
+    echo $html;
+    return null;
+}
+
+
+/**
+ * Generate html element of bottom divider
+ * 
+ * @param  $the_section_row (array) current the-_row loop array
+ * @return string - html element 
+ */
+function get_section_bottom_divider( $the_section_row ) {
+    $output = '';
+
+    if ( $the_section_row['field_5821e14dd0f11'] === 'repeater' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e1b1d0f13'], 'full' );
+        $output .= "<div class='bottom-divider bottom-divider_repeater' data-image='{$image[0]}'></div>";
+
+    elseif ( $the_section_row['field_5821e14dd0f11'] === 'image' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e1b1d0f13'], 'full' );
+        $output .= "<div class='bottom-divider bottom-divider_image' data-image='{$image[0]}'></div>";
+
+    elseif ( $the_section_row['field_5821e14dd0f11'] === 'line' ) :
+        $color   = $the_section_row['tour_pc-bd--line-color'] ? $the_section_row['tour_pc-bd--line-color'] : '#fff';
+        $width   = $the_section_row['tour_pc-bd--line-thickess'] ? $the_section_row['tour_pc-bd--line-thickess'] : 0;
+        $output .= "<hr class='bottom-divider bottom-divider_line' style='border-color:{$color};border-width:{$width}px;' />";
+
+    endif;
+
+    return $output;
+}

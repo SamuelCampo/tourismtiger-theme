@@ -29,6 +29,10 @@ if ( have_rows( 'primary-content' ) ) :
 		$attrs[]    = $background['attrs'] ? $background['attrs'] : '';
 		$style[]    = $background['style'] ? $background['style'] : '';
 
+		// Section dividers 
+		$type       = array( 'top' => get_sub_field('top-divider'), 'bottom' => get_sub_field('bottom-divider') );
+		get_section_dividers( $type, $the_section_row );
+
 		// Compile styles
 		$attr_style = 'style="' . generate_classlist( $style ) . '"';
 		$attrs[]    = $attr_style;
