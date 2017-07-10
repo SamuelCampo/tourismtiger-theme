@@ -153,16 +153,17 @@
 
             var $field      = $(this);                     // Wrapper inside which will be loaded new items
             var id          = $field.attr('id');           // Wrapper's id
-            var fieldStatus = +$field.data('data-status'); // Status of count printed items inside the wrapper
-            var fieldName   = $field.data('data-field');   // ACF Field name
-            var fieldOffset = +$field.data('data-offset'); // How many fields to print
-            var fieldLack   = +$field.data('data-lack');   // Count of lack fields
+            var fieldStatus = +$field.attr('data-status'); // Status of count printed items inside the wrapper
+            var fieldName   = $field.attr('data-field');   // ACF Field name
+            var fieldOffset = +$field.attr('data-offset'); // How many fields to print
+            var fieldLack   = +$field.attr('data-lack');   // Count of lack fields
+            var fieldMethod = $field.attr('data-method');
 
             if ( fieldLack > 0 && $(id).length === 1 ) {
 
                 $.post(
                     myajax.url, {
-                      'action': 'ajax_acf_load',
+                      'action': fieldMethod,
                       'post_id': global_var.post_id,
                       'offset': fieldOffset,
                       'nonce': global_var.ajaxnonce,
@@ -170,12 +171,12 @@
                       'status': fieldStatus
                     },
                     function (json) {
-                        $(id).append(json['content']);
+                        $field.append(json['content']);
 
                         // Update data attrs
                         fieldStatus = json['status'];
                         fieldLack -= 1;
-                        $field.data('data-total', fieldLack);
+                        $field.data('data-lack', fieldLack);
 
                         $(document).controller();
 
