@@ -53,10 +53,17 @@
 		init: function () {
 
 			aload();
-			$(document).primaryContent('init');
+            $(document).primaryContent('init');
 			$(document).popup('init');
 			$(document).heroArea('init');
 			$(document).acfApi('init');
+		},
+
+		/**
+		 * Calls after window loaded
+		 */
+		onLoad: function () {
+            $(document).primaryContent('onLoad');
 		}
 	};
 
@@ -78,6 +85,7 @@
 
 	$(function(){
 		$(window).controller('init');
+		$(window).controller('onLoad');
 	});
 
 }));

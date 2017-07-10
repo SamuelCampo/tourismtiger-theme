@@ -118,7 +118,7 @@
 			/**
 			 * Hero area slider
 			 */
-			if ($('.hero-area--bg__wrap').length > 0) {
+			if ($('.hero-area--bg__wrap').length > 0 && global_var.dev != true) {
 				$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
 				$('.hero-area--bg__wrap').slick({
 					arrows: false,

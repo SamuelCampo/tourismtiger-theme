@@ -13310,6 +13310,20 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					$self.addClass('js-handled');
 				}
 			});
+		},
+
+		/**
+		 * After onload
+		 * @return {[type]} [description]
+		 */
+		onLoad: function () {
+			var $wrapper = $('.primary-content__wrapper');
+
+            try {
+                $wrapper.acfApi('loadAjax');
+            } catch (e) {
+                console.error('Load ajax error: ' + e); // pass exception object to error handler
+            }
 		}
 
 	};
@@ -13515,7 +13529,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 			/**
 			 * Hero area slider
 			 */
-			if ($('.hero-area--bg__wrap').length > 0) {
+			if ($('.hero-area--bg__wrap').length > 0 && global_var.dev != true) {
 				$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
 				$('.hero-area--bg__wrap').slick({
 					arrows: false,
@@ -13688,15 +13702,17 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
             /**
              * Init ACF Google maps
              */
-			var map = null;
-			$('.acf-map').each(function(){
-				map = new_map( $(this) );
-			});
+            if (global_var.dev != true) {
+                var map = null;
+                $('.acf-map').each(function(){
+                    map = new_map( $(this) );
+                });
+            }
 
 		},
 
         loadAjax: function() {
-  
+
             var $field      = $(this);                     // Wrapper inside which will be loaded new items
             var id          = $field.attr('id');           // Wrapper's id
             var fieldStatus = +$field.data('data-status'); // Status of count printed items inside the wrapper
@@ -13726,7 +13742,11 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
                         $(document).controller();
 
                         if (json['more']) {
-                            $$field.acfApi('loadAjax');
+                            try {
+                                $field.acfApi('loadAjax');
+                            } catch (e) {
+                                console.error('Load ajax error.'); // pass exception object to error handler
+                            }
                         }
                     },
                     'json'
@@ -13784,10 +13804,17 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 		init: function () {
 
 			aload();
-			$(document).primaryContent('init');
+            $(document).primaryContent('init');
 			$(document).popup('init');
 			$(document).heroArea('init');
 			$(document).acfApi('init');
+		},
+
+		/**
+		 * Calls after window loaded
+		 */
+		onLoad: function () {
+            $(document).primaryContent('onLoad');
 		}
 	};
 
@@ -13809,6 +13836,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 	$(function(){
 		$(window).controller('init');
+		$(window).controller('onLoad');
 	});
 
 }));
