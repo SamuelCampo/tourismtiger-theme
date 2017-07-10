@@ -140,15 +140,17 @@
             /**
              * Init ACF Google maps
              */
-			var map = null;
-			$('.acf-map').each(function(){
-				map = new_map( $(this) );
-			});
+            if (global_var.dev != true) {
+                var map = null;
+                $('.acf-map').each(function(){
+                    map = new_map( $(this) );
+                });
+            }
 
 		},
 
         loadAjax: function() {
-  
+
             var $field      = $(this);                     // Wrapper inside which will be loaded new items
             var id          = $field.attr('id');           // Wrapper's id
             var fieldStatus = +$field.data('data-status'); // Status of count printed items inside the wrapper
@@ -178,7 +180,11 @@
                         $(document).controller();
 
                         if (json['more']) {
-                            $$field.acfApi('loadAjax');
+                            try {
+                                $field.acfApi('loadAjax');
+                            } catch (e) {
+                                console.error('Load ajax error.'); // pass exception object to error handler
+                            }
                         }
                     },
                     'json'

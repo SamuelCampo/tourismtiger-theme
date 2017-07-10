@@ -107,6 +107,20 @@
 					$self.addClass('js-handled');
 				}
 			});
+		},
+
+		/**
+		 * After onload
+		 * @return {[type]} [description]
+		 */
+		onLoad: function () {
+			var $wrapper = $('.primary-content__wrapper');
+
+            try {
+                $wrapper.acfApi('loadAjax');
+            } catch (e) {
+                console.error('Load ajax error: ' + e); // pass exception object to error handler
+            }
 		}
 
 	};
