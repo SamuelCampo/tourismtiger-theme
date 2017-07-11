@@ -120,15 +120,37 @@
 			 */
 			$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
 			
-			if ($('.hero-area--bg__wrap').length > 0 && global_var.dev != true) {
-				$('.hero-area--bg__wrap').slick({
-					arrows: false,
-					slidesToScroll: 1,
-					autoplay: true,
-					autoplaySpeed: 5000,
-					speed: 1500,
-					fade: true,
-				});
+			if ($('.hero-area--bg__wrap:not(".js-handled")').length > 0 && global_var.dev != true) {
+				try {
+					$('.hero-area--bg__wrap').addClass('js-handled').slick({
+						arrows: false,
+						slidesToScroll: 1,
+						autoplay: true,
+						autoplaySpeed: 5000,
+						speed: 1500,
+						fade: true,
+					});
+				} catch (e) {
+					console.log('Can\'t init slick-slider carousel. Error message: ' + e);
+
+					/**
+					 * Choose each section which requires slick-slider handling 
+					 */
+					var $wrapper = $('.hero-area--bg__wrap:not(".js-handled")');
+					$wrapper.each(function(){
+						var $self     = $(this);
+						var $children = $self.children();
+
+						/** delete all slider except the first */
+						$children.each(function(index){
+							var $child = $(this);
+
+							if ( index != 0 ) {
+								$child.detach();
+							}
+						});
+					});
+				}
 			}
 
 		}
