@@ -13715,7 +13715,11 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
             /**
              * Load google maps api
              */
-            load_google_maps_api();
+            try {
+                load_google_maps_api();
+            } catch (e) {
+                console.error('Can\'t load google maps api via ajax.'); // pass exception object to error handler
+            }
 
             /**
              * Init ACF Google maps
