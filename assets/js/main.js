@@ -13716,32 +13716,11 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 
     /**
-     * Get googlw maps via AJAX
-     */
-    function load_google_maps_api() {
-        var url = 'https://maps.googleapis.com/maps/api/js?key=' + global_var.google_maps_key;
-
-        $.getScript( url, function( data, textStatus, jqxhr ) {
-          console.log( "Google Maps API status: " + textStatus );
-        });
-    }
-
-
-    /**
      * Metods will be used in acfApi method
      */
 	var methods = {
 
 		init: function () {
-
-            /**
-             * Load google maps api
-             */
-            try {
-                load_google_maps_api();
-            } catch (e) {
-                console.error('Can\'t load google maps api via ajax. Error message: '); 
-            }
 
             /**
              * Init ACF Google maps
