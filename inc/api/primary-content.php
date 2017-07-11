@@ -158,3 +158,174 @@ function the_section_embed_bg( $the_section_row ) {
 	echo "<div class='primary-content--bg_video'>{$video}</div>";
     return null;
 }
+
+
+/**
+ * Get section dividers
+ *
+ * Returns array of top and bottom divider 
+ * values related with current section, 
+ * besides includes html tags to showing 
+ * dividers on a page.
+ *
+ * @param $type (array) type of top and bottom dividers
+ * @param $the_section_row (array) list of fields' values 
+ *        of current's loop the_row() 
+ */
+function get_section_dividers( $type, $the_section_row ) {
+
+    // Assign action to output top divider if it's exist
+    if ( $type['top'] && $type['top'] != 'none'  ) 
+        add_action( 'after_open_section_tag', 'the_section_top_divider', 20, 1 );
+
+    // Assign action to output bottom divider if it's exist
+    if ( $type['bottom'] && $type['bottom'] != 'none' ) 
+        add_action( 'before_close_section_tag', 'the_section_bottom_divider', 20, 1 );
+
+    return null;
+}
+
+
+/**
+ * Echo scurrent section's top divider
+ * 
+ * @param  $the_section_row (array) current the-_row loop array
+ * @return null && echo html element
+ */
+function the_section_top_divider( $the_section_row ) {
+    $html = get_section_top_divider( $the_section_row );
+    echo $html;
+    return null;
+}
+
+
+/**
+ * Generate html element of top divider
+ * 
+ * @param  $the_section_row (array) current the-_row loop array
+ * @return string - html element 
+ */
+function get_section_top_divider( $the_section_row ) {
+    $output = '';
+
+    if ( $the_section_row['field_5821df8eabd7d'] === 'repeater' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e00cabd7e'], 'full' );
+        $output .= "<div class='top-divider top-divider_repeater' data-image='{$image[0]}'></div>";
+
+    elseif ( $the_section_row['field_5821df8eabd7d'] === 'image' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e00cabd7e'], 'full' );
+        $output .= "<div class='top-divider top-divider_image' data-image='{$image[0]}'></div>";
+
+    elseif ( $the_section_row['field_5821df8eabd7d'] === 'line' ) :
+        $color   = $the_section_row['tour_pc-td--line-color'] ? $the_section_row['tour_pc-td--line-color'] : '#fff';
+        $width   = $the_section_row['tour_pc-td--line-thickess'] ? $the_section_row['tour_pc-td--line-thickess'] : 0;
+        $output .= "<hr class='top-divider top-divider_line' style='border-color:{$color};border-width:{$width}px;' />";
+
+    endif;
+
+    return $output;
+}
+
+
+/**
+ * Echo scurrent section's bottom divider
+ * 
+ * @param  $the_section_row (array) current the-_row loop array
+ * @return null && echo html element
+ */
+function the_section_bottom_divider( $the_section_row ) {
+    $html = get_section_bottom_divider( $the_section_row );
+    echo $html;
+    return null;
+}
+
+
+/**
+ * Generate html element of bottom divider
+ * 
+ * @param  $the_section_row (array) current the-_row loop array
+ * @return string - html element 
+ */
+function get_section_bottom_divider( $the_section_row ) {
+    $output = '';
+
+    if ( $the_section_row['field_5821e14dd0f11'] === 'repeater' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e1b1d0f13'], 'full' );
+        $output .= "<div class='bottom-divider bottom-divider_repeater' data-image='{$image[0]}'></div>";
+
+    elseif ( $the_section_row['field_5821e14dd0f11'] === 'image' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e1b1d0f13'], 'full' );
+        $output .= "<div class='bottom-divider bottom-divider_image' data-image='{$image[0]}'></div>";
+
+    elseif ( $the_section_row['field_5821e14dd0f11'] === 'line' ) :
+        $color   = $the_section_row['tour_pc-bd--line-color'] ? $the_section_row['tour_pc-bd--line-color'] : '#fff';
+        $width   = $the_section_row['tour_pc-bd--line-thickess'] ? $the_section_row['tour_pc-bd--line-thickess'] : 0;
+        $output .= "<hr class='bottom-divider bottom-divider_line' style='border-color:{$color};border-width:{$width}px;' />";
+
+    endif;
+
+    return $output;
+}
+
+
+add_action('wp_ajax_get_section_ajax', 'get_section_ajax');
+add_action('wp_ajax_nopriv_get_section_ajax', 'get_section_ajax');
+
+function get_section_ajax() {
+    
+    /**
+     * Verify current user
+     */
+    if ( !isset($_POST['nonce']) || !wp_verify_nonce( $_POST['nonce'], 'ajax_nonce' ) ) :
+        echo json_encode( array( 'content' => '(1)Please wait...', 'more' => false, 'offset' => 1 ) );
+        exit;
+    endif;
+    
+    /**
+     * If post ID or offset was missed, return promisse 
+     */
+    if (!isset($_POST['post_id']) || !isset($_POST['offset'])) :
+        echo json_encode( array( 'content' => '(2)Please wait...', 'more' => false, 'offset' => 1 ) );
+        exit;
+    endif;
+
+    /**
+     * Common variables
+     */
+    $start   = $_POST['status'];
+    $post_id = $_POST['post_id'];
+    $field   = $_POST['field'];
+    $offset  = $_POST['offset'];
+    $more = false;
+
+    ob_start();
+
+    if ( have_rows( $field, $post_id ) ) :
+        $total = count( get_field( $field, $post_id  ) );
+        $count = 1;
+        $times = 0;
+
+        while ( have_rows( $field, $post_id ) ) :
+            $the_section_row = the_row();
+
+            if ( $count > $start ) :
+                include get_template_directory() . '/template-parts/section.php';
+                $times++;
+
+                if ( $times >= $offset )
+                    break;
+            endif;
+
+            $count++; 
+        endwhile;
+    endif;
+
+    $content = ob_get_clean();
+
+    if ($total > $count) 
+        $more = true;
+
+    echo json_encode( array( 'content' => $content, 'more' => $more, 'status' => $count ) );
+    exit;
+
+}

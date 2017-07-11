@@ -14,5 +14,5 @@
 <div id="wrapper">
 <div id="body-class"  <?php body_class(); ?>>
 
-<?php get_template_part( 'template-parts/hero-area' ); ?>
-<?php get_template_part( 'template-parts/primary-content' ); ?>
+<?php include get_template_directory() . '/template-parts/hero-area.php'; ?>
+<?php include get_template_directory() . '/template-parts/primary-content.php'; ?>
