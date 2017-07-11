@@ -131,11 +131,28 @@
 
 
     /**
+     * Get googlw maps via AJAX
+     */
+    function load_google_maps_api() {
+        var url = 'https://maps.googleapis.com/maps/api/js?key=' + global_var.google_maps_key;
+
+        $.getScript( url, function( data, textStatus, jqxhr ) {
+          console.log( "Google Maps API status: " + textStatus );
+        });
+    }
+
+
+    /**
      * Metods will be used in acfApi method
      */
 	var methods = {
 
 		init: function () {
+
+            /**
+             * Load google maps api
+             */
+            load_google_maps_api();
 
             /**
              * Init ACF Google maps
