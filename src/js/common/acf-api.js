@@ -155,7 +155,7 @@
             try {
                 load_google_maps_api();
             } catch (e) {
-                console.error('Can\'t load google maps api via ajax.'); // pass exception object to error handler
+                console.error('Can\'t load google maps api via ajax. Error message: '); 
             }
 
             /**
@@ -164,7 +164,11 @@
             if (global_var.dev != true) {
                 var map = null;
                 $('.acf-map').each(function(){
-                    map = new_map( $(this) );
+                    try {
+                        map = new_map( $(this) );
+                    } catch (e) {
+                        console.error('Can\'t call Google Maps function. Error message: ' + e); 
+                    }
                 });
             }
 
@@ -201,18 +205,27 @@
                         fieldLack -= 1;
                         $field.attr('data-lack', fieldLack);
 
+                        /**
+                         * Re-init core scripts
+                         */
                         try {
                             $(document).controller();
                         } catch (e) {
-                            console.error('During ajax the load controler returned error.'); // pass exception object to error handler
+                            console.error('During ajax the load controler returned error. Message: ' + e); // pass exception object to error handler
                         }
 
+                        /**
+                         * Load more sections.
+                         * Re-call current function
+                         */
                         if (json['more']) {
                             try {
                                 $('#'+id).acfApi('loadAjax');
                             } catch (e) {
                                 console.error('Load ajax error.'); // pass exception object to error handler
                             }
+                        } else {
+                            console.log('loadAjax method has loaded all rows successfull!');
                         }
                     },
                     'json'
