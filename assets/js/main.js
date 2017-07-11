@@ -13531,15 +13531,37 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 			 */
 			$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
 			
-			if ($('.hero-area--bg__wrap').length > 0 && global_var.dev != true) {
-				$('.hero-area--bg__wrap').slick({
-					arrows: false,
-					slidesToScroll: 1,
-					autoplay: true,
-					autoplaySpeed: 5000,
-					speed: 1500,
-					fade: true,
-				});
+			if ($('.hero-area--bg__wrap:not(".js-handled")').length > 0 && global_var.dev != true) {
+				try {
+					$('.hero-area--bg__wrap').addClass('js-handled').slick({
+						arrows: false,
+						slidesToScroll: 1,
+						autoplay: true,
+						autoplaySpeed: 5000,
+						speed: 1500,
+						fade: true,
+					});
+				} catch (e) {
+					console.log('Can\'t init slick-slider carousel. Error message: ' + e);
+
+					/**
+					 * Choose each section which requires slick-slider handling 
+					 */
+					var $wrapper = $('.hero-area--bg__wrap:not(".js-handled")');
+					$wrapper.each(function(){
+						var $self     = $(this);
+						var $children = $self.children();
+
+						/** delete all slider except the first */
+						$children.each(function(index){
+							var $child = $(this);
+
+							if ( index != 0 ) {
+								$child.detach();
+							}
+						});
+					});
+				}
 			}
 
 		}
@@ -13706,7 +13728,11 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
             if (global_var.dev != true) {
                 var map = null;
                 $('.acf-map').each(function(){
-                    map = new_map( $(this) );
+                    try {
+                        map = new_map( $(this) );
+                    } catch (e) {
+                        console.error('Can\'t call Google Maps function. Error message: ' + e); 
+                    }
                 });
             }
 
@@ -13743,18 +13769,27 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
                         fieldLack -= 1;
                         $field.attr('data-lack', fieldLack);
 
+                        /**
+                         * Re-init core scripts
+                         */
                         try {
                             $(document).controller();
                         } catch (e) {
-                            console.error('During ajax the load controler returned error.'); // pass exception object to error handler
+                            console.error('During ajax the load controler returned error. Message: ' + e); // pass exception object to error handler
                         }
 
+                        /**
+                         * Load more sections.
+                         * Re-call current function
+                         */
                         if (json['more']) {
                             try {
                                 $('#'+id).acfApi('loadAjax');
                             } catch (e) {
                                 console.error('Load ajax error.'); // pass exception object to error handler
                             }
+                        } else {
+                            console.log('loadAjax method has loaded all rows successfull!');
                         }
                     },
                     'json'
