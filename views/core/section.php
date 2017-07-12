@@ -28,6 +28,31 @@
 
 
 	/**
+	 * Get row model data and loop views.
+	 *
+	 * Now, let's check are there any rows in database.
+	 */		
+	if ( have_rows( 'rows' ) ) :
+		?>
+
+		<div id="rows" class="rows">
+
+			<?php
+			/**
+			 * Loop rows
+			 */
+			while ( have_rows( 'rows' ) ) :
+				$the_row = the_row();
+				get_template_part( 'template-parts/row' );
+			endwhile; 
+			?>
+
+		</div>
+
+		<?php
+	endif;
+
+	/**
 	 * Run functions before close tag.
 	 * For exampe it can be used to border divider
 	 *

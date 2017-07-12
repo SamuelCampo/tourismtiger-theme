@@ -30,7 +30,7 @@ if ( have_rows( 'primary-content' ) ) :
 			/**
 			 * Get section template part
 			 */
-			include get_template_directory() . '/template-parts/section.php';
+			include get_template_directory() . '/template-parts/' . get_row_layout() . '.php';
 
 			break;
 		endwhile;

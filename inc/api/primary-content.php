@@ -19,7 +19,7 @@
  *         $output['attrs'] = list of attributes; 
  *         $output['style'] = list of styles
  */
-function get_section_background( $type, $the_row ) {
+function get_section_background( $type, $the_row, $id ) {
 
     $output = array( 'attrs' => array(), 'style' => array() );
     
@@ -30,10 +30,10 @@ function get_section_background( $type, $the_row ) {
      * Below we use field keys instead of fields name 
      * because $the_row variable keeps just keys
      */
-    $color             = $the_row['field_5821d89ecaee3'];
-    $is_fixed          = $the_row['field_5821d7db6de3b'] === 'yep' ? true : false; 
-    $is_expand         = $the_row['field_582si7ez6imbg'] === 'yep' ? true : false; 
-    $map               = $the_row['field_5821d8c5caee4']; // $map['lat'],  $map['lng'], 
+    $color             = $the_row[$id . '_5821d89ecaee3'];
+    $is_fixed          = $the_row[$id . '_5821d7db6de3b'] === 'yep' ? true : false; 
+    $is_expand         = $the_row[$id . '_582si7ez6imbg'] === 'yep' ? true : false; 
+    $map               = $the_row[$id . '_5821d8c5caee4']; // $map['lat'],  $map['lng'], 
 
     $output['style'][] = "background-color:{$color};";
 
@@ -43,7 +43,7 @@ function get_section_background( $type, $the_row ) {
      */
     switch ($type) :
         case 'image':
-    		$image             = wp_get_attachment_image_src( $the_row['field_5821d6db6de3a'], 'full' );
+    		$image             = wp_get_attachment_image_src( $the_row[$id . '_5821d6db6de3a'], 'full' );
             $output['attrs'][] = "data-section-image='{$image[0]}'";
             $output['style'][] = "background-repeat:no-repeat;";
 
@@ -56,7 +56,7 @@ function get_section_background( $type, $the_row ) {
             break;
 
         case 'texture':
-    		$image             = wp_get_attachment_image_src( $the_row['field_5821d6db6de3a'], 'full' );
+    		$image             = wp_get_attachment_image_src( $the_row[$id . '_5821d6db6de3a'], 'full' );
             $output['attrs'][] = "data-section-image='{$image[0]}'";
             break;
 
@@ -93,11 +93,11 @@ function get_section_background( $type, $the_row ) {
  * @param  array $the_section_row 
  * @return string
  */
-function get_section_video_bg( $the_section_row ) {
-    $poster = wp_get_attachment_image_src( $the_section_row['field_5821d6db6de3a'], 'full' );
-    $webm   = $the_section_row['field_5821d944caee7'];  
-    $ogv    = $the_section_row['field_5821d972caee8'];  
-    $mp4    = $the_section_row['field_5821d983caee9']; 
+function get_section_video_bg( $the_section_row, $id ) {
+    $poster = wp_get_attachment_image_src( $the_section_row[$id . '_5821d6db6de3a'], 'full' );
+    $webm   = $the_section_row[$id . '_5821d944caee7'];  
+    $ogv    = $the_section_row[$id . '_5821d972caee8'];  
+    $mp4    = $the_section_row[$id . '_5821d983caee9']; 
 
 	$video = generate_video_bg_html( $webm, $ogv, $mp4, $poster );
 
@@ -111,7 +111,7 @@ function get_section_video_bg( $the_section_row ) {
  * @param  array $the_section_row 
  * @return string
  */
-function the_section_video_bg( $the_section_row ) {
+function the_section_video_bg( $the_section_row, $id ) {
 	$video = get_section_video_bg( $the_section_row );
 	echo "<div class='primary-content--bg_video'>{$video}</div>";
     return null;
@@ -124,9 +124,9 @@ function the_section_video_bg( $the_section_row ) {
  * @param  array $the_section_row 
  * @return string
  */
-function get_section_embed_bg( $the_section_row ) {
+function get_section_embed_bg( $the_section_row, $id ) {
 
-	$iframe = '<iframe src="' . $the_section_row['field_5821d9b6caeea'] . '"></iframe>';
+	$iframe = '<iframe src="' . $the_section_row[$id . '_5821d9b6caeea'] . '"></iframe>';
 
 	preg_match('/src="(.+?)"/', $iframe, $matches);
 	$src = $matches[1];
@@ -153,7 +153,7 @@ function get_section_embed_bg( $the_section_row ) {
  * @param  array $the_section_row 
  * @return string
  */
-function the_section_embed_bg( $the_section_row ) {
+function the_section_embed_bg( $the_section_row, $id ) {
 	$video = get_section_embed_bg( $the_section_row );
 	echo "<div class='primary-content--bg_video'>{$video}</div>";
     return null;
@@ -172,7 +172,7 @@ function the_section_embed_bg( $the_section_row ) {
  * @param $the_section_row (array) list of fields' values 
  *        of current's loop the_row() 
  */
-function get_section_dividers( $type, $the_section_row ) {
+function get_section_dividers( $type, $the_section_row, $id ) {
 
     // Assign action to output top divider if it's exist
     if ( $type['top'] && $type['top'] != 'none'  ) 
@@ -192,7 +192,7 @@ function get_section_dividers( $type, $the_section_row ) {
  * @param  $the_section_row (array) current the-_row loop array
  * @return null && echo html element
  */
-function the_section_top_divider( $the_section_row ) {
+function the_section_top_divider( $the_section_row, $id ) {
     $html = get_section_top_divider( $the_section_row );
     echo $html;
     return null;
@@ -205,18 +205,18 @@ function the_section_top_divider( $the_section_row ) {
  * @param  $the_section_row (array) current the-_row loop array
  * @return string - html element 
  */
-function get_section_top_divider( $the_section_row ) {
+function get_section_top_divider( $the_section_row, $id ) {
     $output = '';
 
-    if ( $the_section_row['field_5821df8eabd7d'] === 'repeater' ) :
-        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e00cabd7e'], 'full' );
+    if ( $the_section_row[$id . '_5821df8eabd7d'] === 'repeater' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row[$id . '_5821e00cabd7e'], 'full' );
         $output .= "<div class='top-divider top-divider_repeater' data-image='{$image[0]}'></div>";
 
-    elseif ( $the_section_row['field_5821df8eabd7d'] === 'image' ) :
-        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e00cabd7e'], 'full' );
+    elseif ( $the_section_row[$id . '_5821df8eabd7d'] === 'image' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row[$id . '_5821e00cabd7e'], 'full' );
         $output .= "<div class='top-divider top-divider_image' data-image='{$image[0]}'></div>";
 
-    elseif ( $the_section_row['field_5821df8eabd7d'] === 'line' ) :
+    elseif ( $the_section_row[$id . '_5821df8eabd7d'] === 'line' ) :
         $color   = $the_section_row['tour_pc-td--line-color'] ? $the_section_row['tour_pc-td--line-color'] : '#fff';
         $width   = $the_section_row['tour_pc-td--line-thickess'] ? $the_section_row['tour_pc-td--line-thickess'] : 0;
         $output .= "<hr class='top-divider top-divider_line' style='border-color:{$color};border-width:{$width}px;' />";
@@ -233,7 +233,7 @@ function get_section_top_divider( $the_section_row ) {
  * @param  $the_section_row (array) current the-_row loop array
  * @return null && echo html element
  */
-function the_section_bottom_divider( $the_section_row ) {
+function the_section_bottom_divider( $the_section_row, $id ) {
     $html = get_section_bottom_divider( $the_section_row );
     echo $html;
     return null;
@@ -246,18 +246,18 @@ function the_section_bottom_divider( $the_section_row ) {
  * @param  $the_section_row (array) current the-_row loop array
  * @return string - html element 
  */
-function get_section_bottom_divider( $the_section_row ) {
+function get_section_bottom_divider( $the_section_row, $id ) {
     $output = '';
 
-    if ( $the_section_row['field_5821e14dd0f11'] === 'repeater' ) :
-        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e1b1d0f13'], 'full' );
+    if ( $the_section_row[$id . '_5821e14dd0f11'] === 'repeater' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row[$id . '_5821e1b1d0f13'], 'full' );
         $output .= "<div class='bottom-divider bottom-divider_repeater' data-image='{$image[0]}'></div>";
 
-    elseif ( $the_section_row['field_5821e14dd0f11'] === 'image' ) :
-        $image   = wp_get_attachment_image_src( $the_section_row['field_5821e1b1d0f13'], 'full' );
+    elseif ( $the_section_row[$id . '_5821e14dd0f11'] === 'image' ) :
+        $image   = wp_get_attachment_image_src( $the_section_row[$id . '_5821e1b1d0f13'], 'full' );
         $output .= "<div class='bottom-divider bottom-divider_image' data-image='{$image[0]}'></div>";
 
-    elseif ( $the_section_row['field_5821e14dd0f11'] === 'line' ) :
+    elseif ( $the_section_row[$id . '_5821e14dd0f11'] === 'line' ) :
         $color   = $the_section_row['tour_pc-bd--line-color'] ? $the_section_row['tour_pc-bd--line-color'] : '#fff';
         $width   = $the_section_row['tour_pc-bd--line-thickess'] ? $the_section_row['tour_pc-bd--line-thickess'] : 0;
         $output .= "<hr class='bottom-divider bottom-divider_line' style='border-color:{$color};border-width:{$width}px;' />";

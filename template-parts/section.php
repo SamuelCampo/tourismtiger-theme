@@ -6,6 +6,8 @@
  * @author  tourismtiger
  */
 
+$section_id     = 'pr-co';
+
 // Common 
 $attrs      = array();
 $style      = array();

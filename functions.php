@@ -77,6 +77,12 @@ include THEME_INC_PATH . '/post-types/testimonial.php';
 
 
 /**
+ * Templates post type
+ */
+include THEME_INC_PATH . '/post-types/template.php';
+
+
+/**
  * ACF Options
  *
  * 1. Include ACF Pro
@@ -155,27 +161,9 @@ include_once THEME_INC_PATH . '/stylings/init.php';
 
 
 /**
- * ACF Local Fields for Primary Content 
+ * Init local fields
  */
-include THEME_INC_PATH . '/local-fields/primary-content.php';
-
-
-/**
- * ACF Local Fields for Hero Area
- */
-include THEME_INC_PATH . '/local-fields/hero-area.php';
-
-
-/**
- * ACF Local Fields for Product page
- */
-include THEME_INC_PATH . '/local-fields/product-page.php';
-
-
-/**
- * ACF Local Fields for Testimonials page
- */
-include THEME_INC_PATH . '/local-fields/testimonials-page.php';
+include THEME_INC_PATH . '/local-fields/init.php';
 
 
 /**
