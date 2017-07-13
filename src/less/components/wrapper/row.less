@@ -1,54 +1,286 @@
 /*  =========================
     Row UI */
 
-.row-wrapper {
-	background-color: #eee;
+.rows {
+	display: flex;
+}
 
-	&.layout {
-		&_scroll {
+.row {
+	&.cols {
+		&_count {
+			&_1 {
+				.row--column {
+					width: 100%;
+				}
+			}
 
+			&_2 {
+				.row--column {
+					width: 50%;
+
+					@media (max-width: @mobile) {
+						width: 100%;
+					}
+				}
+			}
+
+			&_3 {
+				.row--column {
+					width: 33%;
+
+					@media (max-width: @mobile) {
+						width: 100%;
+					}
+				}
+			}
+
+			&_4 {
+				.row--column {
+					width: 25%;
+
+					@media (max-width: @padmini) {
+						width: 50%;
+					}
+
+					@media (max-width: @mobile) {
+						width: 100%;
+					}
+				}
+			}
+
+			&_5 {
+				.row--column {
+					width: 20%;
+
+					@media (max-width: @laptop) {
+						width: 25%;
+					}
+
+					@media (max-width: @pad) {
+						width: 33%;
+					}
+
+					@media (max-width: @padmini) {
+						width: 50%;
+					}
+
+					@media (max-width: @mobile) {
+						width: 100%;
+					}
+				}
+			}
+
+			&_6 {
+				.row--column {
+					width: 16.5%;
+
+					@media (max-width: @laptop) {
+						width: 20%;
+					}
+
+					@media (max-width: @pad) {
+						width: 25%;
+					}
+
+					@media (max-width: @padmini) {
+						width: 50%;
+					}
+
+					@media (max-width: @mobile) {
+						width: 100%;
+					}
+				}
+			}
 		}
 
-		&_wrap {
-			&.col {
-				&_1 {
-					.row-wrapper--item {
-						width: 100%;
-					}					
-				}
+		&_margins {
+			&_none {
+				// Nothing
+			}
 
-				&_2 {
-					.row-wrapper--item {
-						width: 50%;
-					}					
+			&_normal {
+				.row--column {
+					padding: 15px;
 				}
+			}
+		}
 
-				&_3 {
-					.row-wrapper--item {
-						width: 33.33%;
-					}					
+		&_placement {
+			&_stretch {
+				align-items: stretch;
+			}
+
+			&_top {
+				align-items: flex-start;
+			}
+
+			&_middle {
+				align-items: center;
+			}
+
+			&_bottom {
+				align-items: flex-end;
+			}
+		}
+
+		&_align {
+			&_left {
+				justify-content: flex-start;
+			}
+
+			&_center {
+				justify-content: center;
+			}
+
+			&_right {
+				justify-content: flex-end;
+			}
+
+			&_space-around {
+				justify-content: space-around;
+			}
+
+			&_space-between {
+				justify-content: space-between;
+			}
+		}
+
+		&_ratio {
+			&_equal {
+				// Nothing
+			}
+
+			&_left {
+				.row-column {
+					&:nth-child(odd) {
+						width: 66%;
+					}
+
+					&:nth-child(even) {
+						width: 33%;
+					}
 				}
+			}
 
-				&_4 {
-					.row-wrapper--item {
-						width: 25%;
-					}					
-				}
+			&_right {
+				.row-column {
+					&:nth-child(odd) {
+						width: 33%;
+					}
 
-				&_5 {
-					.row-wrapper--item {
-						width: 20%;
-					}					
-				}
-
-				&_6 {
-					.row-wrapper--item {
-						width: 16.66%;
-					}					
+					&:nth-child(even) {
+						width: 66%;
+					}
 				}
 			}
 		}
 	}
 
+	&.type {
+		&_content {
 
+		}
+
+		&_blog {
+
+		}
+	}
+
+	&.layout {
+		&_grid {
+			display: flex;
+		}
+
+		&_carousel {
+
+		}
+	}
+
+	&.width {
+		&_full {
+			max-width: 100%;
+		}
+
+		&_four-five {
+			max-width: 80%;
+
+			@media (max-width: @padmini) {
+				max-width: 100%;
+			}
+		}
+
+		&_three-four {
+			max-width: 75%;
+
+			@media (max-width: @laptop) {
+				max-width: 80%;
+			}
+
+			@media (max-width: @padmini) {
+				max-width: 100%;
+			}
+		}
+
+		&_one-two {
+			max-width: 50%;
+
+			@media (max-width: @laptop) {
+				max-width: 60%;
+			}
+
+			@media (max-width: @pad) {
+				max-width: 75%;
+			}
+
+			@media (max-width: @padmini) {
+				max-width: 100%;
+			}
+		}
+	}
+
+	&.position {
+		&_left {
+			margin-right: auto;
+		}
+
+		&_center {	
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		&_right {
+			margin-left: auto;
+		}
+	}
+
+	&.vertical {
+		&_stretch {
+			// Nothing
+		}
+
+		&_top {
+			margin-bottom: auto;
+		}
+
+		&_middle {
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+
+		&_bottom {
+			margin-top: auto;
+		}
+	}
+
+	&.arrows {
+		&_type {
+			&_auto {
+
+			}
+
+			&_custom {
+
+			}
+		}
+	}
 }
