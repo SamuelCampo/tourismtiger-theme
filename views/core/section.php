@@ -23,7 +23,7 @@
 	 * that acton will be cleaned up except 
 	 * the functions under 'priority 10'
 	 */
-	do_action( 'after_open_section_tag', $the_section_row ); 
+	do_action( 'after_open_section_tag', $the_section_row, $section_id ); 
 	remove_all_actions( 'after_open_section_tag', 10);
 
 
@@ -43,6 +43,8 @@
 			 */
 			while ( have_rows( 'rows' ) ) :
 				$the_row = the_row();
+				$layout  = get_row_layout();
+				
 				get_template_part( 'template-parts/row' );
 			endwhile; 
 			?>
@@ -60,7 +62,7 @@
 	 * that acton will be cleaned up except 
 	 * the functions under 'priority 10'
 	 */
-	do_action( 'before_close_section_tag', $the_section_row );
+	do_action( 'before_close_section_tag', $the_section_row, $section_id );
 	remove_all_actions( 'before_close_section_tag', 10);
 	?>
 

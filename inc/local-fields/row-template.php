@@ -24,7 +24,7 @@ acf_add_local_field_group(array (
 					'label' => 'Row',
 					'display' => 'block',
 					'max' => 1,
-					'sub_fields' => array(),
+					'sub_fields' => get_row_local_field( 'ro-te' ),
 				)
 			)
 		)

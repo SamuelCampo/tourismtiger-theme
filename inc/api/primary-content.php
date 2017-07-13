@@ -23,7 +23,7 @@ function get_section_background( $type, $the_row, $id ) {
 
     $output = array( 'attrs' => array(), 'style' => array() );
     
-    if ( !$type || $type == 'color' || !$the_row )
+    if ( !$type || !$the_row )
         return $output;
 
     /**
@@ -176,11 +176,11 @@ function get_section_dividers( $type, $the_section_row, $id ) {
 
     // Assign action to output top divider if it's exist
     if ( $type['top'] && $type['top'] != 'none'  ) 
-        add_action( 'after_open_section_tag', 'the_section_top_divider', 20, 1 );
+        add_action( 'after_open_section_tag', 'the_section_top_divider', 20, 2 );
 
     // Assign action to output bottom divider if it's exist
     if ( $type['bottom'] && $type['bottom'] != 'none' ) 
-        add_action( 'before_close_section_tag', 'the_section_bottom_divider', 20, 1 );
+        add_action( 'before_close_section_tag', 'the_section_bottom_divider', 20, 2 );
 
     return null;
 }
@@ -193,7 +193,7 @@ function get_section_dividers( $type, $the_section_row, $id ) {
  * @return null && echo html element
  */
 function the_section_top_divider( $the_section_row, $id ) {
-    $html = get_section_top_divider( $the_section_row );
+    $html = get_section_top_divider( $the_section_row, $id );
     echo $html;
     return null;
 }
@@ -234,7 +234,7 @@ function get_section_top_divider( $the_section_row, $id ) {
  * @return null && echo html element
  */
 function the_section_bottom_divider( $the_section_row, $id ) {
-    $html = get_section_bottom_divider( $the_section_row );
+    $html = get_section_bottom_divider( $the_section_row, $id );
     echo $html;
     return null;
 }
@@ -307,9 +307,10 @@ function get_section_ajax() {
 
         while ( have_rows( $field, $post_id ) ) :
             $the_section_row = the_row();
+            $section_id      = 'pr-co';
 
             if ( $count > $start ) :
-                include get_template_directory() . '/template-parts/section.php';
+                include get_template_directory() . '/template-parts/' . get_row_layout() . '.php';
                 $times++;
 
                 if ( $times >= $offset )
