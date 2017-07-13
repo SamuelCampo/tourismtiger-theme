@@ -26,11 +26,12 @@ if ( have_rows( 'primary-content' ) ) :
 		<?php
 		while ( have_rows( 'primary-content' ) ) :
 			$the_section_row = the_row();
+			$section_id      = 'pr-co';
 
 			/**
 			 * Get section template part
 			 */
-			include get_template_directory() . '/template-parts/section.php';
+			include get_template_directory() . '/template-parts/' . get_row_layout() . '.php';
 
 			break;
 		endwhile;
