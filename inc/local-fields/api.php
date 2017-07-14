@@ -414,6 +414,32 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 			),
 		),
 		array (
+			'key' => $id . '_arr28oo659a',
+			'label' => 'Show dots?',
+			'name' => 'show_dots',
+			'type' => 'select',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_5821e6f3d49fc',
+						'operator' => '==',
+						'value' => 'carousel'
+					)
+				),
+			),
+			'wrapper' => array (
+				'width' => '33',
+			),
+			'choices' => array (
+				'false' => 'None',
+				'true' => 'Yes, show'
+			),
+			'default_value' => array (
+				0 => 'false',
+			),
+		),
+		array (
 			'key' => $id . '_arr28ff659a',
 			'label' => 'Arrows type',
 			'name' => 'arrows_type',
