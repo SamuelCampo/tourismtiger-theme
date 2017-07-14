@@ -13307,7 +13307,9 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					 * Set rows' backgrounds
 					 */
 					var $rows = $self.find('.rows');
-					$rows.primaryContent( 'initRows' );
+					if ($rows.children().length > 0) {
+						$rows.primaryContent( 'initRows' );
+					}
 
 
 					/**
