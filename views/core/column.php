@@ -28,7 +28,7 @@
 	/**
 	 * Get column view
 	 */
-	$sizes = rand(200,500) . 'x' . rand(200,500);
+	$sizes = rand(200,500) . 'x' . rand(200,300);
 	echo "<img src='https://placehold.it/{$sizes}' />";
 
 
