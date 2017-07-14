@@ -104,7 +104,9 @@
 					 * Set rows' backgrounds
 					 */
 					var $rows = $self.find('.rows');
-					$rows.primaryContent( 'initRows' );
+					if ($rows.children().length > 0) {
+						$rows.primaryContent( 'initRows' );
+					}
 
 
 					/**
@@ -120,13 +122,14 @@
 		 * Init rows' functions
 		 */
 		initRows: function () {
-			var $rows = $(this);
+			var $this = $(this);
+			var $rows = $this.children();
 
 			/**
 			 * Handle each child-row
 			 */
 			$rows.each(function(){
-				var $self = $(this);
+				var $row = $(this);
 
 				// TODO: functions load more
 				
@@ -134,8 +137,8 @@
 				 * Build carousel
 				 */
 				if ($row.hasClass('layout_carousel')) {
-					var scrollSlides   = $row.attr('data-scroll') || 1;
-					var showSlides     = $row.attr('data-columns') || 1;
+					var scrollSlides   = +$row.attr('data-scroll') || 1;
+					var showSlides     = +$row.attr('data-columns') || 1;
 					var doesShowDots   = $row.attr('data-dots') || false;
 
 					// Media default settings
@@ -161,24 +164,24 @@
 
 					// Set media queries 
 					switch (showSlides) {
-						case 1:
+						case '1':
 							break;
 
-						case 2:
+						case '2':
 							mobileSettings = {
 								slidesToShow: 1,
 								slidesToScroll: 1,
 							};
 							break;
 
-						case 3:
+						case '3':
 							mobileSettings = {
 								slidesToShow: 1,
 								slidesToScroll: 1,
 							};
 							break;
 
-						case 4:
+						case '4':
 							padMiniSettings = {
 								slidesToShow: 2,
 								slidesToScroll: 2,
@@ -189,7 +192,7 @@
 							};
 							break;
 
-						case 5:
+						case '5':
 							laptopSettings = {
 								slidesToShow: 4,
 								slidesToScroll: 4,
@@ -208,7 +211,7 @@
 							};
 							break;
 
-						case 6:
+						case '6':
 							laptopSettings = {
 								slidesToShow: 5,
 								slidesToScroll: 5,

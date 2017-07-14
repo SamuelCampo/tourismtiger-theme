@@ -638,6 +638,9 @@ li {
 a {
   text-decoration: none;
 }
+img {
+  vertical-align: middle;
+}
 /*  =========================
     Mixings */
 .mx-absolute-center {
@@ -4614,6 +4617,11 @@ input[type='submit'][disabled] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 50;
+}
+.row--column img {
+  max-width: 100%;
+  height: auto;
 }
 .row.cols_count_1 .row--column {
   width: 100%;
@@ -4758,45 +4766,45 @@ input[type='submit'][disabled] {
   display: flex;
 }
 .row.width_full {
-  max-width: 100%;
+  width: 100%;
 }
 .row.width_four-five {
-  max-width: 80%;
+  width: 80%;
 }
 @media (max-width: 768px) {
   .row.width_four-five {
-    max-width: 100%;
+    width: 100%;
   }
 }
 .row.width_three-four {
-  max-width: 75%;
+  width: 75%;
 }
 @media (max-width: 1150px) {
   .row.width_three-four {
-    max-width: 80%;
+    width: 80%;
   }
 }
 @media (max-width: 768px) {
   .row.width_three-four {
-    max-width: 100%;
+    width: 100%;
   }
 }
 .row.width_one-two {
-  max-width: 50%;
+  width: 50%;
 }
 @media (max-width: 1150px) {
   .row.width_one-two {
-    max-width: 60%;
+    width: 60%;
   }
 }
 @media (max-width: 992px) {
   .row.width_one-two {
-    max-width: 75%;
+    width: 75%;
   }
 }
 @media (max-width: 768px) {
   .row.width_one-two {
-    max-width: 100%;
+    width: 100%;
   }
 }
 .row.position_left {
