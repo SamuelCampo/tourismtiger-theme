@@ -4614,6 +4614,7 @@ input[type='submit'][disabled] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 50;
 }
 .row.cols_count_1 .row--column {
   width: 100%;
