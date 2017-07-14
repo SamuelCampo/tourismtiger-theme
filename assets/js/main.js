@@ -13331,7 +13331,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 			 * Handle each child-row
 			 */
 			$rows.each(function(){
-				var $self = $(this);
+				var $row = $(this);
 
 				// TODO: functions load more
 				
