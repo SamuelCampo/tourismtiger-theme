@@ -13325,6 +13325,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 		 * Init rows' functions
 		 */
 		initRows: function () {
+			var $this = $(this);
 			var $rows = $(this);
 
 			/**
