@@ -30,6 +30,7 @@ $d['vertical']        = get_sub_field( 'vertical-placement' );
 $d['cols_placement']  = get_sub_field( 'cols-placement' ); 
 $d['margin_top']      = get_sub_field( 'margin_top' ); 
 $d['margin_bottom']   = get_sub_field( 'margin_bottom' ); 
+$d['background']      = get_sub_field( 'background' );
 
 $classes[]            = 'layout_' . $d['layout'];
 $classes[]            = 'width_' . $d['width'];
@@ -77,12 +78,14 @@ if ( $type == 'carousel' ) :
 endif;
 
 // Background 
-if ( $d['background'] = get_sub_field( 'background' ) != 'none' ) :
+if ( $d['background'] != 'none' ) :
 	$d['texture']     = get_sub_field( 'background_texture' ); 
 	$d['color']       = get_sub_field( 'background_color' ); 
 
-	$style[]          = $d['background'] == 'texture' && $d['texture'] ? "background-image:url({$d['texture']});" : '';
-	$style[]          = $d['background'] == 'color' && $d['color'] ? "background-color:{$d['color']};" : '';
+	$classes[]        = 'background_' . $d['background'];
+
+	$style[]          = $d['background'] == 'texture' ? "background-image:url({$d['texture']});" : '';
+	$style[]          = $d['background'] == 'color' ? "background-color:{$d['color']};" : '';
 endif;
 
 // Compile classes and attributes
