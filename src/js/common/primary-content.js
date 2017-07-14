@@ -104,7 +104,9 @@
 					 * Set rows' backgrounds
 					 */
 					var $rows = $self.find('.rows');
-					$rows.primaryContent( 'initRows' );
+					if ($rows.children().length > 0) {
+						$rows.primaryContent( 'initRows' );
+					}
 
 
 					/**
