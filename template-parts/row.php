@@ -56,16 +56,19 @@ endif;
 // Carousel
 if ( $type == 'carousel' ) :
 	$d['slides_scroll']   = get_sub_field( 'slides_scroll' ); 
+	$d['show_dots']       = get_sub_field( 'show_dots' ); 
 	$d['arrows_type']     = get_sub_field( 'arrows_type' ); 
 	$d['arrows_size']     = get_sub_field( 'arrows_size' ); 
 	$d['arrows_weight']   = get_sub_field( 'arrows_weight' ); 
 	$d['arrows_position'] = get_sub_field( 'arrows_position' ); 
 
 	$attrs[]              = "data-scroll='{$d['slides_scroll']}'";
-	$attrs[]              = "data-arrow-size='{$d['arrows_size']}'";
-	$attrs[]              = "data-arrow-weight='{$d['arrows_weight']}'";
-	$attrs[]              = "data-arrow-position='{$d['arrows_position']}'";
-	$attrs[]              = "data-columns:{$d['cols_count']};";
+	$attrs[]              = "data-columns='{$d['cols_count']}';";
+	$attrs[]              = "data-dots='{$d['show_dots']}';";
+
+	$classes[]            = "arrows_size_{$d['arrows_size']}";
+	$classes[]            = "arrows_weight_{$d['arrows_weight']}";
+	$classes[]            = "arrows_position_{$d['arrows_position']}";
 endif;
 
 // Background 
@@ -73,8 +76,8 @@ if ( $d['background'] = get_sub_field( 'background' ) != 'none' ) :
 	$d['texture']     = get_sub_field( 'background_texture' ); 
 	$d['color']       = get_sub_field( 'background_color' ); 
 
-	$style[]          = $d['background'] == 'texture' ? "background-image:{$d['texture']};" : '';
-	$style[]          = $d['background'] == 'color' ? "background-color:{$d['color']};" : '';
+	$style[]          = $d['background'] == 'texture' && $d['texture'] ? "background-image:url({$d['texture']});" : '';
+	$style[]          = $d['background'] == 'color' && $d['color'] ? "background-color:{$d['color']};" : '';
 endif;
 
 // Compile classes and attributes

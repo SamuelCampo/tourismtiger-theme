@@ -31,7 +31,7 @@
 
 
 					/**
-					 * Set background image
+					 * Set section background image
 					 */
 					if ($self.attr('data-section-image')) {
 						var url  = $self.attr('data-section-image');
@@ -101,10 +101,176 @@
 
 
 					/**
+					 * Set rows' backgrounds
+					 */
+					var $rows = $self.find('.rows');
+					$rows.primaryContent( 'initRows' );
+
+
+					/**
 					 * Add indicator-class to avoid reworking 
 					 * that file during ajax request
 					 */
 					$self.addClass('js-handled');
+				}
+			});
+		},
+
+		/**
+		 * Init rows' functions
+		 */
+		initRows: function () {
+			var $rows = $(this);
+
+			/**
+			 * Handle each child-row
+			 */
+			$rows.each(function(){
+				var $self = $(this);
+
+				// TODO: functions load more
+				
+				/**
+				 * Build carousel
+				 */
+				if ($row.hasClass('layout_carousel')) {
+					var scrollSlides   = $row.attr('data-scroll') || 1;
+					var showSlides     = $row.attr('data-columns') || 1;
+					var doesShowDots   = $row.attr('data-dots') || false;
+
+					// Media default settings
+					var laptopSettings  = {
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+					};
+
+					var padSettings     = {
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+					};
+
+					var padMiniSettings = {
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+					};
+
+					var mobileSettings  = {
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+					};
+
+					// Set media queries 
+					switch (showSlides) {
+						case 1:
+							break;
+
+						case 2:
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+
+						case 3:
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+
+						case 4:
+							padMiniSettings = {
+								slidesToShow: 2,
+								slidesToScroll: 2,
+							};
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+
+						case 5:
+							laptopSettings = {
+								slidesToShow: 4,
+								slidesToScroll: 4,
+							};
+							padSettings    = {
+								slidesToShow: 3,
+								slidesToScroll: 3,
+							};
+							padMiniSettings = {
+								slidesToShow: 2,
+								slidesToScroll: 2,
+							};
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+
+						case 6:
+							laptopSettings = {
+								slidesToShow: 5,
+								slidesToScroll: 5,
+							};
+							padSettings    = {
+								slidesToShow: 4,
+								slidesToScroll: 4,
+							};
+							padMiniSettings = {
+								slidesToShow: 2,
+								slidesToScroll: 2,
+							};
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+					}
+
+					// Laptop slick settings
+					var laptop = {
+						breakpoint: 1150,
+						settings: laptopSettings
+					};
+
+					// iPad slick settings
+					var pad = {
+						breakpoint: 992,
+						settings: padSettings
+					};
+
+					// iPad Mini slick settings
+					var padMini = {
+						breakpoint: 768,
+						settings: padMiniSettings
+					};
+
+					// Mobile slick settings
+					var mobile = {
+						breakpoint: 568,
+						settings: mobileSettings
+					};
+
+					// General slick settings
+					var values = {
+						infinite: true,
+						lazyLoad: 'ondemand',
+						adaptiveHeight: true,
+						dots: doesShowDots,
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+						focusOnSelect: false,
+  						responsive: [
+  							laptop,
+  							pad,
+  							padMini,
+  							mobile
+  						]
+					};
+
+					// Init slick slider
+					$row.slick(values);
 				}
 			});
 		},
