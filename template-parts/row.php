@@ -30,25 +30,26 @@ $d['vertical']        = get_sub_field( 'vertical-placement' );
 $d['cols_placement']  = get_sub_field( 'cols-placement' ); 
 $d['margin_top']      = get_sub_field( 'margin_top' ); 
 $d['margin_bottom']   = get_sub_field( 'margin_bottom' ); 
+$d['background']      = get_sub_field( 'background' );
 
 $classes[]            = 'layout_' . $d['layout'];
 $classes[]            = 'width_' . $d['width'];
 $classes[]            = 'position_' . $d['position'];
 $classes[]            = 'vertical_' . $d['vertical'];
 $classes[]            = 'cols_placement_' . $d['cols_placement'];
+$classes[]            = 'cols_margins_' . $d['cols_margins'];
 
 $style[]              = $d['margin_top'] ? "margin-top:{$d['margin_top']};" : '';
 $style[]              = $d['margin_bottom'] ? "margin-top:{$d['margin_bottom']};" : '';
 
 
 // Grid
-if ( $type == 'grid' ) :
+if ( $d['layout'] == 'grid' ) :
 	$d['cols_align']      = get_sub_field( 'cols-align' ); 
 	$d['cols_ratio']      = get_sub_field( 'cols-ratio' ); 
 
 	$classes[]            = 'cols_align_' . $d['cols_align'];
 	$classes[]            = 'cols_count_' . $d['cols_count'];
-	$classes[]            = 'cols_margins_' . $d['cols_margins'];
 
 	if ( $d['cols_count'] == 2 ) :
 		$classes[]            = 'cols_ratio_' . $d['cols_ratio'];
@@ -57,7 +58,7 @@ endif;
 
 
 // Carousel
-if ( $type == 'carousel' ) :
+if ( $d['layout'] == 'carousel' ) :
 	$d['slides_scroll']   = get_sub_field( 'slides_scroll' ); 
 	$d['show_dots']       = get_sub_field( 'show_dots' ); 
 	$d['arrows_type']     = get_sub_field( 'arrows_type' ); 
@@ -77,12 +78,14 @@ if ( $type == 'carousel' ) :
 endif;
 
 // Background 
-if ( $d['background'] = get_sub_field( 'background' ) != 'none' ) :
+if ( $d['background'] != 'none' ) :
 	$d['texture']     = get_sub_field( 'background_texture' ); 
 	$d['color']       = get_sub_field( 'background_color' ); 
 
-	$style[]          = $d['background'] == 'texture' && $d['texture'] ? "background-image:url({$d['texture']});" : '';
-	$style[]          = $d['background'] == 'color' && $d['color'] ? "background-color:{$d['color']};" : '';
+	$classes[]        = 'background_' . $d['background'];
+
+	$style[]          = $d['background'] == 'texture' ? "background-image:url({$d['texture']});" : '';
+	$style[]          = $d['background'] == 'color' ? "background-color:{$d['color']};" : '';
 endif;
 
 // Compile classes and attributes

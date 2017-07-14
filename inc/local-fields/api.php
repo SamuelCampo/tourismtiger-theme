@@ -129,7 +129,15 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 				),
 			),
 			'button_label' => 'Add Column',
-			'layouts' => get_column_local_fields( $id )
+			'layouts' => array (
+				array (
+					'key' => $id . '_21126955f123',
+					'name' => 'content',
+					'label' => 'Content card',
+					'display' => 'block',
+					'sub_fields' => get_content_local_field( $id )
+				)
+			)
 		),
 
 		// Options
@@ -663,7 +671,7 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 /**
  * Generates Column local fields array
  */
-function get_column_local_fields( $id = '1234QWERasdf' ) {
+function get_content_local_field( $id = '1234QWERasdf' ) {
 	return array();
 }
 
