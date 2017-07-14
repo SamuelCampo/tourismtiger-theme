@@ -13340,8 +13340,8 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 				 * Build carousel
 				 */
 				if ($row.hasClass('layout_carousel')) {
-					var scrollSlides   = $row.attr('data-scroll') || 1;
-					var showSlides     = $row.attr('data-columns') || 1;
+					var scrollSlides   = +$row.attr('data-scroll') || 1;
+					var showSlides     = +$row.attr('data-columns') || 1;
 					var doesShowDots   = $row.attr('data-dots') || false;
 
 					// Media default settings
