@@ -638,6 +638,9 @@ li {
 a {
   text-decoration: none;
 }
+img {
+  vertical-align: middle;
+}
 /*  =========================
     Mixings */
 .mx-absolute-center {
@@ -4615,6 +4618,10 @@ input[type='submit'][disabled] {
   display: -ms-flexbox;
   display: flex;
   z-index: 50;
+}
+.row--column img {
+  max-width: 100%;
+  height: auto;
 }
 .row.cols_count_1 .row--column {
   width: 100%;
