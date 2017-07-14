@@ -128,7 +128,7 @@
 			 * Handle each child-row
 			 */
 			$rows.each(function(){
-				var $self = $(this);
+				var $row = $(this);
 
 				// TODO: functions load more
 				
