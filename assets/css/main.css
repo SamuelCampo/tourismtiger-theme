@@ -4610,26 +4610,214 @@ input[type='submit'][disabled] {
 }
 /*  =========================
     Row UI */
-.row-wrapper {
-  background-color: #eee;
+.rows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-.row-wrapper.layout_wrap.col_1 .row-wrapper--item {
+.row.cols_count_1 .row--column {
   width: 100%;
 }
-.row-wrapper.layout_wrap.col_2 .row-wrapper--item {
+.row.cols_count_2 .row--column {
   width: 50%;
 }
-.row-wrapper.layout_wrap.col_3 .row-wrapper--item {
-  width: 33.33%;
+@media (max-width: 568px) {
+  .row.cols_count_2 .row--column {
+    width: 100%;
+  }
 }
-.row-wrapper.layout_wrap.col_4 .row-wrapper--item {
+.row.cols_count_3 .row--column {
+  width: 33%;
+}
+@media (max-width: 568px) {
+  .row.cols_count_3 .row--column {
+    width: 100%;
+  }
+}
+.row.cols_count_4 .row--column {
   width: 25%;
 }
-.row-wrapper.layout_wrap.col_5 .row-wrapper--item {
+@media (max-width: 768px) {
+  .row.cols_count_4 .row--column {
+    width: 50%;
+  }
+}
+@media (max-width: 568px) {
+  .row.cols_count_4 .row--column {
+    width: 100%;
+  }
+}
+.row.cols_count_5 .row--column {
   width: 20%;
 }
-.row-wrapper.layout_wrap.col_6 .row-wrapper--item {
-  width: 16.66%;
+@media (max-width: 1150px) {
+  .row.cols_count_5 .row--column {
+    width: 25%;
+  }
+}
+@media (max-width: 992px) {
+  .row.cols_count_5 .row--column {
+    width: 33%;
+  }
+}
+@media (max-width: 768px) {
+  .row.cols_count_5 .row--column {
+    width: 50%;
+  }
+}
+@media (max-width: 568px) {
+  .row.cols_count_5 .row--column {
+    width: 100%;
+  }
+}
+.row.cols_count_6 .row--column {
+  width: 16.5%;
+}
+@media (max-width: 1150px) {
+  .row.cols_count_6 .row--column {
+    width: 20%;
+  }
+}
+@media (max-width: 992px) {
+  .row.cols_count_6 .row--column {
+    width: 25%;
+  }
+}
+@media (max-width: 768px) {
+  .row.cols_count_6 .row--column {
+    width: 50%;
+  }
+}
+@media (max-width: 568px) {
+  .row.cols_count_6 .row--column {
+    width: 100%;
+  }
+}
+.row.cols_margins_normal .row--column {
+  padding: 15px;
+}
+.row.cols_placement_stretch {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+.row.cols_placement_top {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.row.cols_placement_middle {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.row.cols_placement_bottom {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.row.cols_align_left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.row.cols_align_center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.row.cols_align_right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.row.cols_align_space-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.row.cols_align_space-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.row.cols_ratio_left .row-column:nth-child(odd) {
+  width: 66%;
+}
+.row.cols_ratio_left .row-column:nth-child(even) {
+  width: 33%;
+}
+.row.cols_ratio_right .row-column:nth-child(odd) {
+  width: 33%;
+}
+.row.cols_ratio_right .row-column:nth-child(even) {
+  width: 66%;
+}
+.row.layout_grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.row.width_full {
+  max-width: 100%;
+}
+.row.width_four-five {
+  max-width: 80%;
+}
+@media (max-width: 768px) {
+  .row.width_four-five {
+    max-width: 100%;
+  }
+}
+.row.width_three-four {
+  max-width: 75%;
+}
+@media (max-width: 1150px) {
+  .row.width_three-four {
+    max-width: 80%;
+  }
+}
+@media (max-width: 768px) {
+  .row.width_three-four {
+    max-width: 100%;
+  }
+}
+.row.width_one-two {
+  max-width: 50%;
+}
+@media (max-width: 1150px) {
+  .row.width_one-two {
+    max-width: 60%;
+  }
+}
+@media (max-width: 992px) {
+  .row.width_one-two {
+    max-width: 75%;
+  }
+}
+@media (max-width: 768px) {
+  .row.width_one-two {
+    max-width: 100%;
+  }
+}
+.row.position_left {
+  margin-right: auto;
+}
+.row.position_center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.row.position_right {
+  margin-left: auto;
+}
+.row.vertical_top {
+  margin-bottom: auto;
+}
+.row.vertical_middle {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.row.vertical_bottom {
+  margin-top: auto;
 }
 /*  =========================
     Footer UI */
