@@ -123,7 +123,7 @@
 		 */
 		initRows: function () {
 			var $this = $(this);
-			var $rows = $(this);
+			var $rows = $rows.childern();
 
 			/**
 			 * Handle each child-row

@@ -13326,7 +13326,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 		 */
 		initRows: function () {
 			var $this = $(this);
-			var $rows = $(this);
+			var $rows = $rows.childern();
 
 			/**
 			 * Handle each child-row
