@@ -15,12 +15,14 @@
 if ( have_rows( 'columns' ) ) :
 	while ( have_rows( 'columns' ) ) :
 		the_row();
+		$layout = get_row_layout();
 
 		// Common 
 		$attrs                = array();
 		$style                = array();
 		$classes              = array();
-		$classes[]            = 'row--column';
+		$classes[]            = "row--column";
+		$classes[]            = "column-{$layout}";
 
 		// Compile classes and attributes
 		$attrs[]              = 'style="' . generate_classlist( $style ) . '"';
