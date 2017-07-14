@@ -35,7 +35,7 @@
 	if ( have_rows( 'rows' ) ) :
 		?>
 
-		<div id="rows" class="rows">
+		<div class="rows">
 
 			<?php
 			/**
