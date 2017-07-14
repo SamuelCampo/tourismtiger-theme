@@ -122,6 +122,7 @@
 		 * Init rows' functions
 		 */
 		initRows: function () {
+			var $this = $(this);
 			var $rows = $(this);
 
 			/**
