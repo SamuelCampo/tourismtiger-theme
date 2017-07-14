@@ -1,12 +1,10 @@
 <?php
 /**
- * View: Row
+ * View: Column
  *
  * @var $the_row - variable that contains row's subfields data 
  * @var $classes
  * @var $attrs
- * @var $type
- * @var $row_id
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -23,14 +21,15 @@
 	 * that acton will be cleaned up except 
 	 * the functions under 'priority 10'
 	 */
-	do_action( 'after_open_row_tag', $the_row, $row_id ); 
-	remove_all_actions( 'after_open_row_tag', 10);
+	do_action( 'after_open_column_tag' ); 
+	remove_all_actions( 'after_open_column_tag', 10);
 
 
 	/**
-	 * Get row type view
+	 * Get column view
 	 */
-	get_template_part( 'template-parts/row', $type );
+	$sizes = rand(200,500) . 'x' . rand(200,500);
+	echo "<img src='https://placehold.it/{$sizes}' />";
 
 
 	/**
@@ -40,8 +39,8 @@
 	 * that acton will be cleaned up except 
 	 * the functions under 'priority 10'
 	 */
-	do_action( 'after_open_row_tag', $the_row, $row_id ); 
-	remove_all_actions( 'after_open_row_tag', 10);
+	do_action( 'after_open_column_tag' ); 
+	remove_all_actions( 'after_open_column_tag', 10);
 	?>
 
 </div>
