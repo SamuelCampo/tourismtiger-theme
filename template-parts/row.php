@@ -31,9 +31,7 @@ $d['cols_placement']  = get_sub_field( 'cols-placement' );
 $d['margin_top']      = get_sub_field( 'margin_top' ); 
 $d['margin_bottom']   = get_sub_field( 'margin_bottom' ); 
 
-$classes[]            = 'cols_count_' . $d['cols_count'];
 $classes[]            = 'layout_' . $d['layout'];
-$classes[]            = 'cols_margins_' . $d['cols_margins'];
 $classes[]            = 'width_' . $d['width'];
 $classes[]            = 'position_' . $d['position'];
 $classes[]            = 'vertical_' . $d['vertical'];
@@ -49,7 +47,12 @@ if ( $type == 'grid' ) :
 	$d['cols_ratio']      = get_sub_field( 'cols-ratio' ); 
 
 	$classes[]            = 'cols_align_' . $d['cols_align'];
-	$classes[]            = 'cols_ratio_' . $d['cols_ratio'];
+	$classes[]            = 'cols_count_' . $d['cols_count'];
+	$classes[]            = 'cols_margins_' . $d['cols_margins'];
+
+	if ( $d['cols_count'] == 2 ) :
+		$classes[]            = 'cols_ratio_' . $d['cols_ratio'];
+	endif;
 endif;
 
 
@@ -66,9 +69,11 @@ if ( $type == 'carousel' ) :
 	$attrs[]              = "data-columns='{$d['cols_count']}';";
 	$attrs[]              = "data-dots='{$d['show_dots']}';";
 
-	$classes[]            = "arrows_size_{$d['arrows_size']}";
-	$classes[]            = "arrows_weight_{$d['arrows_weight']}";
-	$classes[]            = "arrows_position_{$d['arrows_position']}";
+	if ( $d['arrows_type'] == 'custom' ) :
+		$classes[]            = 'arrows_size_' . $d['arrows_size'];
+		$classes[]            = 'arrows_weight' . $d['arrows_weight'];
+		$classes[]            = 'arrows_position' . $d['arrows_position'];
+	endif;
 endif;
 
 // Background 

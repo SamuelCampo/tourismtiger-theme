@@ -222,13 +222,12 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 				'width' => '33'
 			),
 			'choices' => array (
-				'auto' => 'Auto',
 				'left' => 'Left',
 				'center' => 'Center',
 				'right' => 'Right',
 			),
 			'default_value' => array (
-				0 => 'auto',
+				0 => 'center',
 			)
 		),
 		array (
@@ -241,13 +240,12 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 				'width' => '33'
 			),
 			'choices' => array (
-				'auto' => 'Auto',
 				'stretch' => 'Stretch',
 				'top' => 'Top',
 				'middle' => 'Middle',
 				'bottom' => 'Bottom',
 			),
-			'default_value' => array( 'auto' )
+			'default_value' => array( 'middle' )
 		),
 		array (
 			'key' => $id . '_5c21c44ff659c',
@@ -259,13 +257,12 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 				'width' => '33'
 			),
 			'choices' => array (
-				'auto' => 'Auto',
 				'stretch' => 'Stretch',
 				'top' => 'Top',
 				'middle' => 'Middle',
 				'bottom' => 'Bottom',
 			),
-			'default_value' => array( 'auto' )
+			'default_value' => array( 'middle' )
 		),								
 		array (
 			'key' => $id . '_18212372d49ff',
@@ -335,7 +332,6 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 				'width' => '33'
 			),
 			'choices' => array (
-				'auto' => 'Auto',
 				'left' => 'Left',
 				'center' => 'Center',
 				'right' => 'Right',
@@ -343,7 +339,7 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 				'space-between' => 'Space Between'
 			),
 			'default_value' => array (
-				0 => 'auto',
+				0 => 'left',
 			)
 		),
 		array (
