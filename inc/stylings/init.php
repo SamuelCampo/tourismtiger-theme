@@ -168,13 +168,22 @@ function get_acf_styles_count( $slug = '' ) {
  * Used for local fields choise lists
  */
 function get_available_styles_list( $slug = '' ) {
-	$count = get_acf_styles_count( $slug );
-	$array = array();
+	if ( $slug == 'placeholder' ) :
+		$array = array(
+			'example-1' => 'Style 1',
+			'example-2' => 'Style 2',
+			'example-3' => 'Style 3',
+			'example-4' => 'Style 4'
+		);
+	else :
+		$count = get_acf_styles_count( $slug );
+		$array = array();
 
-	for ( $i = 1; $i <= $count; $i++ ) :
-		$class = "{$slug}-{$i}";
-		$array[$class] = "Style {$i}";
-	endfor;
+		for ( $i = 1; $i <= $count; $i++ ) :
+			$class = "{$slug}-{$i}";
+			$array[$class] = "Style {$i}";
+		endfor;
+	endif;
 
 	return $array;
 }

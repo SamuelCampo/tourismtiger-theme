@@ -26,10 +26,9 @@
 
 
 	/**
-	 * Get column view
+	 * Echo component
 	 */
-	$sizes = rand(200,500) . 'x' . rand(200,300);
-	echo "<img src='https://placehold.it/{$sizes}' />";
+	echo $d['content'];
 
 
 	/**
