@@ -13367,24 +13367,24 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 					// Set media queries 
 					switch (showSlides) {
-						case '1':
+						case 1:
 							break;
 
-						case '2':
+						case 2:
 							mobileSettings = {
 								slidesToShow: 1,
 								slidesToScroll: 1,
 							};
 							break;
 
-						case '3':
+						case 3:
 							mobileSettings = {
 								slidesToShow: 1,
 								slidesToScroll: 1,
 							};
 							break;
 
-						case '4':
+						case 4:
 							padMiniSettings = {
 								slidesToShow: 2,
 								slidesToScroll: 2,
@@ -13395,7 +13395,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 							};
 							break;
 
-						case '5':
+						case 5:
 							laptopSettings = {
 								slidesToShow: 4,
 								slidesToScroll: 4,
@@ -13414,7 +13414,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 							};
 							break;
 
-						case '6':
+						case 6:
 							laptopSettings = {
 								slidesToShow: 5,
 								slidesToScroll: 5,
@@ -13461,7 +13461,6 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					// General slick settings
 					var values = {
 						infinite: true,
-						lazyLoad: 'ondemand',
 						adaptiveHeight: true,
 						dots: doesShowDots,
 						slidesToShow: showSlides,
