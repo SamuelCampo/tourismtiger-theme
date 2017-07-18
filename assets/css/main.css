@@ -785,17 +785,6 @@ img {
     margin-top: 1.5rem;
   }
 }
-.style-default * + .line.width_full,
-.style-default .line + *.width_full {
-  margin-left: -4rem;
-  margin-right: -4rem;
-}
-@media (max-width: 568px) {
-  .style-default * + .line.width_full,
-  .style-default .line + *.width_full {
-    margin-top: 2.5rem;
-  }
-}
 .style-default .accordion--head {
   background-color: transparent;
   border: none;
@@ -852,6 +841,15 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
+}
+.style-default .width_full {
+  margin-left: -4rem;
+  margin-right: -4rem;
+}
+@media (max-width: 568px) {
+  .style-default .width_full {
+    margin-top: 2.5rem;
+  }
 }
 /**
  * WordPress Core Styles
