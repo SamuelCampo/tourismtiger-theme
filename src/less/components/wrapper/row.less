@@ -18,98 +18,78 @@
 	&.cols {
 		&_count {
 			&_1 {
-				.row--column {
-					width: 100%;
-				}
+				grid-template-columns: 100%;
 			}
 
 			&_2 {
-				.row--column {
-					width: 50%;
+				grid-template-columns: 50% 50%;
 
-					@media (max-width: @mobile) {
-						width: 100%;
-					}
+				@media (max-width: @mobile) {
+					grid-template-columns: 100%;
 				}
 			}
 
 			&_3 {
-				.row--column {
-					width: 33%;
+				grid-template-columns: 33% 33% 33%;
 
-					@media (max-width: @mobile) {
-						width: 100%;
-					}
+				@media (max-width: @mobile) {
+					grid-template-columns: 100%;
 				}
 			}
 
 			&_4 {
-				.row--column {
-					width: 25%;
+				grid-template-columns: 25% 25% 25% 25%;
 
-					@media (max-width: @padmini) {
-						width: 50%;
-					}
+				@media (max-width: @padmini) {
+					grid-template-columns: 50% 50%;
+				}
 
-					@media (max-width: @mobile) {
-						width: 100%;
-					}
+				@media (max-width: @mobile) {
+					grid-template-columns: 100%;
 				}
 			}
 
 			&_5 {
-				.row--column {
-					width: 20%;
+				grid-template-columns: 20% 20% 20% 20% 20%;
 
-					@media (max-width: @laptop) {
-						width: 25%;
-					}
+				@media (max-width: @pad) {
+					grid-template-columns: 33% 33% 33%;
+				}
 
-					@media (max-width: @pad) {
-						width: 33%;
-					}
+				@media (max-width: @padmini) {
+					grid-template-columns: 50% 50%;
+				}
 
-					@media (max-width: @padmini) {
-						width: 50%;
-					}
-
-					@media (max-width: @mobile) {
-						width: 100%;
-					}
+				@media (max-width: @mobile) {
+					grid-template-columns: 100%;
 				}
 			}
 
 			&_6 {
-				.row--column {
-					width: 16.5%;
+				grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%;
 
-					@media (max-width: @laptop) {
-						width: 20%;
-					}
+				@media (max-width: @laptop) {
+					grid-template-columns: 25% 25% 25% 25%;
+				}
 
-					@media (max-width: @pad) {
-						width: 25%;
-					}
+				@media (max-width: @pad) {
+					grid-template-columns: 33% 33% 33%;
+				}
 
-					@media (max-width: @padmini) {
-						width: 50%;
-					}
+				@media (max-width: @padmini) {
+					grid-template-columns: 50% 50%;
+				}
 
-					@media (max-width: @mobile) {
-						width: 100%;
-					}
+				@media (max-width: @mobile) {
+					grid-template-columns: 100%;
 				}
 			}
 		}
 
 		&_margins {
-			&_none {
-				// Nothing
-			}
-
 			&_normal {
 				.row--column {
-					padding: 15px;
+					margin: 2rem;
 				}
 			}
 		}
@@ -197,8 +177,7 @@
 
 	&.layout {
 		&_grid {
-			display: flex;
-			flex-wrap: wrap;
+			display: grid;
 		}
 
 		&_carousel {
