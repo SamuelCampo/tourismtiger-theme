@@ -13352,7 +13352,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 							'height': height
 						}, 500);
 
-						$accordions.on('click', '.is-active', function(){
+						$('.accordion--head').filter('.is-active').on('click', function(){
 							var $head = $(this);
 							var $accordion = $head.closest('.accordion');
 							var height = $accordion.find('.accordion--wysiwyg');
