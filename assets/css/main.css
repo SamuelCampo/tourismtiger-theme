@@ -825,7 +825,7 @@ img {
     padding-top: 1.5rem;
   }
 }
-.style-default .embed {
+.style-default .oembed {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
@@ -833,9 +833,9 @@ img {
   max-width: 100%;
   height: auto;
 }
-.style-default .embed iframe,
-.style-default .embed object,
-.style-default .embed embed {
+.style-default .oembed iframe,
+.style-default .oembed object,
+.style-default .oembed embed {
   position: absolute;
   top: 0;
   left: 0;
