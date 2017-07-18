@@ -152,6 +152,8 @@
 							var $accordion = $head.closest('.accordion');
 							var height = $accordion.find('.accordion--wysiwyg');
 
+							$head.removeClass('is-active');
+
 							$accordion.find('.accordion--body').slideUp(500);
 						});
 					});

@@ -13355,6 +13355,8 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 							var $accordion = $head.closest('.accordion');
 							var height = $accordion.find('.accordion--wysiwyg');
 
+							$head.removeClass('is-active');
+
 							$accordion.find('.accordion--body').slideUp(500);
 						});
 					});
