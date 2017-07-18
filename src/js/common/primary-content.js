@@ -108,6 +108,59 @@
 						$rows.primaryContent( 'initRows' );
 					}
 
+					/**
+					 * Image component
+					 */
+					var $images = $self.find('.image-wrap');
+					$images.each(function(){
+						var $wrap  = $(this);
+						var $image = $wrap.find('img');
+
+						if ($wrap.hasClass('shape_circle') || $wrap.hasClass('shape_square')) {
+							var height = $wrap.height();
+							var width  = $wrap.width();
+
+							if (height > width) {
+								$wrap.height(width);
+							} else {
+								$wrap.width(height);
+							}
+
+							$image.css({
+								'position': 'absolute',
+								'left': '50%',
+								'right': '50%',
+								'transform': 'translate(-50%, 50%)'
+							});
+						}
+					});
+
+					/**
+					 * Accordion
+					 */
+					$('.accordion--head').on('click', function(){
+						var $head = $(this);
+						var $accordion = $head.closest('.accordion');
+						var height = $accordion.find('.accordion--wysiwyg');
+
+						$head.addClass('is-active');
+
+						$accordion.find('.accordion--body').animate({
+							'height': height
+						}, 500);
+
+						$accordions.on('click', '.is-active', function(){
+							var $head = $(this);
+							var $accordion = $head.closest('.accordion');
+							var height = $accordion.find('.accordion--wysiwyg');
+
+							$head.removeClass('is-active');
+
+							$accordion.find('.accordion--body').animate({
+								'height': 0
+							}, 500);
+						});
+					});
 
 					/**
 					 * Add indicator-class to avoid reworking 
