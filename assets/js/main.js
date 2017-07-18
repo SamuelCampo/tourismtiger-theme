@@ -13348,20 +13348,14 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 						$head.addClass('is-active');
 
-						$accordion.find('.accordion--body').animate({
-							'height': height
-						}, 500);
+						$accordion.find('.accordion--body').slideDown(500);
 
 						$('.accordion--head').filter('.is-active').on('click', function(){
 							var $head = $(this);
 							var $accordion = $head.closest('.accordion');
 							var height = $accordion.find('.accordion--wysiwyg');
 
-							$head.removeClass('is-active');
-
-							$accordion.find('.accordion--body').animate({
-								'height': 0
-							}, 500);
+							$accordion.find('.accordion--body').slideUp(500);
 						});
 					});
 
