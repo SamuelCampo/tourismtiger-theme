@@ -45,7 +45,7 @@ function get_heroarea_title_from_acf( $the_row = array() ) {
     // Check and add the button
     $is_button            = ($the_row['pc_ha_014'] === 'custom' || $the_row['pc_ha_014'] === 'popup');     
     $hero_button_url      = $the_row['pc2131012133'] ? $the_row['pc2131012133'] : '#.';
-    $hero_button_label    = $the_row['cta_button_text'] ? $the_row['cta_button_text'] : 'Book now';
+    $hero_button_label    = $the_row['pc_ha_013'] ? $the_row['pc_ha_013'] : 'Book now';
 
     if ( $is_button ) :
         $btn_attrs = get_heroarea_button_attrs( get_sub_field( 'pc_cta_button_open' ) );

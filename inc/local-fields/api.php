@@ -132,7 +132,7 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 			'layouts' => array (
 				array (
 					'key' => $id . '_21126955f123',
-					'name' => 'content',
+					'name' => 'contentcard',
 					'label' => 'Content card',
 					'display' => 'block',
 					'sub_fields' => get_content_local_field( $id )

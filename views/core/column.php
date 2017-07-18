@@ -28,7 +28,7 @@
 	/**
 	 * Echo component
 	 */
-	echo $d['content'];
+	get_template_part( 'template-parts/column', $layout );
 
 
 	/**

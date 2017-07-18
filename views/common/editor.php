@@ -2,14 +2,13 @@
 /**
  * View: WYSIWYG
  *
- * $wysiwyg (string) 
+ * $d       (array) 
  * $class   (string)
+ * $attrs   (string)
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */
-?>
 
-<div class="wysiwyg <?=$classes;?>">
-	<?=$wysiwyg;?>
-</div>
+echo "<div class='{$classes}' {$attrs}>{$d['content']}</div>";
+?>
