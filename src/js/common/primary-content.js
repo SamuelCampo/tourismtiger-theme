@@ -19,7 +19,7 @@
 		 * Handle each section layout
 		 */
 		init: function () {
-			var $primaryContent = $('.primary-content').filter('.js-handled');
+			var $primaryContent = $('.primary-content');
 
 			$primaryContent.each(function(){
 				var $self = $(this);

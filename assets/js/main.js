@@ -13222,7 +13222,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 		 * Handle each section layout
 		 */
 		init: function () {
-			var $primaryContent = $('.primary-content').filter('.js-handled');
+			var $primaryContent = $('.primary-content');
 
 			$primaryContent.each(function(){
 				var $self = $(this);
