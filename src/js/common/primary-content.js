@@ -172,7 +172,7 @@
 					var scrollSlides   = +$row.attr('data-scroll') || 1;
 					var showSlides     = +$row.attr('data-columns') || 1;
 					var doesShowDots   = $row.attr('data-dots') || false;
-					var arrowsType     = $row.attr('data-type') || 'auto';
+					var arrowsType     = $row.attr('data-arrows-type') || 'auto';
 					var prevArrowData  = '';
 					var nextArrowData  = '';
 

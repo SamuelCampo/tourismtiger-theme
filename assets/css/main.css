@@ -5027,6 +5027,18 @@ input[type='submit'][disabled] {
 .row.vertical_bottom {
   margin-top: auto;
 }
+.row.arrows_type_auto .slick-arrow {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 50;
+}
+.row.arrows_type_auto .slick-next {
+  right: 0;
+}
 /*  =========================
     Default styles */
 /*  =========================
