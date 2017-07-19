@@ -13399,7 +13399,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					/**
 					 * Accordion
 					 */
-					var $accordion = $('.accordion');
+					var $accordion = $self.find('.accordion');
 					$accordion.accordion('init');
 
 					/**
