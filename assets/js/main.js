@@ -13342,7 +13342,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					 * Accordion
 					 */
 					var $accordion = $('.accordion');
-					if ($accordion.hasClass('js-handled')) {
+					if (!$accordion.hasClass('js-handled')) {
 						$accordion.on('click', '.accordion--head', function(e){
 							e.preventDefault();
 
