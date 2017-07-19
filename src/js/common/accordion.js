@@ -34,9 +34,9 @@
 					$body.toggleClass('is-active');
 
 					if ($body.hasClass('is-active')) {
-						$body.slideDown(500);
+						$body.show(500);
 					} else {
-						$body.slideUp(500);
+						$body.hide(500);
 					}
 
 					return false;
