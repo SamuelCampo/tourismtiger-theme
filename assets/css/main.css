@@ -714,6 +714,9 @@ img {
   width: 100%;
   transition: ease 0.3s;
 }
+.style-default .image-box {
+  text-align: center;
+}
 .style-default .image-wrap {
   position: relative;
   overflow: hidden;
@@ -729,10 +732,10 @@ img {
   position: relative;
   z-index: 5;
 }
-.style-default a.image-wrap {
+.style-default .image a.image-wrap {
   line-height: 1;
 }
-.style-default a.image-wrap:before {
+.style-default .image a.image-wrap:before {
   content: '';
   position: absolute;
   top: 0;
@@ -744,11 +747,11 @@ img {
   background-color: #000;
   transition: ease 0.5s;
 }
-.style-default a.image-wrap:hover:before {
+.style-default .image a.image-wrap:hover:before {
   opacity: .4;
   transition: ease 0.5s;
 }
-.style-default a.image-wrap:after {
+.style-default .image a.image-wrap:after {
   content: "\f0c1";
   font-family: 'FontAwesome';
   z-index: 15;
@@ -763,7 +766,7 @@ img {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
-.style-default a.image-wrap:hover:after {
+.style-default .image a.image-wrap:hover:after {
   opacity: 1;
   margin-top: 0;
   transition: .2s ease .2s;
