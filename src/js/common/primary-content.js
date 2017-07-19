@@ -19,7 +19,7 @@
 		 * Handle each section layout
 		 */
 		init: function () {
-			var $primaryContent = $('.primary-content');
+			var $primaryContent = $('.primary-content').filter('.js-handled');
 
 			$primaryContent.each(function(){
 				var $self = $(this);
@@ -138,27 +138,31 @@
 					/**
 					 * Accordion
 					 */
-					$('.accordion--head').on('click', function(e){
-						e.preventDefault();
+					var $accordion = $('.accordion');
+					if ($accordion.hasClass('js-handled')) {
+						$accordion.on('click', '.accordion--head', function(e){
+							e.preventDefault();
 
-						var $head      = $(this);
-						var $accordion = $head.closest('.accordion');
-						var $body      = $accordion.find('.accordion--body');
-						var $open      = $accordion.find('.accordion--head__open');
-						var $close     = $accordion.find('.accordion--head__close');
+							var $head  = $(this);
+							var $wrap  = $head.closest('.accordion');
+							var $body  = $wrap.find('.accordion--body');
+							var $open  = $wrap.find('.accordion--head__open');
+							var $close = $wrap.find('.accordion--head__close');
 
-						$open.toggleClass('hidden');
-						$close.toggleClass('hidden');
-						$body.toggleClass('is-active');
+							$open.toggleClass('hidden');
+							$close.toggleClass('hidden');
+							$body.toggleClass('is-active');
 
-						if ($body.hasClass('is-active')) {
-							$body.slideDown(500);
-						} else {
-							$body.slideUp(500);
-						}
+							if ($body.hasClass('is-active')) {
+								$body.slideDown(500);
+							} else {
+								$body.slideUp(500);
+							}
 
-						return false;
-					});
+							return false;
+						});
+					}
+					$accordion.addClass('js-handled');
 
 					/**
 					 * Add indicator-class to avoid reworking 
