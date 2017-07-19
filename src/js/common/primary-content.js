@@ -172,6 +172,17 @@
 					var scrollSlides   = +$row.attr('data-scroll') || 1;
 					var showSlides     = +$row.attr('data-columns') || 1;
 					var doesShowDots   = $row.attr('data-dots') || false;
+					var arrowsType     = $row.attr('data-type') || 'auto';
+					var prevArrowData  = '';
+					var nextArrowData  = '';
+
+					// Set arrows 
+					switch (arrowsType) {
+						case 'auto':
+							prevArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-left.png">';
+							nextArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-right.png">';
+							break;
+					}
 
 					// Media default settings
 					var laptopSettings  = {
@@ -294,6 +305,8 @@
 						dots: doesShowDots,
 						slidesToShow: showSlides,
 						slidesToScroll: scrollSlides,
+						prevArrow: '<button type="button" class="slick-prev">'+prevArrowData+'</button>',
+						nextArrow: '<button type="button" class="slick-next">'+nextArrowData+'</button>',
 						focusOnSelect: false,
   						responsive: [
   							laptop,
