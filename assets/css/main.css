@@ -683,173 +683,6 @@ img {
     transform: scale(1);
   }
 }
-/*  =========================
-    Default styles */
-.style-default {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 3rem 4rem;
-}
-@media (max-width: 568px) {
-  .style-default {
-    padding: 1.5rem 2.5rem;
-  }
-}
-.style-default .editor a {
-  color: #00bcd4;
-  position: relative;
-  display: inline-block;
-  text-decoration: none;
-}
-.style-default .editor a:before {
-  content: '';
-  position: absolute;
-  bottom: -0.5px;
-  left: 0;
-  border-top: 1px solid;
-  width: 0;
-  transition: ease 0.3s;
-}
-.style-default .editor a:hover:before {
-  width: 100%;
-  transition: ease 0.3s;
-}
-.style-default .image-box {
-  text-align: center;
-}
-.style-default .image-box a.image-wrap {
-  line-height: 1;
-}
-.style-default .image-box a.image-wrap:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  opacity: 0;
-  background-color: #000;
-  transition: ease 0.5s;
-}
-.style-default .image-box a.image-wrap:hover:before {
-  opacity: .4;
-  transition: ease 0.5s;
-}
-.style-default .image-box a.image-wrap:after {
-  content: "\f0c1";
-  font-family: 'FontAwesome';
-  z-index: 15;
-  font-size: 3rem;
-  color: #fff;
-  margin-top: 3rem;
-  opacity: 0;
-  transition: .2s ease .2s;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-.style-default .image-box a.image-wrap:hover:after {
-  opacity: 1;
-  margin-top: 0;
-  transition: .2s ease .2s;
-}
-.style-default .image-wrap {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-.style-default .image-wrap.shape_circle {
-  border-radius: 50%;
-}
-.style-default .image-wrap img {
-  position: relative;
-  z-index: 5;
-}
-.style-default .acf-map {
-  height: 40rem;
-}
-.style-default * + .line,
-.style-default .line + * {
-  margin-top: 3rem;
-}
-@media (max-width: 568px) {
-  .style-default * + .line,
-  .style-default .line + * {
-    margin-top: 1.5rem;
-  }
-}
-.style-default .accordion--head {
-  background-color: transparent;
-  border: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0;
-  font-size: 1.9rem;
-  color: #777777;
-}
-.style-default .accordion--head__label {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-.style-default .accordion--head__open.hidden,
-.style-default .accordion--head__close.hidden {
-  display: none;
-}
-@media (max-width: 992px) {
-  .style-default .accordion--head__open,
-  .style-default .accordion--head__close {
-    display: none;
-  }
-}
-.style-default .accordion--body {
-  overflow: hidden;
-  position: relative;
-  padding-top: 3rem;
-  display: none;
-}
-@media (max-width: 568px) {
-  .style-default .accordion--body {
-    padding-top: 1.5rem;
-  }
-}
-.style-default .oembed {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-  height: auto;
-}
-.style-default .oembed iframe,
-.style-default .oembed object,
-.style-default .oembed embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.style-default .width_full {
-  margin-left: -4rem;
-  margin-right: -4rem;
-}
-@media (max-width: 568px) {
-  .style-default .width_full {
-    margin-left: -2.5rem;
-    margin-right: -2.5rem;
-  }
-}
 /**
  * WordPress Core Styles
  *
@@ -4427,6 +4260,163 @@ input[type='submit'][disabled] {
   background-position: 50% 50%;
 }
 /*  =========================
+    Accordion UI */
+.accordion--head {
+  background-color: transparent;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  font-size: 1.9rem;
+  color: #777777;
+}
+.accordion--head__label {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.accordion--head__open.hidden,
+.accordion--head__close.hidden {
+  display: none;
+}
+@media (max-width: 992px) {
+  .accordion--head__open,
+  .accordion--head__close {
+    display: none;
+  }
+}
+.accordion--body {
+  overflow: hidden;
+  position: relative;
+  padding-top: 3rem;
+  display: none;
+}
+@media (max-width: 568px) {
+  .accordion--body {
+    padding-top: 1.5rem;
+  }
+}
+/*  =========================
+    Editor UI */
+.editor a {
+  color: #00bcd4;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+.editor a:before {
+  content: '';
+  position: absolute;
+  bottom: -0.5px;
+  left: 0;
+  border-top: 1px solid;
+  width: 0;
+  transition: ease 0.3s;
+}
+.editor a:hover:before {
+  width: 100%;
+  transition: ease 0.3s;
+}
+/*  =========================
+    Image UI */
+.image-box {
+  text-align: center;
+}
+.image-box a.image-wrap {
+  line-height: 1;
+}
+.image-box a.image-wrap:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0;
+  background-color: #000;
+  transition: ease 0.5s;
+}
+.image-box a.image-wrap:hover:before {
+  opacity: .4;
+  transition: ease 0.5s;
+}
+.image-box a.image-wrap:after {
+  content: "\f0c1";
+  font-family: 'FontAwesome';
+  z-index: 15;
+  font-size: 3rem;
+  color: #fff;
+  margin-top: 3rem;
+  opacity: 0;
+  transition: .2s ease .2s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.image-box a.image-wrap:hover:after {
+  opacity: 1;
+  margin-top: 0;
+  transition: .2s ease .2s;
+}
+.image-wrap {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.image-wrap.shape_circle {
+  border-radius: 50%;
+}
+.image-wrap img {
+  position: relative;
+  z-index: 5;
+}
+/*  =========================
+    HR Line UI */
+* + .line,
+.line + * {
+  margin-top: 3rem;
+}
+@media (max-width: 568px) {
+  * + .line,
+  .line + * {
+    margin-top: 1.5rem;
+  }
+}
+/*  =========================
+    Map UI */
+.acf-map {
+  height: 40rem;
+}
+/*  =========================
+    oembed UI */
+.oembed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+}
+.oembed iframe,
+.oembed object,
+.oembed embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/*  =========================
     Hero Area UI */
 .hero-area {
   position: relative;
@@ -5038,6 +5028,28 @@ input[type='submit'][disabled] {
   margin-top: auto;
 }
 /*  =========================
-    Content card UI */
+    Default styles */
+/*  =========================
+    Card UI */
+.card-wrapper {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 3rem 4rem;
+}
+@media (max-width: 568px) {
+  .card-wrapper {
+    padding: 1.5rem 2.5rem;
+  }
+}
+.card-wrapper .width_full {
+  margin-left: -4rem;
+  margin-right: -4rem;
+}
+@media (max-width: 568px) {
+  .card-wrapper .width_full {
+    margin-left: -2.5rem;
+    margin-right: -2.5rem;
+  }
+}
 /*  =========================
     Footer UI */

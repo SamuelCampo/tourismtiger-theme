@@ -1,0 +1,68 @@
+/*  =========================
+    Image UI */
+
+.image {
+    &-box {
+        text-align: center;
+
+        a.image-wrap {
+            line-height: 1;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+                opacity: 0;
+                background-color: #000;
+                .mx-transition(.5s);
+            }
+
+            &:hover:before {
+                opacity: .4;
+                .mx-transition(.5s);
+            }
+
+            &:after {
+                content: "\f0c1";
+                font-family: 'FontAwesome';
+                z-index: 15;
+                font-size: 3rem;
+                color: #fff;
+                margin-top: 3rem;
+                opacity: 0;
+                transition: .2s ease .2s;
+                .mx-absolute-center();
+            }
+
+            &:hover:after {
+                opacity: 1;
+                margin-top: 0;
+                transition: .2s ease .2s;
+            }
+        }
+    }
+    
+    &-wrap {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+
+        &.shape {
+            &_circle {
+                border-radius: 50%;
+            }
+        }
+        
+        img {
+            position: relative;
+            z-index: 5;
+        }
+    }
+}

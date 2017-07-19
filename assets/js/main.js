@@ -13341,12 +13341,21 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					/**
 					 * Accordion
 					 */
-					$('.accordion--head').on('click', function(){
-						var $head = $(this);
+					$('.accordion--head').on('click', function(e){
+						e.preventDefault();
+
+						var $head      = $(this);
 						var $accordion = $head.closest('.accordion');
-						var height = $accordion.find('.accordion--wysiwyg');
+						var height     = $accordion.find('.accordion--wysiwyg');
+						var $open      = $accordion.find('.accordion--head__open');
+						var $close     = $accordion.find('.accordion--head__close');
+
+						$open.toggleClass('hidden');
+						$close.toggleClass('hidden');
 
 						$accordion.find('.accordion--body').slideToggle(500);
+
+						return false;
 					});
 
 					/**
