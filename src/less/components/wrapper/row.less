@@ -264,11 +264,23 @@
 	&.arrows {
 		&_type {
 			&_auto {
+				.slick {
+					&-arrow {
+						background-color: transparent;
+						border: none;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						z-index: 50;
+					}
 
+					&-next {
+						right: 0;
+					}
+				}
 			}
 
 			&_custom {
-
 			}
 		}
 	}
