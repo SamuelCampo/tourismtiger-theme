@@ -19,7 +19,7 @@
 
 			var $this = $(this);
 			
-			if ($this.length() > 0) {
+			if ($this.length > 0) {
 				$this.on('click', 'a', function(e){
 					e.preventDefault();
 
