@@ -13342,30 +13342,27 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					 * Accordion
 					 */
 					var $accordion = $('.accordion');
-					if (!$accordion.hasClass('js-handled')) {
-						$accordion.on('click', '.accordion--head', function(e){
-							e.preventDefault();
+					$accordion.on('click', '.accordion--head', function(e){
+						e.preventDefault();
 
-							var $head  = $(this);
-							var $wrap  = $head.closest('.accordion');
-							var $body  = $wrap.find('.accordion--body');
-							var $open  = $wrap.find('.accordion--head__open');
-							var $close = $wrap.find('.accordion--head__close');
+						var $head  = $(this);
+						var $wrap  = $head.closest('.accordion');
+						var $body  = $wrap.find('.accordion--body');
+						var $open  = $wrap.find('.accordion--head__open');
+						var $close = $wrap.find('.accordion--head__close');
 
-							$open.toggleClass('hidden');
-							$close.toggleClass('hidden');
-							$body.toggleClass('is-active');
+						$open.toggleClass('hidden');
+						$close.toggleClass('hidden');
+						$body.toggleClass('is-active');
 
-							if ($body.hasClass('is-active')) {
-								$body.slideDown(500);
-							} else {
-								$body.slideUp(500);
-							}
+						if ($body.hasClass('is-active')) {
+							$body.slideDown(500);
+						} else {
+							$body.slideUp(500);
+						}
 
-							return false;
-						});
-					}
-					$accordion.addClass('js-handled');
+						return false;
+					});
 
 					/**
 					 * Add indicator-class to avoid reworking 
