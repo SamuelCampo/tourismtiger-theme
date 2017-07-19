@@ -143,14 +143,19 @@
 
 						var $head      = $(this);
 						var $accordion = $head.closest('.accordion');
-						var height     = $accordion.find('.accordion--wysiwyg');
+						var $body      = $accordion.find('.accordion--body');
 						var $open      = $accordion.find('.accordion--head__open');
 						var $close     = $accordion.find('.accordion--head__close');
 
 						$open.toggleClass('hidden');
 						$close.toggleClass('hidden');
+						$body.toggleClass('is-active');
 
-						$accordion.find('.accordion--body').slideToggle(500);
+						if ($body.hasClass('is-active')) {
+							$body.slideDown(500);
+						} else {
+							$body.slideUp(500);
+						}
 
 						return false;
 					});
