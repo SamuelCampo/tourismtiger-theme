@@ -139,7 +139,7 @@
 					 * Accordion
 					 */
 					var $accordion = $('.accordion');
-					$accordion.on('click', '.accordion--head', function(e){
+					$accordion.on('click', 'a', function(e){
 						e.preventDefault();
 
 						var $head  = $(this);

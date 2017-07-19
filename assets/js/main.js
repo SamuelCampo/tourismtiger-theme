@@ -13342,7 +13342,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					 * Accordion
 					 */
 					var $accordion = $('.accordion');
-					$accordion.on('click', '.accordion--head', function(e){
+					$accordion.on('click', 'a', function(e){
 						e.preventDefault();
 
 						var $head  = $(this);
