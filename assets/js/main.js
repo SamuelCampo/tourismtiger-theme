@@ -13234,13 +13234,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 					$open.toggleClass('hidden');
 					$close.toggleClass('hidden');
-					$body.toggleClass('is-active');
-
-					if ($body.hasClass('is-active')) {
-						$body.show(500);
-					} else {
-						$body.hide(500);
-					}
+					$body.toggleClass('hidden');
 
 					return false;
 				});
