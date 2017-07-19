@@ -139,7 +139,7 @@
 					 * Accordion
 					 */
 					var $accordion = $('.accordion');
-					if ($accordion.hasClass('js-handled')) {
+					if (!$accordion.hasClass('js-handled')) {
 						$accordion.on('click', '.accordion--head', function(e){
 							e.preventDefault();
 
