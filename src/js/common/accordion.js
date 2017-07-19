@@ -31,7 +31,7 @@
 
 					$open.toggleClass('hidden');
 					$close.toggleClass('hidden');
-					$body.toggleClass('hidden');
+					$body.slideToggle(500);
 
 					return false;
 				});

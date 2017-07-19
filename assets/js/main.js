@@ -13234,7 +13234,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 					$open.toggleClass('hidden');
 					$close.toggleClass('hidden');
-					$body.toggleClass('hidden');
+					$body.slideToggle(500);
 
 					return false;
 				});
