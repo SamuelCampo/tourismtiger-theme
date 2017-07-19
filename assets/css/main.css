@@ -4293,14 +4293,12 @@ input[type='submit'][disabled] {
   overflow: hidden;
   position: relative;
   padding-top: 3rem;
+  display: none;
 }
 @media (max-width: 568px) {
   .accordion--body {
     padding-top: 1.5rem;
   }
-}
-.accordion--body.hidden {
-  display: none;
 }
 /*  =========================
     Editor UI */
