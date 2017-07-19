@@ -139,27 +139,7 @@
 					 * Accordion
 					 */
 					var $accordion = $('.accordion');
-					$accordion.on('click', 'a', function(e){
-						e.preventDefault();
-
-						var $head  = $(this);
-						var $wrap  = $head.closest('.accordion');
-						var $body  = $wrap.find('.accordion--body');
-						var $open  = $wrap.find('.accordion--head__open');
-						var $close = $wrap.find('.accordion--head__close');
-
-						$open.toggleClass('hidden');
-						$close.toggleClass('hidden');
-						$body.toggleClass('is-active');
-
-						if ($body.hasClass('is-active')) {
-							$body.slideDown(500);
-						} else {
-							$body.slideUp(500);
-						}
-
-						return false;
-					});
+					$accordion.accordion('init');
 
 					/**
 					 * Add indicator-class to avoid reworking 
