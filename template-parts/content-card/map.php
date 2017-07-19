@@ -14,6 +14,9 @@ $classes              = array();
 $classes[]            = 'acf-map';
 $classes[]            = 'map';
 
+$d['width']           = get_sub_field('width');
+$classes[]            = "width_{$d['width']}";
+
 $location             = get_sub_field('location');
 $d['content']         = "<div class='marker' data-lat='{$location['lat']}' data-lng='{$location['lng']}'></div>";
 

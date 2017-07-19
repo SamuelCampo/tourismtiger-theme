@@ -10,26 +10,22 @@
 $d                    = array();
 $d['content']         = '';
 
-$d['id']              = get_sub_field('id');
+$d['image']           = get_sub_field('image');
 $d['shape']           = get_sub_field('shape');
+$d['width']           = get_sub_field('width');
 
 // Url settings
 $d['url']             = get_sub_field('url');
 $d['target']          = get_sub_field('target') ? 'target="_blank"' : '';
 
 // Get image view
-$d['image'] = wp_get_attachment_image( 
-	$d['id'], 
-	'full', 
-	true, 
-	array(
-		'class' => "shape_{$d['shape']}"
-	)
-);
+$d['start'] = $d['url'] ? "a href='{$d['url']}' {$d['target']}" : 'div';
+$d['end']   = $d['url'] ? "a" : 'div';
 
-/**
- * Generate Content
- */
-$d['content'] .= $d['url'] ? "<a href='{$d['url']}' {$d['target']}>" : '';
-$d['content'] .= "<a href='{$d['url']}' {$d['target']}>";
-$d['content'] .= $d['url'] ? '</a>' : '';
+echo "<{$d['start']} class='image-wrap shape_{$d['shape']} width_{$d['width']}'>";
+echo wp_get_attachment_image( 
+	$d['image'], 
+	'full', 
+	true
+);
+echo "</{$d['end']}>";

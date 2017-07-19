@@ -12,14 +12,14 @@
 ?>
 
 <div class="<?=$classes;?>" <?=$attrs;?>>
-	<button class="accordion--head">
+	<a href="javascript:" class="accordion--head">
 		<?php 
 		// Head Content
-		echo $d['label'] ? "<div class='accordion--label'>{$d['label']}</div>" : ''; 
-		echo $d['open'] ? "<div class='accordion--open'>{$d['open']}</div>" : ''; 
-		echo $d['close'] ? "<div class='accordion--close'>{$d['close']}</div>" : ''; 
+		echo $d['label'] ? "<div class='accordion--head__label'>{$d['label']}</div>" : ''; 
+		echo $d['open'] ? "<div class='accordion--head__open'>{$d['open']}</div>" : ''; 
+		echo $d['close'] ? "<div class='accordion--head__close hidden'>{$d['close']}</div>" : ''; 
 		 ?>
-	</button>
+	</a>
 	
 	<div class="accordion--body wysiwyg">
 		<?php 

@@ -30,14 +30,12 @@ $d['secound']         = get_sub_field('secound');
 
 $d['before']         = '';
 
-// First title
-if ( $d['first'] ) :
-	$d['before'] .= "<p class='button-group__first-title'>{$d['first']}</p>";
-endif;
-
-// Decont title
-if ( $d['secound'] ) :
-	$d['before'] .= "<p class='button-group__second-title'>{$d['secound']}</p>";
+// Titles
+if ( $d['first'] || $d['secound'] ) :
+	$d['before'] .= '<div class="button-group--title">';
+	$d['before'] .= $d['first'] ? "<p class='button-group--title_1'>{$d['first']}</p>" : '';
+	$d['before'] .= $d['secound'] ? "<p class='button-group--title_2'>{$d['secound']}</p>" : '';
+	$d['before'] .= '</div>';
 endif;
 
 // Compile classes and attributes

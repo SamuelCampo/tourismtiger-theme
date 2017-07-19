@@ -1053,7 +1053,19 @@ function get_map_local_field( $id = '1234QWERasdf' ) {
 			'name' => 'location',
 			'type' => 'google_map',
 			'required' => '',
-		)
+		),
+		array (
+			'key' => $id . '_NImGW71cd48fw',
+			'label' => 'Width',
+			'name' => 'width',
+			'type' => 'select',
+			'required' => 0,
+			'choices' => array (
+				'auto' => 'Auto',
+				'full' => 'Full'
+			),
+			'default_value' => 'auto',
+		),
 	);
 }
 
@@ -1085,7 +1097,7 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			),
 			'default_value' => 'auto',
 			'wrapper' => array (
-				'width' => '25',
+				'width' => '20',
 			),
 		),
 		array (
@@ -1095,7 +1107,7 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			'type' => 'text',
 			'required' => '',
 			'wrapper' => array (
-				'width' => '25',
+				'width' => '20',
 			),
 			'placeholder' => 'http://example.com',
 		),
@@ -1107,7 +1119,7 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			'required' => '',
 			'message' => 'Yes, open there',
 			'wrapper' => array (
-				'width' => '25'
+				'width' => '20'
 			),
 		),
 		array (
@@ -1117,14 +1129,29 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			'type' => 'number',
 			'required' => '',
 			'wrapper' => array (
-				'width' => '25',
+				'width' => '20',
 			),
 			'default_value' => '100',
 			'placeholder' => '100',
 			'append' => '%',
 			'min' => '1',
 			'max' => '100'
-		)
+		),
+		array (
+			'key' => $id . '_NImGW71cd481w',
+			'label' => 'Width',
+			'name' => 'width',
+			'type' => 'select',
+			'required' => 0,
+			'choices' => array (
+				'auto' => 'Auto',
+				'full' => 'Full'
+			),
+			'default_value' => 'auto',
+			'wrapper' => array (
+				'width' => '20',
+			),
+		),
 	);
 }
 
@@ -1140,6 +1167,21 @@ function get_oembed_local_field( $id = '1234QWERasdf' ) {
 			'type' => 'oembed',
 			'required' => ''
 		),
+		array (
+			'key' => $id . '_NImGW72cd48f2',
+			'label' => 'Width',
+			'name' => 'width',
+			'type' => 'select',
+			'required' => 0,
+			'choices' => array (
+				'auto' => 'Auto',
+				'full' => 'Full'
+			),
+			'default_value' => 'auto',
+			'wrapper' => array (
+				'width' => '20',
+			),
+		),
 	);
 }
 
@@ -1149,14 +1191,19 @@ function get_oembed_local_field( $id = '1234QWERasdf' ) {
 function get_hr_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
-			'key' => $id . '_N1VHe71cd48f0',
-			'label' => 'Just read it',
-			'name' => 'message',
-			'type' => 'message',
-			'required' => '',
-			'message' => '<h3>Horisontal line had been added!</h3>',
-			'new_lines' => '',
-			'esc_html' => 0,
+			'key' => $id . '_AImGW71cd48fw',
+			'label' => 'Width',
+			'name' => 'width',
+			'type' => 'select',
+			'required' => 0,
+			'choices' => array (
+				'auto' => 'Auto',
+				'full' => 'Full'
+			),
+			'default_value' => 'auto',
+			'wrapper' => array (
+				'width' => '20',
+			),
 		),
 	);
 }

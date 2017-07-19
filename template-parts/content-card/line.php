@@ -13,8 +13,8 @@ $style                = array();
 $classes              = array();
 $classes[]            = 'line';
 
-
-
+$d['width']           = get_sub_field('width');
+$classes[]            = "width_{$d['width']}";
 
 // Compile classes and attributes
 $attrs[]              = 'style="' . generate_classlist( $style ) . '"';

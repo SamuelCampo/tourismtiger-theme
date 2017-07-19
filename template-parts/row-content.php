@@ -22,7 +22,7 @@ if ( have_rows( 'columns' ) ) :
 		$style                = array();
 		$classes              = array();
 		$classes[]            = "row--column";
-		$classes[]            = "column-{$layout}";
+		$classes[]            = "column-{$layout} style-default";
 
 		// Compile classes and attributes
 		$attrs[]              = 'style="' . generate_classlist( $style ) . '"';

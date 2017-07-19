@@ -13,12 +13,17 @@ $style                = array();
 $classes              = array();
 $classes[]            = 'oembed';
 
-$iframe = '<iframe src="' . get_sub_field( 'video' ) . '"></iframe>';
+$d['width']           = get_sub_field('width');
+$classes[]            = "width_{$d['width']}";
+
+$iframe = get_sub_field( 'video' );
 
 preg_match('/src="(.+?)"/', $iframe, $matches);
 $src = $matches[1];
 $params = array(
     'controls'    => 1,
+    'hd'        => 1,
+    'autohide'    => 1
 );
 $new_src = add_query_arg($params, $src);
 $iframe = str_replace($src, $new_src, $iframe);
