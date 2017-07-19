@@ -138,7 +138,7 @@
 					/**
 					 * Accordion
 					 */
-					var $accordion = $('.accordion');
+					var $accordion = $self.find('.accordion');
 					$accordion.accordion('init');
 
 					/**
