@@ -1331,7 +1331,6 @@ function get_map_local_field( $id = '1234QWERasdf' ) {
 			'required' => 0,
 			'placement' => 'top'
 		),
-
 		array (
 			'key' => $id . '_N121z71md48f2',
 			'label' => 'Location',
