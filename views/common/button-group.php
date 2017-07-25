@@ -10,7 +10,7 @@
  */
 ?>
 
-<div class="button-group">
+<div <?=$attrs_wrap;?> class="button-group">
 	<?=$d['before'];?>
 	<a <?=$attrs;?> class="<?=$classes;?>"><?=$d['label'];?></a>
 </div>

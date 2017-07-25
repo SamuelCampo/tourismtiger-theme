@@ -27,8 +27,7 @@ $type       = array( 'top' => get_sub_field('top-divider'), 'bottom' => get_sub_
 get_section_dividers( $type, $the_section_row, $section_id );
 
 // Compile styles
-$attr_style = 'style="' . generate_classlist( $style ) . '"';
-$attrs[]    = $attr_style;
+$attrs[] = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
 
 // Compile classes and attributes
 $classes    = generate_classlist( $classes );

@@ -680,7 +680,7 @@ class HeroArea extends StylingCard {
 				$output .= $css ? "{$tag} input{{$css}}" : '';
 
 				/* Button */
-				$output .= get_button_css( $key_button );
+				$output .= get_button_css( $key_button, '.{$slug}-{$i} .hero-area--button' );
 
 				/* Calendar */
 				$css     = '';

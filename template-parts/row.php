@@ -69,11 +69,13 @@ if ( $d['layout'] == 'carousel' ) :
 	$attrs[]              = "data-scroll='{$d['slides_scroll']}'";
 	$attrs[]              = "data-columns='{$d['cols_count']}';";
 	$attrs[]              = "data-dots='{$d['show_dots']}';";
+	$attrs[]              = "data-arrows-type='{$d['arrows_type']}';";
+	$classes[]            = 'arrows_type_' . $d['arrows_position'];
 
 	if ( $d['arrows_type'] == 'custom' ) :
 		$classes[]            = 'arrows_size_' . $d['arrows_size'];
-		$classes[]            = 'arrows_weight' . $d['arrows_weight'];
-		$classes[]            = 'arrows_position' . $d['arrows_position'];
+		$classes[]            = 'arrows_weight_' . $d['arrows_weight'];
+		$classes[]            = 'arrows_position_' . $d['arrows_position'];
 	endif;
 endif;
 
@@ -89,7 +91,7 @@ if ( $d['background'] != 'none' ) :
 endif;
 
 // Compile classes and attributes
-$attrs[]              = 'style="' . generate_classlist( $style ) . '"';
+$attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
 $classes              = generate_classlist( $classes );
 $attrs                = generate_classlist( $attrs );
 
