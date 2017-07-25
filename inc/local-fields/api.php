@@ -7,6 +7,104 @@
  */
 
 
+/**
+ * Generates Product section local fields array
+ */
+function get_product_section_local_field( $id = '1234QWERasdf' ) {
+	return array(
+
+		// Headline
+		array (
+			'key' => $id . '_N121zN1cd48f3',
+			'name' => 'headline',
+			'label' => 'Headline',
+			'display' => 'block',
+			'sub_fields' => get_headline_local_field( $id ),
+		),
+
+		// Editor
+		array (
+			'key' => $id . '_N121z7Ocd48f2',
+			'name' => 'editor',
+			'label' => 'Editor',
+			'display' => 'block',
+			'sub_fields' => get_editor_local_field( $id ),
+		),
+
+		// Horizontal line
+		array (
+			'key' => $id . '_N1Viz71cHe8f0',
+			'name' => 'line',
+			'label' => 'Horizontal Line',
+			'display' => 'block',
+			'sub_fields' => get_hr_local_field( $id ),
+		),
+
+		// Testimonial
+		array (
+			'key' => $id . '_Nj2j271cd48f0',
+			'name' => 'testimonial',
+			'label' => 'Testimonial',
+			'display' => 'block',
+			'sub_fields' => get_content_testimonial_local_field( $id ),
+		),
+
+		// Gallery
+		array (
+			'key' => $id . '_Nj43251cd48f0',
+			'name' => 'gallery',
+			'label' => 'Gallery',
+			'display' => 'block',
+			'sub_fields' => get_gallery_local_field( $id ),
+		),
+
+		// Image card
+		array (
+			'key' => $id . '_ICD3251cd48f0',
+			'name' => 'image-card',
+			'label' => 'Image Card',
+			'display' => 'block',
+			'sub_fields' => get_image_card_local_field( $id ),
+		),
+
+		// Video
+		array (
+			'key' => $id . '_N1Viz71cd48f0',
+			'name' => 'oembed',
+			'label' => 'oEmbed Video',
+			'display' => 'block',
+			'sub_fields' => get_oembed_local_field( $id ),
+		),
+
+		// Trip details
+		array (
+			'key' => $id . '_DRViip71cd48f0',
+			'name' => 'trip-details',
+			'label' => 'Trip Details',
+			'display' => 'block',
+			'sub_fields' => get_trip_details_local_field( $id ),
+		),
+
+		// Hightlights
+		array (
+			'key' => $id . '_HRhiip71cd48f0',
+			'name' => 'hightlights',
+			'label' => 'Hightlights',
+			'display' => 'block',
+			'sub_fields' => get_hightlights_local_field( $id ),
+		),
+
+		// Icons list
+		array (
+			'key' => $id . '_HRhiip71cd48f0',
+			'name' => 'icons-list',
+			'label' => 'Icons list',
+			'display' => 'block',
+			'sub_fields' => get_icons_list_local_field( $id ),
+		),
+	);
+}
+
 
 /**
  * Generates Row local fields array
@@ -1160,6 +1258,67 @@ function get_button_local_field( $id = '1234QWERasdf' ) {
 }
 
 /**
+ * Generates button local fields array
+ */
+function get_gallery_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_T521QzPcd48f4',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+
+		array (
+			'key' => $id . '_Gl21QzPcd48f4',
+			'label' => 'Gallery',
+			'name' => 'gallery',
+			'type' => 'gallery',
+			'required' => 0,
+		),
+
+		array (
+			'key' => $id . '_QzP1zN1cd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T5MtzN1cd4QzP',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T5MbQzPcd48f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+	);
+}
+
+/**
  * Generates map local fields array
  */
 function get_map_local_field( $id = '1234QWERasdf' ) {
@@ -1435,6 +1594,177 @@ function get_oembed_local_field( $id = '1234QWERasdf' ) {
 }
 
 /**
+ * Generates trip details local fields array
+ */
+function get_trip_details_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_T9X5zritpd4867',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+
+
+		array (
+			'key' => $id . '_T9X5zritpd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9ritpN6cd48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_TritpzN1cd47f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+	);
+}
+
+/**
+ * Generates trip details local fields array
+ */
+function get_hightlights_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_T9X5HriUpd4h67',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+
+
+		array (
+			'key' => $id . '_T9H5zUitph48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9HitUN6ch48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_TriHpzU1cdh7f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+	);
+}
+
+/**
+ * Generates trip details local fields array
+ */
+function get_icons_list_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_T9X5HrLiip2h67',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+
+
+		array (
+			'key' => $id . '_T9H5zULiip28f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9HLiiU2ch48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_TrLiip21cdh7f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+	);
+}
+
+/**
  * Generates hr local fields array
  */
 function get_hr_local_field( $id = '1234QWERasdf' ) {
@@ -1600,7 +1930,15 @@ function get_accordion_local_field( $id = '1234QWERasdf' ) {
 function get_content_testimonial_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
-			'key' => $id . '_Nj2j271cd48f1',
+			'key' => $id . '_T9X5zN1Ad48f9',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_Nj1a271cd48f1',
 			'label' => 'Testimonial',
 			'name' => 'testimonial',
 			'type' => 'post_object',
@@ -1611,7 +1949,113 @@ function get_content_testimonial_local_field( $id = '1234QWERasdf' ) {
 			'multiple' => 0,
 			'return_format' => 'object',
 			'ui' => 1,
-		)
+		),
+
+		array (
+			'key' => $id . '_T9a3zN1cd48f6',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9A2zN6cd48f7',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T9A1zN1cd47f8',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+	);
+}
+
+/**
+ * Generates content_testimonial local fields array
+ */
+function get_image_card_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_T9X5ZN1cd48f9',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_ImC1d6db6de3a',
+			'label' => 'Image',
+			'name' => 'image',
+			'type' => 'image',
+			'required' => 0,
+			'return_format' => 'url',
+			'preview_size' => 'full',
+			'library' => 'all',
+		),
+
+		array (
+			'key' => $id . '_Imc3zN11u48f6',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_Imc2zN61u48f7',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_Imc1zN11u47f8',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
 	);
 }
 
