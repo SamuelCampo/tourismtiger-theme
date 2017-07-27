@@ -14,7 +14,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 		'fields' => array (
 			array (
 				'key' => 'pc_ha',
-				'label' => 'Primary Hero Area',
+				'label' => 'Hero Area',
 				'name' => 'hero_area',
 				'type' => 'flexible_content',
 				'required' => 0,
@@ -1037,6 +1037,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'param' => 'post_type',
 					'operator' => '==',
 					'value' => 'page',
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'product',
 				),
 			),
 		),

@@ -25,9 +25,17 @@ function init_template_post_type(){
         'show_ui'               => true, 
         'show_tagcloud'         => false, 
         'hierarchical'          => true,
-        'show_admin_column'     => true,
-        'has_archive'           => true
+        'show_admin_column'     => false,
+        'has_archive'           => true,
     ) );
+
+    /**
+     * Setup default categories
+     */
+    wp_insert_term( 'Section', 'template-type', array( 'slug' => 'section' ) );
+    wp_insert_term( 'Row', 'template-type', array( 'slug' => 'row' ) );
+    wp_insert_term( 'Product section', 'template-type', array( 'slug' => 'product-section' ) );
+    wp_insert_term( 'Sidebar widget', 'template-type', array( 'slug' => 'sidebar-widget' ) );
 
     register_post_type('template', array(
         'labels'                 => array(

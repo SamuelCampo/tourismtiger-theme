@@ -2,9 +2,244 @@
 /**
  * ACF local fields API
  *
+ * @todo  
+ * - Icons list component -- add settings
+ * - Alert box component -- add settings
+ * - Include icons
+ *
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */
+
+
+/**
+ * Sidebar widget
+ */
+function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
+	return array(
+		array (
+			'key' => $id . '_A2982bc694Cd91',
+			'name' => 'headline',
+			'label' => 'Headline',
+			'display' => 'block',
+			'sub_fields' => get_headline_local_field( 'wi-il' ),
+		),
+
+		array (
+			'key' => $id . '_A2187bc694Cd90',
+			'name' => 'content',
+			'label' => 'Content',
+			'display' => 'block',
+			'sub_fields' => get_editor_local_field( 'wi-il' ),
+		),
+
+		array (
+			'key' => $id . '_A2982bc694Cd46',
+			'name' => 'button',
+			'label' => 'Button',
+			'display' => 'block',
+			'sub_fields' => array (
+				array (
+					'key' => $id . '_T9X2zN1cd46s3',
+					'label' => 'Content',
+					'name' => 'tab_content',
+					'type' => 'tab',
+					'required' => 0,
+					'placement' => 'top'
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd49',
+					'label' => 'Dropdown',
+					'name' => 'is_dropdown',
+					'type' => 'true_false',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '15',
+					),
+					'message' => 'Yes',
+					'default_value' => 0,
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd47',
+					'label' => 'Label',
+					'name' => 'label',
+					'type' => 'text',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '15',
+					),
+					'placeholder' => 'Book now'
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd48',
+					'label' => 'Action type',
+					'name' => 'type',
+					'type' => 'select',
+					'required' => 0,
+					'wrapper' => array (
+						'width' => '35',
+					),
+					'choices' => array (
+						'link' => 'Link to another page',
+						'iframe-popup' => 'iFrame popup',
+						'form-link' => 'Link to form',
+						'integration' => 'Third party integration',
+					),
+					'default_value' => 'link',
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => $id . '_A2982bc694Cd49',
+								'operator' => '!=',
+								'value' => 1
+							)
+						)
+					),
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd50',
+					'label' => 'Action',
+					'name' => 'action',
+					'type' => 'text',
+					'required' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => $id . '_A2982bc694Cd49',
+								'operator' => '!=',
+								'value' => 1
+							)
+						)
+					),
+					'wrapper' => array (
+						'width' => '35',
+					)
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd51',
+					'label' => 'Dropdown Options',
+					'name' => 'dropdown',
+					'type' => 'repeater',
+					'required' => 0,
+					'conditional_logic' => array (
+						array (
+							array (
+								'field' => $id . '_A2982bc694Cd49',
+								'operator' => '==',
+								'value' => 1,
+							),
+						),
+					),
+					'wrapper' => array (
+						'width' => '70',
+					),
+					'layout' => 'block',
+					'button_label' => 'Add Sub Option',
+					'sub_fields' => array (
+						array (
+							'key' => $id . '_A2982bc694Cd54',
+							'label' => 'Label',
+							'name' => 'label',
+							'type' => 'text',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '33',
+							),
+							'placeholder' => 'Option name'
+						),
+						array (
+							'key' => $id . '_A2982bc694Cd55',
+							'label' => 'Action type',
+							'name' => 'type',
+							'type' => 'select',
+							'required' => 0,
+							'wrapper' => array (
+								'width' => '33',
+							),
+							'choices' => array (
+								'link' => 'Link to another page',
+								'iframe-popup' => 'iFrame popup',
+								'form-link' => 'Link to form',
+								'integration' => 'Third party integration',
+							),
+							'default_value' => 'link',
+						),
+						array (
+							'key' => $id . '_A2982bc694Cd56',
+							'label' => 'Action',
+							'name' => 'action',
+							'type' => 'text',
+							'required' => 0,
+							'wrapper' => array (
+								'width' => '33',
+							)
+						),
+					),
+					'min' => 1
+				),
+
+				array (
+					'key' => $id . '_T9XszN1cd46z3',
+					'label' => 'Settings',
+					'name' => 'tab_settings',
+					'type' => 'tab',
+					'required' => 0,
+					'placement' => 'top'
+				),
+				array (
+					'key' => $id . '_T9X2zN6cd46Y3',
+					'label' => 'Margin top',
+					'name' => 'margin_top',
+					'type' => 'number',
+					'required' => '',
+					'wrapper' => array (
+						'width' => '25',
+					),
+					'placeholder' => '0',
+					'append' => 'px',
+					'min' => '0',
+					'max' => '100'
+				),
+				array (
+					'key' => $id . '_T9X2zN1cd46Y3',
+					'label' => 'Margin bottom',
+					'name' => 'margin_bottom',
+					'type' => 'number',
+					'required' => '',
+					'wrapper' => array (
+						'width' => '25',
+					),
+					'placeholder' => '0',
+					'append' => 'px',
+					'min' => '0',
+					'max' => '100',
+					'wrapper' => array (
+						'width' => '25',
+					),
+				),
+			)
+		),
+
+		array (
+			'key' => $id . '_A2982bc694Cd60',
+			'name' => 'icon-label',
+			'label' => 'Icon label',
+			'display' => 'block',
+			'sub_fields' => get_icons_list_local_field( 'wi-il' )
+		),
+
+		array (
+			'key' => 'sava_A2982bc694Cd70',
+			'label' => 'HR Line',
+			'name' => 'line',
+			'display' => 'block',
+			'sub_fields' => get_hr_local_field( 'wi-il' )
+		)
+	);
+}
 
 
 /**
@@ -83,15 +318,6 @@ function get_product_section_local_field( $id = '1234QWERasdf' ) {
 			'label' => 'Trip Details',
 			'display' => 'block',
 			'sub_fields' => get_trip_details_local_field( $id ),
-		),
-
-		// Hightlights
-		array (
-			'key' => $id . '_HRhiip71cd48f0',
-			'name' => 'hightlights',
-			'label' => 'Hightlights',
-			'display' => 'block',
-			'sub_fields' => get_hightlights_local_field( $id ),
 		),
 
 		// Icons list
@@ -1105,6 +1331,23 @@ function get_headline_local_field( $id = '1234QWERasdf' ) {
 			'min' => '0',
 			'max' => '100'
 		),
+		array (
+			'key' => $id . '_N121zN1cd48f4',
+			'label' => 'Alignment',
+			'name' => 'align',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '25'
+			),
+			'choices' => array (
+				'auto'  => 'Auto',
+				'left' => 'Left',
+				'center' => 'Center',
+				'right' => 'Right',
+			),
+			'allow_null' => 0,
+		),
 	);
 }
 
@@ -1272,10 +1515,18 @@ function get_gallery_local_field( $id = '1234QWERasdf' ) {
 		),
 
 		array (
-			'key' => $id . '_Gl21QzPcd48f4',
+			'key' => $id . '_Gl21QzPcd48f5',
 			'label' => 'Gallery',
 			'name' => 'gallery',
 			'type' => 'gallery',
+			'required' => 0,
+		),
+
+		array (
+			'key' => $id . '_Gl21QzPcd48f6',
+			'label' => 'Button label',
+			'name' => 'label',
+			'type' => 'text',
 			'required' => 0,
 		),
 
@@ -1607,6 +1858,28 @@ function get_trip_details_local_field( $id = '1234QWERasdf' ) {
 			'placement' => 'top'
 		),
 
+		array (
+			'key' => $id . '_T9X5zriTpd1867',
+			'label' => 'Label',
+			'name' => 'label',
+			'type' => 'text',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 30,
+			),
+		),
+
+		array (
+			'key' => $id . '_T9x5zriTpd1867',
+			'label' => 'Detail',
+			'name' => 'detail',
+			'type' => 'textarea',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 70,
+			),
+			'rows' => '3'
+		),
 
 		array (
 			'key' => $id . '_T9X5zritpd48f3',
@@ -1647,62 +1920,121 @@ function get_trip_details_local_field( $id = '1234QWERasdf' ) {
 				'width' => '25',
 			),
 		),
-	);
-}
 
-/**
- * Generates trip details local fields array
- */
-function get_hightlights_local_field( $id = '1234QWERasdf' ) {
-	return array (
 		array (
-			'key' => $id . '_T9X5HriUpd4h67',
-			'label' => 'Content',
-			'name' => 'tab_content',
+			'key' => $id . '_T9X5zriTpd2867',
+			'label' => 'Accordion',
+			'name' => 'is-accorion',
+			'type' => 'true_false',
+			'required' => '',
+			'message' => 'Use it',
+			'wrapper' => array (
+				'width' => '25'
+			),
+		),
+
+		array (
+			'key' => $id . '_T9X5zriTpd2868',
+			'label' => 'Icon',
+			'name' => 'is-icon',
+			'type' => 'true_false',
+			'required' => '',
+			'message' => 'Use it',
+			'wrapper' => array (
+				'width' => '25'
+			),
+		),
+
+		array (
+			'key' => $id . '_T9Ac123tpd48f3',
+			'label' => 'Accordion',
+			'name' => 'tab_accordion',
 			'type' => 'tab',
 			'required' => 0,
-			'placement' => 'top'
+			'placement' => 'top',
+			'conditional_logic' => array (
+				array(
+					array (
+						'field' => $id . '_T9X5zriTpd2867',
+						'operator' => '==',
+						'value' => 1
+					)
+				)
+			)
+		),
+		array (
+			'key' => $id . '_T9Ac124tpd48f3',
+			'label' => 'Link label',
+			'name' => 'link-label',
+			'type' => 'text',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 30,
+			),
+			'conditional_logic' => array (
+				array(
+					array (
+						'field' => $id . '_T9X5zriTpd2867',
+						'operator' => '==',
+						'value' => 1
+					)
+				)
+			)
+		),
+		array (
+			'key' => $id . '_T9Ac125tpd48f3',
+			'label' => 'Hidden content',
+			'name' => 'hidden-content',
+			'type' => 'wysiwyg',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 70,
+			),
+			'conditional_logic' => array (
+				array(
+					array (
+						'field' => $id . '_T9X5zriTpd2867',
+						'operator' => '==',
+						'value' => 1
+					)
+				)
+			)
 		),
 
-
 		array (
-			'key' => $id . '_T9H5zUitph48f3',
-			'label' => 'Settings',
-			'name' => 'tab_settings',
+			'key' => $id . '_T9X5z79td412f3',
+			'label' => 'Icon',
+			'name' => 'tab_icon',
 			'type' => 'tab',
 			'required' => 0,
-			'placement' => 'top'
+			'placement' => 'top',
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_T9X5zriTpd2868',
+						'operator' => '==',
+						'value' => 1,
+					),
+				),
+			),
 		),
 		array (
-			'key' => $id . '_T9HitUN6ch48f3',
-			'label' => 'Margin top',
-			'name' => 'margin_top',
-			'type' => 'number',
-			'required' => '',
-			'wrapper' => array (
-				'width' => '25',
+			'key' => $id . '_T9X5z70opd41f3',
+			'label' => 'Icon',
+			'name' => 'icon',
+			'type' => 'font-awesome',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_T9X5zriTpd2868',
+						'operator' => '==',
+						'value' => 1,
+					),
+				),
 			),
-			'placeholder' => '0',
-			'append' => 'px',
-			'min' => '0',
-			'max' => '100'
-		),
-		array (
-			'key' => $id . '_TriHpzU1cdh7f3',
-			'label' => 'Margin bottom',
-			'name' => 'margin_bottom',
-			'type' => 'number',
-			'required' => '',
-			'wrapper' => array (
-				'width' => '25',
-			),
-			'placeholder' => '0',
-			'append' => 'px',
-			'min' => '0',
-			'max' => '100',
-			'wrapper' => array (
-				'width' => '25',
-			),
+			'default_value' => 'fa',
+			'save_format' => 'class'
 		),
 	);
 }
@@ -1721,6 +2053,85 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 			'placement' => 'top'
 		),
 
+		array (
+			'key' => $id . '_TRX5HrLiip2h67',
+			'label' => 'Icons list',
+			'name' => 'icons-list',
+			'type' => 'repeater',
+			'required' => 0,
+			'layout' => 'block',
+			'sub_fields' => array (
+				array(
+					'key'   => $id . '_A2982bc694Cd61',
+					'name'  => 'icon-type',
+					'label' => 'Icon type',
+					'type'  => 'select',
+					'required' => 0,
+					'choices' => array(
+						'checklist' => 'Checklist icon',
+						'custom'    => 'Custom'
+					),
+					'default_value' => 'checklist',
+					'wrapper' => array (
+						'width' => 30
+					)
+				),
+				array (
+					'key' => $id . '_A2981bc664cd61',
+					'label' => 'Icon size',
+					'name' => 'size',
+					'type' => 'number',
+					'required' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => $id . '_A2982bc694Cd61',
+								'operator' => '==',
+								'value' => 'custom'
+							)
+						)
+					),
+					'wrapper' => array (
+						'width' => '20',
+					),
+					'placeholder' => 'inhreit',
+					'append' => 'px',
+					'step' => 1,
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd63',
+					'label' => 'Icon',
+					'name' => 'icon',
+					'type' => 'font-awesome',
+					'required' => 0,
+					'wrapper' => array (
+						'width' => '50',
+					),
+					'save_format' => 'class',
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => $id . '_A2982bc694Cd61',
+								'operator' => '==',
+								'value' => 'custom'
+							)
+						)
+					)
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd62',
+					'label' => 'Textarea',
+					'name' => 'textarea',
+					'type' => 'text',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '100',
+					)
+				),
+			) 
+		),
+ 
 
 		array (
 			'key' => $id . '_T9H5zULiip28f3',
@@ -1760,6 +2171,21 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
+		),
+		array(
+			'key'   => $id . '_A298lbc694Cd94',
+			'name'  => 'layout',
+			'label' => 'Layout',
+			'type'  => 'select',
+			'required' => 0,
+			'choices' => array(
+				'cols-3' => 'Three columns',
+				'cols-2'    => 'Two columns'
+			),
+			'default_value' => 'cols-3',
+			'wrapper' => array (
+				'width' => 30
+			)
 		),
 	);
 }
@@ -1816,6 +2242,7 @@ function get_hr_local_field( $id = '1234QWERasdf' ) {
 			'required' => 0,
 			'choices' => array (
 				'auto' => 'Auto',
+				'half' => '50% of container',
 				'full' => 'Full'
 			),
 			'default_value' => 'auto',
@@ -2016,6 +2443,20 @@ function get_image_card_local_field( $id = '1234QWERasdf' ) {
 			'preview_size' => 'full',
 			'library' => 'all',
 		),
+		array (
+			'key' => $id . '_ImC1d6db6de4a',
+			'label' => 'Headline',
+			'name' => 'headline',
+			'type' => 'text',
+			'required' => 0,
+		),
+		array (
+			'key' => $id . '_ImC1d6db6de5a',
+			'label' => 'Content',
+			'name' => 'content',
+			'type' => 'wysiwyg',
+			'required' => 0,
+		),
 
 		array (
 			'key' => $id . '_Imc3zN11u48f6',
@@ -2054,6 +2495,69 @@ function get_image_card_local_field( $id = '1234QWERasdf' ) {
 			'max' => '100',
 			'wrapper' => array (
 				'width' => '25',
+			),
+		),
+		array (
+			'key' => $id . '_Imc1zN11u47f9',
+			'label' => 'Layout',
+			'name' => 'layout',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '15',
+			),
+			'choices' => array (
+				'style-1' => 'Style 1',
+				'style-2' => 'Style 2'
+			),
+			'default_value' => array (
+				0 => 'style-1',
+			),
+		),
+		array (
+			'key' => $id . '_Imc1zN12u47f9',
+			'label' => 'Style 1: Description',
+			'name' => 'separator_1',
+			'type' => 'message',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_Imc1zN11u47f9',
+						'operator' => '==',
+						'value' => 'style-1'
+					)
+				) 
+			),
+			'wrapper' => array (
+				'width' => '35',
+			),
+			'message' => 'Single column: Image -> Headline -> Content',
+			'new_lines' => '',
+			'esc_html' => 0,
+		),
+		array (
+			'key' => $id . '_Imc1zN22u47f1',
+			'label' => 'Style 2: Description',
+			'name' => 'separator_2',
+			'type' => 'message',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_Imc1zN11u47f9',
+						'operator' => '==',
+						'value' => 'style-2'
+					)
+				) 
+			),
+			'message' => 'Two columns: 1. Image; 2. Headline -> Content',
+			'new_lines' => '',
+			'esc_html' => 0,
+			'wrapper' => array (
+				'width' => '35',
 			),
 		),
 	);
