@@ -59,7 +59,7 @@ add_action( 'after_setup_theme', 'wordpress_kit_setup' );
  */
 function loginLogo() {
     echo '<style type="text/css">
-        h1 a { background-image:url(' . get_bloginfo('template_directory') . '/assets/img/fav/primary.png) !important; }
+        h1 a { background-image:url(' . get_bloginfo('template_directory') . '/assets/img/logo.png) !important; }
     </style>';
 }
  
