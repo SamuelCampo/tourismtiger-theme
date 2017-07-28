@@ -22,10 +22,10 @@ if ( have_rows( 'columns' ) ) :
 		$style                = array();
 		$classes              = array();
 		$classes[]            = "row--column";
-		$classes[]            = "column-{$layout}";
+		$classes[]            = "column-{$layout} card-wrapper";
 
 		// Compile classes and attributes
-		$attrs[]              = 'style="' . generate_classlist( $style ) . '"';
+		$attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
 		$classes              = generate_classlist( $classes );
 		$attrs                = generate_classlist( $attrs );
 

@@ -2,10 +2,334 @@
 /**
  * ACF local fields API
  *
+ * @todo  
+ * - Icons list component -- add settings
+ * - Alert box component -- add settings
+ * - Include icons
+ *
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */
 
+
+/**
+ * Sidebar widget
+ */
+function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
+	return array(
+		array (
+			'key' => $id . '_A2982bc694Cd91',
+			'name' => 'headline',
+			'label' => 'Headline',
+			'display' => 'block',
+			'sub_fields' => get_headline_local_field( 'wi-il' ),
+		),
+
+		array (
+			'key' => $id . '_A2187bc694Cd90',
+			'name' => 'content',
+			'label' => 'Content',
+			'display' => 'block',
+			'sub_fields' => get_editor_local_field( 'wi-il' ),
+		),
+
+		array (
+			'key' => $id . '_A2982bc694Cd46',
+			'name' => 'button',
+			'label' => 'Button',
+			'display' => 'block',
+			'sub_fields' => array (
+				array (
+					'key' => $id . '_T9X2zN1cd46s3',
+					'label' => 'Content',
+					'name' => 'tab_content',
+					'type' => 'tab',
+					'required' => 0,
+					'placement' => 'top'
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd49',
+					'label' => 'Dropdown',
+					'name' => 'is_dropdown',
+					'type' => 'true_false',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '15',
+					),
+					'message' => 'Yes',
+					'default_value' => 0,
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd47',
+					'label' => 'Label',
+					'name' => 'label',
+					'type' => 'text',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '15',
+					),
+					'placeholder' => 'Book now'
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd48',
+					'label' => 'Action type',
+					'name' => 'type',
+					'type' => 'select',
+					'required' => 0,
+					'wrapper' => array (
+						'width' => '35',
+					),
+					'choices' => array (
+						'link' => 'Link to another page',
+						'iframe-popup' => 'iFrame popup',
+						'form-link' => 'Link to form',
+						'integration' => 'Third party integration',
+					),
+					'default_value' => 'link',
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => $id . '_A2982bc694Cd49',
+								'operator' => '!=',
+								'value' => 1
+							)
+						)
+					),
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd50',
+					'label' => 'Action',
+					'name' => 'action',
+					'type' => 'text',
+					'required' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => $id . '_A2982bc694Cd49',
+								'operator' => '!=',
+								'value' => 1
+							)
+						)
+					),
+					'wrapper' => array (
+						'width' => '35',
+					)
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd51',
+					'label' => 'Dropdown Options',
+					'name' => 'dropdown',
+					'type' => 'repeater',
+					'required' => 0,
+					'conditional_logic' => array (
+						array (
+							array (
+								'field' => $id . '_A2982bc694Cd49',
+								'operator' => '==',
+								'value' => 1,
+							),
+						),
+					),
+					'wrapper' => array (
+						'width' => '70',
+					),
+					'layout' => 'block',
+					'button_label' => 'Add Sub Option',
+					'sub_fields' => array (
+						array (
+							'key' => $id . '_A2982bc694Cd54',
+							'label' => 'Label',
+							'name' => 'label',
+							'type' => 'text',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '33',
+							),
+							'placeholder' => 'Option name'
+						),
+						array (
+							'key' => $id . '_A2982bc694Cd55',
+							'label' => 'Action type',
+							'name' => 'type',
+							'type' => 'select',
+							'required' => 0,
+							'wrapper' => array (
+								'width' => '33',
+							),
+							'choices' => array (
+								'link' => 'Link to another page',
+								'iframe-popup' => 'iFrame popup',
+								'form-link' => 'Link to form',
+								'integration' => 'Third party integration',
+							),
+							'default_value' => 'link',
+						),
+						array (
+							'key' => $id . '_A2982bc694Cd56',
+							'label' => 'Action',
+							'name' => 'action',
+							'type' => 'text',
+							'required' => 0,
+							'wrapper' => array (
+								'width' => '33',
+							)
+						),
+					),
+					'min' => 1
+				),
+
+				array (
+					'key' => $id . '_T9XszN1cd46z3',
+					'label' => 'Settings',
+					'name' => 'tab_settings',
+					'type' => 'tab',
+					'required' => 0,
+					'placement' => 'top'
+				),
+				array (
+					'key' => $id . '_T9X2zN6cd46Y3',
+					'label' => 'Margin top',
+					'name' => 'margin_top',
+					'type' => 'number',
+					'required' => '',
+					'wrapper' => array (
+						'width' => '25',
+					),
+					'placeholder' => '0',
+					'append' => 'px',
+					'min' => '0',
+					'max' => '100'
+				),
+				array (
+					'key' => $id . '_T9X2zN1cd46Y3',
+					'label' => 'Margin bottom',
+					'name' => 'margin_bottom',
+					'type' => 'number',
+					'required' => '',
+					'wrapper' => array (
+						'width' => '25',
+					),
+					'placeholder' => '0',
+					'append' => 'px',
+					'min' => '0',
+					'max' => '100',
+					'wrapper' => array (
+						'width' => '25',
+					),
+				),
+			)
+		),
+
+		array (
+			'key' => $id . '_A2982bc694Cd60',
+			'name' => 'icon-label',
+			'label' => 'Icon label',
+			'display' => 'block',
+			'sub_fields' => get_icons_list_local_field( 'wi-il' )
+		),
+
+		array (
+			'key' => 'sava_A2982bc694Cd70',
+			'label' => 'HR Line',
+			'name' => 'line',
+			'display' => 'block',
+			'sub_fields' => get_hr_local_field( 'wi-il' )
+		)
+	);
+}
+
+
+/**
+ * Generates Product section local fields array
+ */
+function get_product_section_local_field( $id = '1234QWERasdf' ) {
+	return array(
+
+		// Headline
+		array (
+			'key' => $id . '_N121zN1cd48f3',
+			'name' => 'headline',
+			'label' => 'Headline',
+			'display' => 'block',
+			'sub_fields' => get_headline_local_field( $id ),
+		),
+
+		// Editor
+		array (
+			'key' => $id . '_N121z7Ocd48f2',
+			'name' => 'editor',
+			'label' => 'Editor',
+			'display' => 'block',
+			'sub_fields' => get_editor_local_field( $id ),
+		),
+
+		// Horizontal line
+		array (
+			'key' => $id . '_N1Viz71cHe8f0',
+			'name' => 'line',
+			'label' => 'Horizontal Line',
+			'display' => 'block',
+			'sub_fields' => get_hr_local_field( $id ),
+		),
+
+		// Testimonial
+		array (
+			'key' => $id . '_Nj2j271cd48f0',
+			'name' => 'testimonial',
+			'label' => 'Testimonial',
+			'display' => 'block',
+			'sub_fields' => get_content_testimonial_local_field( $id ),
+		),
+
+		// Gallery
+		array (
+			'key' => $id . '_Nj43251cd48f0',
+			'name' => 'gallery',
+			'label' => 'Gallery',
+			'display' => 'block',
+			'sub_fields' => get_gallery_local_field( $id ),
+		),
+
+		// Image card
+		array (
+			'key' => $id . '_ICD3251cd48f0',
+			'name' => 'image-card',
+			'label' => 'Image Card',
+			'display' => 'block',
+			'sub_fields' => get_image_card_local_field( $id ),
+		),
+
+		// Video
+		array (
+			'key' => $id . '_N1Viz71cd48f0',
+			'name' => 'oembed',
+			'label' => 'oEmbed Video',
+			'display' => 'block',
+			'sub_fields' => get_oembed_local_field( $id ),
+		),
+
+		// Trip details
+		array (
+			'key' => $id . '_DRViip71cd48f0',
+			'name' => 'trip-details',
+			'label' => 'Trip Details',
+			'display' => 'block',
+			'sub_fields' => get_trip_details_local_field( $id ),
+		),
+
+		// Icons list
+		array (
+			'key' => $id . '_HRhiip71cd48f0',
+			'name' => 'icons-list',
+			'label' => 'Icons list',
+			'display' => 'block',
+			'sub_fields' => get_icons_list_local_field( $id ),
+		),
+	);
+}
 
 
 /**
@@ -934,6 +1258,14 @@ function get_content_local_field( $id = '1234QWERasdf' ) {
 function get_headline_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
+			'key' => $id . '_T121zN1cd48f3',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
 			'key' => $id . '_N121zN1cd48f3',
 			'label' => 'Text',
 			'name' => 'text',
@@ -962,7 +1294,60 @@ function get_headline_local_field( $id = '1234QWERasdf' ) {
 				'h6' => 'H6',
 			),
 			'allow_null' => 0,
-		)
+		),
+		array (
+			'key' => $id . '_T221zN1cd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T2MtzN1cd48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T2MbzN1cd48f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_N121zN1cd48f4',
+			'label' => 'Alignment',
+			'name' => 'align',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '25'
+			),
+			'choices' => array (
+				'auto'  => 'Auto',
+				'left' => 'Left',
+				'center' => 'Center',
+				'right' => 'Right',
+			),
+			'allow_null' => 0,
+		),
 	);
 }
 
@@ -972,6 +1357,14 @@ function get_headline_local_field( $id = '1234QWERasdf' ) {
 function get_editor_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
+			'key' => $id . '_T121zN1cd48f4',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
 			'key' => $id . '_N121z7Ocd48f1',
 			'label' => 'Content editor',
 			'name' => 'editor',
@@ -979,6 +1372,42 @@ function get_editor_local_field( $id = '1234QWERasdf' ) {
 			'required' => '',
 			'tabs' => 'all',
 			'toolbar' => 'full',
+		),
+		array (
+			'key' => $id . '_T421zN1cd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T4MtzN1cd48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T4MbzN1cd48f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
 		),
 	);
 }
@@ -989,41 +1418,33 @@ function get_editor_local_field( $id = '1234QWERasdf' ) {
 function get_button_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
+			'key' => $id . '_T521zN1cd48f4',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
 			'key' => $id . '_N121z7ocd48f2',
 			'label' => 'Label',
 			'name' => 'label',
 			'type' => 'text',
 			'required' => '',
 			'wrapper' => array (
-				'width' => '40',
+				'width' => '60',
 			)
 		),
 		array (
 			'key' => $id . '_N121z7ocd48f3',
 			'label' => 'URL',
 			'name' => 'url',
-			'type' => 'url',
-			'required' => '',
+			'type' => 'text',
+			'required' => 0,
 			'wrapper' => array (
 				'width' => '40',
 			),
 			'placeholder' => 'http://example.com'
-		),
-		array (
-			'key' => $id . '_N121z7ocd48f4',
-			'label' => 'Align',
-			'name' => 'align',
-			'type' => 'select',
-			'required' => 0,
-			'wrapper' => array (
-				'width' => '20',
-			),
-			'choices' => array (
-				'right' => 'Left',
-				'center' => 'Center',
-				'left' => 'Right',
-			),
-			'default_value' => 'right',
 		),
 		array (
 			'key' => $id . '_N121z7ocd48f5',
@@ -1038,7 +1459,113 @@ function get_button_local_field( $id = '1234QWERasdf' ) {
 			'name' => 'secound',
 			'type' => 'text',
 			'required' => '',
-		)
+		),
+
+		array (
+			'key' => $id . '_T521zN1cd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T5MtzN1cd48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T5MbzN1cd48f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+	);
+}
+
+/**
+ * Generates button local fields array
+ */
+function get_gallery_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_T521QzPcd48f4',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+
+		array (
+			'key' => $id . '_Gl21QzPcd48f5',
+			'label' => 'Gallery',
+			'name' => 'gallery',
+			'type' => 'gallery',
+			'required' => 0,
+		),
+
+		array (
+			'key' => $id . '_Gl21QzPcd48f6',
+			'label' => 'Button label',
+			'name' => 'label',
+			'type' => 'text',
+			'required' => 0,
+		),
+
+		array (
+			'key' => $id . '_QzP1zN1cd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T5MtzN1cd4QzP',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T5MbQzPcd48f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
 	);
 }
 
@@ -1048,12 +1575,75 @@ function get_button_local_field( $id = '1234QWERasdf' ) {
 function get_map_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
+			'key' => $id . '_T6TbzN1cd48f3',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
 			'key' => $id . '_N121z71md48f2',
 			'label' => 'Location',
 			'name' => 'location',
 			'type' => 'google_map',
 			'required' => '',
-		)
+		),
+
+		array (
+			'key' => $id . '_T621zN1cd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T6MtzN1cd48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T6MbzN1cd48f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+		array (
+			'key' => $id . '_NImGW71cd48fw',
+			'label' => 'Width',
+			'name' => 'width',
+			'type' => 'select',
+			'required' => 0,
+			'choices' => array (
+				'auto' => 'Auto',
+				'full' => 'Full'
+			),
+			'default_value' => 'auto',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
 	);
 }
 
@@ -1063,6 +1653,15 @@ function get_map_local_field( $id = '1234QWERasdf' ) {
 function get_image_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
+			'key' => $id . '_T721ZN1cd48f3',
+			'label' => 'Content',
+			'name' => 'tab_Content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+
+		array (
 			'key' => $id . '_NImGz71cd48f2',
 			'label' => 'Attach image',
 			'name' => 'image',
@@ -1071,6 +1670,43 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			'return_format' => 'id',
 			'preview_size' => 'rpwe-thumbnail',
 			'library' => 'all',
+		),
+
+		array (
+			'key' => $id . '_T721zN1cd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T7MtzN1cd48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T7MbzN1cd48f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
 		),
 		array (
 			'key' => $id . '_NImGz71cd48f3',
@@ -1093,7 +1729,7 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			'label' => 'Url',
 			'name' => 'url',
 			'type' => 'text',
-			'required' => '',
+			'required' => 0,
 			'wrapper' => array (
 				'width' => '25',
 			),
@@ -1124,7 +1760,22 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			'append' => '%',
 			'min' => '1',
 			'max' => '100'
-		)
+		),
+		array (
+			'key' => $id . '_NImGW71cd481w',
+			'label' => 'Width',
+			'name' => 'width',
+			'type' => 'select',
+			'required' => 0,
+			'choices' => array (
+				'auto' => 'Auto',
+				'full' => 'Full'
+			),
+			'default_value' => 'auto',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
 	);
 }
 
@@ -1134,11 +1785,406 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 function get_oembed_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
+			'key' => $id . '_T9X1zN1cd48f3',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+
+		array (
 			'key' => $id . '_N1Viz71cd48f1',
 			'label' => 'Video',
 			'name' => 'video',
 			'type' => 'oembed',
 			'required' => ''
+		),
+
+		array (
+			'key' => $id . '_T9X5zN1cd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9X1zN6cd48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T9X1zN1cd47f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+	);
+}
+
+/**
+ * Generates trip details local fields array
+ */
+function get_trip_details_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_T9X5zritpd4867',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+
+		array (
+			'key' => $id . '_T9X5zriTpd1867',
+			'label' => 'Label',
+			'name' => 'label',
+			'type' => 'text',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 30,
+			),
+		),
+
+		array (
+			'key' => $id . '_T9x5zriTpd1867',
+			'label' => 'Detail',
+			'name' => 'detail',
+			'type' => 'textarea',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 70,
+			),
+			'rows' => '3'
+		),
+
+		array (
+			'key' => $id . '_T9X5zritpd48f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9ritpN6cd48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_TritpzN1cd47f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+
+		array (
+			'key' => $id . '_T9X5zriTpd2867',
+			'label' => 'Accordion',
+			'name' => 'is-accorion',
+			'type' => 'true_false',
+			'required' => '',
+			'message' => 'Use it',
+			'wrapper' => array (
+				'width' => '25'
+			),
+		),
+
+		array (
+			'key' => $id . '_T9X5zriTpd2868',
+			'label' => 'Icon',
+			'name' => 'is-icon',
+			'type' => 'true_false',
+			'required' => '',
+			'message' => 'Use it',
+			'wrapper' => array (
+				'width' => '25'
+			),
+		),
+
+		array (
+			'key' => $id . '_T9Ac123tpd48f3',
+			'label' => 'Accordion',
+			'name' => 'tab_accordion',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top',
+			'conditional_logic' => array (
+				array(
+					array (
+						'field' => $id . '_T9X5zriTpd2867',
+						'operator' => '==',
+						'value' => 1
+					)
+				)
+			)
+		),
+		array (
+			'key' => $id . '_T9Ac124tpd48f3',
+			'label' => 'Link label',
+			'name' => 'link-label',
+			'type' => 'text',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 30,
+			),
+			'conditional_logic' => array (
+				array(
+					array (
+						'field' => $id . '_T9X5zriTpd2867',
+						'operator' => '==',
+						'value' => 1
+					)
+				)
+			)
+		),
+		array (
+			'key' => $id . '_T9Ac125tpd48f3',
+			'label' => 'Hidden content',
+			'name' => 'hidden-content',
+			'type' => 'wysiwyg',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 70,
+			),
+			'conditional_logic' => array (
+				array(
+					array (
+						'field' => $id . '_T9X5zriTpd2867',
+						'operator' => '==',
+						'value' => 1
+					)
+				)
+			)
+		),
+
+		array (
+			'key' => $id . '_T9X5z79td412f3',
+			'label' => 'Icon',
+			'name' => 'tab_icon',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top',
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_T9X5zriTpd2868',
+						'operator' => '==',
+						'value' => 1,
+					),
+				),
+			),
+		),
+		array (
+			'key' => $id . '_T9X5z70opd41f3',
+			'label' => 'Icon',
+			'name' => 'icon',
+			'type' => 'font-awesome',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_T9X5zriTpd2868',
+						'operator' => '==',
+						'value' => 1,
+					),
+				),
+			),
+			'default_value' => 'fa',
+			'save_format' => 'class'
+		),
+	);
+}
+
+/**
+ * Generates trip details local fields array
+ */
+function get_icons_list_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_T9X5HrLiip2h67',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+
+		array (
+			'key' => $id . '_TRX5HrLiip2h67',
+			'label' => 'Icons list',
+			'name' => 'icons-list',
+			'type' => 'repeater',
+			'required' => 0,
+			'layout' => 'block',
+			'sub_fields' => array (
+				array(
+					'key'   => $id . '_A2982bc694Cd61',
+					'name'  => 'icon-type',
+					'label' => 'Icon type',
+					'type'  => 'select',
+					'required' => 0,
+					'choices' => array(
+						'checklist' => 'Checklist icon',
+						'custom'    => 'Custom'
+					),
+					'default_value' => 'checklist',
+					'wrapper' => array (
+						'width' => 30
+					)
+				),
+				array (
+					'key' => $id . '_A2981bc664cd61',
+					'label' => 'Icon size',
+					'name' => 'size',
+					'type' => 'number',
+					'required' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => $id . '_A2982bc694Cd61',
+								'operator' => '==',
+								'value' => 'custom'
+							)
+						)
+					),
+					'wrapper' => array (
+						'width' => '20',
+					),
+					'placeholder' => 'inhreit',
+					'append' => 'px',
+					'step' => 1,
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd63',
+					'label' => 'Icon',
+					'name' => 'icon',
+					'type' => 'font-awesome',
+					'required' => 0,
+					'wrapper' => array (
+						'width' => '50',
+					),
+					'save_format' => 'class',
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => $id . '_A2982bc694Cd61',
+								'operator' => '==',
+								'value' => 'custom'
+							)
+						)
+					)
+				),
+				array (
+					'key' => $id . '_A2982bc694Cd62',
+					'label' => 'Textarea',
+					'name' => 'textarea',
+					'type' => 'text',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '100',
+					)
+				),
+			) 
+		),
+ 
+
+		array (
+			'key' => $id . '_T9H5zULiip28f3',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9HLiiU2ch48f3',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_TrLiip21cdh7f3',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+		array(
+			'key'   => $id . '_A298lbc694Cd94',
+			'name'  => 'layout',
+			'label' => 'Layout',
+			'type'  => 'select',
+			'required' => 0,
+			'choices' => array(
+				'cols-3' => 'Three columns',
+				'cols-2'    => 'Two columns'
+			),
+			'default_value' => 'cols-3',
+			'wrapper' => array (
+				'width' => 30
+			)
 		),
 	);
 }
@@ -1149,14 +2195,59 @@ function get_oembed_local_field( $id = '1234QWERasdf' ) {
 function get_hr_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
-			'key' => $id . '_N1VHe71cd48f0',
-			'label' => 'Just read it',
-			'name' => 'message',
-			'type' => 'message',
+			'key' => $id . '_T9X5zN1cd48f1',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9X1zN6cd48f2',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
 			'required' => '',
-			'message' => '<h3>Horisontal line had been added!</h3>',
-			'new_lines' => '',
-			'esc_html' => 0,
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T9X1zN1cd47f4',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+		array (
+			'key' => $id . '_AImGW71cd48fw',
+			'label' => 'Width',
+			'name' => 'width',
+			'type' => 'select',
+			'required' => 0,
+			'choices' => array (
+				'auto' => 'Auto',
+				'half' => '50% of container',
+				'full' => 'Full'
+			),
+			'default_value' => 'auto',
+			'wrapper' => array (
+				'width' => '25',
+			),
 		),
 	);
 }
@@ -1166,6 +2257,14 @@ function get_hr_local_field( $id = '1234QWERasdf' ) {
  */
 function get_accordion_local_field( $id = '1234QWERasdf' ) {
 	return array (
+		array (
+			'key' => $id . '_T9X5zN1cd48f9',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
 		array (
 			'key' => $id . '_N121z66cd48f2',
 			'label' => 'Label',
@@ -1208,6 +2307,46 @@ function get_accordion_local_field( $id = '1234QWERasdf' ) {
 			'toolbar' => 'full',
 			'media_upload' => 1,
 		),
+
+		array (
+			'key' => $id . '_T9X5zN1cd48f6',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9X1zN6cd48f7',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T9X1zN1cd47f8',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
 	);
 }
 
@@ -1217,7 +2356,15 @@ function get_accordion_local_field( $id = '1234QWERasdf' ) {
 function get_content_testimonial_local_field( $id = '1234QWERasdf' ) {
 	return array (
 		array (
-			'key' => $id . '_Nj2j271cd48f1',
+			'key' => $id . '_T9X5zN1Ad48f9',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_Nj1a271cd48f1',
 			'label' => 'Testimonial',
 			'name' => 'testimonial',
 			'type' => 'post_object',
@@ -1228,7 +2375,190 @@ function get_content_testimonial_local_field( $id = '1234QWERasdf' ) {
 			'multiple' => 0,
 			'return_format' => 'object',
 			'ui' => 1,
-		)
+		),
+
+		array (
+			'key' => $id . '_T9a3zN1cd48f6',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_T9A2zN6cd48f7',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T9A1zN1cd47f8',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+	);
+}
+
+/**
+ * Generates content_testimonial local fields array
+ */
+function get_image_card_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_T9X5ZN1cd48f9',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_ImC1d6db6de3a',
+			'label' => 'Image',
+			'name' => 'image',
+			'type' => 'image',
+			'required' => 0,
+			'return_format' => 'url',
+			'preview_size' => 'full',
+			'library' => 'all',
+		),
+		array (
+			'key' => $id . '_ImC1d6db6de4a',
+			'label' => 'Headline',
+			'name' => 'headline',
+			'type' => 'text',
+			'required' => 0,
+		),
+		array (
+			'key' => $id . '_ImC1d6db6de5a',
+			'label' => 'Content',
+			'name' => 'content',
+			'type' => 'wysiwyg',
+			'required' => 0,
+		),
+
+		array (
+			'key' => $id . '_Imc3zN11u48f6',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_Imc2zN61u48f7',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_Imc1zN11u47f8',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+		array (
+			'key' => $id . '_Imc1zN11u47f9',
+			'label' => 'Layout',
+			'name' => 'layout',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '15',
+			),
+			'choices' => array (
+				'style-1' => 'Style 1',
+				'style-2' => 'Style 2'
+			),
+			'default_value' => array (
+				0 => 'style-1',
+			),
+		),
+		array (
+			'key' => $id . '_Imc1zN12u47f9',
+			'label' => 'Style 1: Description',
+			'name' => 'separator_1',
+			'type' => 'message',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_Imc1zN11u47f9',
+						'operator' => '==',
+						'value' => 'style-1'
+					)
+				) 
+			),
+			'wrapper' => array (
+				'width' => '35',
+			),
+			'message' => 'Single column: Image -> Headline -> Content',
+			'new_lines' => '',
+			'esc_html' => 0,
+		),
+		array (
+			'key' => $id . '_Imc1zN22u47f1',
+			'label' => 'Style 2: Description',
+			'name' => 'separator_2',
+			'type' => 'message',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_Imc1zN11u47f9',
+						'operator' => '==',
+						'value' => 'style-2'
+					)
+				) 
+			),
+			'message' => 'Two columns: 1. Image; 2. Headline -> Content',
+			'new_lines' => '',
+			'esc_html' => 0,
+			'wrapper' => array (
+				'width' => '35',
+			),
+		),
 	);
 }
 

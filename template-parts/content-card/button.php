@@ -9,7 +9,9 @@
 // Common 
 $d                    = array(); // just for keep row values
 $attrs                = array(); // Regarding to button
+$attrs_wrap           = array(); // Regarding to wrapper
 $style                = array(); // Regarding to button
+$style_wrap           = array(); // Regarding to wrapper
 $classes              = array(); // Regarding to button
 $classes[]            = 'button';
 
@@ -30,18 +32,30 @@ $d['secound']         = get_sub_field('secound');
 
 $d['before']         = '';
 
-// First title
-if ( $d['first'] ) :
-	$d['before'] .= "<p class='button-group__first-title'>{$d['first']}</p>";
+// Titles
+if ( $d['first'] || $d['secound'] ) :
+	$d['before'] .= '<div class="button-group--title">';
+	$d['before'] .= $d['first'] ? "<p class='button-group--title_1'>{$d['first']}</p>" : '';
+	$d['before'] .= $d['secound'] ? "<p class='button-group--title_2'>{$d['secound']}</p>" : '';
+	$d['before'] .= '</div>';
 endif;
 
-// Decont title
-if ( $d['secound'] ) :
-	$d['before'] .= "<p class='button-group__second-title'>{$d['secound']}</p>";
-endif;
+// Margins
+$d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
+$d['margin_bottom']   = get_sub_field( 'margin_bottom' ) ? get_sub_field( 'margin_bottom' ) / 10 : false;
+
+if ( $d['margin_top'] ) 
+	$style[]          = "margin-top:{$d['margin_top']}rem;";
+
+if ( $d['margin_bottom'] ) 
+	$style[]          = "margin-bottom:{$d['margin_bottom']}rem;";
+
+// Compile classes and attributes to wrapper
+$attrs_wrap[]         = count($style_wrap) > 0 ? 'style="' . generate_classlist( $style_wrap ) . '"' : '';
+$attrs_wrap           = generate_classlist( $attrs_wrap );
 
 // Compile classes and attributes
-$attrs[]              = 'style="' . generate_classlist( $style ) . '"';
+$attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
 $classes              = generate_classlist( $classes );
 $attrs                = generate_classlist( $attrs );
 

@@ -48,10 +48,12 @@ function global_js_variables(){
 
 	wp_localize_script('tourismtiger-js', 'global_var', 
 		array(
-			'ajax'             => admin_url('admin-ajax.php'),
+			'ajax'            => admin_url('admin-ajax.php'),
 			'post_id'         => $post->ID,
 			'ajaxnonce'       => wp_create_nonce( "ajax_nonce" ),
-			'google_maps_key' => 'AIzaSyCRJz_DMLCdqsfRwyysbIaWvzDxIIKzmaU'
+			'google_maps_key' => 'AIzaSyCRJz_DMLCdqsfRwyysbIaWvzDxIIKzmaU',
+			'url'             => get_bloginfo( 'url' ),
+			'theme_url'       => get_template_directory_uri()
 		)
 	);  
 }
