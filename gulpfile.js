@@ -104,8 +104,8 @@ var mmq         = require('gulp-merge-media-queries');
  * Browser sync configs
  */
 var config = {
-    server: {
-        baseDir: './'
+    proxy: {
+        target: 'http://localhost:8888/tourtiger-theme-v2/'
     },
     tunnel: false,
     host: 'localhost',

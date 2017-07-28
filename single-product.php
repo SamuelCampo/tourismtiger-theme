@@ -1,6 +1,6 @@
 <?php
 /**
- * Single page
+ * Single product page
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  * 
@@ -11,11 +11,22 @@ get_header();
 
 	if ( have_posts() ) : 
 
-		while ( have_posts() ) : the_post(); 
+		while ( have_posts() ) : 
+			the_post(); 
+			?>
 
-			// get_template_part( 'template-parts/product', 'primary-area' );
-			// get_template_part( 'template-parts/product', 'sidebar' );
+			<div class="product-content box">
 
+				<?php
+				/**
+				 * Include Primary Area 
+				 */
+				get_template_part( 'template-parts/product', 'primary-area' );
+				?>
+
+			</div>
+
+			<?php
 		endwhile;
 
 	endif;

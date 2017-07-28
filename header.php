@@ -13,6 +13,3 @@
 <body>
 <div id="wrapper">
 <div id="body-class"  <?php body_class(); ?>>
-
-<?php get_template_part( 'template-parts/hero-area' ); ?>
-<?php get_template_part( 'template-parts/primary-content' ); ?>

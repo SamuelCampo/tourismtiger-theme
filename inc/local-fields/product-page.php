@@ -43,7 +43,7 @@ if( function_exists('acf_add_local_field_group') ) :
 					),
 					array (
 						'key' => 'pd-tp_49650003e333f',
-						'name' => 'product-section-template',
+						'name' => 'section-template',
 						'label' => 'Template',
 						'display' => 'block',
 						'sub_fields' => array(
