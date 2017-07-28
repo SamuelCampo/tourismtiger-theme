@@ -45,7 +45,7 @@
 				$the_row = the_row();
 				$layout  = get_row_layout();
 				
-				get_template_part( 'template-parts/row' );
+				get_template_part( "template-parts/$layout" );
 			endwhile; 
 			?>
 

@@ -132,7 +132,7 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 			'layouts' => array (
 				array (
 					'key' => $id . '_21126955f123',
-					'name' => 'content',
+					'name' => 'contentcard',
 					'label' => 'Content card',
 					'display' => 'block',
 					'sub_fields' => get_content_local_field( $id )
@@ -672,7 +672,621 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
  * Generates Column local fields array
  */
 function get_content_local_field( $id = '1234QWERasdf' ) {
-	return array();
+	return array(
+		array (
+			'key' => $id . '_5121z71cd49f1',
+			'label' => 'Content',
+			'name' => 'CC',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_N121z71cd48f1',
+			'label' => 'Content',
+			'name' => 'content',
+			'type' => 'flexible_content',
+			'required' => 0,
+			'button_label' => 'Add Content',
+			'layouts' => array (
+
+				// Headline
+				array (
+					'key' => $id . '_N121zN1cd48f3',
+					'name' => 'headline',
+					'label' => 'Headline',
+					'display' => 'block',
+					'sub_fields' => get_headline_local_field( $id ),
+				),
+
+				// Editor
+				array (
+					'key' => $id . '_N121z7Ocd48f2',
+					'name' => 'editor',
+					'label' => 'Editor',
+					'display' => 'block',
+					'sub_fields' => get_editor_local_field( $id ),
+				),
+
+				// Button
+				array (
+					'key' => $id . '_N121z7ocd48f1',
+					'name' => 'button',
+					'label' => 'Button',
+					'display' => 'block',
+					'sub_fields' => get_button_local_field( $id ),
+				),
+
+				// Map
+				array (
+					'key' => $id . '_N121z71md48f1',
+					'name' => 'map',
+					'label' => 'Map',
+					'display' => 'block',
+					'sub_fields' => get_map_local_field( $id ),
+				),
+
+				// Image
+				array (
+					'key' => $id . '_NImGz71cd48f1',
+					'name' => 'image',
+					'label' => 'Image',
+					'display' => 'block',
+					'sub_fields' => get_image_local_field( $id ),
+				),
+
+				// Video
+				array (
+					'key' => $id . '_N1Viz71cd48f0',
+					'name' => 'oembed',
+					'label' => 'oEmbed Video',
+					'display' => 'block',
+					'sub_fields' => get_oembed_local_field( $id ),
+				),
+
+				// Horizontal line
+				array (
+					'key' => $id . '_N1Viz71cHe8f0',
+					'name' => 'line',
+					'label' => 'Horizontal Line',
+					'display' => 'block',
+					'sub_fields' => get_hr_local_field( $id ),
+				),
+
+				// Accordion
+				array (
+					'key' => $id . '_N121z66cd48f1',
+					'name' => 'accordion',
+					'label' => 'Accordion',
+					'display' => 'block',
+					'sub_fields' => get_accordion_local_field( $id )
+				),
+
+				// Testimonial
+				array (
+					'key' => $id . '_Nj2j271cd48f0',
+					'name' => 'testimonial',
+					'label' => 'Testimonial',
+					'display' => 'block',
+					'sub_fields' => get_content_testimonial_local_field( $id ),
+				),
+
+				// Gravity Form
+				array (
+					'key' => $id . '_N1F1z71Fd48f1',
+					'name' => 'form',
+					'label' => 'Form',
+					'display' => 'block',
+					'sub_fields' => get_gform_local_field( $id ),
+				),
+			)
+		),
+		array (
+			'key' => $id . '_5121e71cd49f1',
+			'label' => 'Settings',
+			'name' => 'CS_Type_tab_0',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_8121e7Ecd4Ef8',
+			'label' => 'Style',
+			'name' => 'style',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '33'
+			),
+			'choices' => get_available_styles_list( 'placeholder' ),
+		),
+		array (
+			'key' => $id . '_8I2ie7Ecd4Ef8',
+			'label' => 'Borders',
+			'name' => 'borders',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '33',
+			),
+			'choices' => array (
+				'none' => 'None',
+				'both' => 'Both',
+				'left' => 'Left',
+				'right' => 'Light'
+			),
+			'allow_null' => 0,
+			'default_value' => 'none',
+		),
+		array (
+			'key' => $id . '_5111ee172a422',
+			'label' => 'Borders',
+			'name' => 'Bows_tab_0',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top',
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_8I2ie7Ecd4Ef8',
+						'operator' => '!=',
+						'value' => 'none',
+					),
+				),
+			),
+		),
+		array (
+			'key' => $id . '_bIziQ7ecd4Ef8',
+			'label' => 'Width',
+			'name' => 'border-width',
+			'type' => 'number',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_8I2ie7Ecd4Ef8',
+						'operator' => '!=',
+						'value' => 'none',
+					),
+				),
+			),
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'default_value' => '1',
+			'placeholder' => '1',
+			'append' => 'px',
+			'min' => '1',
+			'max' => '10'
+		),
+		array (
+			'key' => $id . '_bIziQ7Ecd4EV8',
+			'label' => 'Style',
+			'name' => 'border-style',
+			'type' => 'select',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_8I2ie7Ecd4Ef8',
+						'operator' => '!=',
+						'value' => 'none'
+					),
+				),
+			),
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'choices' => array (
+				'solid' => 'Solid',
+				'dashed' => 'Dashed',
+				'dotted' => 'Dotted'
+			),
+			'allow_null' => 0,
+			'default_value' => 'solid',
+		),
+		array (
+			'key' => $id . '_8I2ie7ECd4Ef8',
+			'label' => 'Color',
+			'name' => 'border-color',
+			'type' => 'rgba_color',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_8I2ie7Ecd4Ef8',
+						'operator' => '!=',
+						'value' => 'none'
+					),
+				),
+			),
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+		array (
+			'key' => $id . '_8u2ie7ECd4Ef8',
+			'label' => 'Size',
+			'name' => 'border-size',
+			'type' => 'text',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_8I2ie7Ecd4Ef8',
+						'operator' => '!=',
+						'value' => 'none'
+					),
+				),
+			),
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '50px or 10%',
+			'maxlength' => '5',
+		),
+	);
+}
+
+/**
+ * Generates headline local fields array
+ */
+function get_headline_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_N121zN1cd48f3',
+			'label' => 'Text',
+			'name' => 'text',
+			'type' => 'text',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '75',
+			),
+		),
+		array (
+			'key' => $id . '_N121zN1cd48f1',
+			'label' => 'Tag',
+			'name' => 'tag',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '25'
+			),
+			'choices' => array (
+				'p'  => 'Paragraf',
+				'h1' => 'H1',
+				'h2' => 'H2',
+				'h3' => 'H3',
+				'h4' => 'H4',
+				'h5' => 'H5',
+				'h6' => 'H6',
+			),
+			'allow_null' => 0,
+		)
+	);
+}
+
+/**
+ * Generates editor local fields array
+ */
+function get_editor_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_N121z7Ocd48f1',
+			'label' => 'Content editor',
+			'name' => 'editor',
+			'type' => 'wysiwyg',
+			'required' => '',
+			'tabs' => 'all',
+			'toolbar' => 'full',
+		),
+	);
+}
+
+/**
+ * Generates button local fields array
+ */
+function get_button_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_N121z7ocd48f2',
+			'label' => 'Label',
+			'name' => 'label',
+			'type' => 'text',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '40',
+			)
+		),
+		array (
+			'key' => $id . '_N121z7ocd48f3',
+			'label' => 'URL',
+			'name' => 'url',
+			'type' => 'url',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '40',
+			),
+			'placeholder' => 'http://example.com'
+		),
+		array (
+			'key' => $id . '_N121z7ocd48f4',
+			'label' => 'Align',
+			'name' => 'align',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '20',
+			),
+			'choices' => array (
+				'right' => 'Left',
+				'center' => 'Center',
+				'left' => 'Right',
+			),
+			'default_value' => 'right',
+		),
+		array (
+			'key' => $id . '_N121z7ocd48f5',
+			'label' => 'First title',
+			'name' => 'first',
+			'type' => 'text',
+			'required' => '',
+		),
+		array (
+			'key' => $id . '_N121z7ocd48f6',
+			'label' => 'Secound title',
+			'name' => 'secound',
+			'type' => 'text',
+			'required' => '',
+		)
+	);
+}
+
+/**
+ * Generates map local fields array
+ */
+function get_map_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_N121z71md48f2',
+			'label' => 'Location',
+			'name' => 'location',
+			'type' => 'google_map',
+			'required' => '',
+		)
+	);
+}
+
+/**
+ * Generates image local fields array
+ */
+function get_image_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_NImGz71cd48f2',
+			'label' => 'Attach image',
+			'name' => 'image',
+			'type' => 'image',
+			'required' => 0,
+			'return_format' => 'id',
+			'preview_size' => 'rpwe-thumbnail',
+			'library' => 'all',
+		),
+		array (
+			'key' => $id . '_NImGz71cd48f3',
+			'label' => 'Shape',
+			'name' => 'shape',
+			'type' => 'select',
+			'required' => 0,
+			'choices' => array (
+				'auto' => 'Auto',
+				'circle' => 'Circle',
+				'square' => 'Square'
+			),
+			'default_value' => 'auto',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
+		array (
+			'key' => $id . '_NImGz71cd48f4',
+			'label' => 'Url',
+			'name' => 'url',
+			'type' => 'text',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => 'http://example.com',
+		),
+		array (
+			'key' => $id . '_NImGz71cd48f5',
+			'label' => 'New window',
+			'name' => 'target',
+			'type' => 'true_false',
+			'required' => '',
+			'message' => 'Yes, open there',
+			'wrapper' => array (
+				'width' => '25'
+			),
+		),
+		array (
+			'key' => $id . '_NImGz71cd48f6',
+			'label' => 'Size',
+			'name' => 'size',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'default_value' => '100',
+			'placeholder' => '100',
+			'append' => '%',
+			'min' => '1',
+			'max' => '100'
+		)
+	);
+}
+
+/**
+ * Generates oembed local fields array
+ */
+function get_oembed_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_N1Viz71cd48f1',
+			'label' => 'Video',
+			'name' => 'video',
+			'type' => 'oembed',
+			'required' => ''
+		),
+	);
+}
+
+/**
+ * Generates hr local fields array
+ */
+function get_hr_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_N1VHe71cd48f0',
+			'label' => 'Just read it',
+			'name' => 'message',
+			'type' => 'message',
+			'required' => '',
+			'message' => '<h3>Horisontal line had been added!</h3>',
+			'new_lines' => '',
+			'esc_html' => 0,
+		),
+	);
+}
+
+/**
+ * Generates accordion local fields array
+ */
+function get_accordion_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_N121z66cd48f2',
+			'label' => 'Label',
+			'name' => 'label',
+			'type' => 'text',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 50,
+			),
+		),
+		array (
+			'key' => $id . '_N121z66cd48f3',
+			'label' => 'Open label',
+			'name' => 'open',
+			'type' => 'text',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 25,
+			),
+			'default_value' => 'Show More',
+		),
+		array (
+			'key' => $id . '_N121z66cd48f4',
+			'label' => 'Close label',
+			'name' => 'close',
+			'type' => 'text',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => 25,
+			),
+			'default_value' => 'Close More',
+		),
+		array (
+			'key' => $id . '_N121z66cd48f5',
+			'label' => 'Content',
+			'name' => 'wysiwyg',
+			'type' => 'wysiwyg',
+			'required' => 0,
+			'tabs' => 'all',
+			'toolbar' => 'full',
+			'media_upload' => 1,
+		),
+	);
+}
+
+/**
+ * Generates content_testimonial local fields array
+ */
+function get_content_testimonial_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_Nj2j271cd48f1',
+			'label' => 'Testimonial',
+			'name' => 'testimonial',
+			'type' => 'post_object',
+			'required' => 0,
+			'post_type' => array (
+				'testimonial'
+			),
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		)
+	);
+}
+
+/**
+ * Generates gform local fields array
+ */
+function get_gform_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_N1F1z71Fd48f2',
+			'label' => 'Form ID',
+			'name' => 'form_id',
+			'type' => 'number',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '20',
+			),
+			'prepend' => 'ID',
+			'min' => 1,
+			'step' => 1,
+		),
+		array (
+			'key' => $id . '_N1F1z71Fd48f3',
+			'label' => 'Form layout',
+			'name' => 'Layout',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '40',
+			),
+			'choices' => array (
+				'auto' => 'Auto',
+				'horizontal' => 'Horizontal',
+				'column' => 'Column',
+			),
+			'default_value' => array (
+				0 => 'auto',
+			),
+		),
+		array (
+			'key' => $id . '_N1F1z71Fd48f4',
+			'label' => 'Header',
+			'name' => 'header',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '40',
+			),
+			'choices' => array (
+				'all' => 'Title and description',
+				'title' => 'Single title',
+				'nothing' => 'Nothing to show'
+			),
+			'default_value' => array (
+				0 => 'all',
+			)
+		)
+	);
 }
 
 /**

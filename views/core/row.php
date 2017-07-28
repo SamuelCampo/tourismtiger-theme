@@ -17,31 +17,9 @@
 
 	<?php 
 	/**
-	 * Run functions after open tag.
-	 * 
-	 * After completing assigned functions 
-	 * that acton will be cleaned up except 
-	 * the functions under 'priority 10'
-	 */
-	do_action( 'after_open_row_tag', $the_row, $row_id ); 
-	remove_all_actions( 'after_open_row_tag', 10);
-
-
-	/**
 	 * Get row type view
 	 */
 	get_template_part( 'template-parts/row', $type );
-
-
-	/**
-	 * Run functions after open tag.
-	 *
-	 * After completing assigned functions 
-	 * that acton will be cleaned up except 
-	 * the functions under 'priority 10'
-	 */
-	do_action( 'after_open_row_tag', $the_row, $row_id ); 
-	remove_all_actions( 'after_open_row_tag', 10);
 	?>
 
 </div>

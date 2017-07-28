@@ -13202,6 +13202,64 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
   	Common functions
  */
 /*  =========================
+	Accordion */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	var methods = {
+
+		init: function () {
+
+			var $this = $(this);
+			
+			if ($this.length > 0) {
+				$this.on('click', 'a', function(e){
+					e.preventDefault();
+
+					var $head  = $(this);
+					var $wrap  = $head.closest('.accordion');
+					var $body  = $wrap.find('.accordion--body');
+					var $open  = $wrap.find('.accordion--head__open');
+					var $close = $wrap.find('.accordion--head__close');
+
+					$open.toggleClass('hidden');
+					$close.toggleClass('hidden');
+					$body.slideToggle(500);
+
+					return false;
+				});
+			}
+
+		}
+
+	};
+
+	/** 
+	 * Init method
+	 */
+	$.fn.accordion = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.heroArea' );
+        } 
+
+    };
+}));
+/*  =========================
 	Primary content */
 
 (function(factory) {
@@ -13311,6 +13369,38 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 						$rows.primaryContent( 'initRows' );
 					}
 
+					/**
+					 * Image component
+					 */
+					var $images = $self.find('.image-wrap');
+					$images.each(function(){
+						var $wrap  = $(this);
+						var $image = $wrap.find('img');
+
+						if ($wrap.hasClass('shape_circle') || $wrap.hasClass('shape_square')) {
+							var height = $wrap.height();
+							var width  = $wrap.width();
+
+							if (height > width) {
+								$wrap.height(width);
+							} else {
+								$wrap.width(height);
+							}
+
+							$image.css({
+								'position': 'absolute',
+								'left': '50%',
+								'right': '50%',
+								'transform': 'translate(-50%, 50%)'
+							});
+						}
+					});
+
+					/**
+					 * Accordion
+					 */
+					var $accordion = $self.find('.accordion');
+					$accordion.accordion('init');
 
 					/**
 					 * Add indicator-class to avoid reworking 
@@ -13343,6 +13433,17 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					var scrollSlides   = +$row.attr('data-scroll') || 1;
 					var showSlides     = +$row.attr('data-columns') || 1;
 					var doesShowDots   = $row.attr('data-dots') || false;
+					var arrowsType     = $row.attr('data-arrows-type') || 'auto';
+					var prevArrowData  = '';
+					var nextArrowData  = '';
+
+					// Set arrows 
+					switch (arrowsType) {
+						case 'auto':
+							prevArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-left.png">';
+							nextArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-right.png">';
+							break;
+					}
 
 					// Media default settings
 					var laptopSettings  = {
@@ -13367,24 +13468,24 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 					// Set media queries 
 					switch (showSlides) {
-						case '1':
+						case 1:
 							break;
 
-						case '2':
+						case 2:
 							mobileSettings = {
 								slidesToShow: 1,
 								slidesToScroll: 1,
 							};
 							break;
 
-						case '3':
+						case 3:
 							mobileSettings = {
 								slidesToShow: 1,
 								slidesToScroll: 1,
 							};
 							break;
 
-						case '4':
+						case 4:
 							padMiniSettings = {
 								slidesToShow: 2,
 								slidesToScroll: 2,
@@ -13395,7 +13496,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 							};
 							break;
 
-						case '5':
+						case 5:
 							laptopSettings = {
 								slidesToShow: 4,
 								slidesToScroll: 4,
@@ -13414,7 +13515,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 							};
 							break;
 
-						case '6':
+						case 6:
 							laptopSettings = {
 								slidesToShow: 5,
 								slidesToScroll: 5,
@@ -13461,11 +13562,12 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					// General slick settings
 					var values = {
 						infinite: true,
-						lazyLoad: 'ondemand',
 						adaptiveHeight: true,
 						dots: doesShowDots,
 						slidesToShow: showSlides,
 						slidesToScroll: scrollSlides,
+						prevArrow: '<button type="button" class="slick-prev">'+prevArrowData+'</button>',
+						nextArrow: '<button type="button" class="slick-next">'+nextArrowData+'</button>',
 						focusOnSelect: false,
   						responsive: [
   							laptop,

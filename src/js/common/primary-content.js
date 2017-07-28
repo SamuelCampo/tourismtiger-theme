@@ -108,6 +108,38 @@
 						$rows.primaryContent( 'initRows' );
 					}
 
+					/**
+					 * Image component
+					 */
+					var $images = $self.find('.image-wrap');
+					$images.each(function(){
+						var $wrap  = $(this);
+						var $image = $wrap.find('img');
+
+						if ($wrap.hasClass('shape_circle') || $wrap.hasClass('shape_square')) {
+							var height = $wrap.height();
+							var width  = $wrap.width();
+
+							if (height > width) {
+								$wrap.height(width);
+							} else {
+								$wrap.width(height);
+							}
+
+							$image.css({
+								'position': 'absolute',
+								'left': '50%',
+								'right': '50%',
+								'transform': 'translate(-50%, 50%)'
+							});
+						}
+					});
+
+					/**
+					 * Accordion
+					 */
+					var $accordion = $self.find('.accordion');
+					$accordion.accordion('init');
 
 					/**
 					 * Add indicator-class to avoid reworking 
@@ -140,6 +172,17 @@
 					var scrollSlides   = +$row.attr('data-scroll') || 1;
 					var showSlides     = +$row.attr('data-columns') || 1;
 					var doesShowDots   = $row.attr('data-dots') || false;
+					var arrowsType     = $row.attr('data-arrows-type') || 'auto';
+					var prevArrowData  = '';
+					var nextArrowData  = '';
+
+					// Set arrows 
+					switch (arrowsType) {
+						case 'auto':
+							prevArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-left.png">';
+							nextArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-right.png">';
+							break;
+					}
 
 					// Media default settings
 					var laptopSettings  = {
@@ -164,24 +207,24 @@
 
 					// Set media queries 
 					switch (showSlides) {
-						case '1':
+						case 1:
 							break;
 
-						case '2':
+						case 2:
 							mobileSettings = {
 								slidesToShow: 1,
 								slidesToScroll: 1,
 							};
 							break;
 
-						case '3':
+						case 3:
 							mobileSettings = {
 								slidesToShow: 1,
 								slidesToScroll: 1,
 							};
 							break;
 
-						case '4':
+						case 4:
 							padMiniSettings = {
 								slidesToShow: 2,
 								slidesToScroll: 2,
@@ -192,7 +235,7 @@
 							};
 							break;
 
-						case '5':
+						case 5:
 							laptopSettings = {
 								slidesToShow: 4,
 								slidesToScroll: 4,
@@ -211,7 +254,7 @@
 							};
 							break;
 
-						case '6':
+						case 6:
 							laptopSettings = {
 								slidesToShow: 5,
 								slidesToScroll: 5,
@@ -258,11 +301,12 @@
 					// General slick settings
 					var values = {
 						infinite: true,
-						lazyLoad: 'ondemand',
 						adaptiveHeight: true,
 						dots: doesShowDots,
 						slidesToShow: showSlides,
 						slidesToScroll: scrollSlides,
+						prevArrow: '<button type="button" class="slick-prev">'+prevArrowData+'</button>',
+						nextArrow: '<button type="button" class="slick-next">'+nextArrowData+'</button>',
 						focusOnSelect: false,
   						responsive: [
   							laptop,

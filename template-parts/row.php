@@ -43,7 +43,7 @@ $style[]              = $d['margin_top'] ? "margin-top:{$d['margin_top']};" : ''
 $style[]              = $d['margin_bottom'] ? "margin-top:{$d['margin_bottom']};" : '';
 
 
-// Grid
+// Row type: Grid
 if ( $d['layout'] == 'grid' ) :
 	$d['cols_align']      = get_sub_field( 'cols-align' ); 
 	$d['cols_ratio']      = get_sub_field( 'cols-ratio' ); 
@@ -57,7 +57,7 @@ if ( $d['layout'] == 'grid' ) :
 endif;
 
 
-// Carousel
+// Row type: Carousel
 if ( $d['layout'] == 'carousel' ) :
 	$d['slides_scroll']   = get_sub_field( 'slides_scroll' ); 
 	$d['show_dots']       = get_sub_field( 'show_dots' ); 

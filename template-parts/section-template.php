@@ -14,8 +14,8 @@ if ( $section_object ) :
 	$post = $section_object;
 	setup_postdata( $post );
 
-	if ( have_rows( 'primary-content-template' ) ) :
-		while ( have_rows( 'primary-content-template' ) ) :
+	if ( have_rows( 'primary-content-template', $post->ID ) ) :
+		while ( have_rows( 'primary-content-template', $post->ID ) ) :
 			$the_section_row = the_row();
 			$section_id      = 'sec-tem';
 

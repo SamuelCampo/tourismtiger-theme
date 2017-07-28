@@ -757,7 +757,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'name' => 'cta_button_text',
 								'type' => 'text',
 								'required' => 0,
-								'formatting' => 'none',
 								'wrapper' => array (
 									'width' => '50'
 								),

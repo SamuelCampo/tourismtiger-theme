@@ -22,6 +22,7 @@
 /**
   	Common functions
  */
+//= common/accordion.js
 //= common/primary-content.js
 //= common/popup.js
 //= common/hero-area.js
