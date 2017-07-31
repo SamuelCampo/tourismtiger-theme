@@ -9,16 +9,14 @@
 if ( have_rows( 'components' ) ) :
 	?>
 
-	<div class="primary-area__section card-wrapper">
+	<div class="primary-area__section card-wrapper wysiwyg">
 		
 		<?php 
 		while ( have_rows( 'components' ) ) :
 			$the_component = the_row();
 			$layout        = get_row_layout();
 
-			echo "<!-- {$layout} -->";
-
-			//get_template_part( "template-parts/product/{$layout}" );
+			get_template_part( "template-parts/product/{$layout}" );
 		endwhile;
 		?>
 

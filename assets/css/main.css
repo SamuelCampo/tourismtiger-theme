@@ -514,7 +514,7 @@ body {
   font-size: 1.4rem;
   line-height: 1.4;
   color: #777;
-  font-family: sans-serif, sans-serif;
+  font-family: sans-serif;
 }
 body *,
 body :after,
@@ -541,8 +541,6 @@ body input[type="submit"]:active {
 #wrapper {
   max-width: 100%;
   min-width: 320px;
-  overflow: hidden;
-  min-height: 100vh;
   position: relative;
 }
 .box {
@@ -565,74 +563,68 @@ h3 {
   line-height: 1.1;
 }
 h1 {
-  font-size: 6rem;
+  font-size: 4rem;
   margin: 0;
   font-weight: 700;
 }
 @media (max-width: 568px) {
   h1 {
-    font-size: 4.8rem;
+    font-size: 3.2rem;
     line-height: 1.3;
   }
 }
 h2 {
-  font-size: 5rem;
+  font-size: 3.5rem;
   margin: 0;
   font-weight: 100;
 }
 @media (max-width: 568px) {
   h2 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     line-height: 1.3;
   }
 }
 h3 {
-  font-size: 4rem;
+  font-size: 3rem;
   margin: 0;
   font-weight: 100;
 }
 @media (max-width: 568px) {
   h3 {
-    font-size: 3rem;
+    font-size: 2.4rem;
     line-height: 1.3;
   }
 }
 h4 {
-  font-size: 3.4rem;
+  font-size: 2.5rem;
   margin: 0;
   font-weight: 100;
 }
 @media (max-width: 568px) {
   h4 {
-    font-size: 2.2rem;
-  }
-}
-h5 {
-  font-size: 2.8rem;
-  margin: 0;
-  font-weight: 400;
-}
-@media (max-width: 568px) {
-  h5 {
     font-size: 2rem;
   }
 }
-h6 {
+h5 {
   font-size: 2rem;
   margin: 0;
   font-weight: 400;
 }
 @media (max-width: 568px) {
-  h6 {
-    font-size: 1.8rem;
-    font-weight: 700;
+  h5 {
+    font-size: 1.7rem;
   }
+}
+h6 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 400;
 }
 p,
 li {
   font-size: 1.8rem;
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.5;
   font-weight: 400;
 }
 a {
@@ -3310,7 +3302,7 @@ a img.aligncenter {
 .wysiwyg * + div,
 .wysiwyg div + *,
 .wysiwyg div + div {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 .wysiwyg p + p,
 .wysiwyg p + ul,
@@ -4792,10 +4784,14 @@ input[type='submit'][disabled] {
   height: auto;
 }
 /*  =========================
+    Primary area UI */
+.primary-area > * + * {
+  margin-top: 3rem;
+}
+/*  =========================
     Product content UI */
 .product-content {
   background-color: #eee;
-  height: 100vh;
   padding-top: 50px;
   padding-bottom: 50px;
   display: -ms-grid;

@@ -105,11 +105,11 @@ var mmq         = require('gulp-merge-media-queries');
  */
 var config = {
     proxy: {
-        target: 'http://localhost:8888/tourtiger-theme-v2/'
+        target: 'http://tourtiger:8888'
     },
     tunnel: false,
-    host: 'localhost',
-    port: 5555,
+    host: 'tourtiger',
+    port: 8888,
     logPrefix: "dzvonkevich"
 };
 

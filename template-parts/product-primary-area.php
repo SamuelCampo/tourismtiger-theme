@@ -19,8 +19,6 @@ if ( have_rows('primary-area') ) :
 			$the_section = the_row();
 			$layout      = get_row_layout();
 
-			echo "<!-- {$layout} -->";
-
 			get_template_part( 'template-parts/product', $layout );
 		endwhile;
 		?>

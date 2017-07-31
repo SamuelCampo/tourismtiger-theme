@@ -1,3 +1,13 @@
+<?php
+/**
+ * Header
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ * 
+ * @package TourismTiger_Theme
+ */
+?>
+
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage">
 <head>
