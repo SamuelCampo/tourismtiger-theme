@@ -3098,7 +3098,226 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '60'
 			),
-		)
+		),
+
+		array (
+			'key' => $id . '_5a2jea1x2a4d4',
+			'label' => 'AJAX',
+			'name' => 'Ajax_tab_0',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top',
+		),
+		array (
+			'key' => $id . '_5a2jea1x2a3d5',
+			'label' => 'Type',
+			'name' => 'ajax_type',
+			'type' => 'select',
+			'required' => '',
+			'choices' => array (
+				'false' => 'No, thanks',
+				'underneath' => 'Load underneath'
+			),
+			'default_values' => array (
+				'false'
+			),
+			'wrapper' => array (
+				'width' => '25'
+			)
+		),
+		array (
+			'key' => $id . '_5a2jea1x2a1d7',
+			'name' => 'separator_1',
+			'type' => 'message',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'message' => '<hr />',
+			'new_lines' => '',
+			'esc_html' => 0,
+			'conditional_logic' => array(
+				array(
+					array (
+						'field' => $id . '_5a2jea1x2a3d5',
+						'operator' => '!=',
+						'value' => 'false'
+					)
+				)
+			),
+		),
+		array (
+			'key' => $id . '_5a2jea1x2a2d6',
+			'label' => 'Loading button',
+			'name' => 'ajax_button',
+			'type' => 'select',
+			'required' => '',
+			'choices' => array (
+				'under-rows' => 'Button under rows',
+				'in-context' => 'In context'
+			),
+			'default_values' => array (
+				'under-rows'
+			),
+			'wrapper' => array (
+				'width' => '25'
+			),
+			'conditional_logic' => array(
+				array(
+					array (
+						'field' => $id . '_5a2jea1x2a3d5',
+						'operator' => '!=',
+						'value' => 'false'
+					)
+				)
+			),
+		),
+		array (
+			'key' => $id . '_5a2jea1x2a0d8',
+			'label' => 'Show more button label',
+			'name' => 'ajax_label_show',
+			'type' => 'text',
+			'required' => '',
+			'conditional_logic' => array(
+				array(
+					array (
+						'field' => $id . '_5a2jea1x2a2d6',
+						'operator' => '==',
+						'value' => 'under-rows'
+					),
+					array (
+						'field' => $id . '_5a2jea1x2a3d5',
+						'operator' => '!=',
+						'value' => 'false'
+					)
+				)
+			),
+			'wrapper' => array(
+				'width' => 25
+			),
+			'placeholder' => 'Show more'
+		),
+		array (
+			'key' => $id . '_5a2jea1x2a9c9',
+			'label' => 'Hide button label',
+			'name' => 'ajax_label_hide',
+			'type' => 'text',
+			'required' => '',
+			'conditional_logic' => array(
+				array(
+					array (
+						'field' => $id . '_5a2jea1x2a2d6',
+						'operator' => '==',
+						'value' => 'under-rows'
+					),
+					array (
+						'field' => $id . '_5a2jea1x2a3d5',
+						'operator' => '!=',
+						'value' => 'false'
+					)
+				)
+			),
+			'wrapper' => array(
+				'width' => 25
+			),
+			'placeholder' => 'Show less'
+		),
+		array (
+			'key' => $id . '_5a2jea1x2a8c9',
+			'label' => 'AJAX trigger',
+			'name' => 'ajax_trigger',
+			'type' => 'text',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '50'
+			),
+			'conditional_logic' => array(
+				array(
+					array (
+						'field' => $id . '_5a2jea1x2a2d6',
+						'operator' => '==',
+						'value' => 'in-context'
+					),
+					array (
+						'field' => $id . '_5a2jea1x2a3d5',
+						'operator' => '!=',
+						'value' => 'false'
+					)
+				)
+			),
+			'prepend' => 'ajax-trigger=',
+			'placeholder' => 'example-trigger'
+		),
+		array (
+			'key' => $id . '_5a2jea1x1a1v7',
+			'name' => 'separator_2',
+			'type' => 'message',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'message' => '<hr />',
+			'new_lines' => '',
+			'esc_html' => 0,
+			'conditional_logic' => array(
+				array(
+					array (
+						'field' => $id . '_5a2jea1x2a3d5',
+						'operator' => '!=',
+						'value' => 'false'
+					),
+				)
+			),
+		),
+		array (
+			'key' => $id . '_5a2jea1x1a0v8',
+			'label' => 'Show at once',
+			'name' => 'ajax_at_once',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25'
+			),
+			'conditional_logic' => array(
+				array(
+					array (
+						'field' => $id . '_5a2jea1x2a3d5',
+						'operator' => '!=',
+						'value' => 'false'
+					)
+				)
+			),
+			'append' => 'row(s)',
+			'default_value' => '1',
+			'min' => '0'
+		),
+		array (
+			'key' => $id . '_5a2jea1x1a9v9',
+			'label' => 'Showing steps',
+			'name' => 'ajax_steps',
+			'type' => 'select',
+			'required' => '',
+			'choices' => array (
+				'all' => 'All hidden rows',
+				'one-by-one' => 'One by one'
+			),
+			'default_values' => array (
+				'under-rows'
+			),
+			'conditional_logic' => array(
+				array(
+					array (
+						'field' => $id . '_5a2jea1x2a2d6',
+						'operator' => '==',
+						'value' => 'under-rows'
+					),
+					array (
+						'field' => $id . '_5a2jea1x2a3d5',
+						'operator' => '!=',
+						'value' => 'false'
+					)
+				)
+			),
+			'wrapper' => array(
+				'width' => 25
+			)
+		),
 	);
 }
 
