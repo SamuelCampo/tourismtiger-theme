@@ -361,6 +361,7 @@ function get_section_ajax_attrs( $type = false, $the_row = array() , $id = 0, $s
     $status     = intval($the_row[$id . '_5a2jea1x1a0v8']); // how many rows are already printed
     $lack       = $rows_count - $status; 
     $offset     = $the_row[$id . '_5a2jea1x1a9v9'];
+    $show_all   = intval($offset != 'all');
     $offset     = $offset && $offset != 'all' ? $the_row[$id . '_5a2jea1x1a9v9'] : $lack;
     $name       = 'rows'; // fields name
     $trigger    = $the_row[$id . '_5a2jea1x2a8c9'] ? $the_row[$id . '_5a2jea1x2a8c9'] : 'none';
@@ -377,6 +378,8 @@ function get_section_ajax_attrs( $type = false, $the_row = array() , $id = 0, $s
     $attrs    = array();
     $attrs[]  = "data-offset='{$offset}'";
     $attrs[]  = "data-status='{$status}'";
+    $attrs[]  = "data-init='{$status}'";
+    $attrs[]  = "data-show-all='{$show_all}'";
     $attrs[]  = "data-lack='{$lack}'";
     $attrs[]  = "data-field='{$name}'";
     $attrs[]  = "data-rows-button='{$button}'";
@@ -520,8 +523,8 @@ function get_section_ajax_buttons( $the_section_row, $id ) {
 
     $html       = "
         <div class='primary-content--ajax'>
-            <a href='javascript:' data-ajax-rows='{$button}' class='primary-content--ajax__btn button js-show'>{$label_show}</a>
-            <a href='javascript:' data-ajax-rows='{$button}' style='display:none;' class='primary-content--ajax__btn button js-hide'>{$label_hide}</a>
+            <a href='javascript:' data-ajax-rows='1' class='primary-content--ajax__btn button js-show'>{$label_show}</a>
+            <a href='javascript:' data-ajax-rows='1' style='display:none;' class='primary-content--ajax__btn button js-hide'>{$label_hide}</a>
         </div>
     ";
 

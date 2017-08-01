@@ -23,16 +23,56 @@
 
 				// If request to show more 
 				// rows in primary content
-				if ($click.attr('data-ajax-rows') || $click.hasClass('js-show')) {
+				if ($click.attr('data-ajax-rows')) {
 					var trigger    = $click.attr('data-ajax-rows');
 
+					// Button within a section
 					if ($click.hasClass('js-show')) {
 						var $rowHolder = $click.closest('.primary-content').find('.rows'); 
+						var $rows      = $rowHolder.children();
+						var lack       = +$rowHolder.attr('data-lack');
+
+						// buttons
+						var $moreBtn   = $click;
+						var $lessBtn   = $click.closest('.primary-content').find('.js-hide');
+
+						if (lack > 0) {
+							$rowHolder.acfApi('loadAjax');
+						} else {
+							var atOnce = +$rowHolder.attr('data-init');
+			                $rows.each(function(index){
+			                    if (index >= atOnce) {
+			                        $(this).show();
+			                    }
+			                });
+						}
+
+		                $moreBtn.hide();
+		                $lessBtn.show();
+
+					} else if ($click.hasClass('js-hide')) {
+						var $rowHolder = $click.closest('.primary-content').find('.rows'); 
+						var $rows      = $rowHolder.children();
+						var atOnce     = +$rowHolder.attr('data-init');
+						// buttons
+						var $moreBtn   = $click.closest('.primary-content').find('.js-show');
+						var $lessBtn   = $click;
+
+						// hide rows
+		                $rows.each(function(index){
+		                    if (index >= atOnce) {
+		                        $(this).hide();
+		                    }
+		                });
+
+		                $moreBtn.show();
+		                $lessBtn.hide();
+
+					// button placed elsewhere
 					} else {
 						var $rowHolder = $('[data-rows-trigger="' + trigger + '"]'); 
+						$rowHolder.acfApi('loadAjax');
 					}
-
-					$rowHolder.acfApi('loadAjax');
 				}
 			});
 
