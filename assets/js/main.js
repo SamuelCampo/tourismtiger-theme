@@ -14145,6 +14145,13 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 			$(document).popup('init');
 			$(document).heroArea('init');
 			$(document).acfApi('init');
+
+			// Product page's tstimonials
+			$('.testimonials-carousel').slick({
+				arrows: false,
+				adaptiveHeight: true,
+				dots: true
+			});
 		},
 
 		/**

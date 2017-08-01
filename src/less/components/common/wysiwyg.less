@@ -2,54 +2,54 @@
     WYSIWYG */
 
 
-.wysiwyg > {
+.wysiwyg {
 
 
-    h1 + *,
-    h2 + *,
-    h3 + *,
-    h4 + *,
-    h5 + *,
-    h6 + * {
+    > h1 + *,
+    > h2 + *,
+    > h3 + *,
+    > h4 + *,
+    > h5 + *,
+    > h6 + * {
         margin-top: 2rem;
     }
 
 
 
-    * + h1,
-    * + h2,
-    * + h3,
-    * + h4,
-    * + h5,
-    * + h6,
-    * + hr,
-    hr + * {
+    > * + h1,
+    > * + h2,
+    > * + h3,
+    > * + h4,
+    > * + h5,
+    > * + h6,
+    > * + hr,
+    > hr + * {
         margin-top: 3rem;
     }
 
 
 
-    * + div,
-    div + *,
-    div + div {
+    > * + div,
+    > div + *,
+    > div + div {
         margin-top: 2.5rem;
     }
 
 
 
-    p + p,
-    p + ul,
-    ul + p, 
-    ol + p,
-    p + ol,
-    ol+ ul,
-    ul + ol {
+    > p + p,
+    > p + ul,
+    > ul + p, 
+    > ol + p,
+    > p + ol,
+    > ol+ ul,
+    > ul + ol {
         margin-top: 1.5rem;
     }
 
 
 
-    ul > * + * {
+    > ul > * + * {
         margin-top: 1rem;
     }
 }

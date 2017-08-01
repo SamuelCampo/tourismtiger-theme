@@ -1,0 +1,99 @@
+/*  =========================
+    Primary area UI */
+
+.testimonials {
+	&-carousel {
+		.slick-dots {
+			padding: 0;
+			list-style: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 1rem 0 0;
+
+			li {
+				margin: 0 2px;
+
+				&.slick-active {
+					button {
+						background-color: #ccc;
+					}
+				}
+			}
+
+			button {
+			    color: transparent;
+			    border: none;
+			    position: relative;
+			    overflow: hidden;
+			    border-radius: 50%;
+			    width: 10px;
+			    line-height: 4px;
+			    display: inline-block;
+			    padding: 3px;
+			    background-color: #e6e6e6;
+			    cursor: pointer;
+			    .mx-transition();
+
+			    &:hover {
+			    	opacity: .55;
+					transform: scale(.9);
+			    }
+			}
+		}
+	}
+
+	&--item {
+		padding-left: 2rem;
+		padding-right: 2rem;
+
+		> *  + * {
+			margin-top: 1.5rem;
+		}
+
+		&__image {
+			position: relative;
+			border-radius: 50%;
+			overflow: hidden;
+			display: inline-block;
+			width: 7.5rem;
+			height: 7.5rem;
+
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+		}
+
+		&__meta {
+			&.layout_vertical {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+
+				> * + * {
+					margin-top: 1.5rem;
+				}
+			}
+
+			> * + * {
+				margin-top: 5px;
+			}
+		}
+
+	    &__name {
+	    	font-size: 1.6rem;
+	    }
+
+	    &__additional {
+	    	font-size: 1.2rem;
+	    	color: #ccc;
+	    }
+
+	    &__body {
+	    	font-size: 1.9rem;
+	    }
+	}
+}

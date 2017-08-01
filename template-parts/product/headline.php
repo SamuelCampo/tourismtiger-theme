@@ -15,6 +15,9 @@ $classes[]            = 'headline';
 
 $d['content']         = get_sub_field('text');
 $d['tag']             = get_sub_field('tag');
+$d['align']           = get_sub_field('align');
+
+$classes[]            = $d['align'] ? "text-align_{$d['align']}" : '';
 
 // Margins
 $d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;

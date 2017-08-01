@@ -278,8 +278,8 @@ function get_product_section_local_field( $id = '1234QWERasdf' ) {
 		// Testimonial
 		array (
 			'key' => $id . '_Nj2j271cd48f0',
-			'name' => 'testimonial',
-			'label' => 'Testimonial',
+			'name' => 'testimonials',
+			'label' => 'Testimonials',
 			'display' => 'block',
 			'sub_fields' => get_content_testimonial_local_field( $id ),
 		),
@@ -2365,14 +2365,14 @@ function get_content_testimonial_local_field( $id = '1234QWERasdf' ) {
 		),
 		array (
 			'key' => $id . '_Nj1a271cd48f1',
-			'label' => 'Testimonial',
-			'name' => 'testimonial',
+			'label' => 'Testimonials',
+			'name' => 'testimonials',
 			'type' => 'post_object',
 			'required' => 0,
 			'post_type' => array (
 				'testimonial'
 			),
-			'multiple' => 0,
+			'multiple' => 1,
 			'return_format' => 'object',
 			'ui' => 1,
 		),

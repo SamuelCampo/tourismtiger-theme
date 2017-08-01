@@ -58,6 +58,13 @@
 			$(document).popup('init');
 			$(document).heroArea('init');
 			$(document).acfApi('init');
+
+			// Product page's tstimonials
+			$('.testimonials-carousel').slick({
+				arrows: false,
+				adaptiveHeight: true,
+				dots: true
+			});
 		},
 
 		/**
