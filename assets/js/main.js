@@ -13422,7 +13422,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 		 * Init rows' functions
 		 */
 		initRow: function () {
-			var $this = $(this);
+			var $row = $(this);
 			
 			/**
 			 * Build carousel
@@ -13593,33 +13593,6 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
                 console.error('Load ajax error: ' + e); // pass exception object to error handler
             }
 		},
-
-		/**
-		 * That function inits when user clicks to 
-		 * a button which was assigned to that function
-		 */
-		loadMore: function () {
-			$btn = $(this);
-
-			$btn.on('click', function(){
-				var $click = $(this);
-				var $type  = $click.attr('data-ajax-rows');
-
-				// Under rows placement settings
-				if ($type == 'under-rows') {
-					var $section = $click.closest('.primary-content');
-					var steps    = $section.attr('data-rows-steps');
-					var atonce   = $section.attr('data-rows-atonce');
-
-				// Elsewhere on a page placement settings
-				} else if ($type == 'in-context') {
-					var trigger  = $click.attr('data-rows-trigger');
-					var $section = $('.primary-content[data-rows-trigger="' + trigger + '"]');
-					var steps    = 'all';
-					var atonce   = $section.attr('data-rows-atonce');
-				}
-			});
-		}
 	};
 
 	/** 
@@ -14034,6 +14007,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
         loadAjax: function() {
 
+            // Too important variables
             var $field      = $(this);                     // Wrapper inside which will be loaded new items
             var id          = $field.attr('id');           // Wrapper's id
             var fieldStatus = +$field.attr('data-status'); // Status of count printed items inside the wrapper
@@ -14041,6 +14015,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
             var fieldOffset = +$field.attr('data-offset'); // How many fields to print
             var fieldLack   = +$field.attr('data-lack');   // Count of lack fields
             var fieldMethod = $field.attr('data-method');
+            var fieldParent = +$field.attr('data-parent-id');
 
             if ( fieldLack > 0 && $field.length === 1 ) {
 
@@ -14051,7 +14026,8 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
                       'offset': fieldOffset,
                       'nonce': global_var.ajaxnonce,
                       'field': fieldName,
-                      'status': fieldStatus
+                      'status': fieldStatus,
+                      'section_id': fieldParent
                     },
                     function (json) {
                         $field.append(json['content']);
@@ -14059,7 +14035,6 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
                         // Update data attrs
                         fieldStatus = json['status'];
                         $field.attr('data-status', fieldStatus);
-
                         fieldLack -= 1;
                         $field.attr('data-lack', fieldLack);
 
@@ -14083,7 +14058,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
                                 console.error('Load ajax error.'); // pass exception object to error handler
                             }
                         } else {
-                            console.log('loadAjax method has loaded all rows successfull!');
+                            console.log('loadAjax method has loaded all fields successfull!');
                         }
                     },
                     'json'
@@ -14113,6 +14088,64 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
     };
 
+}));
+/*  =========================
+	handleClick */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	var methods = {
+
+		init: function () {
+			var $btn = $(this).not('.js-handled');
+
+			$btn.on('click', function(){
+				var $click = $(this);
+
+				// If request to show more 
+				// rows in primary content
+				if ($click.attr('data-ajax-rows') || $click.hasClass('js-show')) {
+					var trigger    = $click.attr('data-ajax-rows');
+
+					if ($click.hasClass('js-show')) {
+						var $rowHolder = $click.closest('.primary-content').find('.rows'); 
+					} else {
+						var $rowHolder = $('[data-rows-trigger="' + trigger + '"]'); 
+					}
+
+					$rowHolder.acfApi('loadAjax');
+				}
+			});
+
+			$btn.addClass('js-handled');
+		}
+
+	};
+
+	/** 
+	 * Init method
+	 */
+	$.fn.handleClick = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.handleClick' );
+        } 
+
+    };
 }));
 
 (function(factory) {
@@ -14145,6 +14178,9 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 			$(document).popup('init');
 			$(document).heroArea('init');
 			$(document).acfApi('init');
+
+			// Hang click handling to following buttons:
+			$('[data-ajax-rows]').handleClick('init');
 
 			// Product page's tstimonials
 			$('.testimonials-carousel').slick({

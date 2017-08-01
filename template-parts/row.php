@@ -56,7 +56,6 @@ if ( $d['layout'] == 'grid' ) :
 	endif;
 endif;
 
-
 // Row type: Carousel
 if ( $d['layout'] == 'carousel' ) :
 	$d['slides_scroll']   = get_sub_field( 'slides_scroll' ); 

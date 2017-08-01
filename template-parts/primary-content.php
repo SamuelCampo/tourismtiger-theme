@@ -12,6 +12,7 @@
 if ( have_rows( 'primary-content' ) ) :
 	$section_count = count( get_field('primary-content') );
 	$section_lack  = $section_count - 1;
+	$section_number = 0;
 	?>
 
 	<div 
@@ -27,6 +28,7 @@ if ( have_rows( 'primary-content' ) ) :
 		while ( have_rows( 'primary-content' ) ) :
 			$the_section_row = the_row();
 			$section_id      = 'pr-co';
+			$section_number++;
 
 			/**
 			 * Get section template part

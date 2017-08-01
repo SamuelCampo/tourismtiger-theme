@@ -155,6 +155,7 @@
 
         loadAjax: function() {
 
+            // Too important variables
             var $field      = $(this);                     // Wrapper inside which will be loaded new items
             var id          = $field.attr('id');           // Wrapper's id
             var fieldStatus = +$field.attr('data-status'); // Status of count printed items inside the wrapper
@@ -162,6 +163,7 @@
             var fieldOffset = +$field.attr('data-offset'); // How many fields to print
             var fieldLack   = +$field.attr('data-lack');   // Count of lack fields
             var fieldMethod = $field.attr('data-method');
+            var fieldParent = +$field.attr('data-parent-id');
 
             if ( fieldLack > 0 && $field.length === 1 ) {
 
@@ -172,7 +174,8 @@
                       'offset': fieldOffset,
                       'nonce': global_var.ajaxnonce,
                       'field': fieldName,
-                      'status': fieldStatus
+                      'status': fieldStatus,
+                      'section_id': fieldParent
                     },
                     function (json) {
                         $field.append(json['content']);
@@ -180,7 +183,6 @@
                         // Update data attrs
                         fieldStatus = json['status'];
                         $field.attr('data-status', fieldStatus);
-
                         fieldLack -= 1;
                         $field.attr('data-lack', fieldLack);
 
@@ -204,7 +206,7 @@
                                 console.error('Load ajax error.'); // pass exception object to error handler
                             }
                         } else {
-                            console.log('loadAjax method has loaded all rows successfull!');
+                            console.log('loadAjax method has loaded all fields successfull!');
                         }
                     },
                     'json'

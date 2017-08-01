@@ -27,6 +27,7 @@
 //= common/popup.js
 //= common/hero-area.js
 //= common/acf-api.js
+//= common/handle-click.js
 
 (function(factory) {
     'use strict';
@@ -58,6 +59,9 @@
 			$(document).popup('init');
 			$(document).heroArea('init');
 			$(document).acfApi('init');
+
+			// Hang click handling to following buttons:
+			$('[data-ajax-rows]').handleClick('init');
 
 			// Product page's tstimonials
 			$('.testimonials-carousel').slick({

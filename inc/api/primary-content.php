@@ -302,13 +302,15 @@ function get_section_ajax() {
     ob_start();
 
     if ( have_rows( $field, $post_id ) ) :
-        $total = count( get_field( $field, $post_id  ) );
-        $count = 1;
-        $times = 0;
+        $total          = count( get_field( $field, $post_id ) );
+        $count          = 1;
+        $section_number = 0;
+        $times          = 0;
 
         while ( have_rows( $field, $post_id ) ) :
             $the_section_row = the_row();
             $section_id      = 'pr-co';
+            $section_number++;
 
             if ( $count > $start ) :
                 include get_template_directory() . '/template-parts/' . get_row_layout() . '.php';
@@ -348,9 +350,21 @@ add_action('wp_ajax_nopriv_get_section_ajax', 'get_section_ajax');
  *
  * @return return list of attrs
  */
-function get_section_ajax_attrs( $type = false, $the_row = array() , $id = 0 ) {
+function get_section_ajax_attrs( $type = false, $the_row = array() , $id = 0, $section_number = 0 ) {
     if ( $type == 'false' ) 
         return '';
+
+    /**
+     * Common variables used for ajax request
+     */
+    $rows_count = intval(count($the_row[$id . '_5821e254f6599'])); // total rows in the repeater fiels
+    $status     = intval($the_row[$id . '_5a2jea1x1a0v8']); // how many rows are already printed
+    $lack       = $rows_count - $status; 
+    $offset     = $the_row[$id . '_5a2jea1x1a9v9'];
+    $offset     = $offset && $offset != 'all' ? $the_row[$id . '_5a2jea1x1a9v9'] : $lack;
+    $name       = 'rows'; // fields name
+    $trigger    = $the_row[$id . '_5a2jea1x2a8c9'] ? $the_row[$id . '_5a2jea1x2a8c9'] : 'none';
+    $method     = 'get_row_ajax'; // php method returns new rows
 
     /**
      * Show/Hide trigger
@@ -358,12 +372,16 @@ function get_section_ajax_attrs( $type = false, $the_row = array() , $id = 0 ) {
     $button  = $the_row[$id . '_5a2jea1x2a2d6'];
 
     /**
-     * Set attributes to section
+     * Set attributes to rows' wrapper
      */
     $attrs    = array();
-    $attrs[]  = "data-rows-steps='{$the_row[$id . '_5a2jea1x1a9v9']}'";
-    $attrs[]  = "data-rows-atonce='{$the_row[$id . '_5a2jea1x1a0v8']}'";
+    $attrs[]  = "data-offset='{$offset}'";
+    $attrs[]  = "data-status='{$status}'";
+    $attrs[]  = "data-lack='{$lack}'";
+    $attrs[]  = "data-field='{$name}'";
     $attrs[]  = "data-rows-button='{$button}'";
+    $attrs[]  = "data-method='{$method}'";
+    $attrs[]  = "data-parent-id='{$section_number}'";
 
     /**
      * Do actions according the trigger
@@ -376,11 +394,116 @@ function get_section_ajax_attrs( $type = false, $the_row = array() , $id = 0 ) {
         add_action( 'before_close_section_tag', 'the_section_ajax_buttons', 25, 2 );
 
     elseif ( $button == 'in-context' ) :
-        $attr[]  = "data-rows-trigger='{$the_row[$id . '_5a2jea1x2a8c9']}'";
+        $attrs[] = "data-rows-trigger='{$trigger}'";
     endif;
 
     return generate_classlist( $attrs );
 }
+
+
+/**
+ * Loads hidden sections to rows container
+ * through ajax request
+ */
+function get_row_ajax() {
+    
+    /**
+     * Verify current user
+     */
+    if ( !isset($_POST['nonce']) || !wp_verify_nonce( $_POST['nonce'], 'ajax_nonce' ) ) :
+        echo json_encode( array( 'content' => '(1)Please wait...', 'more' => false, 'offset' => 1 ) );
+        exit;
+    endif;
+    
+    /**
+     * If post ID or offset was missed, return promisse 
+     */
+    if (!isset($_POST['post_id']) || !isset($_POST['offset'])) :
+        echo json_encode( array( 'content' => '(2)Please wait...', 'more' => false, 'offset' => 1 ) );
+        exit;
+    endif;
+
+    /**
+     * Common variables
+     */
+    $start         = +$_POST['status'];
+    $post_id       = $_POST['post_id'];
+    $field         = $_POST['field'];
+    $offset        = $_POST['offset'];
+    $more          = false;
+    $section_id    = $_POST['section_id'];
+    $section_count = 0;
+
+    ob_start();
+
+    /**
+     * Loop sections. 
+     * It's necessarily to be able to get Row loop 
+     */
+    while ( have_rows( 'primary-content', $post_id ) ) :
+        the_row();
+        $section_count++;
+
+        /**
+         * Find a section from which was sent AJAX request.
+         * Sections before will be ignored, and next sections will be left.
+         */
+        if ( $section_count == $section_id ) :
+
+            /**
+             * Loop rows. However we get just those rows 
+             * wich matched to followign criteria:
+             * - aren't displayed on the front-end part so far.
+             * - if $_POST['offset'] == 'all' -
+             *      - return lack rows 
+             *   else 
+             *      - return just one more
+             */
+            if ( have_rows( $field, $post_id ) ) :
+                $total = count( get_field( $field, $post_id ) );
+                $count = 0;
+                $times = 0;
+
+                while ( have_rows( $field, $post_id ) ) :
+                    $the_row = the_row();
+                    $layout  = get_row_layout();
+                    $count++;
+
+                    if ( $count > $start ) :
+
+                        /**
+                         * Loop rows.
+                         * Usually it's row.php file
+                         */
+                        get_template_part( "template-parts/$layout" );
+                        $times++;
+
+                        if ( $times >= $offset )
+                            break;
+                    endif;
+                endwhile;
+            endif;
+    
+            /**
+             * If there are rows user can request
+             * allow him to use 'Show more' button on front-end
+             */
+            if ( $total > $count ) 
+                $more = true;
+
+        endif;
+    endwhile;
+
+    $content = ob_get_clean();
+
+    if ($total > $count) 
+        $more = true;
+
+    echo json_encode( array( 'content' => $content, 'more' => $more, 'status' => $count ) );
+    exit;
+}
+add_action('wp_ajax_get_row_ajax', 'get_row_ajax');
+add_action('wp_ajax_nopriv_get_row_ajax', 'get_row_ajax');
 
 
 /**

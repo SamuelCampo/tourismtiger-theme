@@ -161,7 +161,7 @@
 		 * Init rows' functions
 		 */
 		initRow: function () {
-			var $this = $(this);
+			var $row = $(this);
 			
 			/**
 			 * Build carousel
@@ -332,33 +332,6 @@
                 console.error('Load ajax error: ' + e); // pass exception object to error handler
             }
 		},
-
-		/**
-		 * That function inits when user clicks to 
-		 * a button which was assigned to that function
-		 */
-		loadMore: function () {
-			$btn = $(this);
-
-			$btn.on('click', function(){
-				var $click = $(this);
-				var $type  = $click.attr('data-ajax-rows');
-
-				// Under rows placement settings
-				if ($type == 'under-rows') {
-					var $section = $click.closest('.primary-content');
-					var steps    = $section.attr('data-rows-steps');
-					var atonce   = $section.attr('data-rows-atonce');
-
-				// Elsewhere on a page placement settings
-				} else if ($type == 'in-context') {
-					var trigger  = $click.attr('data-rows-trigger');
-					var $section = $('.primary-content[data-rows-trigger="' + trigger + '"]');
-					var steps    = 'all';
-					var atonce   = $section.attr('data-rows-atonce');
-				}
-			});
-		}
 	};
 
 	/** 

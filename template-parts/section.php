@@ -12,6 +12,10 @@ $style      = array();
 $classes    = array();
 $classes[]  = 'primary-content';
 
+// Rows' holder variables
+$row_id     = "{$section_id}--" . generate_random_string(5);
+$row_attrs  = array();
+
 /**
  * Paddings
  */
@@ -33,15 +37,25 @@ $type       = array( 'top' => get_sub_field('top-divider'), 'bottom' => get_sub_
 get_section_dividers( $type, $the_section_row, $section_id );
 
 /**
- * AJAX rows loading
+ * AJAX rows-loading core variables
  */
-$type       = get_sub_field('ajax_type');
-$attrs[]    = $type ? get_section_ajax_attrs( $type, $the_section_row, $section_id ) : '';
+$type                   = get_sub_field('ajax_type');
+$the_section_rows_limit = -1; // how many rows to show
+
+// Conditional in case of 
+// ajax is activated to these rows
+if ( $type !== 'false' && $type ) :
+	$row_attrs[]            = get_section_ajax_attrs( $type, $the_section_row, $section_id, $section_number );
+
+	$d['ajax_at_once']      = get_sub_field('ajax_at_once');
+	$the_section_rows_limit = intval($d['ajax_at_once']);
+endif;
 
 // Section attributes
 $attrs[]    = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
 $classes    = generate_classlist( $classes );
 $attrs      = generate_classlist( $attrs );
+$row_attrs  = generate_classlist( $row_attrs );
 
 /**
  * Get section view
