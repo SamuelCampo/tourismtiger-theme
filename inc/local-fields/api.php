@@ -1528,6 +1528,15 @@ function get_gallery_local_field( $id = '1234QWERasdf' ) {
 			'name' => 'label',
 			'type' => 'text',
 			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_T5MbQzPcd57f4',
+						'operator' => '==',
+						'value' => 'full-screen'
+					)
+				)
+			)
 		),
 
 		array (
@@ -1565,6 +1574,99 @@ function get_gallery_local_field( $id = '1234QWERasdf' ) {
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
+		),
+		array(
+			'key' => $id . '_T5MbQzPcd16f0',
+			'name' => 'width',
+			'label' => 'Width',
+			'type' => 'select',
+			'required' => '',
+			'choices' => array (
+				'auto' => 'Auto',
+				'full' => 'Full width',
+			),
+			'default_values' => array(
+				'full'
+			),
+			'wrapper' => array (
+				'width' => 25
+			)
+		),
+		array(
+			'key' => $id . '_T5MbQzPcd57f4',
+			'name' => 'type',
+			'label' => 'Type of the gallery',
+			'type' => 'select',
+			'required' => '',
+			'choices' => array (
+				'simple' => 'Simple slider',
+				'with-nav' => 'Carousel navigation',
+				'full-screen' => 'Full screen popup'
+			),
+			'default_values' => array(
+				'simple'
+			),
+			'wrapper' => array (
+				'width' => 25
+			)
+		),
+
+		array (
+			'key' => $id . '_T5MbQzPcd84f7',
+			'label' => 'Single type of gallery explanation',
+			'name' => 'text_1',
+			'type' => 'message',
+			'required' => 0,
+			'message' => 'That means the gallery looks like just single image and arrows placed on left and right edges of the gallery. Clicking on these arrows will smooth switch to next or previous image.',
+			'new_lines' => '',
+			'esc_html' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_T5MbQzPcd57f4',
+						'operator' => '==',
+						'value' => 'simple'
+					)
+				)
+			)
+		),
+		array (
+			'key' => $id . '_T5MbQzPcd93f8',
+			'label' => 'Carousel navigations type of gallery explanation',
+			'name' => 'text_2',
+			'type' => 'message',
+			'required' => 0,
+			'message' => 'Like the single gallery type, in addition such gallery has a carousel of thumbnails underneath itself. Clicking on any thumbnail will replace current image to chosen one.',
+			'new_lines' => '',
+			'esc_html' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_T5MbQzPcd57f4',
+						'operator' => '==',
+						'value' => 'with-nav'
+					)
+				)
+			)
+		),
+		array (
+			'key' => $id . '_T5MbQzPcd92f9',
+			'label' => 'Full screen popup type of gallery explanation',
+			'name' => 'text_3',
+			'type' => 'message',
+			'required' => 0,
+			'message' => 'This one is just one image without any arrows but has a button tells something like "yo man, click me". Afterwards clicking action, you have a full screen slider opened.',
+			'new_lines' => '',
+			'esc_html' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_T5MbQzPcd57f4',
+						'operator' => '==',
+						'value' => 'full-screen'
+					)
+				)
+			)
 		),
 	);
 }
