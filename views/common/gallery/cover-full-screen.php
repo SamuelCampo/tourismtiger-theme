@@ -11,11 +11,11 @@
  */
 ?>
 
-<div class="gallery-slider--current">
+<a href="javascript:" class="gallery-slider--current">
 	<div class="gallery-slider--current__image">
 		<?php echo wp_get_attachment_image( $d['gallery'][0]['ID'], '850-size' ); ?>
 	</div>
-</div>
+</a>
 
 <?php 
 /**

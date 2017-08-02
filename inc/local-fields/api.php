@@ -1523,7 +1523,7 @@ function get_gallery_local_field( $id = '1234QWERasdf' ) {
 		),
 
 		array (
-			'key' => $id . '_Gl21QzPcd48f6',
+			'key' => $id . '_Gl21QZPcd48f6',
 			'label' => 'Button label',
 			'name' => 'label',
 			'type' => 'text',
@@ -1600,7 +1600,6 @@ function get_gallery_local_field( $id = '1234QWERasdf' ) {
 			'required' => '',
 			'choices' => array (
 				'simple' => 'Simple slider',
-				'with-nav' => 'Carousel navigation',
 				'full-screen' => 'Full screen popup'
 			),
 			'default_values' => array(
@@ -1626,25 +1625,6 @@ function get_gallery_local_field( $id = '1234QWERasdf' ) {
 						'field' => $id . '_T5MbQzPcd57f4',
 						'operator' => '==',
 						'value' => 'simple'
-					)
-				)
-			)
-		),
-		array (
-			'key' => $id . '_T5MbQzPcd93f8',
-			'label' => 'Carousel navigations type of gallery explanation',
-			'name' => 'text_2',
-			'type' => 'message',
-			'required' => 0,
-			'message' => 'Like the single gallery type, in addition such gallery has a carousel of thumbnails underneath itself. Clicking on any thumbnail will replace current image to chosen one.',
-			'new_lines' => '',
-			'esc_html' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_T5MbQzPcd57f4',
-						'operator' => '==',
-						'value' => 'with-nav'
 					)
 				)
 			)

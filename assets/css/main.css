@@ -4409,6 +4409,52 @@ input[type='submit'][disabled] {
   height: 100%;
 }
 /*  =========================
+   Gallery slider*/
+.gallery-slider img {
+  max-width: 100%;
+  height: auto;
+}
+.gallery-slider.type_full-screen .gallery-slider--additional__loop {
+  display: none;
+}
+.gallery-slider__cover {
+  position: relative;
+}
+.gallery-slider--current {
+  position: relative;
+}
+.gallery-slider--panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  pointer-events: none;
+}
+.gallery-slider--panel__btn {
+  overflow: visible;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0;
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  color: #fff;
+  background-color: #607d8b;
+  font-size: 2rem;
+  border: 1px solid #607d8b;
+  transition: ease 0.3s;
+  background-color: transparent;
+  border-color: #fff;
+}
+.gallery-slider--panel__btn:hover {
+  background-color: #4b626d;
+}
+.gallery-slider--panel__btn:hover {
+  background-color: #4b626d;
+}
+/*  =========================
     Hero Area UI */
 .hero-area {
   position: relative;

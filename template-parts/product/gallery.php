@@ -21,12 +21,7 @@ $d['additional']      = false; // whether to print additional slider.
 $d['cover']           = 'default'; // cover type
 
 // additional settings 
-// for navigation slider
-if ( $d['type'] == 'with-nav' ) :
-	$d['additional'] = $d['type'];
-
-// for full screen slider
-elseif ( $d['type'] == 'full-screen' ) :
+if ( $d['type'] == 'full-screen' ) :
 	$d['additional'] = $d['type'];
 	$d['cover']      = $d['type'];
 	$d['label']      = get_sub_field('label');
@@ -35,6 +30,7 @@ endif;
 
 $classes[]            = "type_{$d['type']}";
 $classes[]            = "width_{$d['width']}";
+$classes[]            = "cover_{$d['cover']}";
 
 // Margins
 $d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
