@@ -23,7 +23,6 @@ get_header();
 				 */
 				get_template_part( 'template-parts/product', 'primary-area' );
 				?>
-
 			</div>
 
 			<?php

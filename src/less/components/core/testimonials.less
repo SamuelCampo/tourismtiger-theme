@@ -3,6 +3,12 @@
 
 .testimonials {
 	&-carousel {
+		&:not(.slick-init) {
+			> * + * {
+				margin-top: 3rem;
+			}
+		}
+
 		.slick-dots {
 			padding: 0;
 			list-style: none;

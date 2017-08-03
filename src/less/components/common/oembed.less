@@ -18,4 +18,14 @@
         width: 100%;
         height: 100%;
     }
+
+    &.width_full {
+        max-width: ~"calc(100% + 8rem)";
+        width: ~"calc(100% + 8rem)";
+
+        @media (max-width: @mobile) {
+            max-width: ~"calc(100% + 8rem)";
+            width: ~"calc(100% + 8rem)";
+        }
+    }
 } 

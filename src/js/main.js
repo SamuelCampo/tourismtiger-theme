@@ -13,7 +13,7 @@
 //= ../../bower_components/pickmeup/dist/pickmeup.min.js
 //= ../../bower_components/aload/dist/aload.min.js
 
-// ../../bower_components/wow/dist/wow.min.js
+//= ../../bower_components/wow/dist/wow.min.js
 // ../../bower_components/smoothstate/jquery.smoothState.min.js
 // ../../bower_components/jquery-mask-plugin/dist/jquery.mask.js
 // ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js

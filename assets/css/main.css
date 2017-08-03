@@ -4408,6 +4408,16 @@ input[type='submit'][disabled] {
   width: 100%;
   height: 100%;
 }
+.oembed.width_full {
+  max-width: calc(100% + 8rem);
+  width: calc(100% + 8rem);
+}
+@media (max-width: 568px) {
+  .oembed.width_full {
+    max-width: calc(100% + 8rem);
+    width: calc(100% + 8rem);
+  }
+}
 /*  =========================
    Gallery slider*/
 .gallery-slider img {
@@ -4953,6 +4963,9 @@ input[type='submit'][disabled] {
 }
 /*  =========================
     Primary area UI */
+.testimonials-carousel:not(.slick-init) > * + * {
+  margin-top: 3rem;
+}
 .testimonials-carousel .slick-dots {
   padding: 0;
   list-style: none;

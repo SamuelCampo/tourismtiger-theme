@@ -1922,6 +1922,21 @@ function get_oembed_local_field( $id = '1234QWERasdf' ) {
 				'width' => '25',
 			),
 		),
+		array (
+			'key' => $id . '_T9XSzD1cd47f4',
+			'label' => 'Width',
+			'name' => 'width',
+			'type' => 'select',
+			'required' => 0,
+			'choices' => array (
+				'auto' => 'Auto',
+				'full' => 'Full'
+			),
+			'default_value' => 'auto',
+			'wrapper' => array (
+				'width' => '25',
+			),
+		),
 	);
 }
 

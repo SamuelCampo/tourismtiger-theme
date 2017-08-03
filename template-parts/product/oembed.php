@@ -27,6 +27,9 @@ $iframe               = str_replace($src, $new_src, $iframe);
 $attributes           = 'frameborder="0"';
 $iframe               = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $iframe);
 
+$d['width']           = get_sub_field('width');
+$classes[]            = "width_{$d['width']}";
+
 // Margins
 $d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
 $d['margin_bottom']   = get_sub_field( 'margin_bottom' ) ? get_sub_field( 'margin_bottom' ) / 10 : false;

@@ -9,7 +9,7 @@
 if ( have_rows( 'components' ) ) :
 	?>
 
-	<div class="primary-area__section card-wrapper wysiwyg">
+	<div class="primary-area__section card-wrapper wysiwyg wow fadeIn">
 		
 		<?php 
 		while ( have_rows( 'components' ) ) :

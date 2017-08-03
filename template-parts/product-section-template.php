@@ -17,7 +17,7 @@ if ( $section_object ) :
 	if ( have_rows( 'product-section-template', $post->ID ) ) :
 		?>
 
-		<div class="primary-area__section card-wrapper wysiwyg">
+		<div class="primary-area__section card-wrapper wysiwyg wow fadeIn">
 
 			<?php
 			/**
