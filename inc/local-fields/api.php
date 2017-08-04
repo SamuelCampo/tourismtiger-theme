@@ -2535,16 +2535,9 @@ function get_image_card_local_field( $id = '1234QWERasdf' ) {
 			'name' => 'image',
 			'type' => 'image',
 			'required' => 0,
-			'return_format' => 'url',
+			'return_format' => 'id',
 			'preview_size' => 'full',
 			'library' => 'all',
-		),
-		array (
-			'key' => $id . '_ImC1d6db6de4a',
-			'label' => 'Headline',
-			'name' => 'headline',
-			'type' => 'text',
-			'required' => 0,
 		),
 		array (
 			'key' => $id . '_ImC1d6db6de5a',
@@ -2629,7 +2622,7 @@ function get_image_card_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '35',
 			),
-			'message' => 'Single column: Image -> Headline -> Content',
+			'message' => 'Single column: Image -> Content',
 			'new_lines' => '',
 			'esc_html' => 0,
 		),
@@ -2649,7 +2642,7 @@ function get_image_card_local_field( $id = '1234QWERasdf' ) {
 					)
 				) 
 			),
-			'message' => 'Two columns: 1. Image; 2. Headline -> Content',
+			'message' => 'Two columns: 1. Image; 2. Content',
 			'new_lines' => '',
 			'esc_html' => 0,
 			'wrapper' => array (

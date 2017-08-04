@@ -622,7 +622,7 @@ h6 {
 }
 p,
 li {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   margin: 0;
   line-height: 1.5;
   font-weight: 400;
@@ -3287,7 +3287,7 @@ a img.aligncenter {
 .wysiwyg > h4 + *,
 .wysiwyg > h5 + *,
 .wysiwyg > h6 + * {
-  margin-top: 2rem;
+  margin-top: 1em;
 }
 .wysiwyg > * + h1,
 .wysiwyg > * + h2,
@@ -3302,7 +3302,7 @@ a img.aligncenter {
 .wysiwyg > * + div,
 .wysiwyg > div + *,
 .wysiwyg > div + div {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 .wysiwyg > p + p,
 .wysiwyg > p + ul,
@@ -3311,10 +3311,10 @@ a img.aligncenter {
 .wysiwyg > p + ol,
 .wysiwyg > ol + ul,
 .wysiwyg > ul + ol {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 .wysiwyg > ul > * + * {
-  margin-top: 1rem;
+  margin-top: .5rem;
 }
 /*  =========================
     WP Gallery UI */
@@ -4557,6 +4557,50 @@ input[type='submit'][disabled] {
   background-color: #4b626d;
 }
 /*  =========================
+    Image card UI */
+.image-card__thumb img {
+  max-width: 100%;
+  height: auto;
+}
+.image-card.layout_style-1 > * + * {
+  margin-top: 3rem;
+}
+.image-card.layout_style-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+@media (max-width: 992px) {
+  .image-card.layout_style-2 > * + * {
+    margin-top: 3rem;
+  }
+}
+.image-card.layout_style-2 .image-card__thumb {
+  width: calc(30% - 1.5em);
+}
+@media (max-width: 992px) {
+  .image-card.layout_style-2 .image-card__thumb {
+    width: 100%;
+  }
+}
+.image-card.layout_style-2 .image-card__content {
+  width: calc(70% - 1.5rem);
+}
+@media (max-width: 992px) {
+  .image-card.layout_style-2 .image-card__content {
+    width: 100%;
+  }
+}
+/*  =========================
     Hero Area UI */
 .hero-area {
   position: relative;
@@ -5311,7 +5355,7 @@ input[type='submit'][disabled] {
 .card-wrapper {
   background-color: #fff;
   border-radius: 10px;
-  padding: 3rem 4rem;
+  padding: 3.5rem 4rem;
 }
 @media (max-width: 568px) {
   .card-wrapper {
