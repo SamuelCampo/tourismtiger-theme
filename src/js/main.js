@@ -29,6 +29,8 @@
 //= common/acf-api.js
 //= common/handle-click.js
 //= common/gallery-slider.js
+//= common/trip-details.js
+//= common/wow.js
 
 (function(factory) {
     'use strict';
@@ -56,6 +58,7 @@
 		init: function () {
 
 			aload();
+			wow.init();
             $(document).primaryContent('init');
 			$(document).popup('init');
 			$(document).heroArea('init');
@@ -63,6 +66,9 @@
 
 			// Hang click handling to following buttons:
 			$('[data-ajax-rows]').handleClick('init');
+
+			// Hang click handling to following buttons:
+			$('.trip-details').tripDetails('init');
 
 			// Hang gallery sliders:
 			$('.gallery-slider').gallerySlider('init');

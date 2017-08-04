@@ -15,26 +15,18 @@ if ( $section_object ) :
 	setup_postdata( $post );
 
 	if ( have_rows( 'product-section-template', $post->ID ) ) :
-		?>
+		
+		/**
+		 * Loop components
+		 */
+		while ( have_rows( 'product-section-template', $post->ID ) ) :
+			$the_component = the_row();
+			$section_id    = 'pd-tl';
+			$layout        = get_row_layout();
 
-		<div class="primary-area__section card-wrapper wysiwyg wow fadeIn">
+			get_template_part( "template-parts/product/{$layout}" );
+		endwhile;
 
-			<?php
-			/**
-			 * Loop components
-			 */
-			while ( have_rows( 'product-section-template', $post->ID ) ) :
-				$the_component = the_row();
-				$section_id    = 'pd-tl';
-				$layout        = get_row_layout();
-
-				get_template_part( "template-parts/product/{$layout}" );
-			endwhile;
-			?>
-
-		</div>
-
-		<?php
 	endif;
 
 	wp_reset_postdata();
