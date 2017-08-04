@@ -320,6 +320,15 @@ function get_product_section_local_field( $id = '1234QWERasdf' ) {
 			'sub_fields' => get_trip_details_local_field( $id ),
 		),
 
+		// Accordion
+		array (
+			'key' => $id . '_HRhiip71cd48f1',
+			'name' => 'accordion',
+			'label' => 'Accordion',
+			'display' => 'block',
+			'sub_fields' => get_accordion_local_field( $id )
+		),
+
 		// Icons list
 		array (
 			'key' => $id . '_HRhiip71cd48f0',
@@ -2275,8 +2284,10 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 			'type'  => 'select',
 			'required' => 0,
 			'choices' => array(
-				'cols-3' => 'Three columns',
-				'cols-2'    => 'Two columns'
+				'cols-1'    => 'Single column',
+				'cols-2'    => 'Two columns',
+				'cols-3'    => 'Three columns',
+				'cols-4'    => 'Four columns',
 			),
 			'default_value' => 'cols-3',
 			'wrapper' => array (

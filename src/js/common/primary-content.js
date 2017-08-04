@@ -143,12 +143,6 @@
 					});
 
 					/**
-					 * Accordion
-					 */
-					var $accordion = $self.find('.accordion');
-					$accordion.accordion('init');
-
-					/**
 					 * Add indicator-class to avoid reworking 
 					 * that file during ajax request
 					 */

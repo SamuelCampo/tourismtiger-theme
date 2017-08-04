@@ -13221,26 +13221,25 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 		init: function () {
 
-			var $this = $(this);
-			
-			if ($this.length > 0) {
-				$this.on('click', 'a', function(e){
-					e.preventDefault();
+			var $this = $(this).not('[data-inited]');
 
-					var $head  = $(this);
-					var $wrap  = $head.closest('.accordion');
-					var $body  = $wrap.find('.accordion--body');
-					var $open  = $wrap.find('.accordion--head__open');
-					var $close = $wrap.find('.accordion--head__close');
+			$this.on('click', 'a', function(e){
+				e.preventDefault();
 
-					$open.toggleClass('hidden');
-					$close.toggleClass('hidden');
-					$body.slideToggle(500);
+				var $head  = $(this);
+				var $wrap  = $head.closest('.accordion');
+				var $body  = $wrap.find('.accordion--body');
+				var $open  = $wrap.find('.accordion--head__open');
+				var $close = $wrap.find('.accordion--head__close');
 
-					return false;
-				});
-			}
+				$open.toggleClass('hidden');
+				$close.toggleClass('hidden');
+				$body.slideToggle(500);
 
+				return false;
+			});
+
+			$this.attr('data-inited', 1);
 		}
 
 	};
@@ -13403,12 +13402,6 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 							});
 						}
 					});
-
-					/**
-					 * Accordion
-					 */
-					var $accordion = $self.find('.accordion');
-					$accordion.accordion('init');
 
 					/**
 					 * Add indicator-class to avoid reworking 
@@ -14469,6 +14462,9 @@ wow = new WOW({
 				adaptiveHeight: true,
 				dots: true
 			});
+
+			// Accordion
+			$('.accordion').accordion('init');
 		},
 
 		/**

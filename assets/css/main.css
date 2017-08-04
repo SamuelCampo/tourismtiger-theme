@@ -6912,6 +6912,65 @@ input[type='submit'][disabled] {
   }
 }
 /*  =========================
+    Icons list UI */
+.icons-list {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+.icons-list.layout_cols-2 {
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+}
+@media (max-width: 768px) {
+  .icons-list.layout_cols-2 {
+    grid-template-column: 100%;
+  }
+}
+.icons-list.layout_cols-3 {
+  -ms-grid-columns: 33% 33% 33%;
+      grid-template-columns: 33% 33% 33%;
+}
+@media (max-width: 768px) {
+  .icons-list.layout_cols-3 {
+    grid-template-column: 100%;
+  }
+}
+.icons-list.layout_cols-4 {
+  -ms-grid-columns: 25% 25% 25% 25%;
+      grid-template-columns: 25% 25% 25% 25%;
+}
+@media (max-width: 1150px) {
+  .icons-list.layout_cols-4 {
+    grid-template-column: 50% 50%;
+  }
+}
+@media (max-width: 768px) {
+  .icons-list.layout_cols-4 {
+    grid-template-column: 100%;
+  }
+}
+.icons-list--item {
+  margin: 1rem 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  font-size: 2rem;
+}
+.icons-list--item > * + * {
+  margin-left: 1rem;
+}
+.icons-list--item__icon {
+  text-align: center;
+}
+/*  =========================
     Hero Area UI */
 .hero-area {
   position: relative;

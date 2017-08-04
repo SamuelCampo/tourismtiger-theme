@@ -79,6 +79,9 @@
 				adaptiveHeight: true,
 				dots: true
 			});
+
+			// Accordion
+			$('.accordion').accordion('init');
 		},
 
 		/**
