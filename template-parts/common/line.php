@@ -1,6 +1,6 @@
 <?php 
 /**
- * Зкщвгсе еуьздфеу зфке ща фссщквшщт
+ * HR line
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -11,13 +11,10 @@ $d                    = array();
 $attrs                = array();
 $style                = array();
 $classes              = array();
-$classes[]            = 'accordion';
+$classes[]            = 'line';
 
-// Text
-$d['label']           = get_sub_field('label');
-$d['open']            = get_sub_field('open');
-$d['close']           = get_sub_field('close');
-$d['wysiwyg']         = get_sub_field('wysiwyg');
+$d['width']           = get_sub_field('width');
+$classes[]            = "width_{$d['width']}";
 
 // Margins
 $d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
@@ -37,5 +34,4 @@ $attrs                = generate_classlist( $attrs );
 /**
  * Get section view
  */
-include THEME_VIEWS . 'common/accordion.php';
-
+echo "<hr class='{$classes}' {$attrs} />";

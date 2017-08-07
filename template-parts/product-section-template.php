@@ -24,7 +24,7 @@ if ( $section_object ) :
 			$section_id    = 'pd-tl';
 			$layout        = get_row_layout();
 
-			get_template_part( "template-parts/product/{$layout}" );
+			get_template_part( "template-parts/common/{$layout}", 'product' );
 		endwhile;
 
 	endif;

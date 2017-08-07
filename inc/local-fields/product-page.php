@@ -118,7 +118,7 @@ if( function_exists('acf_add_local_field_group') ) :
 					),
 					array (
 						'key' => 'sd-br_49650003e333f',
-						'name' => 'sidebar-widget-template',
+						'name' => 'widget-template',
 						'label' => 'Template',
 						'display' => 'block',
 						'sub_fields' => array(

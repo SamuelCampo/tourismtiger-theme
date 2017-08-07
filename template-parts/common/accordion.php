@@ -1,6 +1,6 @@
 <?php 
 /**
- * Grabbing data of Product Map field
+ * Accordion component
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -11,24 +11,13 @@ $d                    = array();
 $attrs                = array();
 $style                = array();
 $classes              = array();
-$classes[]            = 'oembed';
+$classes[]            = 'accordion';
 
-$iframe               = get_sub_field( 'video' );
-preg_match('/src="(.+?)"/', $iframe, $matches);
-
-$src                  = $matches[1];
-$params               = array(
-    'controls'        => 1,
-    'hd'              => 1,
-    'autohide'        => 1
-);
-$new_src              = add_query_arg($params, $src);
-$iframe               = str_replace($src, $new_src, $iframe);
-$attributes           = 'frameborder="0"';
-$iframe               = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $iframe);
-
-$d['width']           = get_sub_field('width');
-$classes[]            = "width_{$d['width']}";
+// Text
+$d['label']           = get_sub_field('label');
+$d['open']            = get_sub_field('open');
+$d['close']           = get_sub_field('close');
+$d['wysiwyg']         = get_sub_field('wysiwyg');
 
 // Margins
 $d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
@@ -48,4 +37,5 @@ $attrs                = generate_classlist( $attrs );
 /**
  * Get section view
  */
-include THEME_VIEWS . 'common/oembed.php';
+include THEME_VIEWS . 'common/accordion.php';
+

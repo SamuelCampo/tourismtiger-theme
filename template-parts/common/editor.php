@@ -1,6 +1,6 @@
 <?php 
 /**
- * Grabbing data of Content card Editor field
+ * Editor
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger

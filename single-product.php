@@ -22,6 +22,11 @@ get_header();
 				 * Include Primary Area 
 				 */
 				get_template_part( 'template-parts/product', 'primary-area' );
+
+				/**
+				 * Include sidebar
+				 */
+				get_sidebar( 'product' );
 				?>
 			</div>
 

@@ -1,6 +1,6 @@
 <?php 
 /**
- * Grabbing data of Product Icons list field
+ * Icons list component
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -13,10 +13,14 @@ $style                = array();
 $classes              = array();
 $classes[]            = 'icons-list';
 
-$d['counter'] = 0;
-$d['layout']  = get_sub_field( 'layout' );
+$d['counter']         = 0;
+$d['layout']          = get_sub_field( 'layout' );
+$d['vertical']        = get_sub_field( 'vertical' ) ? get_sub_field( 'vertical' ) : 'baseline';
+$d['align']           = get_sub_field( 'align' ) ? get_sub_field( 'align' ) : 'auto';
 
-$classes[]    = "layout_{$d['layout']}";
+$classes[]            = "layout_{$d['layout']}";
+$classes[]            = "align-items_{$d['vertical']}";
+$classes[]            = "justify-content_{$d['align']}";
 
 // Grab icons data
 while ( have_rows( 'icons-list' ) ) :
@@ -30,8 +34,8 @@ while ( have_rows( 'icons-list' ) ) :
 		$d['icons'][$c]['size'] = 'inherit';
 		$d['icons'][$c]['icon'] = 'fa-check-circle';
 	elseif ( $d['icons'][$c]['type'] == 'custom' ) :
-		$d['icons'][$c]['size'] = get_sub_field( 'size' ) ? get_sub_field( 'size' ) . 'px' : '';
-		$d['icons'][$c]['size'] = $d['icons'][$c]['size'] ? "style='font-size:{$d['icons'][$c]['size']};'" : '';
+		$d['icons'][$c]['size'] = get_sub_field( 'size' ) ? get_sub_field( 'size' )  / 10 : '';
+		$d['icons'][$c]['size'] = $d['icons'][$c]['size'] ? "style='font-size:{$d['icons'][$c]['size']}rem;'" : '';
 		$d['icons'][$c]['icon'] = get_sub_field( 'icon' );
 	endif;
 endwhile;

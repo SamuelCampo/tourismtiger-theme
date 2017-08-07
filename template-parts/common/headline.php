@@ -1,6 +1,6 @@
 <?php 
 /**
- * Grabbing data of Content card Headline field
+ * Headline
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -12,12 +12,12 @@ $attrs                = array();
 $style                = array();
 $classes              = array();
 $classes[]            = 'headline';
-
 $d['content']         = get_sub_field('text');
 $d['tag']             = get_sub_field('tag');
 $d['align']           = get_sub_field('align');
 
-$classes[]            = $d['align'] ? "text-align_{$d['align']}" : '';
+if ( $d['align'] ) 
+	$classes[]       = "text-align_{$d['align']}";
 
 // Margins
 $d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
@@ -25,7 +25,6 @@ $d['margin_bottom']   = get_sub_field( 'margin_bottom' ) ? get_sub_field( 'margi
 
 if ( $d['margin_top'] ) 
 	$style[]          = "margin-top:{$d['margin_top']}rem;";
-
 if ( $d['margin_bottom'] ) 
 	$style[]          = "margin-bottom:{$d['margin_bottom']}rem;";
 

@@ -4,8 +4,6 @@
 .icons-list {
 	display: grid;
 	align-items: flex-start;
-	margin-left: -2rem;
-	margin-right: -2rem;
 
 	&.layout {
 		&_cols-2 {
@@ -37,10 +35,39 @@
 		}
 	}
 
+	&.align-items {
+		&_center {
+			.icons-list--item {
+				align-items: center;
+				margin: 0;
+
+				+ .icons-list--item {
+					margin-top: 1rem;
+				}
+			}
+		} 
+
+		&_baseline {
+			margin-left: -2rem;
+			margin-right: -2rem;
+
+			.icons-list--item {
+				align-items: baseline;
+				margin: 1rem 2rem;
+			}
+		}
+	}
+
+	&.justify-content {
+		&_center {
+			.icons-list--item {
+				margin: 0 auto;
+			}
+		}
+	}
+
 	&--item {
-		margin: 1rem 2rem;
 		display: flex;
-		align-items: baseline;
 		font-size: 2rem;
 
 		> * + * {

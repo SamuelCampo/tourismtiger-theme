@@ -27,8 +27,8 @@ function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
 
 		array (
 			'key' => $id . '_A2187bc694Cd90',
-			'name' => 'content',
-			'label' => 'Content',
+			'name' => 'editor',
+			'label' => 'Editor',
 			'display' => 'block',
 			'sub_fields' => get_editor_local_field( 'wi-il' ),
 		),
@@ -48,19 +48,6 @@ function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
 					'placement' => 'top'
 				),
 				array (
-					'key' => $id . '_A2982bc694Cd49',
-					'label' => 'Dropdown',
-					'name' => 'is_dropdown',
-					'type' => 'true_false',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array (
-						'width' => '15',
-					),
-					'message' => 'Yes',
-					'default_value' => 0,
-				),
-				array (
 					'key' => $id . '_A2982bc694Cd47',
 					'label' => 'Label',
 					'name' => 'label',
@@ -68,7 +55,7 @@ function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array (
-						'width' => '15',
+						'width' => '33',
 					),
 					'placeholder' => 'Book now'
 				),
@@ -79,24 +66,16 @@ function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
 					'type' => 'select',
 					'required' => 0,
 					'wrapper' => array (
-						'width' => '35',
+						'width' => '33',
 					),
 					'choices' => array (
 						'link' => 'Link to another page',
 						'iframe-popup' => 'iFrame popup',
 						'form-link' => 'Link to form',
 						'integration' => 'Third party integration',
+						'dropdown' => 'Actions dropdown',
 					),
-					'default_value' => 'link',
-					'conditional_logic' => array(
-						array(
-							array(
-								'field' => $id . '_A2982bc694Cd49',
-								'operator' => '!=',
-								'value' => 1
-							)
-						)
-					),
+					'default_value' => 'link'
 				),
 				array (
 					'key' => $id . '_A2982bc694Cd50',
@@ -107,14 +86,14 @@ function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
 					'conditional_logic' => array(
 						array(
 							array(
-								'field' => $id . '_A2982bc694Cd49',
+								'field' => $id . '_A2982bc694Cd48',
 								'operator' => '!=',
-								'value' => 1
+								'value' => 'dropdown'
 							)
 						)
 					),
 					'wrapper' => array (
-						'width' => '35',
+						'width' => '33',
 					)
 				),
 				array (
@@ -126,14 +105,14 @@ function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
 					'conditional_logic' => array (
 						array (
 							array (
-								'field' => $id . '_A2982bc694Cd49',
+								'field' => $id . '_A2982bc694Cd48',
 								'operator' => '==',
-								'value' => 1,
+								'value' => 'dropdown',
 							),
 						),
 					),
 					'wrapper' => array (
-						'width' => '70',
+						'width' => '100',
 					),
 					'layout' => 'block',
 					'button_label' => 'Add Sub Option',
@@ -225,8 +204,8 @@ function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
 
 		array (
 			'key' => $id . '_A2982bc694Cd60',
-			'name' => 'icon-label',
-			'label' => 'Icon label',
+			'name' => 'icons-list',
+			'label' => 'Icons list',
 			'display' => 'block',
 			'sub_fields' => get_icons_list_local_field( 'wi-il' )
 		),
@@ -2291,7 +2270,46 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 			),
 			'default_value' => 'cols-3',
 			'wrapper' => array (
-				'width' => 30
+				'width' => 25
+			)
+		),
+		array(
+			'key'   => $id . '_A298lbc694Dc85',
+			'name'  => 'align',
+			'label' => 'Align',
+			'type'  => 'select',
+			'required' => 0,
+			'choices' => array(
+				'auto'    => 'Auto',
+				'center'  => 'Center',
+			),
+			'default_value' => 'auto',
+			'wrapper' => array (
+				'width' => 25
+			),
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => $id . '_A298lbc694Cd94',
+						'operator' => '==',
+						'value' => 'cols-1'
+					)
+				)
+			)
+		),
+		array(
+			'key'   => $id . '_A298lbc694Fd76',
+			'name'  => 'vertical',
+			'label' => 'Vertical align',
+			'type'  => 'select',
+			'required' => 0,
+			'choices' => array(
+				'baseline' => 'Auto',
+				'center'  => 'Center',
+			),
+			'default_value' => 'baseline',
+			'wrapper' => array (
+				'width' => 25
 			)
 		),
 	);
