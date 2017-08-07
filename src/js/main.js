@@ -14,7 +14,7 @@
 //= ../../bower_components/aload/dist/aload.min.js
 
 //= ../../bower_components/wow/dist/wow.min.js
-// ../../bower_components/smoothstate/jquery.smoothState.min.js
+//= ../../bower_components/smoothstate/src/jquery.smoothState.js
 // ../../bower_components/jquery-mask-plugin/dist/jquery.mask.js
 // ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js
 
@@ -63,6 +63,7 @@
 			$(document).popup('init');
 			$(document).heroArea('init');
 			$(document).acfApi('init');
+			$(document).controller('addBlacklistClass');
 
 			// Hang click handling to following buttons:
 			$('[data-ajax-rows]').handleClick('init');
@@ -89,6 +90,56 @@
 		 */
 		onLoad: function () {
             $(document).primaryContent('onLoad');
+		},
+
+		initSmoothState: function () {
+			var settings = { 
+			    anchors: 'a',
+			    blacklist: '.wp-link',
+		        onStart: {
+		            duration: 280, // ms
+		            render: function ( $container ) {
+		                $container.addClass( 'slide-out' );
+		            }
+		        },
+		        onAfter: function( $container ) {
+		            $(document).controller('init');
+		            $container.removeClass( 'slide-out' );
+
+		            var $hash = $( window.location.hash );
+		            
+		            if ( $hash.length !== 0 ) {
+		                var offsetTop = $hash.offset().top;
+
+		                $( 'body, html' ).animate( {
+		                    scrollTop: ( offsetTop - 60 ),
+		                }, { 
+		                    duration: 280 
+		                } );
+		            }
+		        }
+			};
+
+			$( '#wrapper' ).smoothState( settings );
+		},
+
+		/**
+		 * Add classes to link 
+		 * which shouldn't be smooth-stated
+		 */
+		addBlacklistClass: function () {
+		    $( 'a' ).each( function() {
+		    	var $this = $(this);
+
+		        if ( 
+		            this.href.indexOf('/wp-admin/') !== -1 || 
+		            this.href.indexOf('/wp-login.php') !== -1 || 
+		            $this.find('img').closest('.wysiwyg').length > 0 ||
+		            $this.attr('data-open-popup') == ''
+		        ) {
+		            $this.addClass('wp-link');
+		        }
+		    });
 		}
 	};
 
@@ -111,6 +162,7 @@
 	$(function(){
 		$(window).controller('init');
 		$(window).controller('onLoad');
+		$(window).controller('initSmoothState');
 	});
 
 }));

@@ -3,9 +3,7 @@
  * ACF local fields API
  *
  * @todo  
- * - Icons list component -- add settings
  * - Alert box component -- add settings
- * - Include icons
  *
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -2210,6 +2208,24 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 					'placeholder' => 'inhreit',
 					'append' => 'px',
 					'step' => 1,
+				),
+
+				array (
+					'key' => $id . '_594905dcbef94',
+					'label' => '',
+					'name' => 'separator_1',
+					'type' => 'message',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'message' => '<hr />',
+					'new_lines' => '',
+					'esc_html' => 0,
 				),
 				array (
 					'key' => $id . '_A2982bc694Cd62',
