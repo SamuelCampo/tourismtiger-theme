@@ -24,7 +24,7 @@ $d['cover']           = 'default'; // cover type
 if ( $d['type'] == 'full-screen' ) :
 	$d['additional'] = $d['type'];
 	$d['cover']      = $d['type'];
-	$d['label']      = get_sub_field('label');
+	$d['label']      = get_sub_field('label') ? get_sub_field('label') : 'SEE FULL GALLERY';
 
 endif;
 

@@ -18,15 +18,17 @@
 	  * Loop each icon though template
 	  */
 	foreach ( $d['icons'] as $icon ) :
+		$d['open']  = $icon['url'] ? "a href='{$icon['url']}'" : 'div'; 
+		$d['close'] = $icon['url'] ? "a" : 'div'; 
 		?>
 
-		<div class="icons-list--item">
+		<<?=$d['open'];?> class="icons-list--item">
 			<div class="icons-list--item__icon">
 				<i class="fa <?=$icon['icon'];?>" <?=$icon['size'];?>></i>
 			</div>
 
-			<div class="icons-list--item__text"><?=$icon['text'];?></div>
-		</div>
+			<div class="icons-list--item__text" <?=$icon['font-size'];?>><?=$icon['text'];?></div>
+		</<?=$d['close'];?>>
 		
 		<?php
 	endforeach;

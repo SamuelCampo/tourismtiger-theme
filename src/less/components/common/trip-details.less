@@ -4,7 +4,7 @@
 .trip-details {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: flex-start;
+	align-items: baseline;
 	justify-content: space-between;
 	width: 100%;
 
@@ -32,6 +32,11 @@
 		@media (max-width: @pad) {
 			width: 100%;
 		}
+	}
+
+	&__trigger {
+		.mx-link-underline; 
+		color: @color-ocean;
 	}
 
 	&__hidden {

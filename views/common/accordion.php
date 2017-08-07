@@ -24,6 +24,6 @@
 	<div class="accordion--body wysiwyg">
 		<?php 
 		// WYSIWYG Content
-		echo $d['wysiwyg'] ? "<div class='accordion--wysiwyg'>{$d['wysiwyg']}</div>" : '';  ?>
+		echo $d['wysiwyg'] ? "<div class='accordion--wysiwyg wysiwyg'>{$d['wysiwyg']}</div>" : '';  ?>
 	</div>
 </div>

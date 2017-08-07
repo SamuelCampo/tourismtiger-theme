@@ -27,8 +27,11 @@ while ( have_rows( 'icons-list' ) ) :
 	the_row();
 	$c = $d['counter']++;
 	
-	$d['icons'][$c]['type'] = get_sub_field( 'icon-type' );
-	$d['icons'][$c]['text'] = get_sub_field( 'textarea' );
+	$d['icons'][$c]['type']      = get_sub_field( 'icon-type' );
+	$d['icons'][$c]['text']      = get_sub_field( 'textarea' );
+	$d['icons'][$c]['url']       = get_sub_field( 'url' );
+	$d['icons'][$c]['font-size'] = get_sub_field( 'font-size' ) ? get_sub_field( 'font-size' ) / 10 : '';
+	$d['icons'][$c]['font-size'] = $d['icons'][$c]['font-size'] ? "style='font-size:{$d['icons'][$c]['font-size']}rem;'" : '';
 
 	if ( $d['icons'][$c]['type'] == 'checklist' ) :
 		$d['icons'][$c]['size'] = 'inherit';

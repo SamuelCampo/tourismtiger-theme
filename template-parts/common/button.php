@@ -35,7 +35,7 @@ elseif ( $d['type'] == 'dropdown' && have_rows( 'dropdown' ) ) :
 	endwhile;
 endif;
 
-$attrs[]              = "href='{$d['href']}'";
+$d['href']            = "href='{$d['href']}'";
 
 // Margins
 $d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;

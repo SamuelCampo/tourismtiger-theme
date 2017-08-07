@@ -227,7 +227,6 @@ class acf_field_font_awesome extends acf_field {
 		
 		// html
 		echo '<div class="fa-field-wrapper">';
-		echo '<div class="fa-live-preview"></div>';
 		echo '<select id="' . $field['id'] . '" class="' . $field['class'] . ' fa-select2-field" name="' . $field['name'] . '" >';	
 		
 		// null

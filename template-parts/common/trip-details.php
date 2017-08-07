@@ -24,7 +24,7 @@ $d['icon']            = '';
 // Accordion
 if ( $d['is-accordion'] ) :
 	$d['link-label']     = get_sub_field( 'link-label' ) ? get_sub_field( 'link-label' ) : 'Show more';
-    $d['link-label']     = "<nobr><a href='javascript:' class='js-trigger'>{$d['link-label']}</a></nobr>";
+    $d['link-label']     = "<nobr><a href='javascript:' class='trip-details__trigger js-trigger'>{$d['link-label']}</a></nobr>";
 	$d['hidden-content'] = get_sub_field( 'hidden-content' );
 endif;
 
