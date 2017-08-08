@@ -17,14 +17,14 @@ if ( have_rows('primary-area') ) :
 		 * Loop sections
 		 */
 		while ( have_rows('primary-area') ) :
-			$counter++;
+			$primary_area_counter++;
 
 			$the_section = the_row();
 			$layout      = get_row_layout();
 			$classes     = array(); // classes for primary area item-wrappers
 
 			$classes[]   = 'primary-area__section card-wrapper wysiwyg';
-			$classes[]   = $counter > 1 ? 'wow fadeInUp' : '';
+			$classes[]   = $primary_area_counter > 1 ? 'wow fadeInUp' : '';
 			
 			$classes     = generate_classlist( $classes );
 			?>

@@ -53,7 +53,7 @@ if( function_exists('acf_add_local_field_group') ) :
 				'wrapper' => array (
 					'width' => '40',
 				),
-				'placeholder' => 'e.g. Software Engineer of TourismTiger'
+				'placeholder' => 'e.g. Software Engineer at TourismTiger'
 			),
 
 			array (

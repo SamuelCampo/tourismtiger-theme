@@ -54,7 +54,7 @@ if ( $testimonials ) :
 			$d['name']            = get_field('name', $t->ID) ? get_field('name', $t->ID) : get_the_title($t->ID);
 			$d['additional']      = get_field('additional', $t->ID);
 			$d['testimonial']     = get_field('testimonial', $t->ID);
-			$d['shortly']         = get_field('shortly', $t->ID);
+			$d['shortly']         = get_field('shortly', $t->ID) ? get_field('shortly', $t->ID) : $d['testimonial'];
 
 			// Compile classes and attributes
 			$attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
