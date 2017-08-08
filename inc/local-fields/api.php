@@ -1144,7 +1144,7 @@ function get_headline_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1222,7 +1222,7 @@ function get_editor_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1387,7 +1387,7 @@ function get_button_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1478,7 +1478,7 @@ function get_button_group_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1556,7 +1556,7 @@ function get_gallery_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1689,7 +1689,7 @@ function get_map_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1771,7 +1771,7 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1900,7 +1900,7 @@ function get_oembed_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1994,7 +1994,7 @@ function get_trip_details_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2156,7 +2156,6 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 			'type' => 'repeater',
 			'required' => 0,
 			'layout' => 'block',
-			'collapsed' => $id . '_A2982bc694Cd62',
 			'sub_fields' => array (
 				array(
 					'key'   => $id . '_A2982bc694Cd61',
@@ -2269,7 +2268,8 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 					'append' => 'px',
 					'step' => 1,
 				),
-			) 
+			),
+			'collapsed' => $id . '_A2982bc694Cd62',
 		),
  
 
@@ -2290,7 +2290,7 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2393,7 +2393,7 @@ function get_hr_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2523,7 +2523,7 @@ function get_accordion_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2592,7 +2592,7 @@ function get_content_testimonial_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2665,7 +2665,7 @@ function get_image_card_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '30',
+			'placeholder' => '0',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
