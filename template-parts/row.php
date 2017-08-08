@@ -54,28 +54,28 @@ if ( $d['layout'] == 'grid' ) :
 	if ( $d['cols_count'] == 2 ) :
 		$classes[]            = 'cols_ratio_' . $d['cols_ratio'];
 	endif;
-endif;
-
 
 // Row type: Carousel
-if ( $d['layout'] == 'carousel' ) :
+elseif ( $d['layout'] == 'carousel' ) :
 	$d['slides_scroll']   = get_sub_field( 'slides_scroll' ); 
 	$d['show_dots']       = get_sub_field( 'show_dots' ); 
-	$d['arrows_type']     = get_sub_field( 'arrows_type' ); 
+	$d['arrows_type']     = get_sub_field( 'arrows_type' ) ? get_sub_field( 'arrows_type' ) : 'auto'; 
 	$d['arrows_size']     = get_sub_field( 'arrows_size' ); 
 	$d['arrows_weight']   = get_sub_field( 'arrows_weight' ); 
 	$d['arrows_position'] = get_sub_field( 'arrows_position' ); 
+	$d['arrows_color']    = get_sub_field( 'arrows_color' ); 
 
 	$attrs[]              = "data-scroll='{$d['slides_scroll']}'";
 	$attrs[]              = "data-columns='{$d['cols_count']}';";
 	$attrs[]              = "data-dots='{$d['show_dots']}';";
 	$attrs[]              = "data-arrows-type='{$d['arrows_type']}';";
-	$classes[]            = 'arrows_type_' . $d['arrows_position'];
+	$classes[]            = 'arrows_type_' . $d['arrows_type'];
 
 	if ( $d['arrows_type'] == 'custom' ) :
-		$classes[]            = 'arrows_size_' . $d['arrows_size'];
-		$classes[]            = 'arrows_weight_' . $d['arrows_weight'];
-		$classes[]            = 'arrows_position_' . $d['arrows_position'];
+		$classes[]        = 'arrows_size_' . $d['arrows_size'];
+		$classes[]        = 'arrows_weight_' . $d['arrows_weight'];
+		$classes[]        = 'arrows_position_' . $d['arrows_position'];
+		$attrs[]          = "data-arrows-color='{$d['arrows_color']}';";
 	endif;
 endif;
 

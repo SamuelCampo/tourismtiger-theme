@@ -13,4 +13,6 @@ include get_template_directory() . '/inc/local-fields/section-template.php';
 include get_template_directory() . '/inc/local-fields/row-template.php';
 include get_template_directory() . '/inc/local-fields/product-page.php';
 include get_template_directory() . '/inc/local-fields/product-section-template.php';
+include get_template_directory() . '/inc/local-fields/testimonials-page.php';
+include get_template_directory() . '/inc/local-fields/sidebar-widget-template.php';
 ?>

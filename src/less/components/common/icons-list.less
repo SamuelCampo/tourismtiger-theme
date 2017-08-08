@@ -1,0 +1,87 @@
+/*  =========================
+    Icons list UI */
+
+.icons-list {
+	display: grid;
+	align-items: flex-start;
+
+	&.align-items {
+		&_center {
+			.icons-list--item {
+				align-items: center;
+				margin: 0;
+
+				+ .icons-list--item {
+					margin-top: 1rem;
+				}
+			}
+		} 
+
+		&_baseline {
+			margin-left: -2rem;
+			margin-right: -2rem;
+
+			.icons-list--item {
+				align-items: baseline;
+				margin: 1rem 2rem;
+			}
+		}
+	}
+
+	&.justify-content {
+		&_center {
+			.icons-list--item {
+				margin: 0 auto;
+			}
+		}
+	}
+
+	&.layout {
+		&_cols-2 {
+			grid-template-columns: 50% 50%;
+
+			@media (max-width: @padmini) {
+				grid-template-columns: 100%;
+			}
+		}
+
+		&_cols-3 {
+			grid-template-columns: auto auto auto;
+			margin-left: -1rem;
+			margin-right: -1rem;
+
+			@media (max-width: @padmini) {
+				grid-template-columns: 100%;
+			}
+
+			.icons-list--item {
+				margin: 1rem;
+			}
+		}
+
+		&_cols-4 {
+			grid-template-columns: 25% 25% 25% 25%;
+
+			@media (max-width: @laptop) {
+				grid-template-column: 50% 50%;
+			}
+
+			@media (max-width: @padmini) {
+				grid-template-column: 100%;
+			}
+		}
+	}
+
+	&--item {
+		display: flex;
+		font-size: 1.7rem;
+
+		> * + * {
+			margin-left: 1rem;
+		}
+
+		&__icon {
+			text-align: center;
+		}
+	}
+}

@@ -8,7 +8,6 @@
  * @author  tourismtiger
  */
 
-
 /**
  * Path to theme
  */

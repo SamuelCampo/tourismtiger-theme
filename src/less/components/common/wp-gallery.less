@@ -2,112 +2,52 @@
     WP Gallery UI */
 
 .gallery {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    width: 100%;
+    display: grid;
+    width: ~"calc(100% + 1rem)";
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
 
     img {
         margin: 0 auto;
-        width: 100%;
+        max-width: 100%;
+		height: auto;
+    }
+
+    &-item {
+    	margin: .5rem;
     }
 
 	&-columns {
 		&-2 {
-			.gallery-item {
-				width: 49%;
-
-				@media (max-width: @mobile) {
-			        width: 100%;
-				}
-			}
+			grid-template-columns: 50% 50%;
 		} 
 
 		&-3 {
-			.gallery-item {
-				width: 32%;
-
-				@media (max-width: @mobile) {
-			        width: 100%;
-				}
-			}
+			grid-template-columns: 33.3% 33.3% 33.3%;
 		} 
 
 		&-4 {
-			.gallery-item {
-				width: 24%;
-
-				@media (max-width: @padmini) {
-			        width: 49%;
-				}
-
-				@media (max-width: @mobile) {
-			        width: 100%;
-				}
-			}
+			grid-template-columns: 25% 25% 25% 25%;
 		} 
 
 		&-5 {
-			.gallery-item {
-				width: 19%;
-			}
+			grid-template-columns: 20% 20% 20% 20% 20%;
 		} 
 
 		&-6 {
-			.gallery-item {
-				width: 15%;
-
-				@media (max-width: @padmini) {
-			        width: 49%;
-				}
-
-				@media (max-width: @mobile) {
-			        width: 100%;
-				}
-			}
+			grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%;
 		} 
 
 		&-7 {
-			.gallery-item {
-				width: 13%;
-			}
+			grid-template-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;
 		} 
 
 		&-8 {
-			.gallery-item {
-				width: 11%;
-
-				@media (max-width: @pad) {
-			        width: 24%;
-				}
-
-				@media (max-width: @padmini) {
-			        width: 49%;
-				}
-
-				@media (max-width: @mobile) {
-			        width: 100%;
-				}
-			}
+			grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
 		} 
 
 		&-9 {
-			.gallery-item {
-				width: 10%;
-
-				@media (max-width: @pad) {
-			        width: 24%;
-				}
-
-				@media (max-width: @padmini) {
-			        width: 49%;
-				}
-
-				@media (max-width: @mobile) {
-			        width: 100%;
-				}
-			}
+			grid-template-columns: 11.1% 11.1% 11.1% 11.1% 11.1% 11.1% 11.1% 11.1% 11.1%;
 		} 
 	}
 

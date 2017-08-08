@@ -1,0 +1,17 @@
+/*  =========================
+    Product content UI */
+
+.product {
+	&-content {
+		padding-top: 50px;
+		padding-bottom: 50px;
+
+		display: grid;
+		grid-template-columns: 65% ~"calc(35% - 3rem)";
+		justify-content: space-between;
+
+		@media (max-width: @padmini) {
+			grid-template-columns: 100%;
+		}
+	}
+}

@@ -1,0 +1,67 @@
+/*  =========================
+    Image card UI */
+
+.image-card {
+	&__thumb {
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	&.layout {
+		&_style-1 {
+			> * + * {
+				margin-top: 3rem;
+
+		        @media (max-width: @mobile) {
+		            margin-top: 1.5rem;
+		        }
+			}
+
+			.image-card__thumb {
+				margin-left: -3rem;
+				margin-right: -3rem;
+
+				@media (max-width: @laptop) {
+					margin-left: -2rem;
+					margin-right: -2rem;
+				}
+			}
+		}
+
+		&_style-2 {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			justify-content: space-between;
+			width: 100%;
+
+			@media (max-width: @pad) {
+				> * + * {
+					margin-top: 3rem;
+
+			        @media (max-width: @mobile) {
+			            margin-top: 1.5rem;
+			        }
+				}
+			}
+
+			.image-card__thumb {
+				width: ~"calc(35% - 1.5em)";
+
+				@media (max-width: @pad) {
+					width: 100%;
+				}
+			}
+
+			.image-card__content {
+				width: ~"calc(65% - 1.5rem)";
+
+				@media (max-width: @pad) {
+					width: 100%;
+				}
+			}
+		}
+	}
+}

@@ -104,12 +104,12 @@ var mmq         = require('gulp-merge-media-queries');
  * Browser sync configs
  */
 var config = {
-    server: {
-        baseDir: './'
+    proxy: {
+        target: 'http://tourtiger:8888'
     },
     tunnel: false,
-    host: 'localhost',
-    port: 5555,
+    host: 'tourtiger',
+    port: 8888,
     logPrefix: "dzvonkevich"
 };
 

@@ -21,7 +21,7 @@ if ( have_rows( 'content' ) ) :
 		/**
 		 * Include layout model template
 		 */
-		get_template_part( "template-parts/content-card/{$layout}" );
+		get_template_part( "template-parts/common/{$layout}" );
 	endwhile;
 
 endif;

@@ -13,7 +13,7 @@ acf_add_local_field_group(array (
 		array (
 			'key' => 'si-wi_5821d29cf2cca',
 			'label' => 'Widget',
-			'name' => 'sidebar-widget-template',
+			'name' => 'widget-template',
 			'type' => 'flexible_content',
 			'required' => 0,
 			'button_label' => 'Add component',
