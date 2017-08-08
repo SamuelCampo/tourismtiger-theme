@@ -100,6 +100,10 @@
 		            duration: 280, // ms
 		            render: function ( $container ) {
 		                $container.addClass( 'slide-out' );
+
+		                $( 'body, html' ).animate( {
+		                    scrollTop: 0,
+		                }, 1000);
 		            }
 		        },
 		        onAfter: function( $container ) {
@@ -114,7 +118,7 @@
 		                $( 'body, html' ).animate( {
 		                    scrollTop: ( offsetTop - 60 ),
 		                }, { 
-		                    duration: 280 
+		                    duration: 500 
 		                } );
 		            }
 		        }

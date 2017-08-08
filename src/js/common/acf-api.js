@@ -162,7 +162,7 @@
             var fieldName   = $field.attr('data-field');   // ACF Field name
             var fieldOffset = +$field.attr('data-offset'); // How many fields to print
             var fieldLack   = +$field.attr('data-lack');   // Count of lack fields
-            var fieldMethod = $field.attr('data-method');
+            var fieldMethod = $field.attr('data-method');  // Name of PHP method which handles that request
             var fieldParent = +$field.attr('data-parent-id');
 
             if ( fieldLack > 0 && $field.length === 1 ) {

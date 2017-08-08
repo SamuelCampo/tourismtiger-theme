@@ -552,7 +552,7 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 			'key' => $id . '_1822e772d49ff',
 			'label' => 'How many slides to scroll',
 			'name' => 'slides_scroll',
-			'type' => 'number',
+			'type' => 'select',
 			'required' => 0,
 			'conditional_logic' => array (
 				array (
@@ -563,9 +563,15 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 					)
 				),
 			),
-			'default_value' => 1,
-			'min' => 1,
-			'step' => 1,
+			'choices' => array (
+				'1' => 'One',
+				'2' => 'Two',
+				'3' => 'Three',
+				'4' => 'Four',
+				'5' => 'Five',
+				'6' => 'Six',
+			),
+			'default_value' => '1',
 			'wrapper' => array(
 				'width' => 33
 			),
@@ -616,6 +622,7 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 			),
 			'choices' => array (
 				'auto' => 'Auto',
+				'none' => 'None',
 				'custom' => 'Custom'
 			),
 			'default_value' => array (
@@ -860,7 +867,7 @@ function get_content_local_field( $id = '1234QWERasdf' ) {
 				// Button
 				array (
 					'key' => $id . '_N121z7ocd48f1',
-					'name' => 'button',
+					'name' => 'button-group',
 					'label' => 'Button',
 					'display' => 'block',
 					'sub_fields' => get_button_group_local_field( $id ),
@@ -1137,7 +1144,7 @@ function get_headline_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1151,7 +1158,7 @@ function get_headline_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1215,7 +1222,7 @@ function get_editor_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1229,7 +1236,7 @@ function get_editor_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1380,7 +1387,7 @@ function get_button_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1394,7 +1401,7 @@ function get_button_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100',
@@ -1471,7 +1478,7 @@ function get_button_group_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1485,7 +1492,7 @@ function get_button_group_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1549,7 +1556,7 @@ function get_gallery_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1563,7 +1570,7 @@ function get_gallery_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1682,7 +1689,7 @@ function get_map_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1696,7 +1703,7 @@ function get_map_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100',
@@ -1764,7 +1771,7 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1778,7 +1785,7 @@ function get_image_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1893,7 +1900,7 @@ function get_oembed_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -1907,7 +1914,7 @@ function get_oembed_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100',
@@ -1987,7 +1994,7 @@ function get_trip_details_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2001,7 +2008,7 @@ function get_trip_details_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100',
@@ -2283,7 +2290,7 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2297,7 +2304,7 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100',
@@ -2386,7 +2393,7 @@ function get_hr_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2400,7 +2407,7 @@ function get_hr_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100',
@@ -2516,7 +2523,7 @@ function get_accordion_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2530,7 +2537,7 @@ function get_accordion_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100',
@@ -2585,7 +2592,7 @@ function get_content_testimonial_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2599,7 +2606,7 @@ function get_content_testimonial_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100',
@@ -2658,7 +2665,7 @@ function get_image_card_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
@@ -2672,7 +2679,7 @@ function get_image_card_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array (
 				'width' => '25',
 			),
-			'placeholder' => '0',
+			'placeholder' => '30',
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100',
