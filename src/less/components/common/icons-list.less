@@ -6,17 +6,6 @@
 	align-items: flex-start;
 
 	&.align-items {
-		&_center {
-			.icons-list--item {
-				align-items: center;
-				margin: 0;
-
-				+ .icons-list--item {
-					margin-top: 2rem;
-				}
-			}
-		} 
-
 		&_baseline {
 			margin-left: -2rem;
 			margin-right: -2rem;
@@ -37,6 +26,20 @@
 	}
 
 	&.layout {
+		&_cols-1 {
+			&.align-items {
+				&_center {
+					.icons-list--item {
+						align-items: center;
+						margin: 0;
+
+						+ .icons-list--item {
+							margin-top: 2rem;
+						}
+					}
+				} 
+			}
+		}
 		&_cols-2 {
 			grid-template-columns: 50% 50%;
 
