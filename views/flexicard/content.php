@@ -14,15 +14,15 @@
 <div class="<?=$classes;?>">
 	<?php 
 	if ( $d['title'] ) 
-		echo "<div class='flexicard--title'>{$d['title']}</div>";
+		echo "<h4 class='flexicard--title'>{$d['title']}</h4>";
 
 	if ( $d['description'] ) 
-		echo "<div class='flexicard--description'>{$d['description']}</div>";
+		echo "<p class='flexicard--description'>{$d['description']}</p>";
 
 	if ( $d['price'] ) 
 		echo "<div class='flexicard--price'>{$d['price']}</div>";
 
 	if ( $d['label'] ) 
-		echo "<div class='flexicard--label'>{$d['label']}</div>";
+		echo "<a href='#.' class='flexicard--label button'>{$d['label']}</a>";
 	?>
 </div>

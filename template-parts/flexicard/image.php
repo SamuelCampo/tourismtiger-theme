@@ -11,7 +11,7 @@ $d                    = array();
 $attrs                = array();
 $style                = array();
 $classes              = array();
-$classes[]            = 'flexicard--image';
+$classes[]            = 'flexicard--image width_full';
 
 $d['image']           = get_sub_field( 'image' ) ? wp_get_attachment_image( get_sub_field( 'image' ), 'large' ) : '';
 $d['height']          = get_sub_field( 'height' );
