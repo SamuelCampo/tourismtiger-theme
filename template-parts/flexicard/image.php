@@ -13,9 +13,9 @@ $style                = array();
 $classes              = array();
 $classes[]            = 'flexicard--image';
 
-$d['image']           = get_sub_field( 'image' ) ? wp_get_attachment_image( get_sub_field( 'image' ) ) : '';
+$d['image']           = get_sub_field( 'image' ) ? wp_get_attachment_image( get_sub_field( 'image' ), 'large' ) : '';
 $d['height']          = get_sub_field( 'height' );
-$d['layouts']         = have_rows( 'layouts' );
+$d['layouts']         = have_rows( 'layout' );
 
 $classes[]            = $d['height'] ? "height_{$d['height']}" : '';
 
@@ -34,6 +34,8 @@ $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $sty
 $classes              = generate_classlist( $classes );
 $attrs                = generate_classlist( $attrs );
 
+
 /**
  * Get section view
  */
+include THEME_VIEWS . 'flexicard/image.php';

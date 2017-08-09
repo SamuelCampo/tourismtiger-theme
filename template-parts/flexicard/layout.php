@@ -1,34 +1,27 @@
 <?php 
 /**
- * Flexi card: Content
+ * Flexi card: Layout
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */
 
-// Common 
-$d                    = array(); 
-$attrs                = array();
-$style                = array();
-$classes              = array();
-$classes[]            = 'flexicard--layout';
+while ( have_rows( 'layout' ) ) :
+	$the_layout       = the_row();
+	$layout           = get_row_layout();
+	$classes          = array();
+	$classes          = 'flexicard--layout';
+	$classes          = "flexicard--layout__{$layout}";
 
-// Margins
-$d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
-$d['margin_bottom']   = get_sub_field( 'margin_bottom' ) ? get_sub_field( 'margin_bottom' ) / 10 : false;
+	$d['title']       = get_sub_field( 'title' );
+	$d['description'] = get_sub_field( 'description' );
+	$d['price']       = get_sub_field( 'price' );
+	$d['label']       = get_sub_field( 'label' );
 
-if ( $d['margin_top'] ) 
-	$style[]          = "margin-top:{$d['margin_top']}rem;";
+	$classes          = generate_classlist( $classes );
 
-if ( $d['margin_bottom'] ) 
-	$style[]          = "margin-bottom:{$d['margin_bottom']}rem;";
-
-// Compile classes and attributes
-$attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-$classes              = generate_classlist( $classes );
-$attrs                = generate_classlist( $attrs );
-
-/**
- * Get section view
- */
-
+	/**
+	 * Get section view
+	 */
+	include THEME_VIEWS . 'flexicard/content.php';
+endwhile;

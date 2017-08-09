@@ -13,15 +13,10 @@ $style                = array();
 $classes              = array();
 $classes[]            = 'flexicard--content';
 
-// Margins
-$d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
-$d['margin_bottom']   = get_sub_field( 'margin_bottom' ) ? get_sub_field( 'margin_bottom' ) / 10 : false;
-
-if ( $d['margin_top'] ) 
-	$style[]          = "margin-top:{$d['margin_top']}rem;";
-
-if ( $d['margin_bottom'] ) 
-	$style[]          = "margin-bottom:{$d['margin_bottom']}rem;";
+$d['title']       = get_sub_field( 'title' );
+$d['description'] = get_sub_field( 'description' );
+$d['price']       = get_sub_field( 'price' );
+$d['label']       = get_sub_field( 'label' );
 
 // Compile classes and attributes
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
@@ -31,4 +26,4 @@ $attrs                = generate_classlist( $attrs );
 /**
  * Get section view
  */
-
+include THEME_VIEWS . 'flexicard/content.php';

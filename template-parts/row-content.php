@@ -23,7 +23,7 @@ if ( have_rows( 'columns' ) ) :
 		$classes              = array();
 		$classes[]            = "row--column";
 		$classes[]            = "column-{$layout}";                         // specify count of child-columns 
-		$classes[]            = $layout == 'content' ? "card-wrapper" : ''; // add card styles to wrapper
+		$classes[]            = $layout == 'contentcard' ? "card-wrapper" : ''; // add card styles to wrapper
 		$classes[]            = "wysiwyg";                                  // add margins between chilrend
 
 		// Compile classes and attributes
