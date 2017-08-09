@@ -158,6 +158,245 @@ function get_product_section_local_field( $id = '1234QWERasdf' ) {
 
 
 /**
+ * Generate Flexi card component local fields
+ */
+function get_flexi_local_field( $id = '1234QWERasdf' ) {
+	return array(
+		array (
+			'key' => $id . '_FC12qiX8p1A9',
+			'label' => 'Components',
+			'name' => 'components',
+			'type' => 'flexible_content',
+			'required' => '',
+			'button_label' => 'Add component',
+			'layouts' => array (
+				array (
+					'key' => $id . '_FC12qiX7p2A8',
+					'name' => 'image',
+					'label' => 'Image',
+					'display' => 'block',
+					'max' => 1,
+					'sub_fields' => array (
+						array (
+							'key' => $id . '_FC12qiX4p5b7',
+							'label' => 'Content',
+							'name' => 'tab1',
+							'type' => 'tab',
+							'required' => '',
+						),
+						array (
+							'key' => $id . '_FC12qiX5p4b6',
+							'label' => 'Image',
+							'name' => 'image',
+							'type' => 'image',
+							'required' => '',
+							'return_format' => 'id',
+							'preview_size' => 'full'
+						),
+						array (
+							'key' => $id . '_FC12qiX5p4b6',
+							'label' => 'Image',
+							'name' => 'image',
+							'type' => 'image',
+							'required' => '',
+							'return_format' => 'id',
+							'preview_size' => 'full'
+						),
+						array (
+							'key' => $id . '_FC12qiX2p1C1',
+							'label' => 'Layouts',
+							'name' => 'layout',
+							'type' => 'flexible_content',
+							'required' => '',
+							'button_label' => 'Add layout',
+							'layouts' => array (
+								array (
+									'key' => $id . '_FC12qiX2p0C2',
+									'name' => 'over-image',
+									'label' => 'Over image',
+									'display' => 'block',
+									'max' => 1,
+									'sub_fields' => array (
+										array (
+											'key' => $id . '_FC12qiX2p3c5',
+											'label' => 'Title',
+											'name' => 'title',
+											'type' => 'textarea',
+											'required' => '',
+											'rows' => '1',
+											'wrapper' => array (
+												'width' => 30
+											)
+										),
+										array (
+											'key' => $id . '_FC12qiX1p8c9',
+											'label' => 'Description',
+											'name' => 'description',
+											'type' => 'textarea',
+											'required' => '',
+											'rows' => '1',
+											'wrapper' => array (
+												'width' => 40
+											)
+										),
+										array (
+											'key' => $id . '_FC12q3X9p6c8',
+											'label' => 'Price',
+											'name' => 'price',
+											'type' => 'text',
+											'required' => '',
+											'wrapper' => array (
+												'width' => 15
+											)
+										),
+										array (
+											'key' => $id . '_FC12q4X8p5c7',
+											'label' => 'Label',
+											'name' => 'label',
+											'type' => 'text',
+											'required' => '',
+											'wrapper' => array (
+												'width' => 15
+											)
+										),
+									)
+								),
+								array (
+									'key' => $id . '_FC12qiX3p1C3',
+									'name' => 'mouseover',
+									'label' => 'Mouseover',
+									'display' => 'block',
+									'max' => 1,
+									'sub_fields' => array (
+										array (
+											'key' => $id . '_FC12q5X1p3c5',
+											'label' => 'Title',
+											'name' => 'title',
+											'type' => 'textarea',
+											'required' => '',
+											'rows' => '1',
+											'wrapper' => array (
+												'width' => 30
+											)
+										),
+										array (
+											'key' => $id . '_FC12q6X7p8c9',
+											'label' => 'Description',
+											'name' => 'description',
+											'type' => 'textarea',
+											'required' => '',
+											'rows' => '1',
+											'wrapper' => array (
+												'width' => 40
+											)
+										),
+										array (
+											'key' => $id . '_FC12q7X9p6c8',
+											'label' => 'Price',
+											'name' => 'price',
+											'type' => 'text',
+											'required' => '',
+											'wrapper' => array (
+												'width' => 15
+											)
+										),
+										array (
+											'key' => $id . '_FC12q8X8p5c7',
+											'label' => 'Label',
+											'name' => 'label',
+											'type' => 'text',
+											'required' => '',
+											'wrapper' => array (
+												'width' => 15
+											)
+										),
+									)
+								)
+							)
+						),
+						array (
+							'key' => $id . '_FC12qiX3p6b4',
+							'label' => 'Settings',
+							'name' => 'tab2',
+							'type' => 'tab',
+							'required' => '',
+						),
+						array (
+							'key' => $id . '_FC12qiX4p7b3',
+							'label' => 'Height',
+							'name' => 'height',
+							'type' => 'select',
+							'required' => '',
+							'wrapper' => array (
+								'width' => 33
+							),
+							'choices' => array (
+								'auto' => 'Auto',
+								'scuare' => 'Square',
+								'tall' => 'Tall',
+							),
+							'default_value' => 'auto'
+						),
+					)
+				),
+				array (
+					'key' => $id . '_FC12qiX6p3A7',
+					'name' => 'content',
+					'label' => 'Content',
+					'display' => 'block',
+					'max' => 2,
+					'sub_fields' => array (
+						array (
+							'key' => $id . '_FC12q9X1p3c5',
+							'label' => 'Title',
+							'name' => 'title',
+							'type' => 'textarea',
+							'required' => '',
+							'rows' => '1',
+							'wrapper' => array (
+								'width' => 30
+							)
+						),
+						array (
+							'key' => $id . '_FC12q917p8c9',
+							'label' => 'Description',
+							'name' => 'description',
+							'type' => 'textarea',
+							'required' => '',
+							'rows' => '1',
+							'wrapper' => array (
+								'width' => 40
+							)
+						),
+						array (
+							'key' => $id . '_FC12q329p6c8',
+							'label' => 'Price',
+							'name' => 'price',
+							'type' => 'text',
+							'required' => '',
+							'wrapper' => array (
+								'width' => 15
+							)
+						),
+						array (
+							'key' => $id . '_FC12q328p5c7',
+							'label' => 'Label',
+							'name' => 'label',
+							'type' => 'text',
+							'required' => '',
+							'wrapper' => array (
+								'width' => 15
+							)
+						),
+					)
+				)
+			)
+		)
+	);
+}
+
+
+/**
  * Generates Row local fields array
  */
 function get_row_local_field( $id = '1234QWERasdf' ) {
@@ -285,6 +524,13 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 					'label' => 'Content card',
 					'display' => 'block',
 					'sub_fields' => get_content_local_field( $id )
+				),
+				array (
+					'key' => $id . '_21126946d214',
+					'name' => 'flexicard',
+					'label' => 'Flexi Card',
+					'display' => 'block',
+					'sub_fields' => get_flexi_local_field( $id )
 				)
 			)
 		),
@@ -921,8 +1167,8 @@ function get_content_local_field( $id = '1234QWERasdf' ) {
 				// Testimonial
 				array (
 					'key' => $id . '_Nj2j271cd48f0',
-					'name' => 'testimonial',
-					'label' => 'Testimonial',
+					'name' => 'testimonials',
+					'label' => 'Testimonials',
 					'display' => 'block',
 					'sub_fields' => get_content_testimonial_local_field( $id ),
 				),
