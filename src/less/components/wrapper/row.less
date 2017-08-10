@@ -95,6 +95,10 @@
 
 			&_none {
 				margin-top: 1rem;
+
+				.flexicard {
+					border-radius: 0;
+				}
 			}
 		}
 
@@ -172,12 +176,14 @@
 	}
 
 	&.layout {
-		&_grid {
+		&_grid,
+		&_carousel {
 			display: grid;
 		}
 
-		&_carousel {
-
+		&_carousel.slick-initialized {
+			display: block;
+			
 		}
 	}
 

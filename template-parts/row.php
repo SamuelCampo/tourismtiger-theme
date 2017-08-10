@@ -70,6 +70,7 @@ elseif ( $d['layout'] == 'carousel' ) :
 	$attrs[]              = "data-dots='{$d['show_dots']}';";
 	$attrs[]              = "data-arrows-type='{$d['arrows_type']}';";
 	$classes[]            = 'arrows_type_' . $d['arrows_type'];
+	$classes[]            = 'cols_count_' . $d['cols_count'];
 
 	if ( $d['arrows_type'] == 'custom' ) :
 		$classes[]        = 'arrows_size_' . $d['arrows_size'];
