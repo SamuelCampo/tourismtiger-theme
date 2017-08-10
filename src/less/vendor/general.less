@@ -1,7 +1,7 @@
 /*  =========================
     Main */
 
-@sitewidth: 123.4rem;
+@sitewidth: 136.4rem;
 
 
 
@@ -16,13 +16,23 @@
 /*  =========================
     Color styles */
 
-@text: #777;
-@bg:   #f9f9f9;
+@brand-base:      #00b149;
+@brand-back:      #e8effb;
+@brand-black:     #233744;
+@brand-white:     #fcfcfc;
+
+@text: @brand-black;
+@bg:   @brand-white;
+
+.is-brand-base  { color: @brand-base; }
+.is-brand-back  { color: @brand-back; }
+.is-brand-black { color: @brand-black; }
+.is-brand-white { color: @brand-white; }
 
 @color-light:     #f9f9f9;
-@color-dark:      #777777;
-@color-green:     #4caf50;
-@color-salat:     #8bc34a;
+@color-dark:      @brand-black;
+@color-green:     #00b149;
+@color-salat:     #00b149;
 @color-red:       #f44336;
 @color-pink:      #e91e63;
 @color-purpure:   #9c27b0;
@@ -62,12 +72,11 @@
 .is-bg-transparent { background-color: transparent; }
 
 
-
 /*  =========================
     Devices */
 
-@desktop: 1230px;
-@laptop: 1150px;
+@desktop: 1364px;
+@laptop: 1230px;
 @pad: 992px;
 @padmini: 768px;
 @mobile: 568px;
@@ -101,11 +110,11 @@ html {
 
 body {
     box-sizing: border-box;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1.4;
     color: @text;
     font-family: @primary;
-    background-color: #eee;
+    background-color: @brand-back;
 
     *,
     :after,
@@ -233,7 +242,7 @@ h6 {
 
 p,
 li {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     margin: 0;
     line-height: 1.5;
     font-weight: 400;

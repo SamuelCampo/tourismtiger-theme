@@ -30,12 +30,12 @@ function get_section_background( $type, $the_row, $id ) {
      * Below we use field keys instead of fields name 
      * because $the_row variable keeps just keys
      */
-    $color             = $the_row[$id . '_5821d89ecaee3'];
+    $color             = $the_row[$id . '_5821d89ecaee3'] ? $the_row[$id . '_5821d89ecaee3'] : '';
     $is_fixed          = $the_row[$id . '_5821d7db6de3b'] === 'yep' ? true : false; 
     $is_expand         = $the_row[$id . '_582si7ez6imbg'] === 'yep' ? true : false; 
     $map               = $the_row[$id . '_5821d8c5caee4']; // $map['lat'],  $map['lng'], 
 
-    $output['style'][] = "background-color:{$color};";
+    $output['style'][] = $color ? "background-color:{$color};" : '';
 
     /**
      * Set attrributes 
@@ -351,7 +351,7 @@ add_action('wp_ajax_nopriv_get_section_ajax', 'get_section_ajax');
  * @return return list of attrs
  */
 function get_section_ajax_attrs( $type = false, $the_row = array() , $id = 0, $section_number = 0 ) {
-    if ( $type == 'false' ) 
+    if ( $type == 'false' || !$type ) 
         return '';
 
     /**
@@ -394,7 +394,7 @@ function get_section_ajax_attrs( $type = false, $the_row = array() , $id = 0, $s
         /**
          * Add button in end of section but before bottom divider
          */
-        add_action( 'before_close_section_tag', 'the_section_ajax_buttons', 25, 2 );
+        add_action( 'before_close_section_tag', 'the_section_ajax_buttons', 10, 2 );
 
     elseif ( $button == 'in-context' ) :
         $attrs[] = "data-rows-trigger='{$trigger}'";

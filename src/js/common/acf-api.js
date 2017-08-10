@@ -192,7 +192,9 @@
                         try {
                             $(document).controller();
                         } catch (e) {
-                            console.error('During ajax the load controler returned error. Message: ' + e); // pass exception object to error handler
+                            console.warn('During ajax the load controler returned error.');
+                            console.warn('Action name: ' + fieldMethod + '; Status section: ' + fieldStatus);
+                            console.error('Message: ' + e); 
                         }
 
                         /**

@@ -153,177 +153,179 @@
 		initRow: function () {
 			var $row = $(this).not('[data-inited]');
 			
-			/**
-			 * Build carousel
-			 */
-			if ($row.hasClass('layout_carousel')) {
-				var scrollSlides   = +$row.attr('data-scroll') || 1;
-				var showSlides     = +$row.attr('data-columns') || 1;
-				var doesShowDots   = $row.attr('data-dots') || false;
-				var arrowsType     = $row.attr('data-arrows-type') || 'auto';
-				var prevArrowData  = '';
-				var nextArrowData  = '';
-				var arrowsColor    = $row.attr('data-arrows-color') || '#fff';
-				var arrowsBoolean  = false;
+			if ($row.length > 0) {
+				/**
+				 * Build carousel
+				 */
+				if ($row.hasClass('layout_carousel')) {
+					var scrollSlides   = +$row.attr('data-scroll') || 1;
+					var showSlides     = +$row.attr('data-columns') || 1;
+					var doesShowDots   = $row.attr('data-dots') || false;
+					var arrowsType     = $row.attr('data-arrows-type') || 'auto';
+					var prevArrowData  = '';
+					var nextArrowData  = '';
+					var arrowsColor    = $row.attr('data-arrows-color') || '#fff';
+					var arrowsBoolean  = false;
 
-				// Set arrows 
-				switch (arrowsType) {
-					case 'auto':
-						arrowsBoolean = true;
-						prevArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-left.png">';
-						nextArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-right.png">';
-						break;
+					// Set arrows 
+					switch (arrowsType) {
+						case 'auto':
+							arrowsBoolean = true;
+							prevArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-left.png">';
+							nextArrowData = '<img width="20" src="'+global_var.theme_url+'/assets/img/slider/arrow-right.png">';
+							break;
 
-					case 'custom':
-						arrowsBoolean = true;
-						prevArrowData = '<div class="slick-control slick-control-prev" style="color:'+arrowsColor+';"></div>';
-						nextArrowData = '<div class="slick-control slick-control-next" style="color:'+arrowsColor+';"></div>';
-						break;
-				}	
+						case 'custom':
+							arrowsBoolean = true;
+							prevArrowData = '<div class="slick-control slick-control-prev" style="color:'+arrowsColor+';"></div>';
+							nextArrowData = '<div class="slick-control slick-control-next" style="color:'+arrowsColor+';"></div>';
+							break;
+					}	
 
-				// Dots
-				if ( doesShowDots == 'true' ) {
-					doesShowDots = true;
+					// Dots
+					if ( doesShowDots == 'true' ) {
+						doesShowDots = true;
+					}
+
+					// Media default settings
+					var laptopSettings  = {
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+					};
+
+					var padSettings     = {
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+					};
+
+					var padMiniSettings = {
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+					};
+
+					var mobileSettings  = {
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+					};
+
+					// Set media queries 
+					switch (showSlides) {
+						case 1:
+							break;
+
+						case 2:
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+
+						case 3:
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+
+						case 4:
+							padMiniSettings = {
+								slidesToShow: 2,
+								slidesToScroll: 2,
+							};
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+
+						case 5:
+							laptopSettings = {
+								slidesToShow: 4,
+								slidesToScroll: 4,
+							};
+							padSettings    = {
+								slidesToShow: 3,
+								slidesToScroll: 3,
+							};
+							padMiniSettings = {
+								slidesToShow: 2,
+								slidesToScroll: 2,
+							};
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+
+						case 6:
+							laptopSettings = {
+								slidesToShow: 5,
+								slidesToScroll: 5,
+							};
+							padSettings    = {
+								slidesToShow: 4,
+								slidesToScroll: 4,
+							};
+							padMiniSettings = {
+								slidesToShow: 2,
+								slidesToScroll: 2,
+							};
+							mobileSettings = {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							};
+							break;
+					}
+
+					// Laptop slick settings
+					var laptop = {
+						breakpoint: 1150,
+						settings: laptopSettings
+					};
+
+					// iPad slick settings
+					var pad = {
+						breakpoint: 992,
+						settings: padSettings
+					};
+
+					// iPad Mini slick settings
+					var padMini = {
+						breakpoint: 768,
+						settings: padMiniSettings
+					};
+
+					// Mobile slick settings
+					var mobile = {
+						breakpoint: 568,
+						settings: mobileSettings
+					};
+
+					// General slick settings
+					var values = {
+						infinite: true,
+						adaptiveHeight: true,
+						dots: doesShowDots,
+						slidesToShow: showSlides,
+						slidesToScroll: scrollSlides,
+						arrows: arrowsBoolean,
+						prevArrow: '<button type="button" class="slick-prev">'+prevArrowData+'</button>',
+						nextArrow: '<button type="button" class="slick-next">'+nextArrowData+'</button>',
+						focusOnSelect: false,
+							responsive: [
+								laptop,
+								pad,
+								padMini,
+								mobile
+							]
+					};
+
+					// Init slick slider
+					$row.slick(values);
 				}
 
-				// Media default settings
-				var laptopSettings  = {
-					slidesToShow: showSlides,
-					slidesToScroll: scrollSlides,
-				};
-
-				var padSettings     = {
-					slidesToShow: showSlides,
-					slidesToScroll: scrollSlides,
-				};
-
-				var padMiniSettings = {
-					slidesToShow: showSlides,
-					slidesToScroll: scrollSlides,
-				};
-
-				var mobileSettings  = {
-					slidesToShow: showSlides,
-					slidesToScroll: scrollSlides,
-				};
-
-				// Set media queries 
-				switch (showSlides) {
-					case 1:
-						break;
-
-					case 2:
-						mobileSettings = {
-							slidesToShow: 1,
-							slidesToScroll: 1,
-						};
-						break;
-
-					case 3:
-						mobileSettings = {
-							slidesToShow: 1,
-							slidesToScroll: 1,
-						};
-						break;
-
-					case 4:
-						padMiniSettings = {
-							slidesToShow: 2,
-							slidesToScroll: 2,
-						};
-						mobileSettings = {
-							slidesToShow: 1,
-							slidesToScroll: 1,
-						};
-						break;
-
-					case 5:
-						laptopSettings = {
-							slidesToShow: 4,
-							slidesToScroll: 4,
-						};
-						padSettings    = {
-							slidesToShow: 3,
-							slidesToScroll: 3,
-						};
-						padMiniSettings = {
-							slidesToShow: 2,
-							slidesToScroll: 2,
-						};
-						mobileSettings = {
-							slidesToShow: 1,
-							slidesToScroll: 1,
-						};
-						break;
-
-					case 6:
-						laptopSettings = {
-							slidesToShow: 5,
-							slidesToScroll: 5,
-						};
-						padSettings    = {
-							slidesToShow: 4,
-							slidesToScroll: 4,
-						};
-						padMiniSettings = {
-							slidesToShow: 2,
-							slidesToScroll: 2,
-						};
-						mobileSettings = {
-							slidesToShow: 1,
-							slidesToScroll: 1,
-						};
-						break;
-				}
-
-				// Laptop slick settings
-				var laptop = {
-					breakpoint: 1150,
-					settings: laptopSettings
-				};
-
-				// iPad slick settings
-				var pad = {
-					breakpoint: 992,
-					settings: padSettings
-				};
-
-				// iPad Mini slick settings
-				var padMini = {
-					breakpoint: 768,
-					settings: padMiniSettings
-				};
-
-				// Mobile slick settings
-				var mobile = {
-					breakpoint: 568,
-					settings: mobileSettings
-				};
-
-				// General slick settings
-				var values = {
-					infinite: true,
-					adaptiveHeight: true,
-					dots: doesShowDots,
-					slidesToShow: showSlides,
-					slidesToScroll: scrollSlides,
-					arrows: arrowsBoolean,
-					prevArrow: '<button type="button" class="slick-prev">'+prevArrowData+'</button>',
-					nextArrow: '<button type="button" class="slick-next">'+nextArrowData+'</button>',
-					focusOnSelect: false,
-						responsive: [
-							laptop,
-							pad,
-							padMini,
-							mobile
-						]
-				};
-
-				// Init slick slider
-				$row.slick(values);
+				$row.attr('data-inited', 1);
 			}
-
-			$row.attr('data-inited', 1);
 		},
 
 		/**

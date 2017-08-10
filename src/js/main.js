@@ -75,11 +75,11 @@
 			$('.gallery-slider').gallerySlider('init');
 
 			// Product page's tstimonials
-			$('.testimonials-carousel').slick({
+			$('.testimonials-carousel').not('[data-inited]').slick({
 				arrows: false,
 				adaptiveHeight: true,
 				dots: true
-			});
+			}).attr('data-inited', 1);
 
 			// Accordion
 			$('.accordion').accordion('init');

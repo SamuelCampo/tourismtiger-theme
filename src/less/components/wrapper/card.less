@@ -55,11 +55,21 @@
         }
     }
 
-    > .flexicard--image:nth-child(1) {
-        margin-top: -3rem;
+    > .flexicard--image {
+        &:first-child {
+            margin-top: -3rem;
 
-        @media (max-width: @laptop) {
-            margin-top: -1.5rem;
+            @media (max-width: @laptop) {
+                margin-top: -1.5rem;
+            }
+        }
+
+        &:last-child {
+            margin-bottom: -3rem;
+
+            @media (max-width: @laptop) {
+                margin-bottom: -1.5rem;
+            }
         }
     }
 }

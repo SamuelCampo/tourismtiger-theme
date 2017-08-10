@@ -218,6 +218,13 @@ function get_flexi_local_field( $id = '1234QWERasdf' ) {
 									'max' => 1,
 									'sub_fields' => array (
 										array (
+											'key' => $id . '_FC12qiX6i3B7',
+											'name' => 'tab1',
+											'label' => 'Content',
+											'type' => 'tab',
+											'required' => ''
+										),
+										array (
 											'key' => $id . '_FC12qiX2p3c5',
 											'label' => 'Title',
 											'name' => 'title',
@@ -259,6 +266,30 @@ function get_flexi_local_field( $id = '1234QWERasdf' ) {
 												'width' => 15
 											)
 										),
+										array (
+											'key' => $id . '_FC12qiX7i3B7',
+											'name' => 'tab2',
+											'label' => 'Settings',
+											'type' => 'tab',
+											'required' => ''
+										),
+										array (
+											'key' => $id . '_FC12qiX6i4B6',
+											'name' => 'type',
+											'label' => 'Type',
+											'type' => 'select',
+											'required' => '',
+											'wrapper' => array (
+												'width' => '33'
+											),
+											'choices' => array (
+												'Default',
+												'Type 1',
+												'Type 2',
+												'Type 3'
+											),
+											'default_values' => array( 0 )
+										),
 									)
 								),
 								array (
@@ -268,6 +299,13 @@ function get_flexi_local_field( $id = '1234QWERasdf' ) {
 									'display' => 'block',
 									'max' => 1,
 									'sub_fields' => array (
+										array (
+											'key' => $id . '_FC12qiX7P3c7',
+											'name' => 'tab1',
+											'label' => 'Content',
+											'type' => 'tab',
+											'required' => ''
+										),
 										array (
 											'key' => $id . '_FC12q5X1p3c5',
 											'label' => 'Title',
@@ -310,6 +348,30 @@ function get_flexi_local_field( $id = '1234QWERasdf' ) {
 												'width' => 15
 											)
 										),
+										array (
+											'key' => $id . '_FC12qiX7i3c7',
+											'name' => 'tab2',
+											'label' => 'Settings',
+											'type' => 'tab',
+											'required' => ''
+										),
+										array (
+											'key' => $id . '_FC12qiX6i4c6',
+											'name' => 'type',
+											'label' => 'Type',
+											'type' => 'select',
+											'required' => '',
+											'wrapper' => array (
+												'width' => '33'
+											),
+											'choices' => array (
+												'Default',
+												'Type 1',
+												'Type 2',
+												'Type 3'
+											),
+											'default_values' => array( 0 )
+										),
 									)
 								)
 							)
@@ -333,7 +395,10 @@ function get_flexi_local_field( $id = '1234QWERasdf' ) {
 							'choices' => array (
 								'auto' => 'Auto',
 								'scuare' => 'Square',
-								'tall' => 'Tall',
+								'200' => '200 pixels',
+								'300' => '300 pixels',
+								'400' => '400 pixels',
+								'500' => '500 pixels',
 							),
 							'default_value' => 'auto'
 						),
@@ -346,6 +411,13 @@ function get_flexi_local_field( $id = '1234QWERasdf' ) {
 					'display' => 'block',
 					'max' => 2,
 					'sub_fields' => array (
+						array (
+							'key' => $id . '_FC12qiX7k3N7',
+							'name' => 'tab1',
+							'label' => 'Settings',
+							'type' => 'tab',
+							'required' => ''
+						),
 						array (
 							'key' => $id . '_FC12q9X1p3c5',
 							'label' => 'Title',
@@ -388,10 +460,34 @@ function get_flexi_local_field( $id = '1234QWERasdf' ) {
 								'width' => 15
 							)
 						),
+						array (
+							'key' => $id . '_FC12qiX7i3N7',
+							'name' => 'tab2',
+							'label' => 'Settings',
+							'type' => 'tab',
+							'required' => ''
+						),
+						array (
+							'key' => $id . '_FC12qiX6i4N6',
+							'name' => 'type',
+							'label' => 'Type',
+							'type' => 'select',
+							'required' => '',
+							'wrapper' => array (
+								'width' => '33'
+							),
+							'choices' => array (
+								'Default',
+								'Type 1',
+								'Type 2',
+								'Type 3'
+							),
+							'default_values' => array( 0 )
+						),
 					)
 				)
 			)
-		)
+		),
 	);
 }
 
@@ -3147,7 +3243,7 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 			'wrapper' => array(
 				'width' => 30
 			),
-			'rgba' => 'rgba(255,255,255,1)'
+			'rgba' => 'rgba(255,255,255,0)'
 		),
 		array (
 			'key' => $id . '_5821d6db6de3a',

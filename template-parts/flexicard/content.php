@@ -13,10 +13,13 @@ $style                = array();
 $classes              = array();
 $classes[]            = 'flexicard--content';
 
-$d['title']       = get_sub_field( 'title' );
-$d['description'] = get_sub_field( 'description' );
-$d['price']       = get_sub_field( 'price' );
-$d['label']       = get_sub_field( 'label' );
+$d['title']           = get_sub_field( 'title' );
+$d['description']     = get_sub_field( 'description' );
+$d['price']           = get_sub_field( 'price' );
+$d['label']           = get_sub_field( 'label' );
+
+$d['type']            = get_sub_field( 'type' );
+$classes[]            = $d['type'] && $d['type'] != 'default' ? "type-{$d['type']}" : 'wysiwyg';
 
 // Compile classes and attributes
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';

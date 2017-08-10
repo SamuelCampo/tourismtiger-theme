@@ -14,7 +14,7 @@
 <div class="<?=$classes;?>">
 	<?php 
 	if ( $d['title'] ) 
-		echo "<h4 class='flexicard--title'>{$d['title']}</h4>";
+		echo "<h5 class='flexicard--title'>{$d['title']}</h5>";
 
 	if ( $d['description'] ) 
 		echo "<p class='flexicard--description'>{$d['description']}</p>";

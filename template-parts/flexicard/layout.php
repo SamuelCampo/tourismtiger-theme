@@ -15,12 +15,16 @@ while ( have_rows( 'layout' ) ) :
 	$classes          = array();
 	$classes[]        = 'flexicard--layout';
 	$classes[]        = "flexicard--layout__{$layout}";
+	$classes[]        = "wysiwyg";
 
 
 	$d['title']       = get_sub_field( 'title' );
 	$d['description'] = get_sub_field( 'description' );
 	$d['price']       = get_sub_field( 'price' );
 	$d['label']       = get_sub_field( 'label' );
+
+	$d['type']        = get_sub_field( 'type' );
+	$classes[]        = $d['type'] && $d['type'] != 'default' ? "type-{$d['type']}" : '';
 
 	$classes          = generate_classlist( $classes );
 
