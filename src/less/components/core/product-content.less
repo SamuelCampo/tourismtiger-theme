@@ -7,11 +7,15 @@
 		padding-bottom: 50px;
 
 		display: grid;
-		grid-template-columns: 65% ~"calc(35% - 3rem)";
-		justify-content: space-between;
+		grid-template-columns: 80rem 35rem;
+		justify-content: center;
 
 		@media (max-width: @padmini) {
 			grid-template-columns: 100%;
+		}
+
+		> * + * {
+			margin-left: 3rem;
 		}
 	}
 }
