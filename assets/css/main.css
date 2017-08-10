@@ -7717,7 +7717,7 @@ input[type='submit'][disabled] {
 .sidebar > * + * {
   margin-top: 3rem;
 }
-.sidebar.card-wrapper {
+.sidebar .card-wrapper {
   padding: 1rem;
 }
 .sidebar--button__btn {
