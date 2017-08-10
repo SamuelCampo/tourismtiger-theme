@@ -7717,6 +7717,9 @@ input[type='submit'][disabled] {
 .sidebar > * + * {
   margin-top: 3rem;
 }
+.sidebar.card-wrapper {
+  padding: 1rem;
+}
 .sidebar--button__btn {
   width: 100%;
   text-align: center;
