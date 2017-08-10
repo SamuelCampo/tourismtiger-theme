@@ -7586,9 +7586,6 @@ input[type='submit'][disabled] {
 }
 /*  =========================
     Primary area UI */
-.primary-area {
-  max-width: 65%;
-}
 .primary-area > * + * {
   margin-top: 3rem;
 }
@@ -7717,9 +7714,6 @@ input[type='submit'][disabled] {
 }
 /*  =========================
     Sidebar UI */
-.sidebar {
-  max-width: calc(35% - 3rem);
-}
 .sidebar > * + * {
   margin-top: 3rem;
 }
