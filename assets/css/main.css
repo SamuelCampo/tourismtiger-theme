@@ -5493,25 +5493,44 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     ========================= */
 /*  =========================
     Smooth UI */
-.primary-area {
+.primary-area,
+.primary-content {
   transition: ease .5s;
   position: relative;
   top: 0;
-}
-.slide-out .primary-area {
-  transition: ease .5s;
-  opacity: 0;
-  top: 5rem;
 }
 .sidebar {
   transition: .5s ease .1s;
   position: relative;
   left: 0;
 }
+.column-contentcard,
+.column-flexicard {
+  position: relative;
+  top: 0;
+  transition: ease .5s;
+}
+.slide-out .primary-area {
+  opacity: 0;
+  top: 5rem;
+}
 .slide-out .sidebar {
-  transition: .5s ease .1s;
   opacity: 0;
   left: 7rem;
+}
+.slide-out.primary-content {
+  opacity: 0;
+}
+.slide-out .column-contentcard {
+  opacity: 0;
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+.slide-out .column-flexicard {
+  top: 2rem;
+  opacity: 0;
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
 }
 /**
  * Spinner

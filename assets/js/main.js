@@ -13685,6 +13685,11 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
                         fieldLack -= 1;
                         $field.attr('data-lack', fieldLack);
 
+                        setTimeout(function(){ 
+                            $('.primary-content').removeClass('slide-out');
+                            $('.row').removeClass('slide-out');
+                        }, 100);
+
                         /**
                          * Re-init core scripts
                          */
@@ -13786,7 +13791,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 							var atOnce = +$rowHolder.attr('data-init');
 			                $rows.each(function(index){
 			                    if (index >= atOnce) {
-			                        $(this).show();
+			                        $(this).fadeIn(500).removeClass('slick-out');
 			                    }
 			                });
 
@@ -13805,7 +13810,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 						// hide rows
 		                $rows.each(function(index){
 		                    if (index >= atOnce) {
-		                        $(this).hide();
+		                        $(this).addClass('slick-out').fadeOut(500);
 		                    }
 		                });
 
@@ -14167,8 +14172,9 @@ wow = new WOW({
 		            }
 		        },
 		        onAfter: function( $container ) {
-		            $(window).controller('init');
 		            $container.removeClass( 'slide-out' );
+		            $(window).controller('init');
+		            $(window).controller('onLoad');
 
 		            var $hash = $( window.location.hash );
 		            

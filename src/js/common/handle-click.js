@@ -46,7 +46,7 @@
 							var atOnce = +$rowHolder.attr('data-init');
 			                $rows.each(function(index){
 			                    if (index >= atOnce) {
-			                        $(this).show();
+			                        $(this).fadeIn(500).removeClass('slick-out');
 			                    }
 			                });
 
@@ -65,7 +65,7 @@
 						// hide rows
 		                $rows.each(function(index){
 		                    if (index >= atOnce) {
-		                        $(this).hide();
+		                        $(this).addClass('slick-out').fadeOut(500);
 		                    }
 		                });
 

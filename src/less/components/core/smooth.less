@@ -1,16 +1,11 @@
 /*  =========================
     Smooth UI */
 
-.primary-area {
+.primary-area,
+.primary-content {
     transition: ease .5s;
     position: relative;
     top: 0;
-}
-
-.slide-out .primary-area {
-    transition: ease .5s;
-    opacity: 0;
-    top: 5rem;
 }
 
 .sidebar {
@@ -19,12 +14,39 @@
     left: 0;
 }
 
-.slide-out .sidebar {
-    transition: .5s ease .1s;
-    opacity: 0;
-    left: 7rem;
+.column-contentcard,
+.column-flexicard {
+  position: relative;
+  top: 0;
+  transition: ease .5s;
 }
 
+.slide-out {
+  .primary-area {
+      opacity: 0;
+      top: 5rem;
+  }
+
+  .sidebar {
+    opacity: 0;
+    left: 7rem;
+  }
+
+  &.primary-content {
+    opacity: 0;
+  }
+
+  .column-contentcard {
+    opacity: 0;
+    transform: scale(.95);
+  }
+
+  .column-flexicard {
+    top: 2rem;
+    opacity: 0;
+    transform: scale(.98);
+  }
+}
 
 /**
  * Spinner

@@ -293,6 +293,7 @@ function get_section_ajax() {
     /**
      * Common variables
      */
+    define( 'GET_SECTION_AJAX', true );
     $start   = $_POST['status'];
     $post_id = $_POST['post_id'];
     $field   = $_POST['field'];
@@ -429,6 +430,7 @@ function get_row_ajax() {
     /**
      * Common variables
      */
+    define( 'GET_ROW_AJAX', true );
     $start         = +$_POST['status'];
     $post_id       = $_POST['post_id'];
     $field         = $_POST['field'];

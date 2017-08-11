@@ -42,6 +42,8 @@ $classes[]            = 'cols_margins_' . $d['cols_margins'];
 $style[]              = $d['margin_top'] ? "margin-top:{$d['margin_top']};" : '';
 $style[]              = $d['margin_bottom'] ? "margin-top:{$d['margin_bottom']};" : '';
 
+$classes[]            = defined('GET_ROW_AJAX') ? 'slide-out' : '';
+
 // Important variable
 $GLOBALS['cols']      = $d['cols_count'];
 

@@ -186,6 +186,11 @@
                         fieldLack -= 1;
                         $field.attr('data-lack', fieldLack);
 
+                        setTimeout(function(){ 
+                            $('.primary-content').removeClass('slide-out');
+                            $('.row').removeClass('slide-out');
+                        }, 100);
+
                         /**
                          * Re-init core scripts
                          */

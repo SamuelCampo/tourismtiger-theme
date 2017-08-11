@@ -107,8 +107,9 @@
 		            }
 		        },
 		        onAfter: function( $container ) {
-		            $(window).controller('init');
 		            $container.removeClass( 'slide-out' );
+		            $(window).controller('init');
+		            $(window).controller('onLoad');
 
 		            var $hash = $( window.location.hash );
 		            
