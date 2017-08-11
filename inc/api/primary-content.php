@@ -545,3 +545,32 @@ function the_section_ajax_buttons( $the_section_row, $id ) {
     echo $html;
     return null;
 }
+
+
+/**
+ * Get columns count
+ */
+function set_image_width() {
+    global $cols;
+    $size = '1150-size';
+
+    if ( isset( $cols ) ) {
+        switch ($cols) :
+            case 2:
+                $size = '1000-size';
+                break;
+
+            case 3:
+                $size = '700-size';
+                break;
+
+            case 4:
+            case 5:
+            case 6:
+                $size = '350-size';
+                break;
+        endswitch;
+    } else {
+
+    }
+}
