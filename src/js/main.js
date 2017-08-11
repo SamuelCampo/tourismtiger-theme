@@ -89,7 +89,7 @@
 		 * Calls after window loaded
 		 */
 		onLoad: function () {
-            $(document).primaryContent('onLoad');
+            $(window).primaryContent('onLoad');
 		},
 
 		initSmoothState: function () {

@@ -14149,7 +14149,7 @@ wow = new WOW({
 		 * Calls after window loaded
 		 */
 		onLoad: function () {
-            $(document).primaryContent('onLoad');
+            $(window).primaryContent('onLoad');
 		},
 
 		initSmoothState: function () {
@@ -14167,7 +14167,7 @@ wow = new WOW({
 		            }
 		        },
 		        onAfter: function( $container ) {
-		            $(document).controller('init');
+		            $(window).controller('init');
 		            $container.removeClass( 'slide-out' );
 
 		            var $hash = $( window.location.hash );
