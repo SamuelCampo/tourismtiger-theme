@@ -165,8 +165,8 @@
 
 	$(function(){
 		$(window).controller('init');
-		$(window).controller('onLoad');
 		$(window).controller('initSmoothState');
+		$(window).controller('onLoad');
 	});
 
 }));
