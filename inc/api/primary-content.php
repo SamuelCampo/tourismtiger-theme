@@ -561,16 +561,16 @@ function set_image_width() {
                 break;
 
             case 3:
+            case 4:
                 $size = '700-size';
                 break;
 
-            case 4:
             case 5:
             case 6:
-                $size = '350-size';
+                $size = '500-size';
                 break;
         endswitch;
-    } else {
+    } 
 
-    }
+    return $size;
 }

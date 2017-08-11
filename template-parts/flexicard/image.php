@@ -13,10 +13,10 @@ $style                = array();
 $classes              = array();
 $classes[]            = 'flexicard--image width_full';
 
-$d['img-size']        = defined( $GLOBALS['cols'] ) ? $GLOBALS['cols'] : '';
+$size                 = set_image_width();
 
 $d['image']           = get_sub_field( 'image' ) ? get_sub_field( 'image' ) : '';
-$d['image']           = $d['image'] ? "<img data-aload='{$d['image']['sizes']['1450-size']}' src='data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==' alt='' />" : '';
+$d['image']           = $d['image'] ? "<img data-aload='{$d['image']['sizes'][$size]}' src='data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==' alt='' />" : '';
 $d['height']          = get_sub_field( 'height' );
 $d['layouts']         = have_rows( 'layout' );
 
