@@ -5518,7 +5518,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   opacity: 0;
   left: 7rem;
 }
-.slide-out.primary-content {
+.slide-out.primary-content,
+.slide-out .primary-content {
   opacity: 0;
 }
 .slide-out .column-contentcard {
