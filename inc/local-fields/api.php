@@ -190,16 +190,7 @@ function get_flexi_local_field( $id = '1234QWERasdf' ) {
 							'name' => 'image',
 							'type' => 'image',
 							'required' => '',
-							'return_format' => 'id',
-							'preview_size' => 'full'
-						),
-						array (
-							'key' => $id . '_FC12qiX5p4b6',
-							'label' => 'Image',
-							'name' => 'image',
-							'type' => 'image',
-							'required' => '',
-							'return_format' => 'id',
+							'return_format' => 'object',
 							'preview_size' => 'full'
 						),
 						array (
@@ -1831,6 +1822,22 @@ function get_button_group_local_field( $id = '1234QWERasdf' ) {
 			'append' => 'px',
 			'min' => '0',
 			'max' => '100'
+		),
+		array (
+			'key' => $id . '_T5MbzN1cD59q4',
+			'label' => 'Align',
+			'name' => 'align',
+			'type' => 'select',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'choices' => array (
+				'center' => 'Center',
+				'left'   => 'Left',
+				'right'  => 'Right'
+			),
+			'default_values' => array ( 'center' )
 		),
 	);
 }

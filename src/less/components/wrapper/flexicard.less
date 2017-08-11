@@ -12,6 +12,11 @@
 				&__mouseover {
 					pointer-events: all;
 					opacity: 1;
+
+					~ .flexicard--layout__over-image {
+						pointer-events: none;
+						opacity: 0;
+					}
 				}
 			}
 		}
@@ -83,6 +88,7 @@
 		    background: rgba(0, 0, 0, 0.7);
 		    color: #fff;
 		    z-index: 5;
+			.mx-transition;
 		}
 		
 		.flexicard {

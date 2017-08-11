@@ -13,7 +13,8 @@ $style                = array();
 $classes              = array();
 $classes[]            = 'flexicard--image width_full';
 
-$d['image']           = get_sub_field( 'image' ) ? wp_get_attachment_image( get_sub_field( 'image' ), 'large' ) : '';
+$d['image']           = get_sub_field( 'image' ) ? get_sub_field( 'image' ) : '';
+$d['image']           = $d['image'] ? "<img data-aload='{$d['image']['sizes']['1450-size']}' src='data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==' alt='' />" : '';
 $d['height']          = get_sub_field( 'height' );
 $d['layouts']         = have_rows( 'layout' );
 
