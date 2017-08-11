@@ -37,7 +37,11 @@
 						var $lessBtn   = $click.closest('.primary-content').find('.js-hide');
 
 						if (lack > 0) {
-							$rowHolder.acfApi('loadAjax');
+							$moreBtn.handleClick('toggleSpiner');
+							$rowHolder.acfApi('loadAjax', function () {
+								$moreBtn.hide().handleClick('toggleSpiner');
+		                		$lessBtn.show();
+							});
 						} else {
 							var atOnce = +$rowHolder.attr('data-init');
 			                $rows.each(function(index){
@@ -45,10 +49,10 @@
 			                        $(this).show();
 			                    }
 			                });
-						}
 
-		                $moreBtn.hide();
-		                $lessBtn.show();
+			                $moreBtn.hide();
+			                $lessBtn.show();
+						}
 
 					} else if ($click.hasClass('js-hide')) {
 						var $rowHolder = $click.closest('.primary-content').find('.rows'); 
@@ -77,6 +81,24 @@
 			});
 
 			$btn.addClass('js-handled');
+		},
+
+		toggleSpiner: function () {
+			var $button = $(this);
+
+			if ($button.length > 0) {
+				var isLoading = $button.hasClass('is-loading');
+
+				if (!isLoading) {
+					$button.addClass('is-loading');
+					$button.attr('data-label', $button.text());
+					$button.html('<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>');
+
+				} else {
+					$button.removeClass('is-loading');
+					$button.html($button.attr('data-label'));
+				}
+			}
 		}
 
 	};

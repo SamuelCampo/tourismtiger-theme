@@ -13652,7 +13652,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 		},
 
-        loadAjax: function() {
+        loadAjax: function( callback ) {
 
             // Too important variables
             var $field      = $(this);                     // Wrapper inside which will be loaded new items
@@ -13707,7 +13707,7 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
                                 console.error('Load ajax error.'); // pass exception object to error handler
                             }
                         } else {
-                            console.log('loadAjax method has loaded all fields successfull!');
+                            typeof callback == 'function' && callback.call( this );
                         }
                     },
                     'json'
@@ -13725,10 +13725,10 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 	 * Include javascript files
 	 * which requery DOM reload
 	 */
-	$.fn.acfApi = function( method ) {
+	$.fn.acfApi = function( method, callback ) {
 
         if ( methods[method] ) {
-          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ), callback);
         } else if ( typeof method === 'object' || ! method ) {
           return methods.init.apply( this, arguments );
         } else {
@@ -13777,7 +13777,11 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 						var $lessBtn   = $click.closest('.primary-content').find('.js-hide');
 
 						if (lack > 0) {
-							$rowHolder.acfApi('loadAjax');
+							$moreBtn.handleClick('toggleSpiner');
+							$rowHolder.acfApi('loadAjax', function () {
+								$moreBtn.hide().handleClick('toggleSpiner');
+		                		$lessBtn.show();
+							});
 						} else {
 							var atOnce = +$rowHolder.attr('data-init');
 			                $rows.each(function(index){
@@ -13785,10 +13789,10 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 			                        $(this).show();
 			                    }
 			                });
-						}
 
-		                $moreBtn.hide();
-		                $lessBtn.show();
+			                $moreBtn.hide();
+			                $lessBtn.show();
+						}
 
 					} else if ($click.hasClass('js-hide')) {
 						var $rowHolder = $click.closest('.primary-content').find('.rows'); 
@@ -13817,6 +13821,24 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 			});
 
 			$btn.addClass('js-handled');
+		},
+
+		toggleSpiner: function () {
+			var $button = $(this);
+
+			if ($button.length > 0) {
+				var isLoading = $button.hasClass('is-loading');
+
+				if (!isLoading) {
+					$button.addClass('is-loading');
+					$button.attr('data-label', $button.text());
+					$button.html('<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>');
+
+				} else {
+					$button.removeClass('is-loading');
+					$button.html($button.attr('data-label'));
+				}
+			}
 		}
 
 	};

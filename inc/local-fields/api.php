@@ -1790,16 +1790,9 @@ function get_button_group_local_field( $id = '1234QWERasdf' ) {
 		),
 		array (
 			'key' => $id . '_N121z7ocd48f5',
-			'label' => 'First title',
-			'name' => 'first',
-			'type' => 'text',
-			'required' => '',
-		),
-		array (
-			'key' => $id . '_N121z7ocd48f6',
-			'label' => 'Secound title',
-			'name' => 'secound',
-			'type' => 'text',
+			'label' => 'Contet',
+			'name' => 'content',
+			'type' => 'wysiwyg',
 			'required' => '',
 		),
 

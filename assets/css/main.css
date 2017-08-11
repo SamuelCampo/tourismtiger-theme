@@ -665,19 +665,17 @@ img {
   min-width: 100%;
   min-height: 100%;
 }
-@-webkit-keyframes sk-examplmail {
+@-webkit-keyframes sk-bouncedelay {
   0%,
   80%,
   100% {
     -webkit-transform: scale(0);
-    transform: scale(0);
   }
   40% {
     -webkit-transform: scale(1);
-    transform: scale(1);
   }
 }
-@keyframes sk-examplmail {
+@keyframes sk-bouncedelay {
   0%,
   80%,
   100% {
@@ -6481,14 +6479,15 @@ input[type='reset'] {
   outline: none;
   cursor: pointer;
   border-radius: 0;
-  display: inline-block;
-  padding: 1.2rem 2rem;
-  color: #fff;
   background-color: #00b149;
-  font-size: 2rem;
   border: 1px solid #00b149;
+  display: inline-block;
+  padding: 1.5rem 2rem;
+  color: #fff;
+  font-size: 2rem;
   line-height: 1;
   text-align: center;
+  min-width: 15rem;
   transition: ease 0.3s;
 }
 .button:hover,
@@ -6497,6 +6496,91 @@ input[type='submit']:hover,
 input[type='reset']:hover {
   background-color: #007e34;
   border-color: #007e34;
+}
+.button.type-1,
+input[type='button'].type-1,
+input[type='submit'].type-1,
+input[type='reset'].type-1 {
+  background-color: transparent;
+}
+.button.type-1:hover,
+input[type='button'].type-1:hover,
+input[type='submit'].type-1:hover,
+input[type='reset'].type-1:hover {
+  background-color: #00b149;
+  color: #fff;
+}
+.button.type-2,
+input[type='button'].type-2,
+input[type='submit'].type-2,
+input[type='reset'].type-2 {
+  background-color: transparent;
+  color: #00b149;
+}
+.button.type-2:hover,
+input[type='button'].type-2:hover,
+input[type='submit'].type-2:hover,
+input[type='reset'].type-2:hover {
+  background-color: #00b149;
+  color: #fff;
+}
+.button.width_box,
+input[type='button'].width_box,
+input[type='submit'].width_box,
+input[type='reset'].width_box {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button .spinner,
+input[type='button'] .spinner,
+input[type='submit'] .spinner,
+input[type='reset'] .spinner {
+  opacity: 0;
+  transition: ease 0.3s;
+}
+.button.is-loading,
+input[type='button'].is-loading,
+input[type='submit'].is-loading,
+input[type='reset'].is-loading {
+  color: transparent;
+  pointer-events: none;
+  transition: ease 0.3s;
+}
+.button.is-loading .spinner,
+input[type='button'].is-loading .spinner,
+input[type='submit'].is-loading .spinner,
+input[type='reset'].is-loading .spinner {
+  margin: 0 auto;
+  width: 5rem;
+  text-align: center;
+  opacity: 1;
+}
+.button.is-loading .spinner > div,
+input[type='button'].is-loading .spinner > div,
+input[type='submit'].is-loading .spinner > div,
+input[type='reset'].is-loading .spinner > div {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+.button.is-loading .spinner .bounce1,
+input[type='button'].is-loading .spinner .bounce1,
+input[type='submit'].is-loading .spinner .bounce1,
+input[type='reset'].is-loading .spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.button.is-loading .spinner .bounce2,
+input[type='button'].is-loading .spinner .bounce2,
+input[type='submit'].is-loading .spinner .bounce2,
+input[type='reset'].is-loading .spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
 }
 .button::-moz-focus-inner,
 input[type='button']::-moz-focus-inner,
@@ -6563,19 +6647,72 @@ input[type='submit'][disabled] {
 /*  =========================
     Button */
 .button {
-  display: inline-block;
-  padding: 1.2rem 2rem;
-  color: #fff;
   background-color: #00b149;
-  font-size: 2rem;
   border: 1px solid #00b149;
+  display: inline-block;
+  padding: 1.5rem 2rem;
+  color: #fff;
+  font-size: 2rem;
   line-height: 1;
   text-align: center;
+  min-width: 15rem;
   transition: ease 0.3s;
 }
 .button:hover {
   background-color: #007e34;
   border-color: #007e34;
+}
+.button.type-1 {
+  background-color: transparent;
+}
+.button.type-1:hover {
+  background-color: #00b149;
+  color: #fff;
+}
+.button.type-2 {
+  background-color: transparent;
+  color: #00b149;
+}
+.button.type-2:hover {
+  background-color: #00b149;
+  color: #fff;
+}
+.button.width_box {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button .spinner {
+  opacity: 0;
+  transition: ease 0.3s;
+}
+.button.is-loading {
+  color: transparent;
+  pointer-events: none;
+  transition: ease 0.3s;
+}
+.button.is-loading .spinner {
+  margin: 0 auto;
+  width: 5rem;
+  text-align: center;
+  opacity: 1;
+}
+.button.is-loading .spinner > div {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+.button.is-loading .spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.button.is-loading .spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
 }
 .button-group {
   display: -webkit-box;
@@ -6592,7 +6729,13 @@ input[type='submit'][disabled] {
   margin-left: -1rem;
   margin-right: -1rem;
 }
-.button-group--title {
+.button-group:first-child {
+  margin-top: -1rem;
+}
+.button-group:last-child {
+  margin-bottom: -1rem;
+}
+.button-group--content {
   margin: 1rem;
 }
 .button-group .button {
@@ -6948,14 +7091,15 @@ input[type='submit'][disabled] {
   outline: none;
   cursor: pointer;
   border-radius: 0;
-  display: inline-block;
-  padding: 1.2rem 2rem;
-  color: #fff;
   background-color: #00b149;
-  font-size: 2rem;
   border: 1px solid #00b149;
+  display: inline-block;
+  padding: 1.5rem 2rem;
+  color: #fff;
+  font-size: 2rem;
   line-height: 1;
   text-align: center;
+  min-width: 15rem;
   transition: ease 0.3s;
   background-color: transparent;
   border-color: #fff;
@@ -6967,9 +7111,113 @@ input[type='submit'][disabled] {
   background-color: #007e34;
   border-color: #007e34;
 }
+.gallery-slider--panel__btn.type-1 {
+  background-color: transparent;
+}
+.gallery-slider--panel__btn.type-1:hover {
+  background-color: #00b149;
+  color: #fff;
+}
+.gallery-slider--panel__btn.type-2 {
+  background-color: transparent;
+  color: #00b149;
+}
+.gallery-slider--panel__btn.type-2:hover {
+  background-color: #00b149;
+  color: #fff;
+}
+.gallery-slider--panel__btn.width_box {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.gallery-slider--panel__btn .spinner {
+  opacity: 0;
+  transition: ease 0.3s;
+}
+.gallery-slider--panel__btn.is-loading {
+  color: transparent;
+  pointer-events: none;
+  transition: ease 0.3s;
+}
+.gallery-slider--panel__btn.is-loading .spinner {
+  margin: 0 auto;
+  width: 5rem;
+  text-align: center;
+  opacity: 1;
+}
+.gallery-slider--panel__btn.is-loading .spinner > div {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+.gallery-slider--panel__btn.is-loading .spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.gallery-slider--panel__btn.is-loading .spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
 .gallery-slider--panel__btn:hover {
   background-color: #007e34;
   border-color: #007e34;
+}
+.gallery-slider--panel__btn.type-1 {
+  background-color: transparent;
+}
+.gallery-slider--panel__btn.type-1:hover {
+  background-color: #00b149;
+  color: #fff;
+}
+.gallery-slider--panel__btn.type-2 {
+  background-color: transparent;
+  color: #00b149;
+}
+.gallery-slider--panel__btn.type-2:hover {
+  background-color: #00b149;
+  color: #fff;
+}
+.gallery-slider--panel__btn.width_box {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.gallery-slider--panel__btn .spinner {
+  opacity: 0;
+  transition: ease 0.3s;
+}
+.gallery-slider--panel__btn.is-loading {
+  color: transparent;
+  pointer-events: none;
+  transition: ease 0.3s;
+}
+.gallery-slider--panel__btn.is-loading .spinner {
+  margin: 0 auto;
+  width: 5rem;
+  text-align: center;
+  opacity: 1;
+}
+.gallery-slider--panel__btn.is-loading .spinner > div {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+.gallery-slider--panel__btn.is-loading .spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.gallery-slider--panel__btn.is-loading .spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
 }
 /*  =========================
     Image card UI */
@@ -7719,10 +7967,6 @@ input[type='submit'][disabled] {
 }
 .sidebar .card-wrapper {
   padding: 2rem;
-}
-.sidebar--button__btn {
-  width: 100%;
-  text-align: center;
 }
 /*  =========================
     Section UI */
