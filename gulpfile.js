@@ -152,9 +152,8 @@ gulp.task('webserver', function () {
 /**
  * Deploy to GIT
  */
-gulp.task('git', function (cb) {
+gulp.task('commit', function (cb) {
     var commit  = arg.commit || arg.c;
-    var branch  = arg.branch || arg.b;
 
     gulp.src(path.root)
     .pipe(git.add({
@@ -162,13 +161,15 @@ gulp.task('git', function (cb) {
     }))
     .pipe(git.commit(commit, {
         disableAppendPaths: true
-    }))
-    .pipe(git.push('origin', branch, function (err) {
-        if (err) throw err;
     }));
-
 });
 
+gulp.task('push', function (cb) {
+    var branch  = arg.branch || arg.b;
+    git.push('origin', branch, function (err) {
+        if (err) throw err;
+    });
+});
 
 
 /**
@@ -338,5 +339,6 @@ gulp.task('copyrate', function (cb) {
 gulp.task('default', ['build']);
 gulp.task('build-webserver', ['build', 'webserver', 'watch']);
 gulp.task('build-watch', ['build', 'watch']);
+gulp.task('git', ['commit', 'push']);
 
 
