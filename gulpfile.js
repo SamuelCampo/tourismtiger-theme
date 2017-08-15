@@ -30,6 +30,7 @@ var projectAuthor = 'tourismtiger';
  * @type {object}
  */
 var path = {
+    root: './',
     build: {
         html:   '',
         js:     'assets/js/',
@@ -73,6 +74,30 @@ var path = {
 };
 
 
+/**
+ * Fetch data from command line
+ */
+const arg = (argList => {
+  let arg = {}, a, opt, thisOpt, curOpt;
+  for (a = 0; a < argList.length; a++) {
+    thisOpt = argList[a].trim();
+    opt = thisOpt.replace(/^\-+/, '');
+
+    if (opt === thisOpt) {
+      // argument value
+      if (curOpt) arg[curOpt] = opt;
+      curOpt = null;
+    }
+    else {
+      // argument name
+      curOpt = opt;
+      arg[curOpt] = true;
+    }
+  }
+
+  return arg;
+
+})(process.argv);
 
 
 /**
@@ -94,6 +119,7 @@ var notify      = require('gulp-notify');
 var reload      = browserSync.reload; 
 var replace     = require('replace-in-file');
 var mmq         = require('gulp-merge-media-queries');
+var git         = require('gulp-git');
  
 
 
@@ -120,6 +146,28 @@ gulp.task('webserver', function () {
     browserSync(config);
 });
 
+
+
+
+/**
+ * Deploy to GIT
+ */
+gulp.task('git', function (cb) {
+    var commit  = arg.commit || arg.c;
+    var branch  = arg.branch || arg.b;
+
+    gulp.src(path.root)
+    .pipe(git.add({
+        args: '--all'
+    }))
+    .pipe(git.commit(commit, {
+        disableAppendPaths: true
+    }));
+
+    git.push('origin', branch, function (err) {
+        if (err) throw err;
+    });
+});
 
 
 
