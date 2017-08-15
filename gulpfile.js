@@ -162,11 +162,11 @@ gulp.task('git', function (cb) {
     }))
     .pipe(git.commit(commit, {
         disableAppendPaths: true
+    }))
+    .pipe(git.push('origin', branch, function (err) {
+        if (err) throw err;
     }));
 
-    git.push('origin', branch, function (err) {
-        if (err) throw err;
-    });
 });
 
 
