@@ -6960,6 +6960,10 @@ input[type='submit'][disabled] {
     margin-top: 1.5rem;
   }
 }
+* + .line.width_half,
+.line + *.width_half {
+  width: 50%;
+}
 /*  =========================
     Map UI */
 .acf-map {

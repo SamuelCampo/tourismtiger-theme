@@ -1590,117 +1590,20 @@ function get_button_local_field( $id = '1234QWERasdf' ) {
 			'required' => 0,
 			'placement' => 'top'
 		),
+
 		array (
-			'key' => $id . '_A2982bc694Cd47',
-			'label' => 'Label',
-			'name' => 'label',
-			'type' => 'text',
+			'key' => $id . '_59944311d4a7b',
+			'label' => 'Button',
+			'name' => 'button',
+			'type' => 'clone',
 			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '33',
+			'clone' => array (
+				0 => 'bttn_59930ca194830',
 			),
-			'placeholder' => 'Book now'
-		),
-		array (
-			'key' => $id . '_A2982bc694Cd48',
-			'label' => 'Action type',
-			'name' => 'type',
-			'type' => 'select',
-			'required' => 0,
-			'wrapper' => array (
-				'width' => '33',
-			),
-			'choices' => array (
-				'link' => 'Link to another page',
-				'iframe-popup' => 'iFrame popup',
-				'form-link' => 'Link to form',
-				'integration' => 'Third party integration',
-				'dropdown' => 'Actions dropdown',
-			),
-			'default_value' => 'link'
-		),
-		array (
-			'key' => $id . '_A2982bc694Cd50',
-			'label' => 'Action',
-			'name' => 'action',
-			'type' => 'text',
-			'required' => 0,
-			'conditional_logic' => array(
-				array(
-					array(
-						'field' => $id . '_A2982bc694Cd48',
-						'operator' => '!=',
-						'value' => 'dropdown'
-					)
-				)
-			),
-			'wrapper' => array (
-				'width' => '33',
-			)
-		),
-		array (
-			'key' => $id . '_A2982bc694Cd51',
-			'label' => 'Dropdown Options',
-			'name' => 'dropdown',
-			'type' => 'repeater',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_A2982bc694Cd48',
-						'operator' => '==',
-						'value' => 'dropdown',
-					),
-				),
-			),
-			'wrapper' => array (
-				'width' => '100',
-			),
+			'display' => 'group',
 			'layout' => 'block',
-			'button_label' => 'Add Sub Option',
-			'sub_fields' => array (
-				array (
-					'key' => $id . '_A2982bc694Cd54',
-					'label' => 'Label',
-					'name' => 'label',
-					'type' => 'text',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array (
-						'width' => '33',
-					),
-					'placeholder' => 'Option name'
-				),
-				array (
-					'key' => $id . '_A2982bc694Cd55',
-					'label' => 'Action type',
-					'name' => 'type',
-					'type' => 'select',
-					'required' => 0,
-					'wrapper' => array (
-						'width' => '33',
-					),
-					'choices' => array (
-						'link' => 'Link to another page',
-						'iframe-popup' => 'iFrame popup',
-						'form-link' => 'Link to form',
-						'integration' => 'Third party integration',
-					),
-					'default_value' => 'link',
-				),
-				array (
-					'key' => $id . '_A2982bc694Cd56',
-					'label' => 'Action',
-					'name' => 'action',
-					'type' => 'text',
-					'required' => 0,
-					'wrapper' => array (
-						'width' => '33',
-					)
-				),
-			),
-			'min' => 1
+			'prefix_label' => 0,
+			'prefix_name' => 0,
 		),
 
 		array (
@@ -1758,33 +1661,28 @@ function get_button_group_local_field( $id = '1234QWERasdf' ) {
 			'required' => 0,
 			'placement' => 'top'
 		),
-		array (
-			'key' => $id . '_N121z7ocd48f2',
-			'label' => 'Label',
-			'name' => 'label',
-			'type' => 'text',
-			'required' => '',
-			'wrapper' => array (
-				'width' => '60',
-			)
-		),
-		array (
-			'key' => $id . '_N121z7ocd48f3',
-			'label' => 'URL',
-			'name' => 'url',
-			'type' => 'text',
-			'required' => 0,
-			'wrapper' => array (
-				'width' => '40',
-			),
-			'placeholder' => 'http://example.com'
-		),
+
 		array (
 			'key' => $id . '_N121z7ocd48f5',
 			'label' => 'Contet',
 			'name' => 'content',
 			'type' => 'wysiwyg',
 			'required' => '',
+		),
+
+		array (
+			'key' => $id . '_59944311d4a7b',
+			'label' => 'Button',
+			'name' => 'button',
+			'type' => 'clone',
+			'required' => 0,
+			'clone' => array (
+				0 => 'bttn_59930ca194830',
+			),
+			'display' => 'group',
+			'layout' => 'block',
+			'prefix_label' => 0,
+			'prefix_name' => 0,
 		),
 
 		array (

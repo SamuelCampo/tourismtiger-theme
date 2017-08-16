@@ -191,3 +191,9 @@ include THEME_INC_PATH . '/common/class-tgm-plugin-activation.php';
  * - get_section_background_attrs()
  */
 include THEME_INC_PATH . '/api/primary-content.php';
+
+
+/**
+ * Button generation
+ */
+include THEME_INC_PATH . '/api/button.php';

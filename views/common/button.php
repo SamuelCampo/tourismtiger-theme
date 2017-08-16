@@ -11,6 +11,6 @@
  */
 ?>
 
-<div <?=$attrs;?> class="sidebar--button">
-	<a <?=$d['href'];?> class="<?=$classes;?>"><?=$d['label'];?></a>
+<div <?=$attrs;?>>
+	<?=$d['btn'];?>
 </div>
