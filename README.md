@@ -26,7 +26,7 @@ $ mkdir tourismtiger-theme && cd tourismtiger-theme # create and enter to the th
 $ git init && git remote add origin https://github.com/Dzvonkevich/tourismtiger-theme.git # add remote repository
 $ git pull origin master # get the latest version of the theme
 ```
-2. Create and switch to your branch. Forbitten make commits to master branch!
+2. Create and switch to your branch.
 ```
 $ git checkout -b name-of-your-branch 
 ```
@@ -52,3 +52,21 @@ Terminal commands | Description
 `$ gulp build-watch` | run `build` and run `build again when something is changed`
 `$ gulp build-webserver` | same as `build-watch` + open the site in you browser and reload it automatically
 `$ gulp deploy --b "branch-name" --c "commit name"` | re-build project, commit and push it to repository. usage example. It's similar to `gulp && git add --all && git commit -m "commit name" && git push origin branch-name`
+
+### Example of Workflow
+> All steps should be completed through your dev-envinroment
+1. Get the latest stable version of the theme from master.
+```
+$ cd path/to/the/theme
+$ git pull origin master
+```
+2. Create own branch. 
+```
+$ git checkout -b name-of-branch
+```
+3. Make changes anywhere in the theme.
+4. Push changes to your branch on remote repository
+```
+$ gulp deploy --b "name-of-branch" --c "describe your commit"
+```
+5. Complete merge from Github admin panel
