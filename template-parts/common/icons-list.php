@@ -34,12 +34,14 @@ while ( have_rows( 'icons-list' ) ) :
 	$d['icons'][$c]['font-size'] = $d['icons'][$c]['font-size'] ? "style='font-size:{$d['icons'][$c]['font-size']}rem;'" : '';
 
 	if ( $d['icons'][$c]['type'] == 'checklist' ) :
-		$d['icons'][$c]['size'] = 'inherit';
-		$d['icons'][$c]['icon'] = 'fa-check-circle';
+		$d['icons'][$c]['icon'] = '<i class="fa icons-list--icon_default"></i>';
 	elseif ( $d['icons'][$c]['type'] == 'custom' ) :
-		$d['icons'][$c]['size'] = get_sub_field( 'size' ) ? get_sub_field( 'size' )  / 10 : '';
-		$d['icons'][$c]['size'] = $d['icons'][$c]['size'] ? "style='font-size:{$d['icons'][$c]['size']}rem;'" : '';
-		$d['icons'][$c]['icon'] = get_sub_field( 'icon' );
+		// Icon's atteibutes
+		$d['size'] = get_sub_field( 'size' ) ? get_sub_field( 'size' )  / 10 : '';
+		$d['size'] = $d['size'] ? "style='font-size:{$d['size']}rem;'" : '';
+		// Icons's html
+		$d['icon'] = get_sub_field( 'icon' );
+		$d['icons'][$c]['icon'] = "<i class='fa {$d['icon']}' {$d['size']}></i>";
 	endif;
 endwhile;
 

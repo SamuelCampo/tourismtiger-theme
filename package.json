@@ -27,9 +27,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-merge-media-queries": "^0.2.1",
     "replace-in-file": "*",
-    "gulp-connect-php": "*"
-  },
-  "dependencies": {
+    "gulp-connect-php": "*",
     "gulp-git": "^2.4.2"
   }
 }

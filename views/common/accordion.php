@@ -13,17 +13,12 @@
 
 <div class="<?=$classes;?>" <?=$attrs;?>>
 	<a href="javascript:" class="accordion--head">
-		<?php 
-		// Head Content
-		echo $d['label'] ? "<div class='accordion--head__label'>{$d['label']}</div>" : ''; 
-		echo $d['open'] ? "<div class='accordion--head__open'>{$d['open']}</div>" : ''; 
-		echo $d['close'] ? "<div class='accordion--head__close hidden'>{$d['close']}</div>" : ''; 
-		 ?>
+		<h6 class='accordion--head__label'><?=$d['label'];?></h6>
+		<div class='accordion--head__open'><?=$d['open'];?></div>
+		<div class='accordion--head__close hidden'><?=$d['close'];?></div>
 	</a>
 	
 	<div class="accordion--body wysiwyg">
-		<?php 
-		// WYSIWYG Content
-		echo $d['wysiwyg'] ? "<div class='accordion--wysiwyg wysiwyg'>{$d['wysiwyg']}</div>" : '';  ?>
+		<div class='accordion--wysiwyg wysiwyg'><?=$d['wysiwyg'];?></div>
 	</div>
 </div>

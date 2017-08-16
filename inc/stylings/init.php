@@ -437,7 +437,7 @@ include_once( THEME_INC_PATH . 'stylings/class-styling-card.php' );
 /**
  * Hero Area Styling Class
  */
-include_once( THEME_INC_PATH . 'stylings/class-styling-heroarea.php' );
+i//nclude_once( THEME_INC_PATH . 'stylings/class-styling-heroarea.php' );
 
 
 

@@ -42,6 +42,21 @@ if ( have_rows( 'primary-content' ) ) :
 	</div>
 
 	<?php
+else :
+ 
+	/**
+	 * Set post variables and output template
+	 */
+	$title   = get_the_title();
+	$content = get_the_content();
+	?>
+
+	<section class="wysiwyg">
+		<h1><?=$title;?></h1>
+		<p class="wysiwyg"><?=$title;?></p>
+	</section>
+
+	<?php
 endif;
 
 ?>

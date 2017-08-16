@@ -45,7 +45,8 @@ var path = {
         js:    'src/js/main.js',
         style: 'src/less/main.less',
         fonts: 'src/fonts/**/*.*',
-        img:   'src/img/**/*.*', 
+        img:   'src/img/**/*.*',
+        php:   './**/*.php'
     },
     watch: { 
         html:  'src/**/*.html',
@@ -54,7 +55,8 @@ var path = {
         js:    'src/js/**/*.js',
         style: 'src/less/**/*.less',
         fonts: 'src/fonts/*.*',
-        img:   'src/img/**/*.*'
+        img:   'src/img/**/*.*',
+        php:   '**/*.php'
     },
     copyrate: {
         files: [
@@ -94,9 +96,7 @@ const arg = (argList => {
       arg[curOpt] = true;
     }
   }
-
   return arg;
-
 })(process.argv);
 
 
@@ -153,7 +153,7 @@ gulp.task('webserver', function () {
  * Deploy to GIT
  */
 gulp.task('commit', function (cb) {
-    var commit  = arg.commit || arg.c;
+    var commit  = arg.c || 'Unnamed commit';
 
     gulp.src(path.root)
     .pipe(git.add({
@@ -165,7 +165,7 @@ gulp.task('commit', function (cb) {
 });
 
 gulp.task('push', function (cb) {
-    var branch  = arg.branch || arg.b;
+    var branch  = arg.b || 'master';
     git.push('origin', branch, function (err) {
         if (err) throw err;
     });
@@ -198,6 +198,15 @@ gulp.task('json:build', function () {
     gulp.src(path.src.json)
         .pipe(gulp.dest(path.build.html))
         .pipe(reload({stream: true})); 
+});
+
+/**
+ * JSON Build task
+ */
+gulp.task('php:build', function () {
+    gulp.src(path.src.html)
+        .pipe( reload({stream: true}) )
+        .pipe( notify( { message: 'PHP modified! 🚀' } ) ); 
 });
 
 /**
@@ -299,6 +308,9 @@ gulp.task('watch', function(){
     watch([path.watch.img], function(event, cb) {
         gulp.start('image:build');
     });
+    watch([path.watch.php], function(event, cb) {
+        gulp.start('php:build');
+    });
 });
 
 
@@ -340,5 +352,6 @@ gulp.task('default', ['build']);
 gulp.task('build-webserver', ['build', 'webserver', 'watch']);
 gulp.task('build-watch', ['build', 'watch']);
 gulp.task('git', ['commit', 'push']);
+gulp.task('deploy', ['build', 'git']);
 
 

@@ -3185,9 +3185,9 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 		),
 
 		array (
-			'key' => $id . '_5821d6ba6de39',
-			'label' => 'Background Options',
-			'name' => 'Background_Options_0',
+			'key' => $id . '_5821d6ba5de39',
+			'label' => 'Wrapper options',
+			'name' => 'Wrapper_Options_0',
 			'type' => 'tab',
 			'required' => 0
 		),
@@ -3211,9 +3211,13 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 			),
 			'layout' => 'horizontal',
 			'toggle' => 1,
-			'wrapper' => array(
-				'width' => 40
-			),
+		),
+		array (
+			'key' => $id . '_5821d6ba6de39',
+			'label' => 'Background Options',
+			'name' => 'Background_Options_0',
+			'type' => 'tab',
+			'required' => 0
 		),
 		array (
 			'key' => $id . '_5821d316e18e2',
@@ -3230,7 +3234,7 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 				'video-embed' => 'Video Embed',
 			),
 			'wrapper' => array(
-				'width' => 30
+				'width' => 33
 			),
 			'default_value' => 'color'
 		),
@@ -3241,7 +3245,7 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 			'type' => 'rgba_color',
 			'required' => 0,
 			'wrapper' => array(
-				'width' => 30
+				'width' => 33
 			),
 			'rgba' => 'rgba(255,255,255,0)'
 		),

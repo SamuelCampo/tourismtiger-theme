@@ -188,16 +188,6 @@ include THEME_INC_PATH . '/common/class-tgm-plugin-activation.php';
  * Functions related exclusively with Hero Area
  *
  * List of functons:
- * - get_heroarea_title_from_acf()
- * - get_heroarea_bg_from_acf()
- */
-include THEME_INC_PATH . '/api/hero-area.php';
-
-
-/**
- * Functions related exclusively with Hero Area
- *
- * List of functons:
  * - get_section_background_attrs()
  */
 include THEME_INC_PATH . '/api/primary-content.php';

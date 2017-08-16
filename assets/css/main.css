@@ -6843,6 +6843,10 @@ input[type='submit'][disabled] {
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
+.accordion--head__open,
+.accordion--head__close {
+  font-size: 1.8rem;
+}
 .accordion--head__open.hidden,
 .accordion--head__close.hidden {
   display: none;
@@ -7388,28 +7392,11 @@ input[type='submit'][disabled] {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-}
-.icons-list.align-items_baseline {
-  margin-left: -2rem;
-  margin-right: -2rem;
-}
-.icons-list.align-items_baseline .icons-list--item {
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  margin: 2rem 2rem;
+  margin-top: -1rem;
+  margin-bottom: -1rem;
 }
 .icons-list.justify-content_center .icons-list--item {
   margin: 0 auto;
-}
-.icons-list.layout_cols-1.align-items_center .icons-list--item {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0;
-}
-.icons-list.layout_cols-1.align-items_center .icons-list--item + .icons-list--item {
-  margin-top: 2rem;
 }
 .icons-list.layout_cols-2 {
   -ms-grid-columns: 50% 50%;
@@ -7454,7 +7441,12 @@ input[type='submit'][disabled] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 1.7rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .icons-list--item > * + * {
   margin-left: 1rem;
@@ -7462,6 +7454,29 @@ input[type='submit'][disabled] {
 .icons-list--item__icon {
   text-align: center;
   min-width: 3rem;
+}
+.icons-list--item__text {
+  color: #233744;
+}
+.icons-list--icon_default {
+  position: relative;
+}
+.icons-list--icon_default:before {
+  content: "\f0a3";
+  font-size: 4rem;
+  position: relative;
+  z-index: 1;
+}
+.icons-list--icon_default:after {
+  content: "\f00c";
+  font-size: 1.85rem;
+  color: #fff;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 /*  =========================
     Hero Area UI */
@@ -7864,8 +7879,8 @@ input[type='submit'][disabled] {
   padding-bottom: 50px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 80rem 32rem;
-      grid-template-columns: 80rem 32rem;
+  -ms-grid-columns: 80rem 33rem;
+      grid-template-columns: 80rem 33rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;

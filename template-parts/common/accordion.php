@@ -15,8 +15,8 @@ $classes[]            = 'accordion';
 
 // Text
 $d['label']           = get_sub_field('label');
-$d['open']            = get_sub_field('open');
-$d['close']           = get_sub_field('close');
+$d['open']            = get_sub_field('open') ? get_sub_field('open') : 'Show more';
+$d['close']           = get_sub_field('close') ? get_sub_field('close') : 'Show less';
 $d['wysiwyg']         = get_sub_field('wysiwyg');
 
 // Margins
