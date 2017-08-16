@@ -12,6 +12,8 @@ $style      = array();
 $classes    = array();
 $classes[]  = 'primary-content';
 
+$classes[]  = defined( 'GET_SECTION_AJAX' ) ? 'slide-out' : '';
+
 // Rows' holder variables
 $row_id     = "{$section_id}--" . generate_random_string(5);
 $row_attrs  = array();

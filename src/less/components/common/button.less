@@ -2,16 +2,63 @@
     Button */
 
 .button {
-	display: inline-block;
-	padding: 1.6rem 2.5rem;
-	color: #fff;
 	background-color: @color-salat;
-	font-size: 2rem;
 	border: 1px solid @color-salat;
+
+	display: inline-block;
+	padding: 1.5rem 2rem;
+	color: #fff;
+	font-size: 2rem;
+	line-height: 1;
+	text-align: center;
+	min-width: 15rem;
 	.mx-transition(.3s);
 
 	&:hover {
 		background-color: darken(@color-salat, 10%);
+		border-color: darken(@color-salat, 10%);
+	}
+
+	&.type {
+		&-1 {
+			background-color: transparent;
+
+			&:hover {
+				background-color: @color-salat;
+				color: #fff;
+			}
+		}
+
+		&-2 {
+			background-color: transparent;
+			color: @color-salat;
+
+			&:hover {
+				background-color: @color-salat;
+				color: #fff;
+			}
+		}
+	}
+
+	&.width_box {
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.spinner {
+		opacity: 0;
+		.mx-transition();
+	}
+
+	&.is {
+		&-loading {
+			color: transparent;
+			pointer-events: none;
+			.mx-transition();
+
+			.mx-btn-loader(@color:#fff);
+		}
 	}
 }
 
@@ -23,7 +70,15 @@
 	margin-left: -1rem;
 	margin-right: -1rem;
 
-	&--title {
+	&:first-child {
+		margin-top: -1rem;
+	}
+
+	&:last-child {
+		margin-bottom: -1rem;
+	}
+
+	&--content {
 		margin: 1rem;
 	}
 

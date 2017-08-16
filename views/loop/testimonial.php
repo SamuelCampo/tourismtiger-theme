@@ -19,5 +19,5 @@
 			<div class="testimonials--item__additional"><?=$d['additional'];?></div>
 		</div>
 	</div>
-	<div class="testimonials--item__body text-align_center"><?=$d['shortly'];?></div>
+	<div class="testimonials--item__body text-align_center wysiwyg"><?=$d['shortly'];?></div>
 </div>

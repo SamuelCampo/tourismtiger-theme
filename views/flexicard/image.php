@@ -1,0 +1,24 @@
+<?php
+/**
+ * View: Image card
+ *
+ * $d       (array) 
+ * $class   (string)
+ * $attrs   (string)
+ * 
+ * @package TourismTiger_Theme
+ * @author  tourismtiger
+ */
+?>
+
+<div class="<?=$classes;?>" <?=$attrs;?>>
+	<div class="flexicard--image__thumb"><?=$d['image'];?></div>
+	
+	<?php
+	/**
+	 * Get additional layouts 
+	 */
+	if ( $d['layouts'] ) 
+		get_template_part( 'template-parts/flexicard/layout' );
+	?>
+</div>

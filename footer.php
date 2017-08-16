@@ -1,24 +1,19 @@
 </div>
 </div>
 
-<!-- Spinner -->
-<div class="spinner-global">
-	<div class="sk-circle">
-		<div class="sk-circle1 sk-child"></div>
-		<div class="sk-circle2 sk-child"></div>
-		<div class="sk-circle3 sk-child"></div>
-		<div class="sk-circle4 sk-child"></div>
-		<div class="sk-circle5 sk-child"></div>
-		<div class="sk-circle6 sk-child"></div>
-		<div class="sk-circle7 sk-child"></div>
-		<div class="sk-circle8 sk-child"></div>
-		<div class="sk-circle9 sk-child"></div>
-		<div class="sk-circle10 sk-child"></div>
-		<div class="sk-circle11 sk-child"></div>
-		<div class="sk-circle12 sk-child"></div>
-	</div>
-</div>
+<?php 
+/**
+ * Load the spiner which is appear 
+ * while the pages are switching 
+ * between each other
+ */
+get_template_part( 'views/common/spiner' );
 
-<?php wp_footer(); ?>
+/**
+ * Includes sources like javascript 
+ * And too important for wordpress
+ */
+wp_footer();
+?>
 </body>
 </html>

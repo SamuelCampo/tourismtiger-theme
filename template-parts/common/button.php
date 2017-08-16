@@ -12,7 +12,7 @@ $attrs                = array(); // Regarding to button
 $style                = array(); // Regarding to button
 $classes              = array(); // Regarding to button
 $classes[]            = 'button';
-$classes[]            = 'sidebar--button__btn';
+$classes[]            = 'width_box';
 
 $d['label']           = get_sub_field( 'label' ) ? get_sub_field( 'label' ) : 'Book now';
 $d['type']            = get_sub_field( 'type' ) ? get_sub_field( 'type' ) : 'link';

@@ -4,7 +4,7 @@
   "description": "Tourtiger",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "none"
   },
   "repository": {
     "type": "git"
@@ -27,7 +27,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-merge-media-queries": "^0.2.1",
     "replace-in-file": "*",
-    "gulp-connect-php": "*"
+    "gulp-connect-php": "*",
+    "gulp-git": "^2.4.2"
   }
 }
-       

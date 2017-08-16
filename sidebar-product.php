@@ -7,7 +7,7 @@
  * @package TourismTiger_Theme
  */
 
-if ( have_rows( 'widgets' ) ) :
+if ( have_rows( 'widgets' ) && ! wp_is_mobile() ) :
 	?>
 
 	<div class="sidebar">

@@ -6,29 +6,29 @@
  * @author  tourismtiger
  */
 
-function dimox_breadcrumbs() {
+function dimox_breadcrumbs( $separator = '›' ) {
 
-  /* === ОПЦИИ === */
-  $text['home'] = 'Главная'; // текст ссылки "Главная"
-  $text['category'] = 'Архив рубрики "%s"'; // текст для страницы рубрики
-  $text['search'] = 'Результаты поиска по запросу "%s"'; // текст для страницы с результатами поиска
-  $text['tag'] = 'Записи с тегом "%s"'; // текст для страницы тега
-  $text['author'] = 'Статьи автора %s'; // текст для страницы автора
-  $text['404'] = 'Ошибка 404'; // текст для страницы 404
-  $text['page'] = 'Страница %s'; // текст 'Страница N'
-  $text['cpage'] = 'Страница комментариев %s'; // текст 'Страница комментариев N'
 
-  $wrap_before = '<div class="breadcrumbs">'; // открывающий тег обертки
-  $wrap_after = '</div><!-- .breadcrumbs -->'; // закрывающий тег обертки
-  $sep = '›'; // разделитель между "крошками"
-  $sep_before = '<span class="sep">'; // тег перед разделителем
-  $sep_after = '</span>'; // тег после разделителя
-  $show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
-  $show_on_home = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
-  $show_current = 1; // 1 - показывать название текущей страницы, 0 - не показывать
-  $before = '<span class="current">'; // тег перед текущей "крошкой"
-  $after = '</span>'; // тег после текущей "крошки"
-  /* === КОНЕЦ ОПЦИЙ === */
+  $text['home'] = 'Home'; 
+  $text['category'] = 'Archive of "%s"'; 
+  $text['search'] = 'Search results of "%s"'; 
+  $text['tag'] = 'Tag: "%s"'; 
+  $text['author'] = 'Author: %s'; 
+  $text['404'] = 'Error 404';
+  $text['page'] =  '%s'; 
+  $text['cpage'] = 'Comments page %s'; 
+
+  $wrap_before = '<div class="breadcrumbs">'; 
+  $wrap_after = '</div><!-- .breadcrumbs -->'; 
+  $sep = $separator; 
+  $sep_before = '<span class="sep">'; 
+  $sep_after = '</span>'; 
+  $show_home_link = 1; 
+  $show_on_home = 0; 
+  $show_current = 1;
+  $before = '<span class="current">'; 
+  $after = '</span>'; 
+
 
   global $post;
   $home_link = home_url('/');

@@ -7,6 +7,8 @@ $(function() {
 	var settings = { 
 	    anchors: 'a',
 	    blacklist: '.wp-link',
+        cacheLength: 5,
+        prefetch: true,
         onStart: {
             duration: 300, // ms
             render: function ( $container ) {

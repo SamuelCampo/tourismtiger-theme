@@ -20,6 +20,7 @@ $d['is-accordion']    = get_sub_field( 'is-accorion' );
 $d['is-icon']         = get_sub_field( 'is-icon' );
 $d['link-label']      = '';
 $d['icon']            = '';
+$d['hidden-content']  = '';
 
 // Accordion
 if ( $d['is-accordion'] ) :

@@ -153,7 +153,7 @@
 
 		},
 
-        loadAjax: function() {
+        loadAjax: function( callback ) {
 
             // Too important variables
             var $field      = $(this);                     // Wrapper inside which will be loaded new items
@@ -186,13 +186,20 @@
                         fieldLack -= 1;
                         $field.attr('data-lack', fieldLack);
 
+                        setTimeout(function(){ 
+                            $('.primary-content').removeClass('slide-out');
+                            $('.row').removeClass('slide-out');
+                        }, 100);
+
                         /**
                          * Re-init core scripts
                          */
                         try {
                             $(document).controller();
                         } catch (e) {
-                            console.error('During ajax the load controler returned error. Message: ' + e); // pass exception object to error handler
+                            console.warn('During ajax the load controler returned error.');
+                            console.warn('Action name: ' + fieldMethod + '; Status section: ' + fieldStatus);
+                            console.error('Message: ' + e); 
                         }
 
                         /**
@@ -206,7 +213,7 @@
                                 console.error('Load ajax error.'); // pass exception object to error handler
                             }
                         } else {
-                            console.log('loadAjax method has loaded all fields successfull!');
+                            typeof callback == 'function' && callback.call( this );
                         }
                     },
                     'json'
@@ -224,10 +231,10 @@
 	 * Include javascript files
 	 * which requery DOM reload
 	 */
-	$.fn.acfApi = function( method ) {
+	$.fn.acfApi = function( method, callback ) {
 
         if ( methods[method] ) {
-          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ), callback);
         } else if ( typeof method === 'object' || ! method ) {
           return methods.init.apply( this, arguments );
         } else {

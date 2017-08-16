@@ -30,6 +30,7 @@ var projectAuthor = 'tourismtiger';
  * @type {object}
  */
 var path = {
+    root: './',
     build: {
         html:   '',
         js:     'assets/js/',
@@ -44,7 +45,8 @@ var path = {
         js:    'src/js/main.js',
         style: 'src/less/main.less',
         fonts: 'src/fonts/**/*.*',
-        img:   'src/img/**/*.*', 
+        img:   'src/img/**/*.*',
+        php:   './**/*.php'
     },
     watch: { 
         html:  'src/**/*.html',
@@ -53,7 +55,8 @@ var path = {
         js:    'src/js/**/*.js',
         style: 'src/less/**/*.less',
         fonts: 'src/fonts/*.*',
-        img:   'src/img/**/*.*'
+        img:   'src/img/**/*.*',
+        php:   '**/*.php'
     },
     copyrate: {
         files: [
@@ -73,6 +76,28 @@ var path = {
 };
 
 
+/**
+ * Fetch data from command line
+ */
+const arg = (argList => {
+  let arg = {}, a, opt, thisOpt, curOpt;
+  for (a = 0; a < argList.length; a++) {
+    thisOpt = argList[a].trim();
+    opt = thisOpt.replace(/^\-+/, '');
+
+    if (opt === thisOpt) {
+      // argument value
+      if (curOpt) arg[curOpt] = opt;
+      curOpt = null;
+    }
+    else {
+      // argument name
+      curOpt = opt;
+      arg[curOpt] = true;
+    }
+  }
+  return arg;
+})(process.argv);
 
 
 /**
@@ -94,6 +119,7 @@ var notify      = require('gulp-notify');
 var reload      = browserSync.reload; 
 var replace     = require('replace-in-file');
 var mmq         = require('gulp-merge-media-queries');
+var git         = require('gulp-git');
  
 
 
@@ -124,6 +150,29 @@ gulp.task('webserver', function () {
 
 
 /**
+ * Deploy to GIT
+ */
+gulp.task('commit', function (cb) {
+    var commit  = arg.c || 'Unnamed commit';
+
+    gulp.src(path.root)
+    .pipe(git.add({
+        args: '--all'
+    }))
+    .pipe(git.commit(commit, {
+        disableAppendPaths: true
+    }));
+});
+
+gulp.task('push', function (cb) {
+    var branch  = arg.b || 'master';
+    git.push('origin', branch, function (err) {
+        if (err) throw err;
+    });
+});
+
+
+/**
  * HTML Build task
  */
 gulp.task('html:build', function () {
@@ -149,6 +198,15 @@ gulp.task('json:build', function () {
     gulp.src(path.src.json)
         .pipe(gulp.dest(path.build.html))
         .pipe(reload({stream: true})); 
+});
+
+/**
+ * JSON Build task
+ */
+gulp.task('php:build', function () {
+    gulp.src(path.src.html)
+        .pipe( reload({stream: true}) )
+        .pipe( notify( { message: 'PHP modified! 🚀' } ) ); 
 });
 
 /**
@@ -250,6 +308,9 @@ gulp.task('watch', function(){
     watch([path.watch.img], function(event, cb) {
         gulp.start('image:build');
     });
+    watch([path.watch.php], function(event, cb) {
+        gulp.start('php:build');
+    });
 });
 
 
@@ -290,5 +351,7 @@ gulp.task('copyrate', function (cb) {
 gulp.task('default', ['build']);
 gulp.task('build-webserver', ['build', 'webserver', 'watch']);
 gulp.task('build-watch', ['build', 'watch']);
+gulp.task('git', ['commit', 'push']);
+gulp.task('deploy', ['build', 'git']);
 
 

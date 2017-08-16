@@ -42,6 +42,10 @@ $classes[]            = 'cols_margins_' . $d['cols_margins'];
 $style[]              = $d['margin_top'] ? "margin-top:{$d['margin_top']};" : '';
 $style[]              = $d['margin_bottom'] ? "margin-top:{$d['margin_bottom']};" : '';
 
+$classes[]            = defined('GET_ROW_AJAX') ? 'slide-out' : '';
+
+// Important variable
+$GLOBALS['cols']      = $d['cols_count'];
 
 // Row type: Grid
 if ( $d['layout'] == 'grid' ) :
@@ -70,6 +74,7 @@ elseif ( $d['layout'] == 'carousel' ) :
 	$attrs[]              = "data-dots='{$d['show_dots']}';";
 	$attrs[]              = "data-arrows-type='{$d['arrows_type']}';";
 	$classes[]            = 'arrows_type_' . $d['arrows_type'];
+	$classes[]            = 'cols_count_' . $d['cols_count'];
 
 	if ( $d['arrows_type'] == 'custom' ) :
 		$classes[]        = 'arrows_size_' . $d['arrows_size'];

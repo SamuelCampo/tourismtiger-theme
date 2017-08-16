@@ -18,17 +18,9 @@ function wordpress_kit_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on Wordpress Kit, use a find and replace
-	 * to change 'wordpress-kit' to the name of your theme in all the template files.
+	 * to change 'tourismtiger' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'wordpress-kit', get_template_directory() . '/languages' );
-
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
-	add_theme_support( 'title-tag' );
+	load_theme_textdomain( 'tourismtiger', get_template_directory() . '/languages' );
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
@@ -83,7 +75,7 @@ add_filter('admin_footer_text', 'true_change_admin_footer');
  * If user mistakes in login.
  */
 function true_change_default_login_errors(){
-	return '<strong>Sory</strong>: You have mistaken.';
+	return '<strong>Hey</strong>: You have mistaken.';
 }
 
 /*

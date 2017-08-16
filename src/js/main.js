@@ -75,11 +75,11 @@
 			$('.gallery-slider').gallerySlider('init');
 
 			// Product page's tstimonials
-			$('.testimonials-carousel').slick({
+			$('.testimonials-carousel').not('[data-inited]').slick({
 				arrows: false,
 				adaptiveHeight: true,
 				dots: true
-			});
+			}).attr('data-inited', 1);
 
 			// Accordion
 			$('.accordion').accordion('init');
@@ -89,7 +89,7 @@
 		 * Calls after window loaded
 		 */
 		onLoad: function () {
-            $(document).primaryContent('onLoad');
+            $(window).primaryContent('onLoad');
 		},
 
 		initSmoothState: function () {
@@ -107,8 +107,9 @@
 		            }
 		        },
 		        onAfter: function( $container ) {
-		            $(document).controller('init');
 		            $container.removeClass( 'slide-out' );
+		            $(window).controller('init');
+		            $(window).controller('onLoad');
 
 		            var $hash = $( window.location.hash );
 		            
@@ -165,8 +166,8 @@
 
 	$(function(){
 		$(window).controller('init');
-		$(window).controller('onLoad');
 		$(window).controller('initSmoothState');
+		$(window).controller('onLoad');
 	});
 
 }));

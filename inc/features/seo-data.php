@@ -15,6 +15,8 @@ function include_seo_metadata() {
 	$title       = get_the_title() . ' | ' . get_bloginfo( 'name' );
 	?>
 
+	<title><?=$title;?></title>
+
 	<!-- Schema.org markup (Google) -->
 	<meta itemprop="name" content="<?=$title;?>" />
 	<meta itemprop="image" content="<?php echo get_template_directory_uri(); ?>/assets/img/fav/primary.png" />
