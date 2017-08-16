@@ -13,18 +13,17 @@ $attrs_wrap           = array(); // Regarding to wrapper
 $style                = array(); // Regarding to button
 $style_wrap           = array(); // Regarding to wrapper
 $classes              = array(); // Regarding to button
-$classes[]            = 'button-group';
+$classes[]            = 'button';
+$classes_wrap         = array(); // Regarding to wrapper
+$classes_wrap[]       = 'button-group';
 
 // Common
 $d['align']           = get_sub_field('align');
-
-$classes[]            = $d['align'] ? "align_{$d['align']}" : '';
+$classes_wrap[]       = $d['align'] ? "align_{$d['align']}" : '';
 
 // Button values
-$d['label']           = get_sub_field('label');
-$d['url']             = get_sub_field('url');
-
-$attrs[]              = $d['url'] ? "href='{$d['url']}'" : 'href="javascript:"';
+$d['btn']           = get_sub_field('button');
+$d['btn']           = get_button( $d['btn'], $classes );
 
 // Text fields
 $d['content']         = get_sub_field('content');
@@ -49,9 +48,10 @@ if ( $d['margin_bottom'] )
 $attrs_wrap[]         = count($style_wrap) > 0 ? 'style="' . generate_classlist( $style_wrap ) . '"' : '';
 $attrs_wrap           = generate_classlist( $attrs_wrap );
 
+$classes_wrap         = generate_classlist( $classes_wrap );
+
 // Compile classes and attributes
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-$classes              = generate_classlist( $classes );
 $attrs                = generate_classlist( $attrs );
 
 /**
