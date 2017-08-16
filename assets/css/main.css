@@ -5495,7 +5495,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     Smooth UI */
 .primary-area,
 .primary-content {
-  transition: ease .5s;
+  transition: ease .7s;
   position: relative;
   top: 0;
 }
@@ -5508,7 +5508,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .column-flexicard {
   position: relative;
   top: 0;
-  transition: ease .5s;
+  transition: ease .7s;
 }
 .slide-out .primary-area {
   opacity: 0;
