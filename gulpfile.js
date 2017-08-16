@@ -352,6 +352,6 @@ gulp.task('default', ['build']);
 gulp.task('build-webserver', ['build', 'webserver', 'watch']);
 gulp.task('build-watch', ['build', 'watch']);
 gulp.task('git', ['commit', 'push']);
-gulp.task('deploy', ['build', 'git']);
+gulp.task('deploy', ['build', 'commit', 'push']);
 
 
