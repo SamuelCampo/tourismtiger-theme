@@ -1,0 +1,91 @@
+/*  =========================
+    gForm UI */
+
+.gform {
+	width: 800px;
+	max-width: 100%;
+	margin: 0 auto;
+
+	&-body {
+		margin-left: -.5rem;
+		margin-right: -.5rem;
+
+		&__fields {
+			padding: 0;
+			list-style: none;
+
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+
+			> * {
+				margin: .5rem;
+				flex-grow: 1;
+			}
+
+			// If pagination is activated
+			// Show only the first page
+			&:not([data-page="1"]) {
+				//display: none;
+			}
+		}
+	}
+
+	&-field {
+		&__label {
+			margin-bottom: .5rem;
+			display: inline-block;
+		}
+
+		&.type {
+			&_text,
+			&_date,
+			&_phone,
+			&_email,
+			&_website {
+				input {
+					width: 100%;
+				}
+			}
+
+			&_textarea {
+				textarea {
+					width: 100%;
+				}
+			}
+
+			&_page {
+				width: 100%;
+
+				.gform-field__label {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&-group {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		margin-left: -.5rem;
+		margin-right: -.5rem;
+		margin-top: -.5rem;
+		margin-bottom: -.5rem;
+
+		> * {
+			margin: .5rem;
+			flex-grow: 1;
+		}
+
+		&__wrap {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&--label {
+			margin-top: .2rem;
+			font-size: 1.2rem;
+		}
+	}
+}

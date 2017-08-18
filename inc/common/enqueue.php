@@ -50,12 +50,23 @@ add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
 function global_js_variables(){
 	global $post;
 
+	// API Keys
+	$gf_public   = get_field('gf_public_key','apikey') ? get_field('gf_public_key','apikey') : 0;
+	$gf_private  = get_field('gf_private_key','apikey') ? get_field('gf_private_key','apikey') : 0;
+	$google_maps = get_field('google_maps','apikey') ? get_field('google_maps','apikey') : 0;
+	$re_captcha  = get_field('re_captcha','apikey') ? get_field('re_captcha','apikey') : 0;
+
+	// Creates variables and past them 
+	//after tourismtiger-js script
 	wp_localize_script('tourismtiger-js', 'global_var', 
 		array(
 			'ajax'            => admin_url('admin-ajax.php'),
 			'post_id'         => $post->ID,
 			'ajaxnonce'       => wp_create_nonce( "ajax_nonce" ),
-			'google_maps_key' => 'AIzaSyCRJz_DMLCdqsfRwyysbIaWvzDxIIKzmaU',
+			'gf_public_key'   => $gf_public,
+			'gf_private_key'  => $gf_private,
+			'google_maps_key' => $google_maps,
+			're_captcha_key'  => $re_captcha,
 			'url'             => get_bloginfo( 'url' ),
 			'theme_url'       => get_template_directory_uri()
 		)

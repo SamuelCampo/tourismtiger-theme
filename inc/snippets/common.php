@@ -8,6 +8,29 @@
 
 
 /**
+ * Get reCaptch html
+ * 
+ * @return string
+ */
+function get_recaptcha_html() {
+    $apikey = get_field('re_captcha', 'apikey');
+    $html   = $apikey ? '<div class="g-recaptcha" data-sitekey="'.$apikey.'"></div>' : '';
+
+    return $html;
+}
+
+
+/**
+ * Helper function
+ */
+function print_r_html( $value ) {
+    echo '<pre>';
+    print_r( $value );
+    echo '</pre>';
+}
+
+
+/**
  * Create style prefix.
  * Convert number to string 
  * 

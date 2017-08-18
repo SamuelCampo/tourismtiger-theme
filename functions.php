@@ -93,6 +93,12 @@ include_once THEME_INC_PATH . '/common/acf.php';
 /**
  * ACF Option page: Primary Styles
  */
+include THEME_INC_PATH . '/option-pages/api-keys.php';
+
+
+/**
+ * ACF Option page: Primary Styles
+ */
 include THEME_INC_PATH . '/option-pages/primary-styles.php';
 
 
@@ -197,3 +203,9 @@ include THEME_INC_PATH . '/api/primary-content.php';
  * Button generation
  */
 include THEME_INC_PATH . '/api/button.php';
+
+
+/**
+ * Button generation
+ */
+include THEME_INC_PATH . '/api/gform.php';

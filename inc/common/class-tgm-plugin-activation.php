@@ -3923,8 +3923,8 @@ function wordpresskit_register_required_plugins() {
 
 		array(
 			'name'               => 'Post Duplicator', // The plugin name.
-			'slug'               => 'posr-duplicator', // The plugin slug (typically the folder name).
-			'source'             => get_template_directory() . '/plugins/posr-duplicator.zip', // The plugin source.
+			'slug'               => 'post-duplicator', // The plugin slug (typically the folder name).
+			'source'             => get_template_directory() . '/plugins/post-duplicator.zip', // The plugin source.
 			'required'           => false, // If false, the plugin is only 'recommended' instead of required.
 			'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
 			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.

@@ -16,4 +16,5 @@ include get_template_directory() . '/inc/local-fields/product-page.php';
 include get_template_directory() . '/inc/local-fields/product-section-template.php';
 include get_template_directory() . '/inc/local-fields/testimonials-page.php';
 include get_template_directory() . '/inc/local-fields/sidebar-widget-template.php';
+include get_template_directory() . '/inc/local-fields/api-keys.php';
 ?>

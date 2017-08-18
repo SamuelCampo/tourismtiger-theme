@@ -18,6 +18,8 @@
 // ../../bower_components/jquery-mask-plugin/dist/jquery.mask.js
 // ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js
 
+//= local-plugins/form-styler.js
+
 
 /**
   	Common functions
@@ -31,6 +33,7 @@
 //= common/gallery-slider.js
 //= common/trip-details.js
 //= common/wow.js
+//= common/gform.js
 
 (function(factory) {
     'use strict';
@@ -73,6 +76,9 @@
 
 			// Hang gallery sliders:
 			$('.gallery-slider').gallerySlider('init');
+
+			// Init forms
+			$('.gform').gForm('init');
 
 			// Product page's tstimonials
 			$('.testimonials-carousel').not('[data-inited]').slick({
