@@ -23,11 +23,29 @@
 			if ($forms.length > 0) {
 
 				/**
-				 * Handle specific fields
+				 * Actions over $form
+				 * - Stylize specific fields
+				 * - Set mask to time-field
+				 * - Set mask to date
+				 * - Set mask to phone
+				 * - Set data-init to the form
 				 */
-				$forms.find('select, input[type="radio"], input[type="checkbox"]').styler();
-				
-				$forms.attr('data-inited', 1);
+				$forms
+					.find('select, input[type="radio"], input[type="checkbox"]')
+						.styler()
+					.end()
+					.find('.type_time')
+						.find('input')
+							.mask('00')
+					.end()
+					.find('.type_date')
+						.find('input')
+							.mask('00/00/0000')
+					.end()
+					.find('.type_phone')
+						.find('input')
+							.mask('(000) 000-0000')
+					.attr('data-inited', 1);
 			}
 		}
 	};

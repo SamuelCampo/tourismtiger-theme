@@ -16,9 +16,10 @@ echo '<ul class="gform-choices">';
 // Loop each choice
 for ( $id = 0; $id < $count; $id++ ) :
 	$choice = $field['choices'][$id];
+	$id_1   = $id + 1;
 	$hash   = generate_random_string(6);
 	$attr   = array();
-	$attr[] = $field['type'] == 'radio' ? "name='input_{$field['id']}'" : "name='input_{$field['id']}_{($id + 1)}'";
+	$attr[] = $field['type'] == 'radio' ? "name='input_{$field['id']}'" : "name='input_{$field['id']}_{$id_1}'";
 	$attr[] = $field['type'] ? "type='{$field['type']}'" : '';
 	$attr[] = $choice['label'] ? "data-label='{$choice['label']}'" : "data-label='{$field['label']}'";
 	$attr[] = $choice['isSelected'] ? 'checked ' : '';
@@ -37,9 +38,10 @@ endfor;
 // Additional variant
 if ( $field['enableOtherChoice'] ) :
 	$id++;
+	$id_1   = $id + 1;
 
 	$attr   = array();
-	$attr[] = $field['type'] == 'radio' ? "name='input_{$field['id']}'" : "name='input_{$field['id']}_{($id + 1)}'";
+	$attr[] = $field['type'] == 'radio' ? "name='input_{$field['id']}'" : "name='input_{$field['id']}_{$id_1}'";
 	$attr[] = $field['type'] ? "type='{$field['type']}'" : '';
 	$attr[] = 'data-more="1" ';
 	$attr   = generate_classlist($attr);
