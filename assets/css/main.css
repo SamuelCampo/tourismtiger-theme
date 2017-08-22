@@ -6780,13 +6780,6 @@ textarea {
 input[type='button'],
 input[type='submit'],
 input[type='reset'] {
-  overflow: visible;
-  cursor: pointer;
-  min-width: 15rem;
-  text-align: center;
-  color: #fff;
-  background-color: #00b149;
-  border: 1px solid #00b149;
   padding: 1.3rem 2.1rem;
   font-size: 1.5rem;
   line-height: 1;
@@ -6797,6 +6790,13 @@ input[type='reset'] {
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: ease 0.3s;
+  display: inline-block;
+  min-width: 15rem;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  background-color: #00b149;
+  border: 1px solid #00b149;
 }
 input[type='button']:hover,
 input[type='submit']:hover,
@@ -6917,11 +6917,6 @@ input[type='submit'][disabled] {
 /*  =========================
     Button */
 .button {
-  min-width: 15rem;
-  text-align: center;
-  color: #fff;
-  background-color: #00b149;
-  border: 1px solid #00b149;
   padding: 1.3rem 2.1rem;
   font-size: 1.5rem;
   line-height: 1;
@@ -6932,6 +6927,13 @@ input[type='submit'][disabled] {
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: ease 0.3s;
+  display: inline-block;
+  min-width: 15rem;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  background-color: #00b149;
+  border: 1px solid #00b149;
 }
 .button:hover {
   background-color: #007e34;
@@ -7370,11 +7372,6 @@ input[type='submit'][disabled] {
   pointer-events: none;
 }
 .gallery-slider--panel__btn {
-  min-width: 15rem;
-  text-align: center;
-  color: #fff;
-  background-color: #00b149;
-  border: 1px solid #00b149;
   padding: 1.3rem 2.1rem;
   font-size: 1.5rem;
   line-height: 1;
@@ -7385,6 +7382,13 @@ input[type='submit'][disabled] {
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: ease 0.3s;
+  display: inline-block;
+  min-width: 15rem;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  background-color: #00b149;
+  border: 1px solid #00b149;
   background-color: transparent;
   border-color: #fff;
   text-transform: uppercase;
@@ -8841,6 +8845,9 @@ input[type='submit'][disabled] {
   margin-left: -0.5rem;
   margin-right: -0.5rem;
 }
+.gform-body > * + * {
+  margin-top: 3rem;
+}
 .gform-body__fields {
   padding: 0;
   list-style: none;
@@ -8852,12 +8859,21 @@ input[type='submit'][disabled] {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  opacity: .35;
+  pointer-events: none;
 }
 .gform-body__fields > * {
   margin: .5rem;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+}
+.gform-body__fields[data-page="1"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+.gform-body__fields:last-child .gform-pagination__next {
+  display: none;
 }
 .gform-choices {
   list-style: none;
@@ -8891,6 +8907,7 @@ input[type='submit'][disabled] {
 }
 .gform-field.type_page {
   width: 100%;
+  margin-top: 2rem;
 }
 .gform-field.type_page .gform-field__label {
   display: none;
@@ -8940,6 +8957,17 @@ input[type='submit'][disabled] {
 .gform-field.width_full {
   min-width: 100%;
 }
+.gform-field.width_full .gform-choices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: -0.5rem;
+}
+.gform-field.width_full .gform-choices > * {
+  margin: .5rem;
+}
 .gform-field.layout_inline .gform-choices {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8953,6 +8981,11 @@ input[type='submit'][disabled] {
 }
 .gform-field.layout_inline .gform-choices > * {
   margin: .5rem;
+}
+.gform-error {
+  color: red;
+  font-size: 11px;
+  display: none;
 }
 .gform-group {
   display: -webkit-box;
@@ -8990,6 +9023,10 @@ input[type='submit'][disabled] {
 .gform-out--calendar {
   margin-left: 0;
   margin-top: 5px;
+}
+.gform-required .gform-field__label:after {
+  content: '*';
+  color: red;
 }
 /*  =========================
     Footer UI */

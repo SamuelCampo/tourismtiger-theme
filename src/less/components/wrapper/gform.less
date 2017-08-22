@@ -10,13 +10,19 @@
 		margin-left: -.5rem;
 		margin-right: -.5rem;
 
+		> * + * {
+			margin-top: 3rem;
+		}
+
 		&__fields {
 			padding: 0;
 			list-style: none;
-
 			display: flex;
 			flex-wrap: wrap;
 			align-items: flex-start;
+			opacity: .35;
+			pointer-events: none;
+			
 
 			> * {
 				margin: .5rem;
@@ -25,8 +31,19 @@
 
 			// If pagination is activated
 			// Show only the first page
-			&:not([data-page="1"]) {
-				//display: none;
+			&[data-page="1"] {
+				opacity: 1;
+				pointer-events: auto;
+			}
+
+			&:last-child {
+				.gform {
+					&-pagination {
+						&__next {
+							display: none;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -71,6 +88,7 @@
 
 			&_page {
 				width: 100%;
+				margin-top: 2rem;
 
 				.gform-field__label {
 					display: none;
@@ -151,6 +169,16 @@
 		&.width {
 			&_full {
 				min-width: 100%;
+
+				.gform-choices {
+					display: flex;
+					flex-wrap: wrap;
+					margin: -.5rem;
+
+					> * {
+						margin: .5rem;
+					}
+				}
 			}
 		}
 
@@ -166,6 +194,12 @@
 				}
 			}
 		}
+	}
+
+	&-error {
+		color: red;
+		font-size: 11px;
+		display: none;
 	}
 
 	&-group {
@@ -197,6 +231,15 @@
 		&--calendar {
 			margin-left: 0;
 			margin-top: 5px;
+		}
+	}
+
+	&-required {
+		.gform-field__label {
+			&:after {
+				content: '*';
+				color: red;
+			}
 		}
 	}
 }

@@ -1,6 +1,6 @@
 <?php 
 /**
- * Button
+ * Gravity Forms API
  *
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -64,6 +64,7 @@ function the_gform( $form = array(), $params = array() ) {
                     $attrs[]          = $field['inputMask'] && $field['inputMaskValue'] ? "data-mask='{$field['inputMaskValue']}'" : '';
                     $attrs[]          = $field['conditionalLogic'] ? 'data-conditional="1"' : '';
                     $attrs[]          = $field['label'] ? "data-label='{$field['label']}'" : '';
+                    $attrs[]          = $field['id'] ? "data-id='{$field['id']}'" : '';
 
                     // Conditional rules
                     $field['conditional'] = '';
@@ -71,13 +72,13 @@ function the_gform( $form = array(), $params = array() ) {
                         $conditional = $field['conditionalLogic'];
 
                         // Set type to know who to handle this field
-                        $attrs[] = 'data-conditional-type="' . $conditional['actionType'] . '" ';
+                        $attrs[] = 'data-conditional-type="' . $conditional['actionType'] . '"';
 
                         // Loop rules
                         foreach ( $conditional['rules'] as $rule ) :
-                            $attrs[] = 'data-conditional-id="' . $rule['fieldId'] . '" ';
-                            $attrs[] = 'data-conditional-operator="' . $rule['operator'] . '" ';
-                            $attrs[] = 'data-conditional-value="' . $rule['value'] . '" ';
+                            $attrs[] = 'data-conditional-id="' . $rule['fieldId'] . '"';
+                            $attrs[] = 'data-conditional-operator="' . $rule['operator'] . '"';
+                            $attrs[] = 'data-conditional-value="' . $rule['value'] . '"';
                         endforeach;
                     endif;
 
@@ -108,6 +109,7 @@ function the_gform( $form = array(), $params = array() ) {
                                 case 'name':
                                 case 'address':
                                 case 'time':
+                                case 'email':
                                     get_template_part( 'template-parts/gform/field', 'multiplied' );
                                     break;
 
@@ -153,9 +155,14 @@ function the_gform( $form = array(), $params = array() ) {
             </ul>
         </div>
 
+        <div class="gform-footer">
+            <div class="gform-footer__controll">
+                <button type="submit" class="button">Send form</button>
+            </div>
+        </div>
+
     </form>
     
     <?php
-
-    print_r_html( $form );
 }
+

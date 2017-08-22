@@ -7,16 +7,12 @@
  */
 
 $field             = $GLOBALS['field'];
-$field['pagePrev'] = (int)$field['pageNumber'] - 1;
-$field['pageNext'] = (int)$field['pageNumber'] + 1;
+$field['pageNext'] = $field['pageNumber'];
 ?>
 
 			<div class="gform-pagination">
 				<button 
-					class="gform-pagination__btn gform-pagination__prev button" 
-					data-goto="<?=$field['pagePrev'];?>"><?=$field['previousButton']['text'];?></button>
-
-				<button 
+					type="button"
 					class="gform-pagination__btn gform-pagination__next button" 
 					data-goto="<?=$field['pageNext'];?>"><?=$field['nextButton']['text'];?></button>
 			</div>

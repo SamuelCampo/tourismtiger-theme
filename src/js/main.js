@@ -19,6 +19,8 @@
 // ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js
 
 //= local-plugins/form-styler.js
+//= local-plugins/crypto.js
+//= local-plugins/enc-base.js
 
 
 /**

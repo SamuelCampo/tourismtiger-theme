@@ -16071,6 +16071,31 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 	onDocumentClick.registered = false;
 
 }));
+/*
+CryptoJS v3.1.2
+code.google.com/p/crypto-js
+(c) 2009-2013 by Jeff Mott. All rights reserved.
+code.google.com/p/crypto-js/wiki/License
+*/
+var CryptoJS=CryptoJS||function(g,l){var e={},d=e.lib={},m=function(){},k=d.Base={extend:function(a){m.prototype=this;var c=new m;a&&c.mixIn(a);c.hasOwnProperty("init")||(c.init=function(){c.$super.init.apply(this,arguments)});c.init.prototype=c;c.$super=this;return c},create:function(){var a=this.extend();a.init.apply(a,arguments);return a},init:function(){},mixIn:function(a){for(var c in a)a.hasOwnProperty(c)&&(this[c]=a[c]);a.hasOwnProperty("toString")&&(this.toString=a.toString)},clone:function(){return this.init.prototype.extend(this)}},
+p=d.WordArray=k.extend({init:function(a,c){a=this.words=a||[];this.sigBytes=c!=l?c:4*a.length},toString:function(a){return(a||n).stringify(this)},concat:function(a){var c=this.words,q=a.words,f=this.sigBytes;a=a.sigBytes;this.clamp();if(f%4)for(var b=0;b<a;b++)c[f+b>>>2]|=(q[b>>>2]>>>24-8*(b%4)&255)<<24-8*((f+b)%4);else if(65535<q.length)for(b=0;b<a;b+=4)c[f+b>>>2]=q[b>>>2];else c.push.apply(c,q);this.sigBytes+=a;return this},clamp:function(){var a=this.words,c=this.sigBytes;a[c>>>2]&=4294967295<<
+32-8*(c%4);a.length=g.ceil(c/4)},clone:function(){var a=k.clone.call(this);a.words=this.words.slice(0);return a},random:function(a){for(var c=[],b=0;b<a;b+=4)c.push(4294967296*g.random()|0);return new p.init(c,a)}}),b=e.enc={},n=b.Hex={stringify:function(a){var c=a.words;a=a.sigBytes;for(var b=[],f=0;f<a;f++){var d=c[f>>>2]>>>24-8*(f%4)&255;b.push((d>>>4).toString(16));b.push((d&15).toString(16))}return b.join("")},parse:function(a){for(var c=a.length,b=[],f=0;f<c;f+=2)b[f>>>3]|=parseInt(a.substr(f,
+2),16)<<24-4*(f%8);return new p.init(b,c/2)}},j=b.Latin1={stringify:function(a){var c=a.words;a=a.sigBytes;for(var b=[],f=0;f<a;f++)b.push(String.fromCharCode(c[f>>>2]>>>24-8*(f%4)&255));return b.join("")},parse:function(a){for(var c=a.length,b=[],f=0;f<c;f++)b[f>>>2]|=(a.charCodeAt(f)&255)<<24-8*(f%4);return new p.init(b,c)}},h=b.Utf8={stringify:function(a){try{return decodeURIComponent(escape(j.stringify(a)))}catch(c){throw Error("Malformed UTF-8 data");}},parse:function(a){return j.parse(unescape(encodeURIComponent(a)))}},
+r=d.BufferedBlockAlgorithm=k.extend({reset:function(){this._data=new p.init;this._nDataBytes=0},_append:function(a){"string"==typeof a&&(a=h.parse(a));this._data.concat(a);this._nDataBytes+=a.sigBytes},_process:function(a){var c=this._data,b=c.words,f=c.sigBytes,d=this.blockSize,e=f/(4*d),e=a?g.ceil(e):g.max((e|0)-this._minBufferSize,0);a=e*d;f=g.min(4*a,f);if(a){for(var k=0;k<a;k+=d)this._doProcessBlock(b,k);k=b.splice(0,a);c.sigBytes-=f}return new p.init(k,f)},clone:function(){var a=k.clone.call(this);
+a._data=this._data.clone();return a},_minBufferSize:0});d.Hasher=r.extend({cfg:k.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){r.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._append(a);return this._doFinalize()},blockSize:16,_createHelper:function(a){return function(b,d){return(new a.init(d)).finalize(b)}},_createHmacHelper:function(a){return function(b,d){return(new s.HMAC.init(a,
+d)).finalize(b)}}});var s=e.algo={};return e}(Math);
+(function(){var g=CryptoJS,l=g.lib,e=l.WordArray,d=l.Hasher,m=[],l=g.algo.SHA1=d.extend({_doReset:function(){this._hash=new e.init([1732584193,4023233417,2562383102,271733878,3285377520])},_doProcessBlock:function(d,e){for(var b=this._hash.words,n=b[0],j=b[1],h=b[2],g=b[3],l=b[4],a=0;80>a;a++){if(16>a)m[a]=d[e+a]|0;else{var c=m[a-3]^m[a-8]^m[a-14]^m[a-16];m[a]=c<<1|c>>>31}c=(n<<5|n>>>27)+l+m[a];c=20>a?c+((j&h|~j&g)+1518500249):40>a?c+((j^h^g)+1859775393):60>a?c+((j&h|j&g|h&g)-1894007588):c+((j^h^
+g)-899497514);l=g;g=h;h=j<<30|j>>>2;j=n;n=c}b[0]=b[0]+n|0;b[1]=b[1]+j|0;b[2]=b[2]+h|0;b[3]=b[3]+g|0;b[4]=b[4]+l|0},_doFinalize:function(){var d=this._data,e=d.words,b=8*this._nDataBytes,g=8*d.sigBytes;e[g>>>5]|=128<<24-g%32;e[(g+64>>>9<<4)+14]=Math.floor(b/4294967296);e[(g+64>>>9<<4)+15]=b;d.sigBytes=4*e.length;this._process();return this._hash},clone:function(){var e=d.clone.call(this);e._hash=this._hash.clone();return e}});g.SHA1=d._createHelper(l);g.HmacSHA1=d._createHmacHelper(l)})();
+(function(){var g=CryptoJS,l=g.enc.Utf8;g.algo.HMAC=g.lib.Base.extend({init:function(e,d){e=this._hasher=new e.init;"string"==typeof d&&(d=l.parse(d));var g=e.blockSize,k=4*g;d.sigBytes>k&&(d=e.finalize(d));d.clamp();for(var p=this._oKey=d.clone(),b=this._iKey=d.clone(),n=p.words,j=b.words,h=0;h<g;h++)n[h]^=1549556828,j[h]^=909522486;p.sigBytes=b.sigBytes=k;this.reset()},reset:function(){var e=this._hasher;e.reset();e.update(this._iKey)},update:function(e){this._hasher.update(e);return this},finalize:function(e){var d=
+this._hasher;e=d.finalize(e);d.reset();return d.finalize(this._oKey.clone().concat(e))}})})();
+/*
+CryptoJS v3.1.2
+code.google.com/p/crypto-js
+(c) 2009-2013 by Jeff Mott. All rights reserved.
+code.google.com/p/crypto-js/wiki/License
+*/
+(function(){var h=CryptoJS,j=h.lib.WordArray;h.enc.Base64={stringify:function(b){var e=b.words,f=b.sigBytes,c=this._map;b.clamp();b=[];for(var a=0;a<f;a+=3)for(var d=(e[a>>>2]>>>24-8*(a%4)&255)<<16|(e[a+1>>>2]>>>24-8*((a+1)%4)&255)<<8|e[a+2>>>2]>>>24-8*((a+2)%4)&255,g=0;4>g&&a+0.75*g<f;g++)b.push(c.charAt(d>>>6*(3-g)&63));if(e=c.charAt(64))for(;b.length%4;)b.push(e);return b.join("")},parse:function(b){var e=b.length,f=this._map,c=f.charAt(64);c&&(c=b.indexOf(c),-1!=c&&(e=c));for(var c=[],a=0,d=0;d<
+e;d++)if(d%4){var g=f.indexOf(b.charAt(d-1))<<2*(d%4),h=f.indexOf(b.charAt(d))>>>6-2*(d%4);c[a>>>2]|=(g|h)<<24-8*(a%4);a++}return j.create(c,a)},_map:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="}})();
 
 
 /**
@@ -17218,12 +17243,98 @@ wow = new WOW({
 
 }(function($) {
 
+	// todo load these scripts
+    var CalculateSig = function CalculateSig(stringToSign, privateKey){
+        //calculate the signature needed for authentication
+        var hash = CryptoJS.HmacSHA1(stringToSign, privateKey);
+        var base64 = hash.toString(CryptoJS.enc.Base64);
+        return encodeURIComponent(base64);
+    };
+
+    /**
+     * This function makes AJAX request to gForm API
+     * Also there are actions which happen after AJAX
+     */ 
+    function submitGForm (url, values_json, $form) {
+	    $.post(url, values_json, function(data) {
+
+	    	// Responce
+	        console.log(data);
+
+	        /**
+	         * Redirect
+	         */
+	        if (typeof data === 'string') {
+	            document.location.href = data.split('rel="canonical" href="')[1].split('" />')[0];
+	        }
+
+	        /**
+	         * Show confirmation message if it's exist
+	         */
+	        if (data.response) {
+	        	if (data.response.is_valid == true) {
+
+	        		// Show confirmation
+		            $form
+		            	.hide()
+		            	.parent()
+		            	.append(data.response.confirmation_message)
+		            	.find('.gform_confirmation_message')
+		            	.addClass('wysiwyg');
+
+		            //Scroll to confirmation
+		            $('body, html').animate({
+		            	scrollTop: $('.gform_anchor').offset().top
+		            });
+
+		            $('.slick-slider').slick('setOption', 'height', null, true);
+	        	} else {
+	        		var msg        = data.response.validation_messages;
+	        		var theHighest = 0; // this is anchor where to scroll
+
+	        		// Remove spinner from submit button
+	        		$form.find('[type="submit"]').handleClick('toggleSpiner');
+
+	        		// Loop each error message
+	        		for (var id in msg) {
+	        			var $invalidField = $form.find('[name="input_'+id+'"]');
+	        			var $invalidWrap  = $invalidField.closest('.gform-field');
+	        			var $notification = $('<div class="gform-error">'+msg[id]+'</div>');
+	        			var wrapTopOffset = $invalidWrap.offset().top;
+	        			var wrapWidth     = $invalidWrap.width();
+
+	        			// Show error message
+	        			$invalidWrap
+	        				.append($notification)
+	        				.find('.gform-error')
+	        				.width(wrapWidth)
+	        				.slideDown();
+
+	        			if (wrapTopOffset < theHighest || theHighest === 0)
+	        				theHighest = wrapTopOffset;
+	        		}
+
+	        		// Scroll to the highest error message
+	        		$('body, html').animate({
+	        			scrollTop: theHighest - 50
+	        		});
+
+	        		$('.slick-slider').slick('setOption', 'height', null, true);
+	        	}
+	        }	
+	    });
+
+	    return false;
+    }
+
+	/**
+	 * Methods to $.gForm()
+	 */
 	var methods = {
 
 		init: function () {
 
 			var $forms = $(this).not('[data-inited]');
-			console.log($forms);
 
 			if ($forms.length > 0) {
 
@@ -17233,25 +17344,298 @@ wow = new WOW({
 				 * - Set mask to time-field
 				 * - Set mask to date
 				 * - Set mask to phone
+				 * - Route actions
+				 * - On Submit action
+				 * - Conditionalize
 				 * - Set data-init to the form
 				 */
 				$forms
 					.find('select, input[type="radio"], input[type="checkbox"]')
-						.styler()
-					.end()
+					.styler();
+
+				$forms
 					.find('.type_time')
-						.find('input')
-							.mask('00')
-					.end()
+					.find('input')
+					.mask('00');
+
+				$forms
 					.find('.type_date')
-						.find('input')
-							.mask('00/00/0000')
-					.end()
+					.find('input')
+					.mask('00/00/0000');
+
+				$forms
 					.find('.type_phone')
-						.find('input')
-							.mask('(000) 000-0000')
-					.attr('data-inited', 1);
+					.find('input')
+					.mask('(000) 000-0000');
+
+				$forms.on('click', '.gform-pagination__btn', function (e) {
+					e.preventDefault();
+					$(this).gForm('routePage');
+					return false;
+				});
+
+				$forms.submit(function (e) {
+					e.preventDefault();
+					var $form = $(this);
+
+					$form.find('[type="submit"]').handleClick('toggleSpiner');
+					$form.gForm('submit');
+
+					return false;
+				});
+
+				$forms.gForm('conditionalize');
+
+				$forms.on('change', 'input[type="checkbox"], input[type="radio"], select', function () {
+					$forms.gForm('conditionalize');
+				});
+
+				$forms.attr('data-inited', 1);
 			}
+		},
+
+		/**
+		 * Submit method does following things:
+		 * - Validate data
+		 * - Grab data
+		 * - Send data
+		 */
+		submit: function () {
+
+            /**
+             * DOM Objects
+             */
+            var $form         = $(this);
+            var $body         = $form.find('.gform-body');
+            var $fields       = $body.find('.gform-field');
+            var $reCaptcha    = $body.find('.g-recaptcha');
+            var $notifyGroups = $form.find('.gform-notify_group'); // todo: create on frontend
+
+            /**
+             * Data variable is used 
+             * for AJAX requests in Wordpress
+             */
+            var values      = {};
+            var inputValues = {};
+            var formId      = $form.attr('id').split('-')[1];
+
+
+            $form.find('.gform-error').detach();
+
+            /**
+             * Loop user fields
+             */
+            if ($fields.length > 0) {
+                $fields.each(function(){
+                    var $item           = $(this);
+                    var label           = $item.attr('data-label');
+
+                    // Default type of handle
+                    var isHandleDefault = (
+                    	   $item.hasClass('type_text') 
+                    	|| $item.hasClass('type_phone') 
+                    	|| $item.hasClass('type_select') 
+                    	|| $item.hasClass('type_multiselect') 
+                    	|| $item.hasClass('type_website') 
+                    	|| $item.hasClass('type_number')
+                    	|| $item.hasClass('type_textarea')
+                    );
+
+                    // Choices type of handle
+                    var isHandleChoices = (
+                    	   $item.hasClass('type_checkbox') 
+                    	|| $item.hasClass('type_radio') 
+                    );
+
+                    // Choices type of handle
+                    var isHandleMultiply = (
+                    	   $item.hasClass('type_name') 
+                    	|| $item.hasClass('type_address') 
+                    	|| $item.hasClass('type_time') 
+                    	|| $item.hasClass('type_email') 
+                    );
+
+                    // Start handling
+                    if (isHandleDefault) {
+                    	var $input   = $item.find('input, textarea, select');
+                        var name     = $input.attr('name');
+                        var value    = $input.val();
+
+                        inputValues[name] = value;
+                    }
+
+                    // Start choices handling
+                    if (isHandleChoices) {
+                    	var isOtherChoice = $item.find('[data-more="1"]').length > 0;
+
+                    	var $checked      = $item.find('input:checked');
+                    	var is_checked    = $checked.length > 0;
+
+                    	// Whether this choices group 
+                    	// has additional input and somethng checked
+                    	if (isOtherChoice && is_checked) {
+                    		var isCheckedMore = $checked.attr('data-more') == '1';
+
+                    		// Whether checked additional input
+                    		if (isCheckedMore)
+                    			$checked = $item.find('input[type="text"]');
+                    	}
+
+                    	// Time to setting inputVariables
+                    	if (typeof $checked !== 'object') {
+                    		var name          = $checked.attr('name');
+                    		var value         = $checked.val();
+                        	inputValues[name] = value;
+                        } else {
+                        	var arrSize = $checked.length;
+
+                            /**
+                             * Get variables of each DOM item
+                             */
+                            for (var counter = 0; counter < arrSize; counter++) {
+                        		var name          = $checked.eq(counter).attr('name');
+                        		var value         = $checked.eq(counter).val();
+                                inputValues[name] = value;
+                            }
+                        }
+                    }
+
+                    // Start handling
+                    if (isHandleMultiply) {
+                    	var $inputs  = $item.find('input, select');
+
+                    	if (typeof $inputs !== 'object') {
+	                        var name     = $input.attr('name');
+	                        var value    = $input.val();
+
+	                        inputValues[name] = value;
+                    	} else {
+                        	var arrSize = $inputs.length;
+
+                            /**
+                             * Get variables of each DOM item
+                             */
+                            for (var counter = 0; counter < arrSize; counter++) {
+                        		var name          = $inputs.eq(counter).attr('name');
+                        		var value         = $inputs.eq(counter).val();
+                                inputValues[name] = value;
+                            }
+                    	}
+                    }
+                });
+            }
+
+            /**
+             * Check reCaptcha is it's exist
+             */
+            if ($reCaptcha.length > 0) {
+                var captcha = grecaptcha.getResponse();
+
+                if(!captcha.length){
+                    e.preventDefault();
+                    console.warn('False captcha');
+                    return false;
+                } 
+            }
+
+            /**
+             * Input values for submitting
+             */
+            values.input_values = inputValues;
+            var values_json     = JSON.stringify(values);
+
+            console.log(values);
+
+            //set variables
+            var d               = new Date;
+            var expiration      = 3600; // 1 hour,
+            var unixtime        = parseInt(d.getTime() / 1000);
+            var future_unixtime = unixtime + expiration;
+            var publicKey       = global_var.gf_public_key;
+            var privateKey      = global_var.gf_private_key;
+            var method          = "POST";
+            var route           = "/gravityformsapi/forms/"+formId+"/submissions";
+
+            var stringToSign = publicKey + ":" + method + ":" + route + ":" + future_unixtime;
+            var sig = CalculateSig(stringToSign, privateKey);
+            var url = global_var.url + route + '?api_key=' + publicKey + '&signature=' + sig + '&expires=' + future_unixtime;
+
+            // Ok, let's go to AJAX MAA-FUCKA!!!
+            submitGForm(url, values_json, $form);
+
+            return false;
+		},
+
+		/** 
+		 * Handle button which 
+		 * was clicked to route 
+		 * to another form page
+		 */
+		routePage: function () {
+			var $btn      = $(this);
+			var goTo      = +$btn.attr('data-goto') - 1; // get id of page where to go
+
+			var $body     = $btn.closest('.gform-body');
+			var $theOne   = $body.children().eq(goTo);
+
+			$btn.animate({ 'opacity': 0 }, 300);
+
+			$theOne
+				.animate({
+					'opacity': 1
+				}, 300)
+				.css({
+					'pointer-events': 'auto'
+				}, 300);
+
+			$('body, html').animate({
+				scrollTop: ($theOne.offset().top) - 50
+			}, 300);
+		},
+
+		conditionalize: function () {
+			var $form          = $(this);
+			var $conditionaled = $form.find('[data-conditional-type]');
+
+			$conditionaled.each(function () {
+				var $field       = $(this);
+				var type         = $field.attr('data-conditional-type');
+				var fieldId      = $field.closest('[data-id]').attr('data-id');
+				var $fieldWrap   = $form.find('[data-id="' + fieldId + '"]');
+				var id           = $field.attr('data-conditional-id');
+				var operator     = $field.attr('data-conditional-operator');
+				var value        = $field.attr('data-conditional-value');
+				var $related     = $form.find('[data-id="' + id + '"]');
+				var relatedValue = $related.find('input, textarea, select').val();
+				var $inputs      = $field.find('input, textarea, select');
+
+				switch (operator) {
+					case 'is':
+						operator = true;
+						break;
+
+					default:
+						operator = true;
+						break;
+				}
+
+				var conditional = (relatedValue == value) === operator;
+
+				if (conditional) {
+					$fieldWrap.show().removeClass('js-hidden');
+
+					if ($inputs.is('select') || $inputs.is('[type="radio"]') || $inputs.is('[type="checkbox"]'))
+						$inputs.styler();
+				} else {
+					$fieldWrap.hide().addClass('js-hidden');
+					$inputs.val('');
+
+					if ($inputs.is('select') || $inputs.is('[type="radio"]') || $inputs.is('[type="checkbox"]'))
+						$inputs.styler('destroy');
+				}
+
+				$('.slick-slider').slick('setOption', 'height', null, true);
+			});
 		}
 	};
 

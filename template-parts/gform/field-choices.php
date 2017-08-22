@@ -43,7 +43,7 @@ if ( $field['enableOtherChoice'] ) :
 	$attr   = array();
 	$attr[] = $field['type'] == 'radio' ? "name='input_{$field['id']}'" : "name='input_{$field['id']}_{$id_1}'";
 	$attr[] = $field['type'] ? "type='{$field['type']}'" : '';
-	$attr[] = 'data-more="1" ';
+	$attr[] = 'data-more="1"';
 	$attr   = generate_classlist($attr);
 
 	// text input attrs
@@ -51,10 +51,11 @@ if ( $field['enableOtherChoice'] ) :
 	$more_attr[] = 'class="gform-choices--item__more"';
 	$more_attr[] = "data-field-label='{$field['label']}'";
 	$more_attr[] = 'type="text"';
-	$more_attr[] = 'style="display:none;"';
+	$more_attr[] = 'placeholder="Other"';
+	$more_attr[] = $field['type'] == 'radio' ? "name='input_{$field['id']}'" : "name='input_{$field['id']}_{$id_1}'";
 	$more_attr   = generate_classlist($more_attr);
 	
-	$li_items .= "<li class='gform-choices--item'><input {$attr} /><input {$more_attr} /></li>";
+	echo "<li class='gform-choices--item'><input {$attr} /><input {$more_attr} /></li>";
 endif;
 
 echo '</ul>';

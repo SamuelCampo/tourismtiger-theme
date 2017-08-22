@@ -2,13 +2,16 @@
     Button */
 
 .button {
+	.mx-field;
+	.mx-transition(.3s);
+
+	display: inline-block;
 	min-width: 15rem;
 	text-align: center;
 	color: #fff;
+	cursor: pointer;
 	background-color: @color-salat;
 	border: 1px solid @color-salat;
-	.mx-field;
-	.mx-transition(.3s);
 
 	&:hover {
 		background-color: darken(@color-salat, 10%);
