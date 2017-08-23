@@ -112,75 +112,41 @@
  * File 
  */
 .jq-file {
-	width: 270px;
-	border-radius: 4px;
-	box-shadow: 0 1px 2px rgba(0,0,0,.1);
+	width: 100%;
+	min-width: 15rem;
+	position: relative;
 
 	input {
-		height: auto;
-		line-height: 1em;
 		cursor: pointer;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
 	}
 
 	&__name {
-		overflow: hidden;
-		box-sizing: border-box;
-		width: 100%;
-		height: 34px;
-		padding: 0 80px 0 10px;
-		border: 1px solid #CCC;
-		border-bottom-color: #B3B3B3;
-		border-radius: 4px;
-		background: #FFF;
-		font: 14px/32px Arial, sans-serif;
-		color: #333;
-		white-space: nowrap;
-		text-overflow: ellipsis;
+		.mx-field;
+		padding-top: 1.4rem;
+		padding-bottom: 1.4rem;
+		padding-right: 12.5rem;
+	    color: @color-spacegray;
+		border-color: @form-border-color;
 	}
 
 	&__browse {
+		.button;
 		position: absolute;
-		top: 1px;
-		right: 1px;
-		padding: 0 10px;
-		border-left: 1px solid #CCC;
-		border-radius: 0 4px 4px 0;
-		background: #F5F5F5;
-		font: 14px/32px Arial, sans-serif;
-		color: #333;
+		right: 0;
+		top: 0;
+		padding-top: 1.4rem;
+		padding-bottom: 1.4rem;
+		min-width: auto;
 	}
 
 	&:hover {
-		.jq-file__browse {
-			background: #E6E6E6;
-		}
-	}
-
-	&:active { 
-		.jq-file__browse {
-			background: #F5F5F5;
-		}
-	}
-
-	&.focused {
-		.jq-file__name {
-			border: 1px solid #5794BF;
-		}
-	}
-
-	&.disabled {
-		border-color: #CCC;
-		background: #F5F5F5;
-		box-shadow: none;
-		color: #888;
-
-		.jq-file__name,
-		.jq-file__browse {
-			border-color: #CCC;
-			background: #F5F5F5;
-			box-shadow: none;
-			color: #888;
-		}
+		opacity: .8
 	}
 }
 

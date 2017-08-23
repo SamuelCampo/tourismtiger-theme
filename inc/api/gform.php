@@ -99,11 +99,6 @@ function the_gform( $form = array(), $params = array() ) {
                              */
                             switch ( $field['type'] ) :
 
-                                // Converts to input[type="text"] and sets values
-                                default:
-                                    get_template_part( 'template-parts/gform/field' );
-                                    break;
-
                                 // Fields which have subfields: 
                                 // inputs, selectors
                                 case 'name':
@@ -142,6 +137,16 @@ function the_gform( $form = array(), $params = array() ) {
                                 // Date field
                                 case 'date':
                                     get_template_part( 'template-parts/gform/field', 'date' );
+                                    break;
+
+                                // Date field
+                                case 'fileupload':
+                                    get_template_part( 'template-parts/gform/field', 'fileupload' );
+                                    break;
+
+                                // Converts to input[type="text"] and sets values
+                                default:
+                                    get_template_part( 'template-parts/gform/field' );
                                     break;
                             endswitch;
                             ?>

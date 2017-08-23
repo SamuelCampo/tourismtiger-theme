@@ -17350,7 +17350,7 @@ wow = new WOW({
 				 * - Set data-init to the form
 				 */
 				$forms
-					.find('select, input[type="radio"], input[type="checkbox"]')
+					.find('select, input[type="radio"], input[type="checkbox"], input[type="file"]')
 					.styler();
 
 				$forms
