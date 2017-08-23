@@ -48,11 +48,19 @@ function get_sidebar_widget_local_field( $id = '1234QWERasdf' ) {
 		),
 
 		array (
-			'key' => 'sava_A2982bc694Cd70',
+			'key' => $id . '_A2982bc694Cd70',
 			'label' => 'HR Line',
 			'name' => 'line',
 			'display' => 'block',
 			'sub_fields' => get_hr_local_field( 'wi-il' )
+		),
+
+		array (
+			'key' => $id . '_A2982bc694Cd71',
+			'label' => 'Form',
+			'name' => 'form',
+			'display' => 'block',
+			'sub_fields' => get_gform_local_field( 'wi-il' )
 		)
 	);
 }
@@ -153,6 +161,14 @@ function get_product_section_local_field( $id = '1234QWERasdf' ) {
 			'display' => 'block',
 			'sub_fields' => get_icons_list_local_field( $id ),
 		),
+
+		array (
+			'key' => $id . '_A2982bc6o4CF73',
+			'label' => 'Form',
+			'name' => 'form',
+			'display' => 'block',
+			'sub_fields' => get_gform_local_field( $id )
+		)
 	);
 }
 
@@ -1413,6 +1429,70 @@ function get_content_local_field( $id = '1234QWERasdf' ) {
 			),
 			'placeholder' => '50px or 10%',
 			'maxlength' => '5',
+		),
+	);
+}
+
+/**
+ * Generates gForm local fields array
+ */
+function get_gform_local_field( $id = '1234QWERasdf' ) {
+	return array (
+		array (
+			'key' => $id . '_gF21zN1cd48f3',
+			'label' => 'Content',
+			'name' => 'tab_content',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_gF21zN1cd48f2',
+			'label' => 'Form ID',
+			'name' => 'id',
+			'type' => 'number',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'min' => '0',
+			'prepend' => '#'
+		),
+		array (
+			'key' => $id . '_gF21zN1cd48f0',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key' => $id . '_gFMtzN1cd48f4',
+			'label' => 'Margin top',
+			'name' => 'margin_top',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
+		),
+		array (
+			'key' => $id . '_gFMbzN1cd48f5',
+			'label' => 'Margin bottom',
+			'name' => 'margin_bottom',
+			'type' => 'number',
+			'required' => '',
+			'wrapper' => array (
+				'width' => '25',
+			),
+			'placeholder' => '0',
+			'append' => 'px',
+			'min' => '0',
+			'max' => '100'
 		),
 	);
 }
@@ -2990,63 +3070,6 @@ function get_image_card_local_field( $id = '1234QWERasdf' ) {
 				'width' => '35',
 			),
 		),
-	);
-}
-
-/**
- * Generates gform local fields array
- */
-function get_gform_local_field( $id = '1234QWERasdf' ) {
-	return array (
-		array (
-			'key' => $id . '_N1F1z71Fd48f2',
-			'label' => 'Form ID',
-			'name' => 'form_id',
-			'type' => 'number',
-			'required' => 0,
-			'wrapper' => array (
-				'width' => '20',
-			),
-			'prepend' => 'ID',
-			'min' => 1,
-			'step' => 1,
-		),
-		array (
-			'key' => $id . '_N1F1z71Fd48f3',
-			'label' => 'Form layout',
-			'name' => 'Layout',
-			'type' => 'select',
-			'required' => 0,
-			'wrapper' => array (
-				'width' => '40',
-			),
-			'choices' => array (
-				'auto' => 'Auto',
-				'horizontal' => 'Horizontal',
-				'column' => 'Column',
-			),
-			'default_value' => array (
-				0 => 'auto',
-			),
-		),
-		array (
-			'key' => $id . '_N1F1z71Fd48f4',
-			'label' => 'Header',
-			'name' => 'header',
-			'type' => 'select',
-			'required' => 0,
-			'wrapper' => array (
-				'width' => '40',
-			),
-			'choices' => array (
-				'all' => 'Title and description',
-				'title' => 'Single title',
-				'nothing' => 'Nothing to show'
-			),
-			'default_value' => array (
-				0 => 'all',
-			)
-		)
 	);
 }
 

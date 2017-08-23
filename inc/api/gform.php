@@ -7,8 +7,10 @@
  */
 
 function the_gform( $form = array(), $params = array() ) {
-    if ( ! is_array( $form ) || ! is_array( $params ) )
+    if ( ! $form || ! is_array( $params ) )
         return null;
+
+    $form = GFAPI::get_form($form);
 
     if ( count( $params ) === 0 ) 
         $params = array(

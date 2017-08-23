@@ -10,9 +10,7 @@
 get_header();
 
 if ( class_exists( 'GFAPI' ) ) :
-	$form = GFAPI::get_form( 1 );
-
-	the_gform( $form );
+	the_gform( 1 );
 endif;
 
 get_footer();

@@ -8918,8 +8918,8 @@ input[type='submit'][disabled] {
   opacity: .35;
   pointer-events: none;
 }
-.gform-body__fields > * {
-  margin: .5rem;
+.gform-body__fields > li.gform-field {
+  margin: 1rem .5rem;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
