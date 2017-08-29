@@ -23,6 +23,22 @@
 				var $self = $(this);
 
 				/**
+				 * Set backgrund's overlay
+				 */
+				if ($self.attr('data-bg-overlay')) {
+					var $overlay = $('<div class="bg-overlay"></div>');
+					var color    = $self.attr('data-bg-overlay-color');
+					var image    = $self.attr('data-bg-overlay-image');
+					var opacity  = $self.attr('data-bg-overlay-opacity');
+
+					color && $overlay.css('background-color', color);
+					image && $overlay.css('background-image', 'url('+image+')');
+					opacity && $overlay.css('opacity', opacity / 100);
+
+					$overlay.prependTo($self);
+				}
+
+				/**
 				 * Set section background image
 				 */
 				$self.attr('data-bg-image') && $self.backgrounds('urlToBackground');
@@ -59,13 +75,23 @@
 		                var imgPercent = image.height / image.width * 100;
 		                var imgHeight  = +$('body').width() / 100 * imgPercent;
 
-		                $self.css('min-height', imgHeight);
+		                // smooth or not
+		                if ($self.hasClass('divider-image')) {
+		                	$self.css({'min-height': imgHeight});
+		                } else {
+		                	$self.animate({'min-height': imgHeight}, 500);
+		                }
 
 					// Default height
 					} else if ( $self.attr('data-bg-height') == 'image' ) {
 						var imgHeight = image.height;
 
-						$self.css('min-height', imgHeight);
+						// smooth or not
+		                if ($self.hasClass('divider-image')) {
+		                	$self.css({'min-height': imgHeight});
+		                } else {
+		                	$self.animate({'min-height': imgHeight}, 500);
+		                }
 					} 
 
 					$self.css({

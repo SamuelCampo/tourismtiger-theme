@@ -37,7 +37,7 @@ function get_background_attrs( $background ) {
      * Set attrributes 
      * according background type
      */
-    switch ($type) :
+    switch ( $type ) :
         case 'image':
             $image             = $background['image'];
             $output['attrs'][] = "data-bg-image='{$image}'";
@@ -74,6 +74,25 @@ function get_background_attrs( $background ) {
         default:
             break;
 
+    endswitch;
+
+    /**
+     * Overlay of the background
+     */
+    switch ( $background['overlay'] ) :
+        case 'color':
+            $color             = $background['overlay-color']; 
+            $output['attrs'][] = "data-bg-overlay-color='{$color}'";
+            $output['attrs'][] = "data-bg-overlay='1'";
+            break;
+
+        case 'texture':
+            $image             = $background['overlay-image']; 
+            $opacity           = $background['overlay-opacity']; 
+            $output['attrs'][] = "data-bg-overlay-image='{$image}'";
+            $output['attrs'][] = "data-bg-overlay-opacity='{$opacity}'";
+            $output['attrs'][] = "data-bg-overlay='1'";
+            break;
     endswitch;
 
     $output['attrs'] = generate_classlist( $output['attrs'] );
