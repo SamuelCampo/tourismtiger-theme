@@ -17635,32 +17635,7 @@ wow = new WOW({
 				/**
 				 * Set section background image
 				 */
-				if ($self.attr('data-bg-image')) {
-					var url  = $self.attr('data-bg-image');
-					var attr = 'url('+url+')';
-			        var img = new Image();
-
-
-					/**
-					 * Expanable image
-					 */
-					if ($self.attr('data-bg-expanded') == '1') {
-				        img.onload = function(){
-				            var img_percent = img.height / img.width * 100;
-				            var img_height = screen.width / 100 * img_percent;
-
-				            $self.animate({
-				              'min-height': img_height, 
-				            }, 100);
-						};
-				    }
-
-				    // assign url to new image 
-			        img.src = url;
-
-					// Set background image
-		            $self.css('background-image', attr);
-				}
+				$self.attr('data-bg-image') && $self.backgrounds('urlToBackground');
 
 
 				/**
@@ -17675,6 +17650,41 @@ wow = new WOW({
 			});
 
 			$wrappers.attr('data-bg-inited', 1);
+		},
+
+		urlToBackground: function () {
+			var $self  = $(this); 
+			var url    = $self.attr('data-bg-image');
+            var image  = new Image();
+
+            if (url) {
+				image.onload = function(){
+	                var imgPercent = image.height / image.width * 100;
+	                var imgHeight  = screen.width / 100 * imgPercent;
+
+					// make width and height of 
+					// the image proporsial to 
+					// an user's screen
+					if ( $self.attr('data-bg-equal') == '1' ) {
+		                var imgPercent = image.height / image.width * 100;
+		                var imgHeight  = +$('body').width() / 100 * imgPercent;
+
+		                $self.css('min-height', imgHeight);
+
+					// Default height
+					} else if ( $self.attr('data-bg-height') == 'image' ) {
+						var imgHeight = image.height;
+
+						$self.css('min-height', imgHeight);
+					} 
+
+					$self.css({
+						'background-image': 'url(' + url + ')'
+					});
+				}
+
+	            image.src = url;
+            }
 		}
 
 	};
@@ -17689,7 +17699,7 @@ wow = new WOW({
         } else if ( typeof method === 'object' || ! method ) {
           return methods.init.apply( this, arguments );
         } else {
-          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.background' );
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.backgrounds' );
         } 
 
     };
@@ -17726,17 +17736,30 @@ wow = new WOW({
 						'class': 'divider-top divider-type_' + topType
 					});
 
+					var url   = $wrapper.attr('data-divider-top-image');
+					var color = $wrapper.attr('data-divider-top-color'); 
+
 					switch (topType) {
 						case 'image':
-						case 'repeater':
-							var image  = $wrapper.attr('data-divider-top-image');
-							var $image = $('<img class="divider-image" alt="" />').attr('src', image);
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-equal', '1');
+							$image.backgrounds('urlToBackground');
 
 							$image.appendTo($topDivider);
 							break;
 
-						case 'line':
-							var color = $wrapper.attr('data-divider-top-color'); 
+						case 'repeater':
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-height', 'image');
+							$image.backgrounds('urlToBackground');
+
+							$image.appendTo($topDivider);
+							break;
+
+
+						case 'line': 
 							var width = $wrapper.attr('data-divider-top-width'); 
 							var $hr   = $('<hr class="divider-hr" />').css({
 								'border-top': width + 'px solid ' + color
@@ -17746,7 +17769,6 @@ wow = new WOW({
 							break;
 
 						case 'gradient':
-							var color    = $wrapper.attr('data-divider-top-color'); 
 							var duration = $wrapper.attr('data-divider-top-duration'); 
 							var $div     = $('<div class="divider-gradient"></div>').css({
 								'background': 'linear-gradient(to bottom, '+color+' 0%,rgba(0,0,0,0) 100%)'
@@ -17766,17 +17788,29 @@ wow = new WOW({
 						'class': 'divider-bottom divider-type_' + bottomType
 					});
 
+					var url   = $wrapper.attr('data-divider-bottom-image');
+					var color = $wrapper.attr('data-divider-bottom-color'); 
+
 					switch (bottomType) {
 						case 'image':
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-equal', '1');
+							$image.backgrounds('urlToBackground');
+
+							$image.appendTo($bottomDivider);
+							break;
+
 						case 'repeater':
-							var image  = $wrapper.attr('data-divider-bottom-image');
-							var $image = $('<img class="divider-image" alt="" />').attr('src', image);
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-height', 'image');
+							$image.backgrounds('urlToBackground');
 
 							$image.appendTo($bottomDivider);
 							break;
 
 						case 'line':
-							var color = $wrapper.attr('data-divider-bottom-color'); 
 							var width = $wrapper.attr('data-divider-bottom-width'); 
 							var $hr   = $('<hr class="divider-hr" />').css({
 								'border-top': width + 'px solid ' + color
@@ -17786,7 +17820,6 @@ wow = new WOW({
 							break;
 
 						case 'gradient':
-							var color    = $wrapper.attr('data-divider-bottom-color'); 
 							var duration = $wrapper.attr('data-divider-bottom-duration'); 
 							var $div     = $('<div class="divider-gradient"></div>').css({
 								'background': 'linear-gradient(to top, '+color+' 0%,rgba(0,0,0,0) 100%)'

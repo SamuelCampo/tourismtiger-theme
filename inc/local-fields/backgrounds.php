@@ -45,8 +45,8 @@ acf_add_local_field_group(array (
 		),
 		array (
 			'key' => 'bgrd_5821d7db6de3b',
-			'label' => 'Fixed position',
-			'name' => 'fixed',
+			'label' => 'Displaying',
+			'name' => 'display',
 			'type' => 'select',
 			'required' => 0,
 			'conditional_logic' => array (
@@ -59,10 +59,11 @@ acf_add_local_field_group(array (
 				),
 			),
 			'choices' => array (
-				'yep' => 'Yes',
-				'nope' => 'No',
+				'auto' => 'Auto',
+				'fixed' => 'Fixed image',
+				'expand' => 'Section takes the height of that image',
 			),
-			'default_values' => array ( 'yep' ),
+			'default_values' => array ( 'auto' ),
 			'layout' => 'horizontal',
 			'wrapper' => array(
 				'width' => 33

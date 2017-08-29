@@ -7117,14 +7117,29 @@ input[type='submit'][disabled] {
 }
 .divider-top {
   top: 0;
+  z-index: 10;
+}
+.divider-top .divider-image {
+  background-position: top center;
 }
 .divider-bottom {
   bottom: 0;
+  z-index: 20;
+}
+.divider-bottom .divider-image {
+  background-position: bottom center;
 }
 .divider-gradient {
   height: 100%;
   width: 100%;
   position: relative;
+}
+.divider-image {
+  background-position: center center;
+}
+.divider-type_image .divider-image {
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 /*  =========================
     Accordion UI */

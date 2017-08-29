@@ -11,15 +11,42 @@
 
 	&-top {
 		top: 0;
+		z-index: 10;
+
+		.divider {
+			&-image {
+				background-position: top center;
+			}
+		}
 	}
 
 	&-bottom {
 		bottom: 0;
+		z-index: 20;
+
+		.divider {
+			&-image {
+				background-position: bottom center;
+			}
+		}
 	}
 
 	&-gradient {
 		height: 100%;
 		width: 100%;
 		position: relative;
+	}
+
+	&-image {
+		background-position: center center;
+	}
+
+	&-type {
+		&_image {
+			.divider-image {
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+		}
 	}
 }

@@ -25,32 +25,7 @@
 				/**
 				 * Set section background image
 				 */
-				if ($self.attr('data-bg-image')) {
-					var url  = $self.attr('data-bg-image');
-					var attr = 'url('+url+')';
-			        var img = new Image();
-
-
-					/**
-					 * Expanable image
-					 */
-					if ($self.attr('data-bg-expanded') == '1') {
-				        img.onload = function(){
-				            var img_percent = img.height / img.width * 100;
-				            var img_height = screen.width / 100 * img_percent;
-
-				            $self.animate({
-				              'min-height': img_height, 
-				            }, 100);
-						};
-				    }
-
-				    // assign url to new image 
-			        img.src = url;
-
-					// Set background image
-		            $self.css('background-image', attr);
-				}
+				$self.attr('data-bg-image') && $self.backgrounds('urlToBackground');
 
 
 				/**
@@ -65,6 +40,41 @@
 			});
 
 			$wrappers.attr('data-bg-inited', 1);
+		},
+
+		urlToBackground: function () {
+			var $self  = $(this); 
+			var url    = $self.attr('data-bg-image');
+            var image  = new Image();
+
+            if (url) {
+				image.onload = function(){
+	                var imgPercent = image.height / image.width * 100;
+	                var imgHeight  = screen.width / 100 * imgPercent;
+
+					// make width and height of 
+					// the image proporsial to 
+					// an user's screen
+					if ( $self.attr('data-bg-equal') == '1' ) {
+		                var imgPercent = image.height / image.width * 100;
+		                var imgHeight  = +$('body').width() / 100 * imgPercent;
+
+		                $self.css('min-height', imgHeight);
+
+					// Default height
+					} else if ( $self.attr('data-bg-height') == 'image' ) {
+						var imgHeight = image.height;
+
+						$self.css('min-height', imgHeight);
+					} 
+
+					$self.css({
+						'background-image': 'url(' + url + ')'
+					});
+				}
+
+	            image.src = url;
+            }
 		}
 
 	};
@@ -79,7 +89,7 @@
         } else if ( typeof method === 'object' || ! method ) {
           return methods.init.apply( this, arguments );
         } else {
-          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.background' );
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.backgrounds' );
         } 
 
     };

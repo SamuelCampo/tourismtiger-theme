@@ -29,7 +29,6 @@ function get_background_attrs( $background ) {
      */
     $type              = $background['type'];
     $color             = $background['color'] ? $background['color'] : '';
-    $is_fixed          = $background['fixed'] === 'yep' ? true : false; 
     $map               = $background['map']; // $map['lat'],  $map['lng'], 
 
     $output['style'][] = $color ? "background-color:{$color};" : '';
@@ -44,8 +43,11 @@ function get_background_attrs( $background ) {
             $output['attrs'][] = "data-bg-image='{$image}'";
             $output['style'][] = "background-repeat:no-repeat;";
 
-            if ( $is_fixed ) 
+            if ( $background['display'] == 'fixed' ) :
                 $output['style'][] = "background-attachment:fixed;";
+            elseif ( $background['display'] == 'expand' ) :
+                $output['attrs'][] = "data-bg-equal='1'";
+            endif;
 
             break;
 

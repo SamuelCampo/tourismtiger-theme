@@ -30,17 +30,30 @@
 						'class': 'divider-top divider-type_' + topType
 					});
 
+					var url   = $wrapper.attr('data-divider-top-image');
+					var color = $wrapper.attr('data-divider-top-color'); 
+
 					switch (topType) {
 						case 'image':
-						case 'repeater':
-							var image  = $wrapper.attr('data-divider-top-image');
-							var $image = $('<img class="divider-image" alt="" />').attr('src', image);
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-equal', '1');
+							$image.backgrounds('urlToBackground');
 
 							$image.appendTo($topDivider);
 							break;
 
-						case 'line':
-							var color = $wrapper.attr('data-divider-top-color'); 
+						case 'repeater':
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-height', 'image');
+							$image.backgrounds('urlToBackground');
+
+							$image.appendTo($topDivider);
+							break;
+
+
+						case 'line': 
 							var width = $wrapper.attr('data-divider-top-width'); 
 							var $hr   = $('<hr class="divider-hr" />').css({
 								'border-top': width + 'px solid ' + color
@@ -50,7 +63,6 @@
 							break;
 
 						case 'gradient':
-							var color    = $wrapper.attr('data-divider-top-color'); 
 							var duration = $wrapper.attr('data-divider-top-duration'); 
 							var $div     = $('<div class="divider-gradient"></div>').css({
 								'background': 'linear-gradient(to bottom, '+color+' 0%,rgba(0,0,0,0) 100%)'
@@ -70,17 +82,29 @@
 						'class': 'divider-bottom divider-type_' + bottomType
 					});
 
+					var url   = $wrapper.attr('data-divider-bottom-image');
+					var color = $wrapper.attr('data-divider-bottom-color'); 
+
 					switch (bottomType) {
 						case 'image':
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-equal', '1');
+							$image.backgrounds('urlToBackground');
+
+							$image.appendTo($bottomDivider);
+							break;
+
 						case 'repeater':
-							var image  = $wrapper.attr('data-divider-bottom-image');
-							var $image = $('<img class="divider-image" alt="" />').attr('src', image);
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-height', 'image');
+							$image.backgrounds('urlToBackground');
 
 							$image.appendTo($bottomDivider);
 							break;
 
 						case 'line':
-							var color = $wrapper.attr('data-divider-bottom-color'); 
 							var width = $wrapper.attr('data-divider-bottom-width'); 
 							var $hr   = $('<hr class="divider-hr" />').css({
 								'border-top': width + 'px solid ' + color
@@ -90,7 +114,6 @@
 							break;
 
 						case 'gradient':
-							var color    = $wrapper.attr('data-divider-bottom-color'); 
 							var duration = $wrapper.attr('data-divider-bottom-duration'); 
 							var $div     = $('<div class="divider-gradient"></div>').css({
 								'background': 'linear-gradient(to top, '+color+' 0%,rgba(0,0,0,0) 100%)'
