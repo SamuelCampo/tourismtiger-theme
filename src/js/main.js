@@ -36,6 +36,8 @@
 //= common/trip-details.js
 //= common/wow.js
 //= common/gform.js
+//= common/backgrounds.js
+//= common/dividers.js
 
 (function(factory) {
     'use strict';
@@ -105,6 +107,12 @@
 				weekStart: 1
 			});
 			$('[data-toggle="datepicker"]').datepicker();
+
+			// Load backgrounds
+			$(window).backgrounds('init');
+
+			// Load backgrounds
+			$(window).dividers('init');
 		},
 
 		/**

@@ -515,7 +515,7 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 		array (
 			'key' => $id . '_5821e72dd49fe',
 			'label' => 'Row type',
-			'name' => 'type',
+			'name' => 'row-type',
 			'type' => 'select',
 			'required' => 0,
 			'choices' => array (
@@ -1102,74 +1102,29 @@ function get_row_local_field( $id = '1234QWERasdf' ) {
 			'return_value' => 0
 		),
 
-		// Background
+
 		array (
-			'key' => $id . '_5821Q2bg9b',
+			'key' => $id . '_4821d6ba6de39',
 			'label' => 'Background',
-			'name' => 'tbgCans',
+			'name' => 'Background_Options_0',
 			'type' => 'tab',
-			'required' => 0,
-			'placement' => 'top'
-		),	
+			'required' => 0
+		),
+
 		array (
-			'key' => $id . '_5821e99fa49e0',
-			'label' => 'Type',
+			'key' => $id . '_4821t6ba6ze48',
+			'label' => 'Background',
 			'name' => 'background',
-			'type' => 'select',
+			'type' => 'clone',
 			'required' => 0,
-			'wrapper' => array(
-				'width' => 33
+			'clone' => array (
+				0 => 'bgrd_59930ca194830',
 			),
-			'choices' => array (
-				'none' => 'None',
-				'texture' => 'Texture',
-				'color' => 'Color',
-			),
-			'default_value' => array (
-				0 => 'none',
-			),
+			'display' => 'group',
+			'layout' => 'block',
+			'prefix_label' => 0,
+			'prefix_name' => 0,
 		),
-		array (
-			'key' => $id . '_5821e9cda49e1',
-			'label' => 'Upload Image',
-			'name' => 'background_texture',
-			'type' => 'image',
-			'required' => 0,
-			'wrapper' => array(
-				'width' => 33
-			),
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821e99fa49e0',
-						'operator' => '==',
-						'value' => 'texture',
-					),
-				),
-			),
-			'return_format' => 'url',
-			'preview_size' => 'rpwe-thumbnail',
-			'library' => 'all',
-		),
-		array (
-			'key' => $id . '_5821e9e8a49e2',
-			'label' => 'Choose Color',
-			'name' => 'background_color',
-			'type' => 'rgba_color',
-			'required' => 0,
-			'wrapper' => array(
-				'width' => 33
-			),
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821e99fa49e0',
-						'operator' => '==',
-						'value' => 'color',
-					)
-				)
-			)
-		)
 	);
 }
 
@@ -2476,6 +2431,7 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 			'type' => 'repeater',
 			'required' => 0,
 			'layout' => 'block',
+			'collapsed' => $id . '_A2982bc694Cd62',
 			'sub_fields' => array (
 				array(
 					'key'   => $id . '_A2982bc694Cd61',
@@ -2589,7 +2545,6 @@ function get_icons_list_local_field( $id = '1234QWERasdf' ) {
 					'step' => 1,
 				),
 			),
-			'collapsed' => $id . '_A2982bc694Cd62',
 		),
  
 
@@ -3134,219 +3089,43 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 			'toggle' => 1,
 		),
 		array (
-			'key' => $id . '_5821d6ba6de39',
-			'label' => 'Background Options',
-			'name' => 'Background_Options_0',
-			'type' => 'tab',
-			'required' => 0
-		),
-		array (
-			'key' => $id . '_5821d316e18e2',
-			'label' => 'Choose Background Type',
-			'name' => 'background',
+			'key' => 'bgrd_582si7ez6imbg',
+			'label' => 'Expande the section',
+			'name' => 'expanded',
 			'type' => 'select',
 			'required' => 0,
-			'choices' => array (
-				'color' => 'Just color',
-				'image' => 'Image',
-				'texture' => 'Texture',
-				'map' => 'Map',
-				'video' => 'Video',
-				'video-embed' => 'Video Embed',
-			),
-			'wrapper' => array(
-				'width' => 33
-			),
-			'default_value' => 'color'
-		),
-		array (
-			'key' => $id . '_5821d89ecaee3',
-			'label' => 'Color',
-			'name' => 'bg-color',
-			'type' => 'rgba_color',
-			'required' => 0,
-			'wrapper' => array(
-				'width' => 33
-			),
-			'rgba' => 'rgba(255,255,255,0)'
-		),
-		array (
-			'key' => $id . '_5821d6db6de3a',
-			'label' => 'Background Image',
-			'name' => 'bg-image',
-			'type' => 'image',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'image',
-					),
-				),
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'texture',
-					),
-				),
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'video',
-					),
-				),
-			),
-			'return_format' => 'url',
-			'preview_size' => 'full',
-			'library' => 'all',
-		),
-		array (
-			'key' => $id . '_5821d7db6de3b',
-			'label' => 'Fixed position',
-			'name' => 'bg-image--fixed',
-			'type' => 'radio',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'image',
-					),
-				),
-			),
-			'choices' => array (
-				'yep' => 'Yes, Background is fixed',
-				'nope' => 'Nope',
-			),
-			'default_value' => 'yep',
-			'layout' => 'horizontal',
-			'wrapper' => array(
-				'width' => 50
-			)
-		),
-		array (
-			'key' => $id . '_582si7ez6imbg',
-			'label' => 'Expande the section',
-			'name' => 'tour_pc-bg__select-image--expanded',
-			'type' => 'radio',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'image',
-					),
-					array (
-						'field' => $id . '_5821d7db6de3b',
-						'operator' => '==',
-						'value' => 'nope',
-					),
-				),
-			),
 			'choices' => array (
 				'nope' => 'No',
 				'yep' => 'Yes',
 			),
-			'default_value' => 'nope',
-			'layout' => 'horizontal',
+			'default_values' => array ( 'nope' ),
 			'wrapper' => array(
-				'width' => 50
+				'width' => 25
 			)
 		),
 		array (
-			'key' => $id . '_5821d8c5caee4',
-			'label' => 'Input location',
-			'name' => 'bg-map',
-			'type' => 'google_map',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'map',
-					)
-				)
-			)
+			'key' => $id . '_5821d6ba6de39',
+			'label' => 'Background',
+			'name' => 'Background_Options_0',
+			'type' => 'tab',
+			'required' => 0
 		),
+
 		array (
-			'key' => $id . '_5821d944caee7',
-			'label' => 'Webm Type',
-			'name' => 'bg-video--webm',
-			'type' => 'text',
+			'key' => $id . '_5821t6ba6ze48',
+			'label' => 'Background',
+			'name' => 'background',
+			'type' => 'clone',
 			'required' => 0,
-			'wrapper' => array(
-				'width' => 33
+			'clone' => array (
+				0 => 'bgrd_59930ca194830',
 			),
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'video',
-					),
-				),
-			),
+			'display' => 'group',
+			'layout' => 'block',
+			'prefix_label' => 0,
+			'prefix_name' => 0,
 		),
-		array (
-			'key' => $id . '_5821d972caee8',
-			'label' => 'OGV Type',
-			'name' => 'bg-video--ogv',
-			'type' => 'text',
-			'required' => 0,
-			'wrapper' => array(
-				'width' => 33
-			),
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'video',
-					),
-				),
-			),
-		),
-		array (
-			'key' => $id . '_5821d983caee9',
-			'label' => 'MP4 Type',
-			'name' => 'bg-video--mp4',
-			'type' => 'text',
-			'required' => 0,
-			'wrapper' => array(
-				'width' => 33
-			),
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'video',
-					),
-				),
-			),
-		),
-		array (
-			'key' => $id . '_5821d9b6caeea',
-			'label' => 'Video Embed',
-			'name' => 'bg-embed',
-			'type' => 'oembed',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821d316e18e2',
-						'operator' => '==',
-						'value' => 'video-embed',
-					)
-				)
-			)
-		),
+
 		array (
 			'key' => $id . '_5821da4aabd7c',
 			'label' => 'Divider Options',
@@ -3355,207 +3134,20 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 			'required' => 0,
 			'placement' => 'top',
 		),
-		array (
-			'key' => $id . '_5821df8eabd7d',
-			'label' => 'Top Divider Type',
-			'name' => 'top-divider',
-			'type' => 'select',
-			'required' => 0,
-			'wrapper' => array (
-				'width' => '20'
-			),
-			'choices' => array (
-				'none' => 'None',
-				'repeater' => 'Repeater',
-				'image' => 'Image',
-				'line' => 'Line'
-			),
-			'default_value' => array (
-				0 => 'none'
-			)
-		),
-		array (
-			'key' => $id . '_pc-td--line-color',
-			'label' => 'Top divider color',
-			'name' => 'top-divider--color',
-			'type' => 'rgba_color',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821df8eabd7d',
-						'operator' => '==',
-						'value' => 'line',
-					),
-				),
-			),
-			'wrapper' => array (
-				'width' => '40',
-			),
-			'rgba' => 'rgba(194, 194, 194, 1)',
-		),
-		array (
-			'key' => $id . '_pc-td--line-thickess',
-			'label' => 'Top divider thickness',
-			'name' => 'top-divider--width',
-			'type' => 'number',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821df8eabd7d',
-						'operator' => '==',
-						'value' => 'line',
-					),
-				),
-			),
-			'wrapper' => array (
-				'width' => '40'
-			),
-			'append' => 'px',
-			'min' => 1,
-			'max' => 15,
-			'step' => 1
-		),
-		array (
-			'key' => $id . '_5821e00cabd7e',
-			'label' => 'Image Repeater',
-			'name' => 'top-divider--image',
-			'type' => 'image',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821df8eabd7d',
-						'operator' => '==',
-						'value' => 'repeater',
-					),
-				),
-				array (
-					array (
-						'field' => $id . '_5821df8eabd7d',
-						'operator' => '==',
-						'value' => 'image',
-					),
-				),
-			),
-			'return_format' => 'url',
-			'preview_size' => 'rpwe-thumbnail',
-			'library' => 'all',
-			'wrapper' => array (
-				'width' => '60'
-			),
-		),
 
 		array (
-			'key' => $id . '_ld-594905dcbef94',
-			'label' => '',
-			'name' => 'separator_1',
-			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
+			'key'           => $id . '_5821da4aabd8r',
+			'label'         => 'Dividers',
+			'name'          => 'dividers',
+			'type'          => 'clone',
+			'required'      => 0,
+			'clone'         => array (
+				0 => 'dibo_59930ca194830',
 			),
-			'message' => '<hr />',
-			'new_lines' => '',
-			'esc_html' => 0,
-		),
-
-		array (
-			'key' => $id . '_5821e14dd0f11',
-			'label' => 'Bottom Divider Type',
-			'name' => 'bottom-divider',
-			'type' => 'select',
-			'required' => '',
-			'wrapper' => array (
-				'width' => '20'
-			),
-			'choices' => array (
-				'none' => 'None',
-				'repeater' => 'Repeater',
-				'image' => 'Image',
-				'line' => 'Line',
-			),
-			'default_value' => array (
-				0 => 'none',
-			)
-		),
-		array (
-			'key' => $id . '_pc-bd--line-color',
-			'label' => 'Bottom divider color',
-			'name' => 'bottom-divider--color',
-			'type' => 'rgba_color',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821e14dd0f11',
-						'operator' => '==',
-						'value' => 'line',
-					),
-				),
-			),
-			'wrapper' => array (
-				'width' => '40'
-			),
-			'rgba' => 'rgba(194, 194, 194, 1)',
-		),
-		array (
-			'key' => $id . '_pc-bd--line-thickess',
-			'label' => 'Bottom divider thickness',
-			'name' => 'bottom-divider--width',
-			'type' => 'number',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821e14dd0f11',
-						'operator' => '==',
-						'value' => 'line',
-					),
-				),
-			),
-			'wrapper' => array (
-				'width' => '40'
-			),
-			'default_value' => 1,
-			'append' => 'px',
-			'min' => 1,
-			'max' => 15,
-			'step' => 1,
-		),
-		array (
-			'key' => $id . '_5821e1b1d0f13',
-			'label' => 'Image Repeater',
-			'name' => 'bottom-divider--image',
-			'type' => 'image',
-			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => $id . '_5821e14dd0f11',
-						'operator' => '==',
-						'value' => 'repeater',
-					),
-				),
-				array (
-					array (
-						'field' => $id . '_5821e14dd0f11',
-						'operator' => '==',
-						'value' => 'image',
-					),
-				),
-			),
-			'return_format' => 'url',
-			'preview_size' => 'rpwe-thumbnail',
-			'library' => 'all',
-			'wrapper' => array (
-				'width' => '60'
-			),
+			'display'       => 'group',
+			'layout'        => 'block',
+			'prefix_label'  => 0,
+			'prefix_name'   => 0,
 		),
 
 		array (
@@ -3779,5 +3371,256 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 	);
 }
 
+
+function get_hero_area_local_field( $id = '1234567890' ) {
+	return array (
+		array (
+			'key' => $id . '_qdc13of931z12',
+			'label' => 'Components',
+			'name' => 'tab_components',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key'          => $id . '_qdc13of931z03',
+			'label'        => 'Components',
+			'name'         => 'components',
+			'type'         => 'flexible_content',
+			'required'     => '',
+			'button_label' => 'Add Component',
+			'layouts'      => array (
+				array (
+					'key'        => $id . '_qdc13of932z00',
+					'name'       => 'banner',
+					'label'      => 'Banner',
+					'display'    => 'block',
+					'sub_fields' => array (
+						array (
+							'key'        => $id . '_qdc13of931q85',
+							'label'      => 'Content',
+							'name'       => 'content_tab',
+							'type'       => 'tab',
+							'required'   => '',
+						),
+						array (
+							'key'          => $id . '_qdc13of931q94',
+							'label'        => 'Content',
+							'name'         => 'content',
+							'type'         => 'flexible_content',
+							'required'     => '',
+							'button_label' => 'Add content',
+							'layouts'      => array (
+								array (
+									'key'        => $id . '_qdc13of931q75',
+									'name'       => 'headline',
+									'label'      => 'Headline',
+									'display'    => 'block',
+									'sub_fields' => get_headline_local_field( 'he-co' ),
+								),
+								array (
+									'key'        => $id . '_qdc13of931q66',
+									'name'       => 'editor',
+									'label'      => 'Editor',
+									'display'    => 'block',
+									'sub_fields' => get_editor_local_field( 'he-co' ),
+								),
+								array (
+									'key'        => $id . '_qdc13of931q57',
+									'name'       => 'button',
+									'label'      => 'Button',
+									'display'    => 'block',
+									'sub_fields' => get_button_local_field( 'he-co' )
+								),
+							)
+						),
+						array (
+							'key'       => $id . '_qdc13of93bs00',
+							'label'     => 'Settings',
+							'name'      => 'tab_settings',
+							'type'      => 'tab',
+							'required'  => 0,
+							'placement' => 'top'
+						),
+						array (
+							'key'           => $id . '_5824fa4aabd9u',
+							'label'         => 'Dividers',
+							'name'          => 'dividers',
+							'type'          => 'clone',
+							'required'      => 0,
+							'clone'         => array (
+								0 => 'dibo_59930ca194830',
+							),
+							'display'       => 'group',
+							'layout'        => 'block',
+							'prefix_label'  => 0,
+							'prefix_name'   => 0,
+						),
+						array (
+							'key' => $id . '_584905dcbef94',
+							'label' => '',
+							'name' => 'separator_1',
+							'type' => 'message',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'message' => '<hr />',
+							'new_lines' => '',
+							'esc_html' => 0,
+						),
+						array (
+							'key'      => $id . '_qdc13of93st56',
+							'label'    => 'Overlay',
+							'name'     => 'overlay',
+							'type'     => 'select',
+							'required' => '',
+							'choices'  => array (
+								'none'     => 'None',
+								'color'    => 'Color',
+								'texture'  => 'Texture',
+							),
+							'default_values' => array('none'),
+							'wrapper'        => array(
+								'width'      => 33
+							)
+						),
+						array(
+							'key'       => $id . '_qdc13of93st47',
+							'label'     => 'Color',
+							'name'      => 'overlay-color',
+							'type'      => 'rgba_color',
+							'required'  => '',
+							'wrapper'   => array(
+								'width' => 33
+							),
+							'conditional_logic' => array (
+								array (
+									array (
+										'field'    => $id . '_qdc13of93st56',
+										'operator' => '==',
+										'value'    => 'color'
+									)
+								),
+							),
+						),
+						array(
+							'key'               => $id . '_qdc13of93st38',
+							'label'             => 'Image',
+							'name'              => 'overlay-image',
+							'type'              => 'image',
+							'required'          => '',
+							'return_format'     => 'url',
+							'conditional_logic' => array (
+								array (
+									array (
+										'field'    => $id . '_qdc13of93st56',
+										'operator' => '==',
+										'value'    => 'texture'
+									)
+								),
+							),
+							'wrapper'   => array (
+								'width' => 33
+							)
+						),
+						array(
+							'key'               => $id . '_qdc13of93st29',
+							'label'             => 'Overlay opacity',
+							'name'              => 'overlay-opacity',
+							'type'              => 'number',
+							'required'          => '',
+							'min'               => 0,
+							'max'               => 100,
+							'append' 			=> '%',
+							'default_value'     => '50',
+							'conditional_logic' => array (
+								array (
+									array (
+										'field'    => $id . '_qdc13of93st56',
+										'operator' => '==',
+										'value'    => 'texture'
+									)
+								),
+							),
+							'wrapper'   => array (
+								'width' => 33
+							)
+						),
+
+
+						array (
+							'key' => $id . '_qdc13of93bs91',
+							'label' => 'Background',
+							'name' => 'Background_Options_0',
+							'type' => 'tab',
+							'required' => 0,
+						),
+
+						array (
+							'key' => $id . '_qdc13of93bs82',
+							'label' => 'Background',
+							'name' => 'background',
+							'type' => 'clone',
+							'required' => 0,
+							'clone' => array (
+								0 => 'bgrd_59930ca194830',
+							),
+							'display' => 'group',
+							'layout' => 'block',
+							'prefix_label' => 0,
+							'prefix_name' => 0,
+						),
+					)
+				)
+			)
+		),
+		array (
+			'key' => $id . '_qdc13of931s00',
+			'label' => 'Settings',
+			'name' => 'tab_settings',
+			'type' => 'tab',
+			'required' => 0,
+			'placement' => 'top'
+		),
+		array (
+			'key'      => $id . '_qdc13of931s91',
+			'label'    => 'Height',
+			'name'     => 'height',
+			'type'     => 'select',
+			'required' => 0,
+			'choices'  => array (
+				'auto'   => 'Auto',
+				'200px'  => '200px',
+				'300px'  => '300px',
+				'400px'  => '400px',
+				'500px'  => '500px',
+				'600px'  => '600px',
+				'100vh'  => '100% of an user\'s display'
+			),
+			'default_values' => array (
+				'auto' => 'Auto'
+			),
+			'wrapper' => array (
+				'width' => '25'
+			)
+		),
+		array (
+			'key'      => $id . '_qdc13of931s82',
+			'label'    => 'Width',
+			'name'     => 'width',
+			'type'     => 'select',
+			'required' => 0,
+			'choices'  => array (
+				'full' => 'Full width',
+				'box'  => 'Fit in page\'s grid',
+			),
+			'default_values' => array (
+				'full' => 'Full width'
+			),
+			'wrapper' => array (
+				'width' => '25'
+			)
+		)
+	);
+}
 
 ?>

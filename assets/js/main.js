@@ -16184,49 +16184,6 @@ e;d++)if(d%4){var g=f.indexOf(b.charAt(d-1))<<2*(d%4),h=f.indexOf(b.charAt(d))>>
 			$primaryContent.each(function(){
 				var $self = $(this);
 
-
-				/**
-				 * Set section background image
-				 */
-				if ($self.attr('data-section-image')) {
-					var url  = $self.attr('data-section-image');
-					var attr = 'url('+url+')';
-			        var img = new Image();
-
-
-					/**
-					 * Expanable image
-					 */
-					if ($self.attr('data-section-expanded') == '1') {
-				        img.onload = function(){
-				            var img_percent = img.height / img.width * 100;
-				            var img_height = screen.width / 100 * img_percent;
-
-				            $self.animate({
-				              'min-height': img_height, 
-				            }, 100);
-						};
-				    }
-
-				    // assign url to new image 
-			        img.src = url;
-
-					// Set background image
-		            $self.css('background-image', attr);
-				}
-
-
-				/**
-				 * Generate google maps background
-				 */
-				if ($self.attr('data-section-lat') && $self.attr('data-section-lng')) {
-					var lat = $self.attr('data-section-lat');
-					var lng = $self.attr('data-section-lng');
-
-					$self.prepend("<div class='acf-map primary-content--bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
-				}
-
-
 				/**
 				 * Set dividers' background images
 				 */
@@ -16287,9 +16244,6 @@ e;d++)if(d%4){var g=f.indexOf(b.charAt(d-1))<<2*(d%4),h=f.indexOf(b.charAt(d))>>
 				 */
 				$self.attr('data-inited', 1);
 			});
-
-
-
 
 			/**
 			 * Set rows' backgrounds
@@ -17654,6 +17608,219 @@ wow = new WOW({
 
     };
 }));
+/*  =========================
+	background */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	var methods = {
+
+		init: function () {			
+
+			var $wrappers = $('[data-bg-image]').not('[data-bg-inited]');
+
+			$wrappers.each(function(){
+				var $self = $(this);
+
+				/**
+				 * Set section background image
+				 */
+				if ($self.attr('data-bg-image')) {
+					var url  = $self.attr('data-bg-image');
+					var attr = 'url('+url+')';
+			        var img = new Image();
+
+
+					/**
+					 * Expanable image
+					 */
+					if ($self.attr('data-bg-expanded') == '1') {
+				        img.onload = function(){
+				            var img_percent = img.height / img.width * 100;
+				            var img_height = screen.width / 100 * img_percent;
+
+				            $self.animate({
+				              'min-height': img_height, 
+				            }, 100);
+						};
+				    }
+
+				    // assign url to new image 
+			        img.src = url;
+
+					// Set background image
+		            $self.css('background-image', attr);
+				}
+
+
+				/**
+				 * Generate google maps background
+				 */
+				if ($self.attr('data-section-lat') && $self.attr('data-section-lng')) {
+					var lat = $self.attr('data-section-lat');
+					var lng = $self.attr('data-section-lng');
+
+					$self.prepend("<div class='acf-map bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
+				}
+			});
+
+			$wrappers.attr('data-bg-inited', 1);
+		}
+
+	};
+
+	/** 
+	 * Init method
+	 */
+	$.fn.backgrounds = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.background' );
+        } 
+
+    };
+}));
+/*  =========================
+	dividers */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	var methods = {
+
+		init: function () {			
+
+			var $wrappers = $('[data-dividers]').not('[data-dividers-inited]');
+
+			$wrappers.each(function(){
+				var $wrapper   = $(this);
+				var topType    = $wrapper.attr('data-divider-top-type');
+				var bottomType = $wrapper.attr('data-divider-bottom-type');
+
+				// top divider
+				if ( topType != 'none' && topType ) {
+					var $topDivider = $('<div></div>', {
+						'class': 'divider-top divider-type_' + topType
+					});
+
+					switch (topType) {
+						case 'image':
+						case 'repeater':
+							var image  = $wrapper.attr('data-divider-top-image');
+							var $image = $('<img class="divider-image" alt="" />').attr('src', image);
+
+							$image.appendTo($topDivider);
+							break;
+
+						case 'line':
+							var color = $wrapper.attr('data-divider-top-color'); 
+							var width = $wrapper.attr('data-divider-top-width'); 
+							var $hr   = $('<hr class="divider-hr" />').css({
+								'border-top': width + 'px solid ' + color
+							});
+
+							$hr.appendTo($topDivider);
+							break;
+
+						case 'gradient':
+							var color    = $wrapper.attr('data-divider-top-color'); 
+							var duration = $wrapper.attr('data-divider-top-duration'); 
+							var $div     = $('<div class="divider-gradient"></div>').css({
+								'background': 'linear-gradient(to bottom, '+color+' 0%,rgba(0,0,0,0) 100%)'
+							});
+
+							$div.appendTo($topDivider);
+							$topDivider.height(duration);
+							break;
+					}
+
+					$topDivider.prependTo($wrapper);
+				}
+
+				// top divider
+				if ( bottomType != 'none' && bottomType ) {
+					var $bottomDivider = $('<div></div>', {
+						'class': 'divider-bottom divider-type_' + bottomType
+					});
+
+					switch (bottomType) {
+						case 'image':
+						case 'repeater':
+							var image  = $wrapper.attr('data-divider-bottom-image');
+							var $image = $('<img class="divider-image" alt="" />').attr('src', image);
+
+							$image.appendTo($bottomDivider);
+							break;
+
+						case 'line':
+							var color = $wrapper.attr('data-divider-bottom-color'); 
+							var width = $wrapper.attr('data-divider-bottom-width'); 
+							var $hr   = $('<hr class="divider-hr" />').css({
+								'border-top': width + 'px solid ' + color
+							});
+
+							$hr.appendTo($bottomDivider);
+							break;
+
+						case 'gradient':
+							var color    = $wrapper.attr('data-divider-bottom-color'); 
+							var duration = $wrapper.attr('data-divider-bottom-duration'); 
+							var $div     = $('<div class="divider-gradient"></div>').css({
+								'background': 'linear-gradient(to top, '+color+' 0%,rgba(0,0,0,0) 100%)'
+							});
+
+							$div.appendTo($bottomDivider);
+							$bottomDivider.height(duration);
+							break;
+					}
+
+					$bottomDivider.appendTo($wrapper);
+				}
+			});
+
+			$wrappers.attr('data-dividers-inited', 1);
+		}
+
+	};
+
+	/** 
+	 * Init method
+	 */
+	$.fn.dividers = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.dividers' );
+        } 
+
+    };
+}));
 
 (function(factory) {
     'use strict';
@@ -17723,6 +17890,12 @@ wow = new WOW({
 				weekStart: 1
 			});
 			$('[data-toggle="datepicker"]').datepicker();
+
+			// Load backgrounds
+			$(window).backgrounds('init');
+
+			// Load backgrounds
+			$(window).dividers('init');
 		},
 
 		/**

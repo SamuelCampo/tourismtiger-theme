@@ -9,11 +9,11 @@
 if ( function_exists( 'acf_add_local_field_group' ) ) :
 
 	acf_add_local_field_group(array (
-		'key' => 'pc_hero_area_root',
+		'key' => 'hr-ar_qdc13of932k21',
 		'title' => 'Hero Area',
 		'fields' => array (
 			array (
-				'key' => 'pc_ha',
+				'key' => 'hr-ar_qdc13of932k12',
 				'label' => 'Hero Area',
 				'name' => 'hero_area',
 				'type' => 'flexible_content',
@@ -22,13 +22,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				'max' => 1,
 				'layouts' => array (
 					array (
-						'key' => 'pc_ha_la',
-						'name' => 'pc_hero',
-						'label' => 'Hero',
+						'key' => 'hr-ar_qdc13of932k03',
+						'name' => 'hero-area',
+						'label' => 'Hero Area',
 						'display' => 'block',
-						'sub_fields' => array (
-
-						)
+						'sub_fields' => get_hero_area_local_field( 'hr-ar' )
 					)
 				)
 			)

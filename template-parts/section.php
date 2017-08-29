@@ -27,16 +27,16 @@ $classes[]  = is_array( $paddings ) ? 'padding_' . implode( ' padding_', $paddin
 /**
  * Background options
  */
-$type       = get_sub_field( 'background' );
-$background = get_section_background( $type, $the_section_row, $section_id ); // Set attrs and get bg videos
+$background = get_sub_field( 'background' );
+$background = get_background_attrs( $background ); // Set attrs and get bg videos
 $attrs[]    = $background['attrs'] ? $background['attrs'] : '';
 $style[]    = $background['style'] ? $background['style'] : '';
 
 /**
  * Generate dividers
  */
-$type       = array( 'top' => get_sub_field('top-divider'), 'bottom' => get_sub_field('bottom-divider') );
-get_section_dividers( $type, $the_section_row, $section_id );
+$dividers   = get_sub_field( 'dividers' );
+$attrs[]    = get_dividers_attrs( $dividers );
 
 /**
  * AJAX rows-loading core variables

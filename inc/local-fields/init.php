@@ -7,6 +7,8 @@
  */
 
 include get_template_directory() . '/inc/local-fields/button.php';
+include get_template_directory() . '/inc/local-fields/dividers.php';
+include get_template_directory() . '/inc/local-fields/backgrounds.php';
 include get_template_directory() . '/inc/local-fields/api.php';
 include get_template_directory() . '/inc/local-fields/hero-area.php';
 include get_template_directory() . '/inc/local-fields/primary-content.php';
