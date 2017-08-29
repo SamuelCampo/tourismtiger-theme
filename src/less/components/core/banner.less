@@ -57,7 +57,19 @@
 
 	&.inner-width {
 		&_full {
-			width: 100%;
+			.banner {
+				&--box {
+					width: 100%;
+				}
+			}
+		}
+
+		&_auto {
+			.banner {
+				&--box {
+					width: auto;
+				}
+			}
 		}
 
 		&_4-5 {
@@ -116,7 +128,7 @@
 			}
 		}
 
-		&_1-4 {
+		&_1-3 {
 			.banner {
 				&--box {
 					width: 25%;
@@ -131,6 +143,26 @@
 
 					@media (max-width: @padmini) {
 						width: 70%;
+					}
+
+					@media (max-width: @mobile) {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		&_1-4 {
+			.banner {
+				&--box {
+					width: 33%;
+
+					@media (max-width: @pad) {
+						width: 50%;
+					}
+
+					@media (max-width: @padmini) {
+						width: 75%;
 					}
 
 					@media (max-width: @mobile) {
@@ -184,7 +216,7 @@
 	}
 
 	&.inner-align {
-		&_left {
+		&_start {
 			.banner {
 				&--box {
 					margin-right: auto;
@@ -201,7 +233,7 @@
 			}
 		}
 
-		&_right {
+		&_end {
 			.banner {
 				&--box {
 					margin-left: auto;

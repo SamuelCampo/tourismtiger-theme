@@ -3511,8 +3511,9 @@ function get_hero_area_local_field( $id = '1234567890' ) {
 								'4-5'  => '4/5',
 								'2-3'  => '3/4',
 								'1-2'  => '1/2',
+								'1-3'  => '1/3',
 								'1-4'  => '1/4',
-								'auto' => 'Auto',
+								'auto' => 'Auto'
 							),
 							'default_values' => array (
 								'full' => 'Full width'
