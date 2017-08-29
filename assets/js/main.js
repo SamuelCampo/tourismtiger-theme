@@ -12110,43 +12110,1575 @@ return jQuery;
     };
 
 }));
-/*
- Copyright (c) 2013-2016, Nazar Mokrynskyi
- @copyright Copyright (c) 2008-2009, Stefan Petre
- @license   MIT License, see license.txt
-*/
-(function(F,x){"function"===typeof define&&define.amd?define(x):"object"===typeof exports?module.exports=x():F.pickmeup=x()})(this,function(){function F(a,b,c){c=c||[];if(a instanceof Element)b.apply(b,[a].concat(c));else{var d,e;d=a.length;for(e=0;e<d;++e)b.apply(b,[a[e]].concat(c))}}function x(a){F(a,function(a){a.parentElement.removeChild(a)})}function J(a,b){do a=a.parentElement;while(a&&!B(a,b));return a}function B(a,b){return(a.matches||a.webkitMatchesSelector||a.msMatchesSelector).call(a,b)}
-function n(a,b){return a&&a.classList.contains(b)}function g(a,b){a.classList.add(b)}function t(a,b,c,d){if(-1!==c.indexOf(" ")){c=c.split(" ");var e=c.length,g;for(g=0;g<e;++g)t(a,b,c[g],d)}else a.__pickmeup.events.push([b,c,d]),b.addEventListener(c,d)}function y(a,b,c,d){var e,g,f;if(c&&-1!==c.indexOf(" "))for(e=c.split(" "),g=e.length,f=0;f<g;++f)y(a,b,e[f],d);else for(e=a.__pickmeup.events,g=e.length,f=0;f<g;++f)b&&b!=e[f][0]||c&&c!=e[f][1]||d&&d!=e[f][2]||e[f][0].removeEventListener(e[f][1],
-e[f][2])}function M(a){a=a.getBoundingClientRect();return{top:a.top+window.pageYOffset-document.documentElement.clientTop,left:a.left+window.pageXOffset-document.documentElement.clientLeft}}function C(a,b,c){var d=document.createEvent("Event");c&&(d.detail=c);d.initEvent("pickmeup-"+b,!1,!0);return a.dispatchEvent(d)}function K(a){a=new Date(a);for(var b=28,c=a.getMonth();a.getMonth()==c;)++b,a.setDate(b);return b-1}function z(a,b){a.setDate(a.getDate()+b)}function q(a,b){var c=a.getDate();a.setDate(1);
-a.setMonth(a.getMonth()+b);a.setDate(Math.min(c,K(a)))}function w(a,b){var c=a.getDate();a.setDate(1);a.setFullYear(a.getFullYear()+b);a.setDate(Math.min(c,K(a)))}function N(a){var b=a.__pickmeup.element,c=a.__pickmeup.options,d=Math.floor(c.calendars/2),e=c.date,G=c.current,f=c.min?new Date(c.min):null,l=c.max?new Date(c.max):null,h,m,p,v,r;f&&(f.setDate(1),q(f,1),z(f,-1));l&&(l.setDate(1),q(l,1),z(l,-1));x(Array.prototype.slice.call(b.querySelectorAll(".pmu-instance \x3e :not(nav)")));for(var k=
-0;k<c.calendars;k++){h=new Date(G);A(h);p=Array.prototype.slice.call(b.querySelectorAll(".pmu-instance"))[k];n(b,"pmu-view-years")?(w(h,12*(k-d)),m=h.getFullYear()-6+" - "+(h.getFullYear()+5)):n(b,"pmu-view-months")?(w(h,k-d),m=h.getFullYear()):n(b,"pmu-view-days")&&(q(h,k-d),m=D(h,c.title_format,c.locales[c.locale]));if(!r&&l&&(r=new Date(h),c.select_day?q(r,c.calendars-1):c.select_month?w(r,c.calendars-1):w(r,12*(c.calendars-1)),r>l)){--k;q(G,-1);r=void 0;continue}r=new Date(h);if(!v&&(v=new Date(h),
-v.setDate(1),q(v,1),z(v,-1),f&&f>v)){--k;q(G,1);v=void 0;continue}p.querySelector(".pmu-month").textContent=m;var t=function(a){return"range"==c.mode&&a>=(new Date(e[0])).getFullYear()&&a<=(new Date(e[1])).getFullYear()||"multiple"==c.mode&&-1!==e.reduce(function(a,c){a.push((new Date(c)).getFullYear());return a},[]).indexOf(a)||(new Date(e)).getFullYear()==a},u=function(a,b){var d=(new Date(e[0])).getFullYear(),h=(new Date(e[1])).getFullYear(),g=(new Date(e[0])).getMonth(),f=(new Date(e[1])).getMonth();
-return"range"==c.mode&&(a>d&&a<h||a>d&&a==h&&b<=f||a==d&&a<h&&b>=g||a==d&&a==h&&b>=g&&b<=f)||"multiple"==c.mode&&-1!==e.reduce(function(a,c){c=new Date(c);a.push(c.getFullYear()+"-"+c.getMonth());return a},[]).indexOf(a+"-"+b)||(new Date(e)).getFullYear()==a&&(new Date(e)).getMonth()==b};(function(){var a=[],b=h.getFullYear()-6,d=(new Date(c.min)).getFullYear(),e=(new Date(c.max)).getFullYear(),f,k,l;for(l=0;12>l;++l)f=b+l,k=document.createElement("div"),k.textContent=f,k.__pickmeup_year=f,c.min&&
-f<d||c.max&&f>e?g(k,"pmu-disabled"):t(f)&&g(k,"pmu-selected"),a.push(k);p.appendChild(c.instance_content_template(a,"pmu-years"))})();(function(){var a=[],b=h.getFullYear(),d=(new Date(c.min)).getFullYear(),e=(new Date(c.min)).getMonth(),f=(new Date(c.max)).getFullYear(),k=(new Date(c.max)).getMonth(),l,m;for(l=0;12>l;++l)m=document.createElement("div"),m.textContent=c.locales[c.locale].monthsShort[l],m.__pickmeup_month=l,m.__pickmeup_year=b,c.min&&(b<d||l<e&&b==d)||c.max&&(b>f||l>k&&b>=f)?g(m,"pmu-disabled"):
-u(b,l)&&g(m,"pmu-selected"),a.push(m);p.appendChild(c.instance_content_template(a,"pmu-months"))})();(function(){var a=[],b=h.getMonth(),d=A(new Date).valueOf(),e,f,k,l,m;(function(){h.setDate(1);var a=(h.getDay()-c.first_day)%7;z(h,-(a+(0>a?7:0)))})();for(e=0;42>e;++e)f=document.createElement("div"),f.textContent=h.getDate(),f.__pickmeup_day=h.getDate(),f.__pickmeup_month=h.getMonth(),f.__pickmeup_year=h.getFullYear(),b!=h.getMonth()&&g(f,"pmu-not-in-month"),0==h.getDay()?g(f,"pmu-sunday"):6==h.getDay()&&
-g(f,"pmu-saturday"),k=c.render(new Date(h))||{},l=h.valueOf(),m=c.min&&c.min>h||c.max&&c.max<h,k.disabled||m?g(f,"pmu-disabled"):(k.selected||c.date.valueOf()==l||c.date instanceof Array&&c.date.reduce(function(a,b){return a||l===b.valueOf()},!1)||"range"==c.mode&&l>=c.date[0]&&l<=c.date[1])&&g(f,"pmu-selected"),l==d&&g(f,"pmu-today"),k.class_name&&k.class_name.split(" ").forEach(g.bind(f,f)),a.push(f),z(h,1);p.appendChild(c.instance_content_template(a,"pmu-days"))})()}v.setDate(1);r.setDate(1);q(r,
-1);z(r,-1);d=b.querySelector(".pmu-prev");b=b.querySelector(".pmu-next");d&&(d.style.visibility=c.min&&c.min>=v?"hidden":"visible");b&&(b.style.visibility=c.max&&c.max<=r?"hidden":"visible");C(a,"fill")}function u(a,b){var c=b.format,d=b.separator,e=b.locales[b.locale];if(a instanceof Date||a instanceof Number)return A(new Date(a));if(!a)return A(new Date);if(a instanceof Array){a=a.slice();for(c=0;c<a.length;++c)a[c]=u(a[c],b);return a}d=a.split(d);if(1<d.length)return d.forEach(function(a,c,d){d[c]=
-u(a.trim(),b)}),d;d=e.monthsShort.join(")(")+")("+e.months.join(")(");d=new RegExp("[^0-9a-zA-Z("+d+")]+");a=a.split(d);for(var d=c.split(d),g,f,l,h,m,p=new Date,c=0;c<a.length;c++)switch(d[c]){case "b":f=e.monthsShort.indexOf(a[c]);break;case "B":f=e.months.indexOf(a[c]);break;case "d":case "e":g=parseInt(a[c],10);break;case "m":f=parseInt(a[c],10)-1;break;case "Y":case "y":l=parseInt(a[c],10);l+=100<l?0:29>l?2E3:1900;break;case "H":case "I":case "k":case "l":h=parseInt(a[c],10);break;case "P":case "p":/pm/i.test(a[c])&&
-12>h?h+=12:/am/i.test(a[c])&&12<=h&&(h-=12);break;case "M":m=parseInt(a[c],10)}e=new Date(void 0===l?p.getFullYear():l,void 0===f?p.getMonth():f,void 0===g?p.getDate():g,void 0===h?p.getHours():h,void 0===m?p.getMinutes():m,0);isNaN(1*e)&&(e=new Date);return A(e)}function A(a){a.setHours(0,0,0,0);return a}function D(a,b,c){var d=a.getMonth(),e=a.getDate(),g=a.getFullYear(),f=a.getDay(),l=a.getHours(),h=12<=l,m=h?l-12:l,p;p=new Date(a.getFullYear(),a.getMonth(),a.getDate(),0,0,0);var n=new Date(a.getFullYear(),
-0,0,0,0,0);p=Math.floor((p-n)/24*36E5);0==m&&(m=12);var n=a.getMinutes(),r=a.getSeconds();b=b.split("");for(var k,q=0;q<b.length;q++){k=b[q];switch(k){case "a":k=c.daysShort[f];break;case "A":k=c.days[f];break;case "b":k=c.monthsShort[d];break;case "B":k=c.months[d];break;case "C":k=1+Math.floor(g/100);break;case "d":k=10>e?"0"+e:e;break;case "e":k=e;break;case "H":k=10>l?"0"+l:l;break;case "I":k=10>m?"0"+m:m;break;case "j":k=100>p?10>p?"00"+p:"0"+p:p;break;case "k":k=l;break;case "l":k=m;break;case "m":k=
-9>d?"0"+(1+d):1+d;break;case "M":k=10>n?"0"+n:n;break;case "p":case "P":k=h?"PM":"AM";break;case "s":k=Math.floor(a.getTime()/1E3);break;case "S":k=10>r?"0"+r:r;break;case "u":k=f+1;break;case "w":k=f;break;case "y":k=(""+g).substr(2,2);break;case "Y":k=g}b[q]=k}return b.join("")}function O(a,b){var c=a.__pickmeup.options,d;A(b);a:{var e;switch(c.mode){case "multiple":e=b.valueOf();for(d=0;d<c.date.length;++d)if(c.date[d].valueOf()===e){c.date.splice(d,1);break a}c.date.push(b);break;case "range":c.lastSel||
-(c.date[0]=b);b<=c.date[0]?(c.date[1]=c.date[0],c.date[0]=b):c.date[1]=b;c.lastSel=!c.lastSel;break;default:c.date=b.valueOf()}}b=H(c);B(a,"input")&&(a.value="single"==c.mode?b.formatted_date:b.formatted_date.join(c.separator));C(a,"change",b);c.flat||!c.hide_on_select||"range"==c.mode&&c.lastSel||c.bound.hide()}function P(a,b){var c=b.target;n(c,"pmu-button")||(c=J(c,".pmu-button"));if(!n(c,"pmu-button")||n(c,"pmu-disabled"))return!1;b.preventDefault();b.stopPropagation();a=a.__pickmeup.options;
-var d=J(c,".pmu-instance");b=d.parentElement;d=Array.prototype.slice.call(b.querySelectorAll(".pmu-instance")).indexOf(d);B(c.parentElement,"nav")?n(c,"pmu-month")?(q(a.current,d-Math.floor(a.calendars/2)),n(b,"pmu-view-years")?(a.current="single"!=a.mode?new Date(a.date[a.date.length-1]):new Date(a.date),a.select_day?(b.classList.remove("pmu-view-years"),g(b,"pmu-view-days")):a.select_month&&(b.classList.remove("pmu-view-years"),g(b,"pmu-view-months"))):n(b,"pmu-view-months")?a.select_year?(b.classList.remove("pmu-view-months"),
-g(b,"pmu-view-years")):a.select_day&&(b.classList.remove("pmu-view-months"),g(b,"pmu-view-days")):n(b,"pmu-view-days")&&(a.select_month?(b.classList.remove("pmu-view-days"),g(b,"pmu-view-months")):a.select_year&&(b.classList.remove("pmu-view-days"),g(b,"pmu-view-years")))):n(c,"pmu-prev")?a.bound.prev(!1):a.bound.next(!1):n(b,"pmu-view-years")?(a.current.setFullYear(c.__pickmeup_year),a.select_month?(b.classList.remove("pmu-view-years"),g(b,"pmu-view-months")):a.select_day?(b.classList.remove("pmu-view-years"),
-g(b,"pmu-view-days")):a.bound.update_date(a.current)):n(b,"pmu-view-months")?(a.current.setMonth(c.__pickmeup_month),a.current.setFullYear(c.__pickmeup_year),a.select_day?(b.classList.remove("pmu-view-months"),g(b,"pmu-view-days")):a.bound.update_date(a.current),q(a.current,Math.floor(a.calendars/2)-d)):(b=new Date(a.current),b.setYear(c.__pickmeup_year),b.setMonth(c.__pickmeup_month),b.setDate(c.__pickmeup_day),a.bound.update_date(b));a.bound.fill();return!0}function H(a){var b;if("single"==a.mode)return b=
-new Date(a.date),{formatted_date:D(b,a.format,a.locales[a.locale]),date:b};b={formatted_date:[],date:[]};a.date.forEach(function(c){c=new Date(c);b.formatted_date.push(D(c,a.format,a.locales[a.locale]));b.date.push(c)});return b}function I(a,b){var c=a.__pickmeup.element;if(b||n(c,"pmu-hidden")){var d=a.__pickmeup.options,e=M(a),g=window.pageXOffset,f=window.pageYOffset,l=document.documentElement.clientWidth,h=document.documentElement.clientHeight,m=e.top,p=e.left;d.bound.fill();B(a,"input")&&((b=
-a.value)&&d.bound.set_date(b),t(a,a,"keydown",function(a){9==a.which&&d.bound.hide()}),d.lastSel=!1);if(C(a,"show")&&!d.flat){switch(d.position){case "top":m-=c.offsetHeight;break;case "left":p-=c.offsetWidth;break;case "right":p+=a.offsetWidth;break;case "bottom":m+=a.offsetHeight}m+c.offsetHeight>f+h&&(m=e.top-c.offsetHeight);m<f&&(m=e.top+a.offsetHeight);p+c.offsetWidth>g+l&&(p=e.left-c.offsetWidth);p<g&&(p=e.left+a.offsetWidth);c.style.top=m+"px";c.style.left=p+"px";c.classList.remove("pmu-hidden");
-setTimeout(function(){t(a,document.documentElement,"click",d.bound.hide);t(a,window,"resize",d.bound.forced_show)})}}}function Q(a,b){var c=a.__pickmeup.element,d=a.__pickmeup.options;b&&b.target&&(b.target==a||c.compareDocumentPosition(b.target)&16)||!C(a,"hide")||(g(c,"pmu-hidden"),y(a,document.documentElement,"click",d.bound.hide),y(a,window,"resize",d.bound.forced_show),d.lastSel=!1)}function R(a){var b=a.__pickmeup.options;y(a,document.documentElement,"click",b.bound.hide);y(a,window,"resize",
-b.bound.forced_show);b.bound.forced_show()}function S(a){a=a.__pickmeup.options;"single"!=a.mode&&(a.date=[],a.lastSel=!1,a.bound.fill())}function T(a,b){"undefined"==typeof b&&(b=!0);var c=a.__pickmeup.element;a=a.__pickmeup.options;n(c,"pmu-view-years")?w(a.current,-12):n(c,"pmu-view-months")?w(a.current,-1):n(c,"pmu-view-days")&&q(a.current,-1);b&&a.bound.fill()}function U(a,b){"undefined"==typeof b&&(b=!0);var c=a.__pickmeup.element;a=a.__pickmeup.options;n(c,"pmu-view-years")?w(a.current,12):
-n(c,"pmu-view-months")?w(a.current,1):n(c,"pmu-view-days")&&q(a.current,1);b&&a.bound.fill()}function V(a,b){var c=a.__pickmeup.options;a=H(c);return"string"===typeof b?(a=a.date,a instanceof Date?D(a,b,c.locales[c.locale]):a.map(function(a){return D(a,b,c.locales[c.locale])})):a[b?"formatted_date":"date"]}function W(a,b,c){var d=a.__pickmeup.options;if(!(b instanceof Array)||0<b.length)if(d.date=u(b,d),"single"!=d.mode)for(d.date instanceof Array?(d.date[0]=d.date[0]||u(new Date,d),"range"==d.mode&&
-(d.date[1]=d.date[1]||u(d.date[0],d))):(d.date=[d.date],"range"==d.mode&&d.date.push(u(d.date[0],d))),b=0;b<d.date.length;++b)d.date[b]=L(d.date[b],d.min,d.max);else d.date instanceof Array&&(d.date=d.date[0]),d.date=L(d.date,d.min,d.max);else d.date=[];if(!d.select_day)if(d.date instanceof Array)for(b=0;b<d.date.length;++b)d.date[b].setDate(1);else d.date.setDate(1);if("multiple"==d.mode)for(b=0;b<d.date.length;++b)d.date.indexOf(d.date[b])!==b&&(d.date.splice(b,1),--b);c?d.current=u(c,d):(c="single"===
-d.mode?d.date:d.date[d.date.length-1],d.current=c?new Date(c):new Date);d.current.setDate(1);d.bound.fill();B(a,"input")&&!1!==d.default_date&&(c=H(d),b=a.value,d="single"==d.mode?c.formatted_date:c.formatted_date.join(d.separator),b||C(a,"change",c),b!=d&&(a.value=d))}function X(a){var b=a.__pickmeup.element;y(a);x(b);delete a.__pickmeup}function L(a,b,c){return b&&b>a?new Date(b):c&&c<a?new Date(c):a}function E(a,b){"string"==typeof a&&(a=document.querySelector(a));if(!a)return null;if(!a.__pickmeup){var c,
-d={};b=b||{};for(c in E.defaults)d[c]=c in b?b[c]:E.defaults[c];for(c in d)b=a.getAttribute("data-pmu-"+c),null!==b&&(d[c]=b);"days"!=d.view||d.select_day||(d.view="months");"months"!=d.view||d.select_month||(d.view="years");"years"!=d.view||d.select_year||(d.view="days");"days"!=d.view||d.select_day||(d.view="months");d.calendars=Math.max(1,parseInt(d.calendars,10)||1);d.mode=/single|multiple|range/.test(d.mode)?d.mode:"single";d.min&&(d.min=u(d.min,d),d.select_day||d.min.setDate(1));d.max&&(d.max=
-u(d.max,d),d.select_day||d.max.setDate(1));b=document.createElement("div");a.__pickmeup={options:d,events:[],element:b};b.__pickmeup_target=a;g(b,"pickmeup");d.class_name&&g(b,d.class_name);d.bound={fill:N.bind(a,a),update_date:O.bind(a,a),click:P.bind(a,a),show:I.bind(a,a),forced_show:I.bind(a,a,!0),hide:Q.bind(a,a),update:R.bind(a,a),clear:S.bind(a,a),prev:T.bind(a,a),next:U.bind(a,a),get_date:V.bind(a,a),set_date:W.bind(a,a),destroy:X.bind(a,a)};g(b,"pmu-view-"+d.view);var e=d.instance_template(d),
-n="";for(c=0;c<d.calendars;++c)n+=e;b.innerHTML=n;t(a,b,"click",d.bound.click);t(a,b,"onselectstart"in Element.prototype?"selectstart":"mousedown",function(a){a.preventDefault()});d.flat?(g(b,"pmu-flat"),a.appendChild(b)):(g(b,"pmu-hidden"),document.body.appendChild(b),t(a,a,"click",I.bind(a,a,!1)),t(a,a,"input",d.bound.update),t(a,a,"change",d.bound.update));d.bound.set_date(d.date,d.current)}d=a.__pickmeup.options;return{hide:d.bound.hide,show:d.bound.show,clear:d.bound.clear,update:d.bound.update,
-prev:d.bound.prev,next:d.bound.next,get_date:d.bound.get_date,set_date:d.bound.set_date,destroy:d.bound.destroy}}E.defaults={current:null,date:new Date,default_date:new Date,flat:!1,first_day:1,prev:"\x26#9664;",next:"\x26#9654;",mode:"single",select_year:!0,select_month:!0,select_day:!0,view:"days",calendars:1,format:"d-m-Y",title_format:"B, Y",position:"bottom",class_name:"",separator:" - ",hide_on_select:!1,min:null,max:null,render:function(){},locale:"en",locales:{en:{days:"Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),
-daysShort:"Sun Mon Tue Wed Thu Fri Sat".split(" "),daysMin:"Su Mo Tu We Th Fr Sa".split(" "),months:"January February March April May June July August September October November December".split(" "),monthsShort:"Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ")}},instance_template:function(a){var b=a.locales[a.locale].daysMin.slice();a.first_day&&b.push(b.shift());return'\x3cdiv class\x3d"pmu-instance"\x3e\x3cnav\x3e\x3cdiv class\x3d"pmu-prev pmu-button"\x3e'+a.prev+'\x3c/div\x3e\x3cdiv class\x3d"pmu-month pmu-button"\x3e\x3c/div\x3e\x3cdiv class\x3d"pmu-next pmu-button"\x3e'+
-a.next+'\x3c/div\x3e\x3c/nav\x3e\x3cnav class\x3d"pmu-day-of-week"\x3e\x3cdiv\x3e'+b.join("\x3c/div\x3e\x3cdiv\x3e")+"\x3c/div\x3e\x3c/nav\x3e\x3c/div\x3e"},instance_content_template:function(a,b){var c=document.createElement("div");g(c,b);for(b=0;b<a.length;++b)g(a[b],"pmu-button"),c.appendChild(a[b]);return c}};return E});
+/*!
+ * Datepicker v0.5.4
+ * https://github.com/fengyuanchen/datepicker
+ *
+ * Copyright (c) 2014-2017 Fengyuan Chen
+ * Released under the MIT license
+ *
+ * Date: 2017-08-05T07:14:03.474Z
+ */
+
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as anonymous module.
+    define('datepicker', ['jquery'], factory);
+  } else if (typeof exports === 'object') {
+    // Node / CommonJS
+    factory(require('jquery'));
+  } else {
+    // Browser globals.
+    factory(jQuery);
+  }
+})(function ($) {
+
+  'use strict';
+
+  var $window = $(window);
+  var document = window.document;
+  var $document = $(document);
+  var Number = window.Number;
+  var NAMESPACE = 'datepicker';
+
+  // Events
+  var EVENT_CLICK = 'click.' + NAMESPACE;
+  var EVENT_KEYUP = 'keyup.' + NAMESPACE;
+  var EVENT_FOCUS = 'focus.' + NAMESPACE;
+  var EVENT_RESIZE = 'resize.' + NAMESPACE;
+  var EVENT_SHOW = 'show.' + NAMESPACE;
+  var EVENT_HIDE = 'hide.' + NAMESPACE;
+  var EVENT_PICK = 'pick.' + NAMESPACE;
+
+  // RegExps
+  var REGEXP_FORMAT = /(y|m|d)+/g;
+  var REGEXP_DIGITS = /\d+/g;
+  var REGEXP_YEAR = /^\d{2,4}$/;
+
+  // Classes
+  var CLASS_INLINE = NAMESPACE + '-inline';
+  var CLASS_DROPDOWN = NAMESPACE + '-dropdown';
+  var CLASS_TOP_LEFT = NAMESPACE + '-top-left';
+  var CLASS_TOP_RIGHT = NAMESPACE + '-top-right';
+  var CLASS_BOTTOM_LEFT = NAMESPACE + '-bottom-left';
+  var CLASS_BOTTOM_RIGHT = NAMESPACE + '-bottom-right';
+  var CLASS_PLACEMENTS = [
+        CLASS_TOP_LEFT,
+        CLASS_TOP_RIGHT,
+        CLASS_BOTTOM_LEFT,
+        CLASS_BOTTOM_RIGHT
+      ].join(' ');
+  var CLASS_HIDE = NAMESPACE + '-hide';
+
+  // Views
+  var VIEWS = {
+    DAYS: 0,
+    MONTHS: 1,
+    YEARS: 2
+  };
+
+  // Maths
+  var min = Math.min;
+
+  // Utilities
+  var toString = Object.prototype.toString;
+
+  function typeOf(obj) {
+    return toString.call(obj).slice(8, -1).toLowerCase();
+  }
+
+  function isString(str) {
+    return typeof str === 'string';
+  }
+
+  function isNumber(num) {
+    return typeof num === 'number' && !isNaN(num);
+  }
+
+  function isUndefined(obj) {
+    return typeof obj === 'undefined';
+  }
+
+  function isDate(date) {
+    return typeOf(date) === 'date';
+  }
+
+  function toArray(obj, offset) {
+    var args = [];
+
+    if (Array.from) {
+      return Array.from(obj).slice(offset || 0);
+    }
+
+    // This is necessary for IE8
+    if (isNumber(offset)) {
+      args.push(offset);
+    }
+
+    return args.slice.apply(obj, args);
+  }
+
+  // Custom proxy to avoid jQuery's guid
+  function proxy(fn, context) {
+    var args = toArray(arguments, 2);
+
+    return function () {
+      return fn.apply(context, args.concat(toArray(arguments)));
+    };
+  }
+
+  function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+  }
+
+  function getDaysInMonth(year, month) {
+    return [31, (isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+  }
+
+  function parseFormat(format) {
+    var source = String(format).toLowerCase();
+    var parts = source.match(REGEXP_FORMAT);
+    var length;
+    var i;
+
+    if (!parts || parts.length === 0) {
+      throw new Error('Invalid date format.');
+    }
+
+    format = {
+      source: source,
+      parts: parts
+    };
+
+    length = parts.length;
+
+    for (i = 0; i < length; i++) {
+      switch (parts[i]) {
+        case 'dd':
+        case 'd':
+          format.hasDay = true;
+          break;
+
+        case 'mm':
+        case 'm':
+          format.hasMonth = true;
+          break;
+
+        case 'yyyy':
+        case 'yy':
+          format.hasYear = true;
+          break;
+
+        // No default
+      }
+    }
+
+    return format;
+  }
+
+  function Datepicker(element, options) {
+    options = $.isPlainObject(options) ? options : {};
+
+    if (options.language) {
+      // Priority: Datepicker.DEFAULTS < Datepicker.LANGUAGES < options
+      options = $.extend({}, Datepicker.LANGUAGES[options.language], options);
+    }
+
+    this.$element = $(element);
+    this.options = $.extend({}, Datepicker.DEFAULTS, options);
+    this.isBuilt = false;
+    this.isShown = false;
+    this.isInput = false;
+    this.isInline = false;
+    this.initialValue = '';
+    this.initialDate = null;
+    this.startDate = null;
+    this.endDate = null;
+    this.init();
+  }
+
+  Datepicker.prototype = {
+    constructor: Datepicker,
+
+    init: function () {
+      var options = this.options;
+      var $this = this.$element;
+      var startDate = options.startDate;
+      var endDate = options.endDate;
+      var date = options.date;
+
+      this.$trigger = $(options.trigger);
+      this.isInput = $this.is('input') || $this.is('textarea');
+      this.isInline = options.inline && (options.container || !this.isInput);
+      this.format = parseFormat(options.format);
+      this.oldValue = this.initialValue = this.getValue();
+      date = this.parseDate(date || this.initialValue);
+
+      if (startDate) {
+        startDate = this.parseDate(startDate);
+
+        if (date.getTime() < startDate.getTime()) {
+          date = new Date(startDate);
+        }
+
+        this.startDate = startDate;
+      }
+
+      if (endDate) {
+        endDate = this.parseDate(endDate);
+
+        if (startDate && endDate.getTime() < startDate.getTime()) {
+          endDate = new Date(startDate);
+        }
+
+        if (date.getTime() > endDate.getTime()) {
+          date = new Date(endDate);
+        }
+
+        this.endDate = endDate;
+      }
+
+      this.date = date;
+      this.viewDate = new Date(date);
+      this.initialDate = new Date(this.date);
+
+      this.bind();
+
+      if (options.autoShow || this.isInline) {
+        this.show();
+      }
+
+      if (options.autoPick) {
+        this.pick();
+      }
+    },
+
+    build: function () {
+      var options = this.options;
+      var $this = this.$element;
+      var $picker;
+
+      if (this.isBuilt) {
+        return;
+      }
+
+      this.isBuilt = true;
+
+      this.$picker = $picker = $(options.template);
+      this.$week = $picker.find('[data-view="week"]');
+
+      // Years view
+      this.$yearsPicker = $picker.find('[data-view="years picker"]');
+      this.$yearsPrev = $picker.find('[data-view="years prev"]');
+      this.$yearsNext = $picker.find('[data-view="years next"]');
+      this.$yearsCurrent = $picker.find('[data-view="years current"]');
+      this.$years = $picker.find('[data-view="years"]');
+
+      // Months view
+      this.$monthsPicker = $picker.find('[data-view="months picker"]');
+      this.$yearPrev = $picker.find('[data-view="year prev"]');
+      this.$yearNext = $picker.find('[data-view="year next"]');
+      this.$yearCurrent = $picker.find('[data-view="year current"]');
+      this.$months = $picker.find('[data-view="months"]');
+
+      // Days view
+      this.$daysPicker = $picker.find('[data-view="days picker"]');
+      this.$monthPrev = $picker.find('[data-view="month prev"]');
+      this.$monthNext = $picker.find('[data-view="month next"]');
+      this.$monthCurrent = $picker.find('[data-view="month current"]');
+      this.$days = $picker.find('[data-view="days"]');
+
+      if (this.isInline) {
+        $(options.container || $this).append($picker.addClass(CLASS_INLINE));
+      } else {
+        $(document.body).append($picker.addClass(CLASS_DROPDOWN));
+        $picker.addClass(CLASS_HIDE);
+      }
+
+      this.fillWeek();
+    },
+
+    unbuild: function () {
+      if (!this.isBuilt) {
+        return;
+      }
+
+      this.isBuilt = false;
+      this.$picker.remove();
+    },
+
+    bind: function () {
+      var options = this.options;
+      var $this = this.$element;
+
+      if ($.isFunction(options.show)) {
+        $this.on(EVENT_SHOW, options.show);
+      }
+
+      if ($.isFunction(options.hide)) {
+        $this.on(EVENT_HIDE, options.hide);
+      }
+
+      if ($.isFunction(options.pick)) {
+        $this.on(EVENT_PICK, options.pick);
+      }
+
+      if (this.isInput) {
+        $this.on(EVENT_KEYUP, $.proxy(this.keyup, this));
+      }
+
+      if (!this.isInline) {
+        if (options.trigger) {
+          this.$trigger.on(EVENT_CLICK, $.proxy(this.toggle, this));
+        } else if (this.isInput) {
+          $this.on(EVENT_FOCUS, $.proxy(this.show, this));
+        } else {
+          $this.on(EVENT_CLICK, $.proxy(this.show, this));
+        }
+      }
+    },
+
+    unbind: function () {
+      var options = this.options;
+      var $this = this.$element;
+
+      if ($.isFunction(options.show)) {
+        $this.off(EVENT_SHOW, options.show);
+      }
+
+      if ($.isFunction(options.hide)) {
+        $this.off(EVENT_HIDE, options.hide);
+      }
+
+      if ($.isFunction(options.pick)) {
+        $this.off(EVENT_PICK, options.pick);
+      }
+
+      if (this.isInput) {
+        $this.off(EVENT_KEYUP, this.keyup);
+      }
+
+      if (!this.isInline) {
+        if (options.trigger) {
+          this.$trigger.off(EVENT_CLICK, this.toggle);
+        } else if (this.isInput) {
+          $this.off(EVENT_FOCUS, this.show);
+        } else {
+          $this.off(EVENT_CLICK, this.show);
+        }
+      }
+    },
+
+    showView: function (view) {
+      var $yearsPicker = this.$yearsPicker;
+      var $monthsPicker = this.$monthsPicker;
+      var $daysPicker = this.$daysPicker;
+      var format = this.format;
+
+      if (format.hasYear || format.hasMonth || format.hasDay) {
+        switch (Number(view)) {
+          case VIEWS.YEARS:
+          case 'years':
+            $monthsPicker.addClass(CLASS_HIDE);
+            $daysPicker.addClass(CLASS_HIDE);
+
+            if (format.hasYear) {
+              this.fillYears();
+              $yearsPicker.removeClass(CLASS_HIDE);
+              this.place();
+            } else {
+              this.showView(VIEWS.DAYS);
+            }
+
+            break;
+
+          case VIEWS.MONTHS:
+          case 'months':
+            $yearsPicker.addClass(CLASS_HIDE);
+            $daysPicker.addClass(CLASS_HIDE);
+
+            if (format.hasMonth) {
+              this.fillMonths();
+              $monthsPicker.removeClass(CLASS_HIDE);
+              this.place();
+            } else {
+              this.showView(VIEWS.YEARS);
+            }
+
+            break;
+
+          // case VIEWS.DAYS:
+          // case 'days':
+          default:
+            $yearsPicker.addClass(CLASS_HIDE);
+            $monthsPicker.addClass(CLASS_HIDE);
+
+            if (format.hasDay) {
+              this.fillDays();
+              $daysPicker.removeClass(CLASS_HIDE);
+              this.place();
+            } else {
+              this.showView(VIEWS.MONTHS);
+            }
+        }
+      }
+    },
+
+    hideView: function () {
+      if (!this.isInline && this.options.autoHide) {
+        this.hide();
+      }
+    },
+
+    place: function () {
+      if (this.isInline) {
+        return;
+      }
+
+      var options = this.options;
+      var $this = this.$element;
+      var $picker = this.$picker;
+      var containerWidth = $document.outerWidth();
+      var containerHeight = $document.outerHeight();
+      var elementWidth = $this.outerWidth();
+      var elementHeight = $this.outerHeight();
+      var width = $picker.width();
+      var height = $picker.height();
+      var offsets = $this.offset();
+      var left = offsets.left;
+      var top = offsets.top;
+      var offset = parseFloat(options.offset) || 10;
+      var placement = CLASS_TOP_LEFT;
+
+      if (top > height && top + elementHeight + height > containerHeight) {
+        top -= height + offset;
+        placement = CLASS_BOTTOM_LEFT;
+      } else {
+        top += elementHeight + offset;
+      }
+
+      if (left + width > containerWidth) {
+        left = left + elementWidth - width;
+        placement = placement.replace('left', 'right');
+      }
+
+      $picker.removeClass(CLASS_PLACEMENTS).addClass(placement).css({
+        top: top,
+        left: left,
+        zIndex: parseInt(options.zIndex, 10)
+      });
+    },
+
+    // A shortcut for triggering custom events
+    trigger: function (type, data) {
+      var e = $.Event(type, data);
+
+      this.$element.trigger(e);
+
+      return e;
+    },
+
+    createItem: function (data) {
+      var options = this.options;
+      var itemTag = options.itemTag;
+      var defaults = {
+            text: '',
+            view: '',
+            muted: false,
+            picked: false,
+            disabled: false,
+            highlighted: false
+          };
+      var classes = [];
+
+      $.extend(defaults, data);
+
+      if (defaults.muted) {
+        classes.push(options.mutedClass);
+      }
+
+      if (defaults.highlighted) {
+        classes.push(options.highlightedClass);
+      }
+
+      if (defaults.picked) {
+        classes.push(options.pickedClass);
+      }
+
+      if (defaults.disabled) {
+        classes.push(options.disabledClass);
+      }
+
+      return (
+        '<' + itemTag + ' class="' + classes.join(' ') + '"' +
+        (defaults.view ? ' data-view="' + defaults.view + '"' : '') +
+        '>' +
+        defaults.text +
+        '</' + itemTag + '>'
+      );
+    },
+
+    fillAll: function () {
+      this.fillYears();
+      this.fillMonths();
+      this.fillDays();
+    },
+
+    fillWeek: function () {
+      var options = this.options;
+      var weekStart = parseInt(options.weekStart, 10) % 7;
+      var days = options.daysMin;
+      var list = '';
+      var i;
+
+      days = $.merge(days.slice(weekStart), days.slice(0, weekStart));
+
+      for (i = 0; i <= 6; i++) {
+        list += this.createItem({
+          text: days[i]
+        });
+      }
+
+      this.$week.html(list);
+    },
+
+    fillYears: function () {
+      var options = this.options;
+      var disabledClass = options.disabledClass || '';
+      var suffix = options.yearSuffix || '';
+      var filter = $.isFunction(options.filter) && options.filter;
+      var startDate = this.startDate;
+      var endDate = this.endDate;
+      var viewDate = this.viewDate;
+      var viewYear = viewDate.getFullYear();
+      var viewMonth = viewDate.getMonth();
+      var viewDay = viewDate.getDate();
+      var now = new Date();
+      var thisYear = now.getFullYear();
+      var date = this.date;
+      var year = date.getFullYear();
+      var isPrevDisabled = false;
+      var isNextDisabled = false;
+      var isDisabled = false;
+      var isPicked = false;
+      var isMuted = false;
+      var list = '';
+      var start = -5;
+      var end = 6;
+      var i;
+
+      for (i = start; i <= end; i++) {
+        date = new Date(viewYear + i, viewMonth, viewDay);
+        isMuted = i === start || i === end;
+        isPicked = (viewYear + i) === year;
+        isDisabled = false;
+
+        if (startDate) {
+          isDisabled = date.getFullYear() < startDate.getFullYear();
+
+          if (i === start) {
+            isPrevDisabled = isDisabled;
+          }
+        }
+
+        if (!isDisabled && endDate) {
+          isDisabled = date.getFullYear() > endDate.getFullYear();
+
+          if (i === end) {
+            isNextDisabled = isDisabled;
+          }
+        }
+
+        if (!isDisabled && filter) {
+          isDisabled = filter.call(this.$element, date) === false;
+        }
+
+        list += this.createItem({
+          text: viewYear + i,
+          view: isDisabled ? 'year disabled' : isPicked ? 'year picked' : 'year',
+          muted: isMuted,
+          picked: isPicked,
+          disabled: isDisabled,
+          highlighted: date.getFullYear() === thisYear
+        });
+      }
+
+      this.$yearsPrev.toggleClass(disabledClass, isPrevDisabled);
+      this.$yearsNext.toggleClass(disabledClass, isNextDisabled);
+      this.$yearsCurrent.
+        toggleClass(disabledClass, true).
+        html((viewYear + start) + suffix + ' - ' + (viewYear + end) + suffix);
+      this.$years.html(list);
+    },
+
+    fillMonths: function () {
+      var options = this.options;
+      var disabledClass = options.disabledClass || '';
+      var months = options.monthsShort;
+      var filter = $.isFunction(options.filter) && options.filter;
+      var startDate = this.startDate;
+      var endDate = this.endDate;
+      var viewDate = this.viewDate;
+      var viewYear = viewDate.getFullYear();
+      var viewDay = viewDate.getDate();
+      var now = new Date();
+      var thisYear = now.getFullYear();
+      var thisMonth = now.getMonth();
+      var date = this.date;
+      var year = date.getFullYear();
+      var month = date.getMonth();
+      var isPrevDisabled = false;
+      var isNextDisabled = false;
+      var isDisabled = false;
+      var isPicked = false;
+      var list = '';
+      var i;
+
+      for (i = 0; i <= 11; i++) {
+        date = new Date(viewYear, i, viewDay);
+        isPicked = viewYear === year && i === month;
+        isDisabled = false;
+
+        if (startDate) {
+          isPrevDisabled = date.getFullYear() === startDate.getFullYear();
+          isDisabled = isPrevDisabled && date.getMonth() < startDate.getMonth();
+        }
+
+        if (!isDisabled && endDate) {
+          isNextDisabled = date.getFullYear() === endDate.getFullYear();
+          isDisabled = isNextDisabled && date.getMonth() > endDate.getMonth();
+        }
+
+        if (!isDisabled && filter) {
+          isDisabled = filter.call(this.$element, date) === false;
+        }
+
+        list += this.createItem({
+          index: i,
+          text: months[i],
+          view: isDisabled ? 'month disabled' : isPicked ? 'month picked' : 'month',
+          picked: isPicked,
+          disabled: isDisabled,
+          highlighted: viewYear === thisYear && date.getMonth() === thisMonth
+        });
+      }
+
+      this.$yearPrev.toggleClass(disabledClass, isPrevDisabled);
+      this.$yearNext.toggleClass(disabledClass, isNextDisabled);
+      this.$yearCurrent.
+        toggleClass(disabledClass, isPrevDisabled && isNextDisabled).
+        html(viewYear + options.yearSuffix || '');
+      this.$months.html(list);
+    },
+
+    fillDays: function () {
+      var options = this.options;
+      var disabledClass = options.disabledClass || '';
+      var suffix = options.yearSuffix || '';
+      var months = options.monthsShort;
+      var weekStart = parseInt(options.weekStart, 10) % 7;
+      var filter = $.isFunction(options.filter) && options.filter;
+      var startDate = this.startDate;
+      var endDate = this.endDate;
+      var viewDate = this.viewDate;
+      var viewYear = viewDate.getFullYear();
+      var viewMonth = viewDate.getMonth();
+      var prevViewYear = viewYear;
+      var prevViewMonth = viewMonth;
+      var nextViewYear = viewYear;
+      var now = new Date();
+      var thisYear = now.getFullYear();
+      var thisMonth = now.getMonth();
+      var today = now.getDate();
+      var nextViewMonth = viewMonth;
+      var date = this.date;
+      var year = date.getFullYear();
+      var month = date.getMonth();
+      var day = date.getDate();
+      var isPrevDisabled = false;
+      var isNextDisabled = false;
+      var isDisabled = false;
+      var isPicked = false;
+      var prevItems = [];
+      var nextItems = [];
+      var items = [];
+      var total = 42; // 6 rows and 7 columns on the days picker
+      var length;
+      var i;
+      var n;
+
+      // Days of previous month
+      // -----------------------------------------------------------------------
+
+      if (viewMonth === 0) {
+        prevViewYear -= 1;
+        prevViewMonth = 11;
+      } else {
+        prevViewMonth -= 1;
+      }
+
+      // The length of the days of previous month
+      length = getDaysInMonth(prevViewYear, prevViewMonth);
+
+      // The first day of current month
+      date = new Date(viewYear, viewMonth, 1);
+
+      // The visible length of the days of previous month
+      // [0,1,2,3,4,5,6] - [0,1,2,3,4,5,6] => [-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6]
+      n = date.getDay() - weekStart;
+
+      // [-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6] => [1,2,3,4,5,6,7]
+      if (n <= 0) {
+        n += 7;
+      }
+
+      if (startDate) {
+        isPrevDisabled = date.getTime() <= startDate.getTime();
+      }
+
+      for (i = length - (n - 1); i <= length; i++) {
+        date = new Date(prevViewYear, prevViewMonth, i);
+        isPicked = prevViewYear === year && prevViewMonth === month && i === day;
+        isDisabled = false;
+
+        if (startDate) {
+          isDisabled = date.getTime() < startDate.getTime();
+        }
+
+        if (!isDisabled && filter) {
+          isDisabled = filter.call(this.$element, date) === false;
+        }
+
+        prevItems.push(this.createItem({
+          text: i,
+          view: 'day prev',
+          muted: true,
+          picked: isPicked,
+          disabled: isDisabled,
+          highlighted: prevViewYear === thisYear && prevViewMonth === thisMonth && date.getDate() === today
+        }));
+      }
+
+      // Days of next month
+      // -----------------------------------------------------------------------
+
+      if (viewMonth === 11) {
+        nextViewYear += 1;
+        nextViewMonth = 0;
+      } else {
+        nextViewMonth += 1;
+      }
+
+      // The length of the days of current month
+      length = getDaysInMonth(viewYear, viewMonth);
+
+      // The visible length of next month
+      n = total - (prevItems.length + length);
+
+      // The last day of current month
+      date = new Date(viewYear, viewMonth, length);
+
+      if (endDate) {
+        isNextDisabled = date.getTime() >= endDate.getTime();
+      }
+
+      for (i = 1; i <= n; i++) {
+        date = new Date(nextViewYear, nextViewMonth, i);
+        isPicked = nextViewYear === year && nextViewMonth === month && i === day;
+        isDisabled = false;
+
+        if (endDate) {
+          isDisabled = date.getTime() > endDate.getTime();
+        }
+
+        if (!isDisabled && filter) {
+          isDisabled = filter.call(this.$element, date) === false;
+        }
+
+        nextItems.push(this.createItem({
+          text: i,
+          view: 'day next',
+          muted: true,
+          picked: isPicked,
+          disabled: isDisabled,
+          highlighted: nextViewYear === thisYear && nextViewMonth === thisMonth && date.getDate() === today
+        }));
+      }
+
+      // Days of current month
+      // -----------------------------------------------------------------------
+
+      for (i = 1; i <= length; i++) {
+        date = new Date(viewYear, viewMonth, i);
+        isPicked = viewYear === year && viewMonth === month && i === day;
+        isDisabled = false;
+
+        if (startDate) {
+          isDisabled = date.getTime() < startDate.getTime();
+        }
+
+        if (!isDisabled && endDate) {
+          isDisabled = date.getTime() > endDate.getTime();
+        }
+
+        if (!isDisabled && filter) {
+          isDisabled = filter.call(this.$element, date) === false;
+        }
+
+        items.push(this.createItem({
+          text: i,
+          view: isDisabled ? 'day disabled' : isPicked ? 'day picked' : 'day',
+          picked: isPicked,
+          disabled: isDisabled,
+          highlighted: viewYear === thisYear && viewMonth === thisMonth && date.getDate() === today
+        }));
+      }
+
+      // Render days picker
+      // -----------------------------------------------------------------------
+
+      this.$monthPrev.toggleClass(disabledClass, isPrevDisabled);
+      this.$monthNext.toggleClass(disabledClass, isNextDisabled);
+      this.$monthCurrent.
+        toggleClass(disabledClass, isPrevDisabled && isNextDisabled).
+        html(
+          options.yearFirst ?
+          viewYear + suffix + ' ' + months[viewMonth] :
+          months[viewMonth] + ' ' + viewYear + suffix
+        );
+      this.$days.html(prevItems.join('') + items.join(' ') + nextItems.join(''));
+    },
+
+    click: function (e) {
+      var $target = $(e.target);
+      var options = this.options;
+      var viewDate = this.viewDate;
+      var viewYear;
+      var viewMonth;
+      var viewDay;
+      var isYear;
+      var year;
+      var view;
+
+      e.stopPropagation();
+      e.preventDefault();
+
+      if ($target.hasClass('disabled')) {
+        return;
+      }
+
+      viewYear = viewDate.getFullYear();
+      viewMonth = viewDate.getMonth();
+      viewDay = viewDate.getDate();
+      view = $target.data('view');
+
+      switch (view) {
+        case 'years prev':
+        case 'years next':
+          viewYear = view === 'years prev' ? viewYear - 10 : viewYear + 10;
+          year = $target.text();
+          isYear = REGEXP_YEAR.test(year);
+
+          if (isYear) {
+            viewYear = parseInt(year, 10);
+            this.date = new Date(viewYear, viewMonth, min(viewDay, 28));
+          }
+
+          this.viewDate = new Date(viewYear, viewMonth, min(viewDay, 28));
+          this.fillYears();
+
+          if (isYear) {
+            this.showView(VIEWS.MONTHS);
+            this.pick('year');
+          }
+
+          break;
+
+        case 'year prev':
+        case 'year next':
+          viewYear = view === 'year prev' ? viewYear - 1 : viewYear + 1;
+          this.viewDate = new Date(viewYear, viewMonth, min(viewDay, 28));
+          this.fillMonths();
+          break;
+
+        case 'year current':
+          if (this.format.hasYear) {
+            this.showView(VIEWS.YEARS);
+          }
+
+          break;
+
+        case 'year picked':
+          if (this.format.hasMonth) {
+            this.showView(VIEWS.MONTHS);
+          } else {
+            $target.addClass(options.pickedClass)
+              .siblings()
+                .removeClass(options.pickedClass);
+            this.hideView();
+          }
+
+          this.pick('year');
+          break;
+
+        case 'year':
+          viewYear = parseInt($target.text(), 10);
+          this.date = new Date(viewYear, viewMonth, min(viewDay, 28));
+
+          if (this.format.hasMonth) {
+            this.viewDate = new Date(viewYear, viewMonth, min(viewDay, 28));
+            this.showView(VIEWS.MONTHS);
+          } else {
+            $target.addClass(options.pickedClass)
+              .siblings()
+                .removeClass(options.pickedClass);
+            this.hideView();
+          }
+
+          this.pick('year');
+          break;
+
+        case 'month prev':
+        case 'month next':
+          viewMonth = view === 'month prev' ? viewMonth - 1 : view === 'month next' ? viewMonth + 1 : viewMonth;
+          this.viewDate = new Date(viewYear, viewMonth, min(viewDay, 28));
+          this.fillDays();
+          break;
+
+        case 'month current':
+          if (this.format.hasMonth) {
+            this.showView(VIEWS.MONTHS);
+          }
+
+          break;
+
+        case 'month picked':
+          if (this.format.hasDay) {
+            this.showView(VIEWS.DAYS);
+          } else {
+            $target.addClass(options.pickedClass)
+              .siblings()
+                .removeClass(options.pickedClass);
+            this.hideView();
+          }
+
+          this.pick('month');
+          break;
+
+        case 'month':
+          viewMonth = $.inArray($target.text(), options.monthsShort);
+          this.date = new Date(viewYear, viewMonth, min(viewDay, 28));
+
+          if (this.format.hasDay) {
+            this.viewDate = new Date(viewYear, viewMonth, min(viewDay, 28));
+            this.showView(VIEWS.DAYS);
+          } else {
+            $target.addClass(options.pickedClass)
+              .siblings()
+                .removeClass(options.pickedClass);
+            this.hideView();
+          }
+
+          this.pick('month');
+          break;
+
+        case 'day prev':
+        case 'day next':
+        case 'day':
+          viewMonth = view === 'day prev' ? viewMonth - 1 : view === 'day next' ? viewMonth + 1 : viewMonth;
+          viewDay = parseInt($target.text(), 10);
+          this.date = new Date(viewYear, viewMonth, viewDay);
+          this.viewDate = new Date(viewYear, viewMonth, viewDay);
+          this.fillDays();
+
+          if (view === 'day') {
+            this.hideView();
+          }
+
+          this.pick('day');
+          break;
+
+        case 'day picked':
+          this.hideView();
+          this.pick('day');
+          break;
+
+        // No default
+      }
+    },
+
+    clickDoc: function (e) {
+      var target = e.target;
+      var element = this.$element[0];
+      var trigger = this.$trigger[0];
+      var ignored;
+
+      while (target !== document) {
+        if (target === trigger || target === element) {
+          ignored = true;
+          break;
+        }
+
+        target = target.parentNode;
+      }
+
+      if (!ignored) {
+        this.hide();
+      }
+    },
+
+    keyup: function () {
+      this.update();
+    },
+
+    keyupDoc: function (e) {
+      if (this.isInput && e.target !== this.$element[0] &&
+        this.isShown && (e.key === 'Tab' || e.keyCode === 9)) {
+        this.hide();
+      }
+    },
+
+    getValue: function () {
+      var $this = this.$element;
+      var val = '';
+
+      if (this.isInput) {
+        val = $this.val();
+      } else if (this.isInline) {
+        if (this.options.container) {
+          val = $this.text();
+        }
+      } else {
+        val = $this.text();
+      }
+
+      return val;
+    },
+
+    setValue: function (val) {
+      var $this = this.$element;
+
+      val = isString(val) ? val : '';
+
+      if (this.isInput) {
+        $this.val(val);
+      } else if (this.isInline) {
+        if (this.options.container) {
+          $this.text(val);
+        }
+      } else {
+        $this.text(val);
+      }
+    },
+
+
+    // Methods
+    // -------------------------------------------------------------------------
+
+    // Show the datepicker
+    show: function () {
+      if (!this.isBuilt) {
+        this.build();
+      }
+
+      if (this.isShown) {
+        return;
+      }
+
+      if (this.trigger(EVENT_SHOW).isDefaultPrevented()) {
+        return;
+      }
+
+      this.isShown = true;
+      this.$picker.removeClass(CLASS_HIDE).on(EVENT_CLICK, $.proxy(this.click, this));
+      this.showView(this.options.startView);
+
+      if (!this.isInline) {
+        $window.on(EVENT_RESIZE, (this._place = proxy(this.place, this)));
+        $document.on(EVENT_CLICK, (this._clickDoc = proxy(this.clickDoc, this)));
+        $document.on(EVENT_KEYUP, (this._keyupDoc = proxy(this.keyupDoc, this)));
+        this.place();
+      }
+    },
+
+    // Hide the datepicker
+    hide: function () {
+      if (!this.isShown) {
+        return;
+      }
+
+      if (this.trigger(EVENT_HIDE).isDefaultPrevented()) {
+        return;
+      }
+
+      this.isShown = false;
+      this.$picker.addClass(CLASS_HIDE).off(EVENT_CLICK, this.click);
+
+      if (!this.isInline) {
+        $window.off(EVENT_RESIZE, this._place);
+        $document.off(EVENT_CLICK, this._clickDoc);
+        $document.off(EVENT_KEYUP, this._keyupDoc);
+      }
+    },
+
+    toggle: function () {
+      if (this.isShown) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    },
+
+    // Update the datepicker with the current input value
+    update: function () {
+      var value = this.getValue();
+
+      if (value === this.oldValue) {
+        return;
+      }
+
+      this.setDate(value, true);
+      this.oldValue = value;
+    },
+
+    /**
+     * Pick the current date to the element
+     *
+     * @param {String} _view (private)
+     */
+    pick: function (_view) {
+      var $this = this.$element;
+      var date = this.date;
+
+      if (this.trigger(EVENT_PICK, {
+        view: _view || '',
+        date: date
+      }).isDefaultPrevented()) {
+        return;
+      }
+
+      this.setValue(date = this.formatDate(this.date));
+
+      if (this.isInput) {
+        $this.trigger('change');
+      }
+    },
+
+    // Reset the datepicker
+    reset: function () {
+      this.setDate(this.initialDate, true);
+      this.setValue(this.initialValue);
+
+      if (this.isShown) {
+        this.showView(this.options.startView);
+      }
+    },
+
+    /**
+     * Get the month name with given argument or the current date
+     *
+     * @param {Number} month (optional)
+     * @param {Boolean} short (optional)
+     * @return {String} (month name)
+     */
+    getMonthName: function (month, short) {
+      var options = this.options;
+      var months = options.months;
+
+      if ($.isNumeric(month)) {
+        month = Number(month);
+      } else if (isUndefined(short)) {
+        short = month;
+      }
+
+      if (short === true) {
+        months = options.monthsShort;
+      }
+
+      return months[isNumber(month) ? month : this.date.getMonth()];
+    },
+
+    /**
+     * Get the day name with given argument or the current date
+     *
+     * @param {Number} day (optional)
+     * @param {Boolean} short (optional)
+     * @param {Boolean} min (optional)
+     * @return {String} (day name)
+     */
+    getDayName: function (day, short, min) {
+      var options = this.options;
+      var days = options.days;
+
+      if ($.isNumeric(day)) {
+        day = Number(day);
+      } else {
+        if (isUndefined(min)) {
+          min = short;
+        }
+
+        if (isUndefined(short)) {
+          short = day;
+        }
+      }
+
+      days = min === true ? options.daysMin : short === true ? options.daysShort : days;
+
+      return days[isNumber(day) ? day : this.date.getDay()];
+    },
+
+    /**
+     * Get the current date
+     *
+     * @param {Boolean} formatted (optional)
+     * @return {Date|String} (date)
+     */
+    getDate: function (formatted) {
+      var date = this.date;
+
+      return formatted ? this.formatDate(date) : new Date(date);
+    },
+
+    /**
+     * Set the current date with a new date
+     *
+     * @param {Date} date
+     * @param {Boolean} _isUpdated (private)
+     */
+    setDate: function (date, _isUpdated) {
+      var filter = this.options.filter;
+
+      if (isDate(date) || isString(date)) {
+        date = this.parseDate(date);
+
+        if ($.isFunction(filter) && filter.call(this.$element, date) === false) {
+          return;
+        }
+
+        this.date = date;
+        this.viewDate = new Date(date);
+
+        if (!_isUpdated) {
+          this.pick();
+        }
+
+        if (this.isBuilt) {
+          this.fillAll();
+        }
+      }
+    },
+
+    /**
+     * Set the start view date with a new date
+     *
+     * @param {Date} date
+     */
+    setStartDate: function (date) {
+      if (isDate(date) || isString(date)) {
+        this.startDate = this.parseDate(date);
+
+        if (this.isBuilt) {
+          this.fillAll();
+        }
+      }
+    },
+
+    /**
+     * Set the end view date with a new date
+     *
+     * @param {Date} date
+     */
+    setEndDate: function (date) {
+      if (isDate(date) || isString(date)) {
+        this.endDate = this.parseDate(date);
+
+        if (this.isBuilt) {
+          this.fillAll();
+        }
+      }
+    },
+
+    /**
+     * Parse a date string with the set date format
+     *
+     * @param {String} date
+     * @return {Date} (parsed date)
+     */
+    parseDate: function (date) {
+      var format = this.format;
+      var parts = [];
+      var length;
+      var year;
+      var day;
+      var month;
+      var val;
+      var i;
+
+      if (isDate(date)) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      } else if (isString(date)) {
+        parts = date.match(REGEXP_DIGITS) || [];
+      }
+
+      date = new Date();
+      year = date.getFullYear();
+      day = date.getDate();
+      month = date.getMonth();
+      length = format.parts.length;
+
+      if (parts.length === length) {
+        for (i = 0; i < length; i++) {
+          val = parseInt(parts[i], 10) || 1;
+
+          switch (format.parts[i]) {
+            case 'dd':
+            case 'd':
+              day = val;
+              break;
+
+            case 'mm':
+            case 'm':
+              month = val - 1;
+              break;
+
+            case 'yy':
+              year = 2000 + val;
+              break;
+
+            case 'yyyy':
+              year = val;
+              break;
+
+            // No default
+          }
+        }
+      }
+
+      return new Date(year, month, day);
+    },
+
+    /**
+     * Format a date object to a string with the set date format
+     *
+     * @param {Date} date
+     * @return {String} (formatted date)
+     */
+    formatDate: function (date) {
+      var format = this.format;
+      var formatted = '';
+      var length;
+      var year;
+      var part;
+      var val;
+      var i;
+
+      if (isDate(date)) {
+        formatted = format.source;
+        year = date.getFullYear();
+        val = {
+          d: date.getDate(),
+          m: date.getMonth() + 1,
+          yy: year.toString().substring(2),
+          yyyy: year
+        };
+
+        val.dd = (val.d < 10 ? '0' : '') + val.d;
+        val.mm = (val.m < 10 ? '0' : '') + val.m;
+        length = format.parts.length;
+
+        for (i = 0; i < length; i++) {
+          part = format.parts[i];
+          formatted = formatted.replace(part, val[part]);
+        }
+      }
+
+      return formatted;
+    },
+
+    // Destroy the datepicker and remove the instance from the target element
+    destroy: function () {
+      this.unbind();
+      this.unbuild();
+      this.$element.removeData(NAMESPACE);
+    }
+  };
+
+  Datepicker.LANGUAGES = {};
+
+  Datepicker.DEFAULTS = {
+    // Show the datepicker automatically when initialized
+    autoShow: false,
+
+    // Hide the datepicker automatically when picked
+    autoHide: false,
+
+    // Pick the initial date automatically when initialized
+    autoPick: false,
+
+    // Enable inline mode
+    inline: false,
+
+    // A element (or selector) for putting the datepicker
+    container: null,
+
+    // A element (or selector) for triggering the datepicker
+    trigger: null,
+
+    // The ISO language code (built-in: en-US)
+    language: '',
+
+    // The date string format
+    format: 'mm/dd/yyyy',
+
+    // The initial date
+    date: null,
+
+    // The start view date
+    startDate: null,
+
+    // The end view date
+    endDate: null,
+
+    // The start view when initialized
+    startView: 0, // 0 for days, 1 for months, 2 for years
+
+    // The start day of the week
+    weekStart: 0, // 0 for Sunday, 1 for Monday, 2 for Tuesday, 3 for Wednesday, 4 for Thursday, 5 for Friday, 6 for Saturday
+
+    // Show year before month on the datepicker header
+    yearFirst: false,
+
+    // A string suffix to the year number.
+    yearSuffix: '',
+
+    // Days' name of the week.
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+
+    // Shorter days' name
+    daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+
+    // Shortest days' name
+    daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+
+    // Months' name
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+
+    // Shorter months' name
+    monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+
+    // A element tag for each item of years, months and days
+    itemTag: 'li',
+
+    // A class (CSS) for muted date item
+    mutedClass: 'muted',
+
+    // A class (CSS) for picked date item
+    pickedClass: 'picked',
+
+    // A class (CSS) for disabled date item
+    disabledClass: 'disabled',
+
+    // A class (CSS) for highlight date item
+    highlightedClass: 'highlighted',
+
+    // The template of the datepicker
+    template: (
+      '<div class="datepicker-container">' +
+        '<div class="datepicker-panel" data-view="years picker">' +
+          '<ul>' +
+            '<li data-view="years prev">&lsaquo;</li>' +
+            '<li data-view="years current"></li>' +
+            '<li data-view="years next">&rsaquo;</li>' +
+          '</ul>' +
+          '<ul data-view="years"></ul>' +
+        '</div>' +
+        '<div class="datepicker-panel" data-view="months picker">' +
+          '<ul>' +
+            '<li data-view="year prev">&lsaquo;</li>' +
+            '<li data-view="year current"></li>' +
+            '<li data-view="year next">&rsaquo;</li>' +
+          '</ul>' +
+          '<ul data-view="months"></ul>' +
+        '</div>' +
+        '<div class="datepicker-panel" data-view="days picker">' +
+          '<ul>' +
+            '<li data-view="month prev">&lsaquo;</li>' +
+            '<li data-view="month current"></li>' +
+            '<li data-view="month next">&rsaquo;</li>' +
+          '</ul>' +
+          '<ul data-view="week"></ul>' +
+          '<ul data-view="days"></ul>' +
+        '</div>' +
+      '</div>'
+    ),
+
+    // The offset top or bottom of the datepicker from the element
+    offset: 10,
+
+    // The `z-index` of the datepicker
+    zIndex: 1000,
+
+    // Filter each date item (return `false` to disable a date item)
+    filter: null,
+
+    // Event shortcuts
+    show: null,
+    hide: null,
+    pick: null
+  };
+
+  Datepicker.setDefaults = function (options) {
+    options = $.isPlainObject(options) ? options : {};
+
+    if (options.language) {
+      options = $.extend({}, Datepicker.LANGUAGES[options.language], options);
+    }
+
+    $.extend(Datepicker.DEFAULTS, options);
+  };
+
+  // Save the other datepicker
+  Datepicker.other = $.fn.datepicker;
+
+  // Register as jQuery plugin
+  $.fn.datepicker = function (option) {
+    var args = toArray(arguments, 1);
+    var result;
+
+    this.each(function () {
+      var $this = $(this);
+      var data = $this.data(NAMESPACE);
+      var options;
+      var fn;
+
+      if (!data) {
+        if (/destroy/.test(option)) {
+          return;
+        }
+
+        options = $.extend({}, $this.data(), $.isPlainObject(option) && option);
+        $this.data(NAMESPACE, (data = new Datepicker(this, options)));
+      }
+
+      if (isString(option) && $.isFunction(fn = data[option])) {
+        result = fn.apply(data, args);
+      }
+    });
+
+    return isUndefined(result) ? this : result;
+  };
+
+  $.fn.datepicker.Constructor = Datepicker;
+  $.fn.datepicker.languages = Datepicker.LANGUAGES;
+  $.fn.datepicker.setDefaults = Datepicker.setDefaults;
+
+  // No conflict
+  $.fn.datepicker.noConflict = function () {
+    $.fn.datepicker = Datepicker.other;
+    return this;
+  };
+
+});
 function aload(t){"use strict";var e="data-aload";return t=t||window.document.querySelectorAll("["+e+"]"),void 0===t.length&&(t=[t]),[].forEach.call(t,function(t){t["LINK"!==t.tagName?"src":"href"]=t.getAttribute(e),t.removeAttribute(e)}),t}
 
 /*! WOW - v1.1.2 - 2015-04-07
@@ -12833,8 +14365,1737 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
   $.fn.smoothState.options = defaults;
 
 })(jQuery, window, document);
-// ../../bower_components/jquery-mask-plugin/dist/jquery.mask.js
+/**
+ * jquery.mask.js
+ * @version: v1.14.11
+ * @author: Igor Escobar
+ *
+ * Created by Igor Escobar on 2012-03-10. Please report any bug at http://blog.igorescobar.com
+ *
+ * Copyright (c) 2012 Igor Escobar http://blog.igorescobar.com
+ *
+ * The MIT License (http://www.opensource.org/licenses/mit-license.php)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/* jshint laxbreak: true */
+/* jshint maxcomplexity:17 */
+/* global define */
+
+'use strict';
+
+// UMD (Universal Module Definition) patterns for JavaScript modules that work everywhere.
+// https://github.com/umdjs/umd/blob/master/jqueryPluginCommonjs.js
+(function (factory, jQuery, Zepto) {
+
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery || Zepto);
+    }
+
+}(function ($) {
+
+    var Mask = function (el, mask, options) {
+
+        var p = {
+            invalid: [],
+            getCaret: function () {
+                try {
+                    var sel,
+                        pos = 0,
+                        ctrl = el.get(0),
+                        dSel = document.selection,
+                        cSelStart = ctrl.selectionStart;
+
+                    // IE Support
+                    if (dSel && navigator.appVersion.indexOf('MSIE 10') === -1) {
+                        sel = dSel.createRange();
+                        sel.moveStart('character', -p.val().length);
+                        pos = sel.text.length;
+                    }
+                    // Firefox support
+                    else if (cSelStart || cSelStart === '0') {
+                        pos = cSelStart;
+                    }
+
+                    return pos;
+                } catch (e) {}
+            },
+            setCaret: function(pos) {
+                try {
+                    if (el.is(':focus')) {
+                        var range, ctrl = el.get(0);
+
+                        // Firefox, WebKit, etc..
+                        if (ctrl.setSelectionRange) {
+                            ctrl.setSelectionRange(pos, pos);
+                        } else { // IE
+                            range = ctrl.createTextRange();
+                            range.collapse(true);
+                            range.moveEnd('character', pos);
+                            range.moveStart('character', pos);
+                            range.select();
+                        }
+                    }
+                } catch (e) {}
+            },
+            events: function() {
+                el
+                .on('keydown.mask', function(e) {
+                    el.data('mask-keycode', e.keyCode || e.which);
+                    el.data('mask-previus-value', el.val());
+                    el.data('mask-previus-caret-pos', p.getCaret());
+                    p.maskDigitPosMapOld = p.maskDigitPosMap;
+                })
+                .on($.jMaskGlobals.useInput ? 'input.mask' : 'keyup.mask', p.behaviour)
+                .on('paste.mask drop.mask', function() {
+                    setTimeout(function() {
+                        el.keydown().keyup();
+                    }, 100);
+                })
+                .on('change.mask', function(){
+                    el.data('changed', true);
+                })
+                .on('blur.mask', function(){
+                    if (oldValue !== p.val() && !el.data('changed')) {
+                        el.trigger('change');
+                    }
+                    el.data('changed', false);
+                })
+                // it's very important that this callback remains in this position
+                // otherwhise oldValue it's going to work buggy
+                .on('blur.mask', function() {
+                    oldValue = p.val();
+                })
+                // select all text on focus
+                .on('focus.mask', function (e) {
+                    if (options.selectOnFocus === true) {
+                        $(e.target).select();
+                    }
+                })
+                // clear the value if it not complete the mask
+                .on('focusout.mask', function() {
+                    if (options.clearIfNotMatch && !regexMask.test(p.val())) {
+                       p.val('');
+                   }
+                });
+            },
+            getRegexMask: function() {
+                var maskChunks = [], translation, pattern, optional, recursive, oRecursive, r;
+
+                for (var i = 0; i < mask.length; i++) {
+                    translation = jMask.translation[mask.charAt(i)];
+
+                    if (translation) {
+
+                        pattern = translation.pattern.toString().replace(/.{1}$|^.{1}/g, '');
+                        optional = translation.optional;
+                        recursive = translation.recursive;
+
+                        if (recursive) {
+                            maskChunks.push(mask.charAt(i));
+                            oRecursive = {digit: mask.charAt(i), pattern: pattern};
+                        } else {
+                            maskChunks.push(!optional && !recursive ? pattern : (pattern + '?'));
+                        }
+
+                    } else {
+                        maskChunks.push(mask.charAt(i).replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+                    }
+                }
+
+                r = maskChunks.join('');
+
+                if (oRecursive) {
+                    r = r.replace(new RegExp('(' + oRecursive.digit + '(.*' + oRecursive.digit + ')?)'), '($1)?')
+                         .replace(new RegExp(oRecursive.digit, 'g'), oRecursive.pattern);
+                }
+
+                return new RegExp(r);
+            },
+            destroyEvents: function() {
+                el.off(['input', 'keydown', 'keyup', 'paste', 'drop', 'blur', 'focusout', ''].join('.mask '));
+            },
+            val: function(v) {
+                var isInput = el.is('input'),
+                    method = isInput ? 'val' : 'text',
+                    r;
+
+                if (arguments.length > 0) {
+                    if (el[method]() !== v) {
+                        el[method](v);
+                    }
+                    r = el;
+                } else {
+                    r = el[method]();
+                }
+
+                return r;
+            },
+            calculateCaretPosition: function() {
+                var oldVal = el.data('mask-previus-value') || '',
+                    newVal = p.getMasked(),
+                    caretPosNew = p.getCaret();
+                if (oldVal !== newVal) {
+                    var caretPosOld = el.data('mask-previus-caret-pos') || 0,
+                        newValL = newVal.length,
+                        oldValL = oldVal.length,
+                        maskDigitsBeforeCaret = 0,
+                        maskDigitsAfterCaret = 0,
+                        maskDigitsBeforeCaretAll = 0,
+                        maskDigitsBeforeCaretAllOld = 0,
+                        i = 0;
+
+                    for (i = caretPosNew; i < newValL; i++) {
+                        if (!p.maskDigitPosMap[i]) {
+                            break;
+                        }
+                        maskDigitsAfterCaret++;
+                    }
+
+                    for (i = caretPosNew - 1; i >= 0; i--) {
+                        if (!p.maskDigitPosMap[i]) {
+                            break;
+                        }
+                        maskDigitsBeforeCaret++;
+                    }
+
+                    for (i = caretPosNew - 1; i >= 0; i--) {
+                        if (p.maskDigitPosMap[i]) {
+                            maskDigitsBeforeCaretAll++;
+                        }
+                    }
+
+                    for (i = caretPosOld - 1; i >= 0; i--) {
+                        if (p.maskDigitPosMapOld[i]) {
+                            maskDigitsBeforeCaretAllOld++;
+                        }
+                    }
+
+                    if (caretPosNew > oldValL) {
+                      // if the cursor is at the end keep it there
+                      caretPosNew = newValL;
+                    }
+                    else if (caretPosOld >= caretPosNew && caretPosOld !== oldValL) {
+                        if (!p.maskDigitPosMapOld[caretPosNew])  {
+                          var caretPos = caretPosNew;
+                          caretPosNew -= maskDigitsBeforeCaretAllOld - maskDigitsBeforeCaretAll;
+                          caretPosNew -= maskDigitsBeforeCaret;
+                          if (p.maskDigitPosMap[caretPosNew])  {
+                            caretPosNew = caretPos;
+                          }
+                        }
+                    }
+                    else if (caretPosNew > caretPosOld) {
+                        caretPosNew += maskDigitsBeforeCaretAll - maskDigitsBeforeCaretAllOld;
+                        caretPosNew += maskDigitsAfterCaret;
+                    }
+                }
+                return caretPosNew;
+            },
+            behaviour: function(e) {
+                e = e || window.event;
+                p.invalid = [];
+
+                var keyCode = el.data('mask-keycode');
+
+                if ($.inArray(keyCode, jMask.byPassKeys) === -1) {
+                    var newVal   = p.getMasked(),
+                        caretPos = p.getCaret();
+
+                    setTimeout(function() {
+                      p.setCaret(p.calculateCaretPosition());
+                    }, 10);
+
+                    p.val(newVal);
+                    p.setCaret(caretPos);
+                    return p.callbacks(e);
+                }
+            },
+            getMasked: function(skipMaskChars, val) {
+                var buf = [],
+                    value = val === undefined ? p.val() : val + '',
+                    m = 0, maskLen = mask.length,
+                    v = 0, valLen = value.length,
+                    offset = 1, addMethod = 'push',
+                    resetPos = -1,
+                    maskDigitCount = 0,
+                    maskDigitPosArr = [],
+                    lastMaskChar,
+                    check;
+
+                if (options.reverse) {
+                    addMethod = 'unshift';
+                    offset = -1;
+                    lastMaskChar = 0;
+                    m = maskLen - 1;
+                    v = valLen - 1;
+                    check = function () {
+                        return m > -1 && v > -1;
+                    };
+                } else {
+                    lastMaskChar = maskLen - 1;
+                    check = function () {
+                        return m < maskLen && v < valLen;
+                    };
+                }
+
+                var lastUntranslatedMaskChar;
+                while (check()) {
+                    var maskDigit = mask.charAt(m),
+                        valDigit = value.charAt(v),
+                        translation = jMask.translation[maskDigit];
+
+                    if (translation) {
+                        if (valDigit.match(translation.pattern)) {
+                            buf[addMethod](valDigit);
+                             if (translation.recursive) {
+                                if (resetPos === -1) {
+                                    resetPos = m;
+                                } else if (m === lastMaskChar) {
+                                    m = resetPos - offset;
+                                }
+
+                                if (lastMaskChar === resetPos) {
+                                    m -= offset;
+                                }
+                            }
+                            m += offset;
+                        } else if (valDigit === lastUntranslatedMaskChar) {
+                            // matched the last untranslated (raw) mask character that we encountered
+                            // likely an insert offset the mask character from the last entry; fall
+                            // through and only increment v
+                            maskDigitCount--;
+                            lastUntranslatedMaskChar = undefined;
+                        } else if (translation.optional) {
+                            m += offset;
+                            v -= offset;
+                        } else if (translation.fallback) {
+                            buf[addMethod](translation.fallback);
+                            m += offset;
+                            v -= offset;
+                        } else {
+                          p.invalid.push({p: v, v: valDigit, e: translation.pattern});
+                        }
+                        v += offset;
+                    } else {
+                        if (!skipMaskChars) {
+                            buf[addMethod](maskDigit);
+                        }
+
+                        if (valDigit === maskDigit) {
+                            maskDigitPosArr.push(v);
+                            v += offset;
+                        } else {
+                            lastUntranslatedMaskChar = maskDigit;
+                            maskDigitPosArr.push(v + maskDigitCount);
+                            maskDigitCount++;
+                        }
+
+                        m += offset;
+                    }
+                }
+
+                var lastMaskCharDigit = mask.charAt(lastMaskChar);
+                if (maskLen === valLen + 1 && !jMask.translation[lastMaskCharDigit]) {
+                    buf.push(lastMaskCharDigit);
+                }
+
+                var newVal = buf.join('');
+                p.mapMaskdigitPositions(newVal, maskDigitPosArr, valLen);
+                return newVal;
+            },
+            mapMaskdigitPositions: function(newVal, maskDigitPosArr, valLen) {
+              var maskDiff = options.reverse ? newVal.length - valLen : 0;
+              p.maskDigitPosMap = {};
+              for (var i = 0; i < maskDigitPosArr.length; i++) {
+                p.maskDigitPosMap[maskDigitPosArr[i] + maskDiff] = 1;
+              }
+            },
+            callbacks: function (e) {
+                var val = p.val(),
+                    changed = val !== oldValue,
+                    defaultArgs = [val, e, el, options],
+                    callback = function(name, criteria, args) {
+                        if (typeof options[name] === 'function' && criteria) {
+                            options[name].apply(this, args);
+                        }
+                    };
+
+                callback('onChange', changed === true, defaultArgs);
+                callback('onKeyPress', changed === true, defaultArgs);
+                callback('onComplete', val.length === mask.length, defaultArgs);
+                callback('onInvalid', p.invalid.length > 0, [val, e, el, p.invalid, options]);
+            }
+        };
+
+        el = $(el);
+        var jMask = this, oldValue = p.val(), regexMask;
+
+        mask = typeof mask === 'function' ? mask(p.val(), undefined, el,  options) : mask;
+
+        // public methods
+        jMask.mask = mask;
+        jMask.options = options;
+        jMask.remove = function() {
+            var caret = p.getCaret();
+            p.destroyEvents();
+            p.val(jMask.getCleanVal());
+            p.setCaret(caret);
+            return el;
+        };
+
+        // get value without mask
+        jMask.getCleanVal = function() {
+           return p.getMasked(true);
+        };
+
+        // get masked value without the value being in the input or element
+        jMask.getMaskedVal = function(val) {
+           return p.getMasked(false, val);
+        };
+
+       jMask.init = function(onlyMask) {
+            onlyMask = onlyMask || false;
+            options = options || {};
+
+            jMask.clearIfNotMatch  = $.jMaskGlobals.clearIfNotMatch;
+            jMask.byPassKeys       = $.jMaskGlobals.byPassKeys;
+            jMask.translation      = $.extend({}, $.jMaskGlobals.translation, options.translation);
+
+            jMask = $.extend(true, {}, jMask, options);
+
+            regexMask = p.getRegexMask();
+
+            if (onlyMask) {
+                p.events();
+                p.val(p.getMasked());
+            } else {
+                if (options.placeholder) {
+                    el.attr('placeholder' , options.placeholder);
+                }
+
+                // this is necessary, otherwise if the user submit the form
+                // and then press the "back" button, the autocomplete will erase
+                // the data. Works fine on IE9+, FF, Opera, Safari.
+                if (el.data('mask')) {
+                  el.attr('autocomplete', 'off');
+                }
+
+                // detect if is necessary let the user type freely.
+                // for is a lot faster than forEach.
+                for (var i = 0, maxlength = true; i < mask.length; i++) {
+                    var translation = jMask.translation[mask.charAt(i)];
+                    if (translation && translation.recursive) {
+                        maxlength = false;
+                        break;
+                    }
+                }
+
+                if (maxlength) {
+                    el.attr('maxlength', mask.length);
+                }
+
+                p.destroyEvents();
+                p.events();
+
+                var caret = p.getCaret();
+                p.val(p.getMasked());
+                p.setCaret(caret);
+            }
+        };
+
+        jMask.init(!el.is('input'));
+    };
+
+    $.maskWatchers = {};
+    var HTMLAttributes = function () {
+        var input = $(this),
+            options = {},
+            prefix = 'data-mask-',
+            mask = input.attr('data-mask');
+
+        if (input.attr(prefix + 'reverse')) {
+            options.reverse = true;
+        }
+
+        if (input.attr(prefix + 'clearifnotmatch')) {
+            options.clearIfNotMatch = true;
+        }
+
+        if (input.attr(prefix + 'selectonfocus') === 'true') {
+           options.selectOnFocus = true;
+        }
+
+        if (notSameMaskObject(input, mask, options)) {
+            return input.data('mask', new Mask(this, mask, options));
+        }
+    },
+    notSameMaskObject = function(field, mask, options) {
+        options = options || {};
+        var maskObject = $(field).data('mask'),
+            stringify = JSON.stringify,
+            value = $(field).val() || $(field).text();
+        try {
+            if (typeof mask === 'function') {
+                mask = mask(value);
+            }
+            return typeof maskObject !== 'object' || stringify(maskObject.options) !== stringify(options) || maskObject.mask !== mask;
+        } catch (e) {}
+    },
+    eventSupported = function(eventName) {
+        var el = document.createElement('div'), isSupported;
+
+        eventName = 'on' + eventName;
+        isSupported = (eventName in el);
+
+        if ( !isSupported ) {
+            el.setAttribute(eventName, 'return;');
+            isSupported = typeof el[eventName] === 'function';
+        }
+        el = null;
+
+        return isSupported;
+    };
+
+    $.fn.mask = function(mask, options) {
+        options = options || {};
+        var selector = this.selector,
+            globals = $.jMaskGlobals,
+            interval = globals.watchInterval,
+            watchInputs = options.watchInputs || globals.watchInputs,
+            maskFunction = function() {
+                if (notSameMaskObject(this, mask, options)) {
+                    return $(this).data('mask', new Mask(this, mask, options));
+                }
+            };
+
+        $(this).each(maskFunction);
+
+        if (selector && selector !== '' && watchInputs) {
+            clearInterval($.maskWatchers[selector]);
+            $.maskWatchers[selector] = setInterval(function(){
+                $(document).find(selector).each(maskFunction);
+            }, interval);
+        }
+        return this;
+    };
+
+    $.fn.masked = function(val) {
+        return this.data('mask').getMaskedVal(val);
+    };
+
+    $.fn.unmask = function() {
+        clearInterval($.maskWatchers[this.selector]);
+        delete $.maskWatchers[this.selector];
+        return this.each(function() {
+            var dataMask = $(this).data('mask');
+            if (dataMask) {
+                dataMask.remove().removeData('mask');
+            }
+        });
+    };
+
+    $.fn.cleanVal = function() {
+        return this.data('mask').getCleanVal();
+    };
+
+    $.applyDataMask = function(selector) {
+        selector = selector || $.jMaskGlobals.maskElements;
+        var $selector = (selector instanceof $) ? selector : $(selector);
+        $selector.filter($.jMaskGlobals.dataMaskAttr).each(HTMLAttributes);
+    };
+
+    var globals = {
+        maskElements: 'input,td,span,div',
+        dataMaskAttr: '*[data-mask]',
+        dataMask: true,
+        watchInterval: 300,
+        watchInputs: true,
+        // old versions of chrome dont work great with input event
+        useInput: !/Chrome\/[2-4][0-9]|SamsungBrowser/.test(window.navigator.userAgent) && eventSupported('input'),
+        watchDataMask: false,
+        byPassKeys: [9, 16, 17, 18, 36, 37, 38, 39, 40, 91],
+        translation: {
+            '0': {pattern: /\d/},
+            '9': {pattern: /\d/, optional: true},
+            '#': {pattern: /\d/, recursive: true},
+            'A': {pattern: /[a-zA-Z0-9]/},
+            'S': {pattern: /[a-zA-Z]/}
+        }
+    };
+
+    $.jMaskGlobals = $.jMaskGlobals || {};
+    globals = $.jMaskGlobals = $.extend(true, {}, globals, $.jMaskGlobals);
+
+    // looking for inputs with data-mask attribute
+    if (globals.dataMask) {
+        $.applyDataMask();
+    }
+
+    setInterval(function() {
+        if ($.jMaskGlobals.watchDataMask) {
+            $.applyDataMask();
+        }
+    }, globals.watchInterval);
+}, window.jQuery, window.Zepto));
 // ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js
+
+/*
+ * jQuery Form Styler v2.0.0
+ * https://github.com/Dimox/jQueryFormStyler
+ *
+ * Copyright 2012-2017 Dimox (http://dimox.name/)
+ * Released under the MIT license.
+ *
+ * Date: 2017.05.08
+ *
+ */
+
+;(function(factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD
+		define(['jquery'], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		module.exports = factory($ || require('jquery'));
+	} else {
+		factory(jQuery);
+	}
+}(function($) {
+
+	'use strict';
+
+	var pluginName = 'styler',
+			defaults = {
+				idSuffix: '-styler',
+				filePlaceholder: 'Файл не выбран',
+				fileBrowse: 'Обзор...',
+				fileNumber: 'Выбрано файлов: %s',
+				selectPlaceholder: 'Выберите...',
+				selectSearch: false,
+				selectSearchLimit: 10,
+				selectSearchNotFound: 'Совпадений не найдено',
+				selectSearchPlaceholder: 'Поиск...',
+				selectVisibleOptions: 0,
+				selectSmartPositioning: true,
+				locale: 'ru',
+				locales: {
+					'en': {
+						filePlaceholder: 'No file selected',
+						fileBrowse: 'Browse...',
+						fileNumber: 'Selected files: %s',
+						selectPlaceholder: 'Select...',
+						selectSearchNotFound: 'No matches found',
+						selectSearchPlaceholder: 'Search...'
+					}
+				},
+				onSelectOpened: function() {},
+				onSelectClosed: function() {},
+				onFormStyled: function() {}
+			};
+
+	function Plugin(element, options) {
+		this.element = element;
+		this.options = $.extend({}, defaults, options);
+		var locale = this.options.locale;
+		if (this.options.locales[locale] !== undefined) {
+			$.extend(this.options, this.options.locales[locale]);
+		}
+		this.init();
+	}
+
+	Plugin.prototype = {
+
+		// инициализация
+		init: function() {
+
+			var el = $(this.element);
+			var opt = this.options;
+
+			var iOS = (navigator.userAgent.match(/(iPad|iPhone|iPod)/i) && !navigator.userAgent.match(/(Windows\sPhone)/i)) ? true : false;
+			var Android = (navigator.userAgent.match(/Android/i) && !navigator.userAgent.match(/(Windows\sPhone)/i)) ? true : false;
+
+			function Attributes() {
+				if (el.attr('id') !== undefined && el.attr('id') !== '') {
+					this.id = el.attr('id') + opt.idSuffix;
+				}
+				this.title = el.attr('title');
+				this.classes = el.attr('class');
+				this.data = el.data();
+			}
+
+			// checkbox
+			if (el.is(':checkbox')) {
+
+				var checkboxOutput = function() {
+
+					var att = new Attributes();
+					var checkbox = $('<div class="jq-checkbox"><div class="jq-checkbox__div"></div></div>')
+						.attr({
+							id: att.id,
+							title: att.title
+						})
+						.addClass(att.classes)
+						.data(att.data)
+					;
+
+					el.after(checkbox).prependTo(checkbox);
+					if (el.is(':checked')) checkbox.addClass('checked');
+					if (el.is(':disabled')) checkbox.addClass('disabled');
+
+					// клик на псевдочекбокс
+					checkbox.click(function(e) {
+						e.preventDefault();
+						el.triggerHandler('click');
+						if (!checkbox.is('.disabled')) {
+							if (el.is(':checked')) {
+								el.prop('checked', false);
+								checkbox.removeClass('checked');
+							} else {
+								el.prop('checked', true);
+								checkbox.addClass('checked');
+							}
+							el.focus().change();
+						}
+					});
+					// клик на label
+					el.closest('label').add('label[for="' + el.attr('id') + '"]').on('click.styler', function(e) {
+						if (!$(e.target).is('a') && !$(e.target).closest(checkbox).length) {
+							checkbox.triggerHandler('click');
+							e.preventDefault();
+						}
+					});
+					// переключение по Space или Enter
+					el.on('change.styler', function() {
+						if (el.is(':checked')) checkbox.addClass('checked');
+						else checkbox.removeClass('checked');
+					})
+					// чтобы переключался чекбокс, который находится в теге label
+					.on('keydown.styler', function(e) {
+						if (e.which == 32) checkbox.click();
+					})
+					.on('focus.styler', function() {
+						if (!checkbox.is('.disabled')) checkbox.addClass('focused');
+					})
+					.on('blur.styler', function() {
+						checkbox.removeClass('focused');
+					});
+
+				}; // end checkboxOutput()
+
+				checkboxOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.closest('label').add('label[for="' + el.attr('id') + '"]').off('.styler');
+					el.off('.styler').parent().before(el).remove();
+					checkboxOutput();
+				});
+
+			// end checkbox
+
+			// radio
+			} else if (el.is(':radio')) {
+
+				var radioOutput = function() {
+
+					var att = new Attributes();
+					var radio = $('<div class="jq-radio"><div class="jq-radio__div"></div></div>')
+						.attr({
+							id: att.id,
+							title: att.title
+						})
+						.addClass(att.classes)
+						.data(att.data)
+					;
+
+					el.after(radio).prependTo(radio);
+					if (el.is(':checked')) radio.addClass('checked');
+					if (el.is(':disabled')) radio.addClass('disabled');
+
+					// определяем общего родителя у радиокнопок с одинаковым name
+					// http://stackoverflow.com/a/27733847
+					$.fn.commonParents = function() {
+						var cachedThis = this;
+						return cachedThis.first().parents().filter(function() {
+							return $(this).find(cachedThis).length === cachedThis.length;
+						});
+					};
+					$.fn.commonParent = function() {
+						return $(this).commonParents().first();
+					};
+
+					// клик на псевдорадиокнопке
+					radio.click(function(e) {
+						e.preventDefault();
+						el.triggerHandler('click');
+						if (!radio.is('.disabled')) {
+							var inputName = $('input[name="' + el.attr('name') + '"]');
+							inputName.commonParent().find(inputName).prop('checked', false).parent().removeClass('checked');
+							el.prop('checked', true).parent().addClass('checked');
+							el.focus().change();
+						}
+					});
+					// клик на label
+					el.closest('label').add('label[for="' + el.attr('id') + '"]').on('click.styler', function(e) {
+						if (!$(e.target).is('a') && !$(e.target).closest(radio).length) {
+							radio.triggerHandler('click');
+							e.preventDefault();
+						}
+					});
+					// переключение стрелками
+					el.on('change.styler', function() {
+						el.parent().addClass('checked');
+					})
+					.on('focus.styler', function() {
+						if (!radio.is('.disabled')) radio.addClass('focused');
+					})
+					.on('blur.styler', function() {
+						radio.removeClass('focused');
+					});
+
+				}; // end radioOutput()
+
+				radioOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.closest('label').add('label[for="' + el.attr('id') + '"]').off('.styler');
+					el.off('.styler').parent().before(el).remove();
+					radioOutput();
+				});
+
+			// end radio
+
+			// file
+			} else if (el.is(':file')) {
+
+				var fileOutput = function() {
+
+					var att = new Attributes();
+					var placeholder = el.data('placeholder');
+					if (placeholder === undefined) placeholder = opt.filePlaceholder;
+					var browse = el.data('browse');
+					if (browse === undefined || browse === '') browse = opt.fileBrowse;
+
+					var file =
+						$('<div class="jq-file">' +
+								'<div class="jq-file__name">' + placeholder + '</div>' +
+								'<div class="jq-file__browse">' + browse + '</div>' +
+							'</div>')
+						.attr({
+							id: att.id,
+							title: att.title
+						})
+						.addClass(att.classes)
+						.data(att.data)
+					;
+
+					el.after(file).appendTo(file);
+					if (el.is(':disabled')) file.addClass('disabled');
+
+					var value = el.val();
+					var name = $('div.jq-file__name', file);
+
+					// чтобы при динамическом изменении имя файла не сбрасывалось
+					if (value) name.text(value.replace(/.+[\\\/]/, ''));
+
+					el.on('change.styler', function() {
+						var value = el.val();
+						if (el.is('[multiple]')) {
+							value = '';
+							var files = el[0].files.length;
+							if (files > 0) {
+								var number = el.data('number');
+								if (number === undefined) number = opt.fileNumber;
+								number = number.replace('%s', files);
+								value = number;
+							}
+						}
+						name.text(value.replace(/.+[\\\/]/, ''));
+						if (value === '') {
+							name.text(placeholder);
+							file.removeClass('changed');
+						} else {
+							file.addClass('changed');
+						}
+					})
+					.on('focus.styler', function() {
+						file.addClass('focused');
+					})
+					.on('blur.styler', function() {
+						file.removeClass('focused');
+					})
+					.on('click.styler', function() {
+						file.removeClass('focused');
+					});
+
+				}; // end fileOutput()
+
+				fileOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.off('.styler').parent().before(el).remove();
+					fileOutput();
+				});
+
+			// end file
+
+			} else if (el.is('input[type="number"]')) {
+
+				var numberOutput = function() {
+
+					var att = new Attributes();
+					var number =
+						$('<div class="jq-number">' +
+								'<div class="jq-number__spin minus"></div>' +
+								'<div class="jq-number__spin plus"></div>' +
+							'</div>')
+						.attr({
+							id: att.id,
+							title: att.title
+						})
+						.addClass(att.classes)
+						.data(att.data)
+					;
+
+					el.after(number).prependTo(number).wrap('<div class="jq-number__field"></div>');
+					if (el.is(':disabled')) number.addClass('disabled');
+
+					var min,
+							max,
+							step,
+							timeout = null,
+							interval = null;
+					if (el.attr('min') !== undefined) min = el.attr('min');
+					if (el.attr('max') !== undefined) max = el.attr('max');
+					if (el.attr('step') !== undefined && $.isNumeric(el.attr('step')))
+						step = Number(el.attr('step'));
+					else
+						step = Number(1);
+
+					var changeValue = function(spin) {
+						var value = el.val(),
+								newValue;
+
+						if (!$.isNumeric(value)) {
+							value = 0;
+							el.val('0');
+						}
+
+						if (spin.is('.minus')) {
+							newValue = Number(value) - step;
+						} else if (spin.is('.plus')) {
+							newValue = Number(value) + step;
+						}
+
+						// определяем количество десятичных знаков после запятой в step
+						var decimals = (step.toString().split('.')[1] || []).length;
+						if (decimals > 0) {
+							var multiplier = '1';
+							while (multiplier.length <= decimals) multiplier = multiplier + '0';
+							// избегаем появления лишних знаков после запятой
+							newValue = Math.round(newValue * multiplier) / multiplier;
+						}
+
+						if ($.isNumeric(min) && $.isNumeric(max)) {
+							if (newValue >= min && newValue <= max) el.val(newValue);
+						} else if ($.isNumeric(min) && !$.isNumeric(max)) {
+							if (newValue >= min) el.val(newValue);
+						} else if (!$.isNumeric(min) && $.isNumeric(max)) {
+							if (newValue <= max) el.val(newValue);
+						} else {
+							el.val(newValue);
+						}
+					};
+
+					if (!number.is('.disabled')) {
+						number.on('mousedown', 'div.jq-number__spin', function() {
+							var spin = $(this);
+							changeValue(spin);
+							timeout = setTimeout(function(){
+								interval = setInterval(function(){ changeValue(spin); }, 40);
+							}, 350);
+						}).on('mouseup mouseout', 'div.jq-number__spin', function() {
+							clearTimeout(timeout);
+							clearInterval(interval);
+						}).on('mouseup', 'div.jq-number__spin', function() {
+							el.change();
+						});
+						el.on('focus.styler', function() {
+							number.addClass('focused');
+						})
+						.on('blur.styler', function() {
+							number.removeClass('focused');
+						});
+					}
+
+				}; // end numberOutput()
+
+				numberOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.off('.styler').closest('.jq-number').before(el).remove();
+					numberOutput();
+				});
+
+			// end number
+
+			// select
+			} else if (el.is('select')) {
+
+				var selectboxOutput = function() {
+
+					// запрещаем прокрутку страницы при прокрутке селекта
+					function preventScrolling(selector) {
+
+						var scrollDiff = selector.prop('scrollHeight') - selector.outerHeight(),
+								wheelDelta = null,
+								scrollTop = null;
+
+						selector.off('mousewheel DOMMouseScroll').on('mousewheel DOMMouseScroll', function(e) {
+
+							/**
+							 * нормализация направления прокрутки
+							 * (firefox < 0 || chrome etc... > 0)
+							 * (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0)
+							 */
+							wheelDelta = (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0) ? 1 : -1; // направление прокрутки (-1 вниз, 1 вверх)
+							scrollTop = selector.scrollTop(); // позиция скролла
+
+							if ((scrollTop >= scrollDiff && wheelDelta < 0) || (scrollTop <= 0 && wheelDelta > 0)) {
+								e.stopPropagation();
+								e.preventDefault();
+							}
+
+						});
+					}
+
+					var option = $('option', el);
+					var list = '';
+					// формируем список селекта
+					function makeList() {
+						for (var i = 0; i < option.length; i++) {
+							var op = option.eq(i);
+							var li = '',
+									liClass = '',
+									liClasses = '',
+									id = '',
+									title = '',
+									dataList = '',
+									optionClass = '',
+									optgroupClass = '',
+									dataJqfsClass = '';
+							var disabled = 'disabled';
+							var selDis = 'selected sel disabled';
+							if (op.prop('selected')) liClass = 'selected sel';
+							if (op.is(':disabled')) liClass = disabled;
+							if (op.is(':selected:disabled')) liClass = selDis;
+							if (op.attr('id') !== undefined && op.attr('id') !== '') id = ' id="' + op.attr('id') + opt.idSuffix + '"';
+							if (op.attr('title') !== undefined && option.attr('title') !== '') title = ' title="' + op.attr('title') + '"';
+							if (op.attr('class') !== undefined) {
+								optionClass = ' ' + op.attr('class');
+								dataJqfsClass = ' data-jqfs-class="' + op.attr('class') + '"';
+							}
+
+							var data = op.data();
+							for (var k in data) {
+								if (data[k] !== '') dataList += ' data-' + k + '="' + data[k] + '"';
+							}
+
+							if ( (liClass + optionClass) !== '' )   liClasses = ' class="' + liClass + optionClass + '"';
+							li = '<li' + dataJqfsClass + dataList + liClasses + title + id + '>'+ op.html() +'</li>';
+
+							// если есть optgroup
+							if (op.parent().is('optgroup')) {
+								if (op.parent().attr('class') !== undefined) optgroupClass = ' ' + op.parent().attr('class');
+								li = '<li' + dataJqfsClass + dataList + ' class="' + liClass + optionClass + ' option' + optgroupClass + '"' + title + id + '>'+ op.html() +'</li>';
+								if (op.is(':first-child')) {
+									li = '<li class="optgroup' + optgroupClass + '">' + op.parent().attr('label') + '</li>' + li;
+								}
+							}
+
+							list += li;
+						}
+					} // end makeList()
+
+					// одиночный селект
+					function doSelect() {
+
+						var att = new Attributes();
+						var searchHTML = '';
+						var selectPlaceholder = el.data('placeholder');
+						var selectSearch = el.data('search');
+						var selectSearchLimit = el.data('search-limit');
+						var selectSearchNotFound = el.data('search-not-found');
+						var selectSearchPlaceholder = el.data('search-placeholder');
+						var selectSmartPositioning = el.data('smart-positioning');
+
+						if (selectPlaceholder === undefined) selectPlaceholder = opt.selectPlaceholder;
+						if (selectSearch === undefined || selectSearch === '') selectSearch = opt.selectSearch;
+						if (selectSearchLimit === undefined || selectSearchLimit === '') selectSearchLimit = opt.selectSearchLimit;
+						if (selectSearchNotFound === undefined || selectSearchNotFound === '') selectSearchNotFound = opt.selectSearchNotFound;
+						if (selectSearchPlaceholder === undefined) selectSearchPlaceholder = opt.selectSearchPlaceholder;
+						if (selectSmartPositioning === undefined || selectSmartPositioning === '') selectSmartPositioning = opt.selectSmartPositioning;
+
+						var selectbox =
+							$('<div class="jq-selectbox jqselect">' +
+									'<div class="jq-selectbox__select">' +
+										'<div class="jq-selectbox__select-text"></div>' +
+										'<div class="jq-selectbox__trigger">' +
+											'<div class="jq-selectbox__trigger-arrow"></div></div>' +
+									'</div>' +
+								'</div>')
+							.attr({
+								id: att.id,
+								title: att.title
+							})
+							.addClass(att.classes)
+							.data(att.data)
+						;
+
+						el.after(selectbox).prependTo(selectbox);
+
+						var selectzIndex = selectbox.css('z-index');
+						selectzIndex = (selectzIndex > 0 ) ? selectzIndex : 1;
+						var divSelect = $('div.jq-selectbox__select', selectbox);
+						var divText = $('div.jq-selectbox__select-text', selectbox);
+						var optionSelected = option.filter(':selected');
+
+						makeList();
+
+						if (selectSearch) searchHTML =
+							'<div class="jq-selectbox__search"><input type="search" autocomplete="off" placeholder="' + selectSearchPlaceholder + '"></div>' +
+							'<div class="jq-selectbox__not-found">' + selectSearchNotFound + '</div>';
+						var dropdown =
+							$('<div class="jq-selectbox__dropdown">' +
+									searchHTML + '<ul>' + list + '</ul>' +
+								'</div>');
+						selectbox.append(dropdown);
+						var ul = $('ul', dropdown);
+						var li = $('li', dropdown);
+						var search = $('input', dropdown);
+						var notFound = $('div.jq-selectbox__not-found', dropdown).hide();
+						if (li.length < selectSearchLimit) search.parent().hide();
+
+						// показываем опцию по умолчанию
+						// если у 1-й опции нет текста, она выбрана по умолчанию и параметр selectPlaceholder не false, то показываем плейсхолдер
+						if (option.first().text() === '' && option.first().is(':selected') && selectPlaceholder !== false) {
+							divText.text(selectPlaceholder).addClass('placeholder');
+						} else {
+							divText.text(optionSelected.text());
+						}
+
+						// определяем самый широкий пункт селекта
+						var liWidthInner = 0,
+								liWidth = 0;
+						li.css({'display': 'inline-block'});
+						li.each(function() {
+							var l = $(this);
+							if (l.innerWidth() > liWidthInner) {
+								liWidthInner = l.innerWidth();
+								liWidth = l.width();
+							}
+						});
+						li.css({'display': ''});
+
+						// подстраиваем ширину свернутого селекта в зависимости
+						// от ширины плейсхолдера или самого широкого пункта
+						if (divText.is('.placeholder') && (divText.width() > liWidthInner)) {
+							divText.width(divText.width());
+						} else {
+							var selClone = selectbox.clone().appendTo('body').width('auto');
+							var selCloneWidth = selClone.outerWidth();
+							selClone.remove();
+							if (selCloneWidth == selectbox.outerWidth()) {
+								divText.width(liWidth);
+							}
+						}
+
+						// подстраиваем ширину выпадающего списка в зависимости от самого широкого пункта
+						if (liWidthInner > selectbox.width()) dropdown.width(liWidthInner);
+
+						// прячем 1-ю пустую опцию, если она есть и если атрибут data-placeholder не пустой
+						// если все же нужно, чтобы первая пустая опция отображалась, то указываем у селекта: data-placeholder=""
+						if (option.first().text() === '' && el.data('placeholder') !== '') {
+							li.first().hide();
+						}
+
+						var selectHeight = selectbox.outerHeight(true);
+						var searchHeight = search.parent().outerHeight(true) || 0;
+						var isMaxHeight = ul.css('max-height');
+						var liSelected = li.filter('.selected');
+						if (liSelected.length < 1) li.first().addClass('selected sel');
+						if (li.data('li-height') === undefined) {
+							var liOuterHeight = li.outerHeight();
+							if (selectPlaceholder !== false) liOuterHeight = li.eq(1).outerHeight();
+							li.data('li-height', liOuterHeight);
+						}
+						var position = dropdown.css('top');
+						if (dropdown.css('left') == 'auto') dropdown.css({left: 0});
+						if (dropdown.css('top') == 'auto') {
+							dropdown.css({top: selectHeight});
+							position = selectHeight;
+						}
+						dropdown.hide();
+
+						// если выбран не дефолтный пункт
+						if (liSelected.length) {
+							// добавляем класс, показывающий изменение селекта
+							if (option.first().text() != optionSelected.text()) {
+								selectbox.addClass('changed');
+							}
+							// передаем селекту класс выбранного пункта
+							selectbox.data('jqfs-class', liSelected.data('jqfs-class'));
+							selectbox.addClass(liSelected.data('jqfs-class'));
+						}
+
+						// если селект неактивный
+						if (el.is(':disabled')) {
+							selectbox.addClass('disabled');
+							return false;
+						}
+
+						// при клике на псевдоселекте
+						divSelect.click(function() {
+
+							// колбек при закрытии селекта
+							if ($('div.jq-selectbox').filter('.opened').length) {
+								opt.onSelectClosed.call($('div.jq-selectbox').filter('.opened'));
+							}
+
+							el.focus();
+
+							// если iOS, то не показываем выпадающий список,
+							// т.к. отображается нативный и неизвестно, как его спрятать
+							if (iOS) return;
+
+							// умное позиционирование
+							var win = $(window);
+							var liHeight = li.data('li-height');
+							var topOffset = selectbox.offset().top;
+							var bottomOffset = win.height() - selectHeight - (topOffset - win.scrollTop());
+							var visible = el.data('visible-options');
+							if (visible === undefined || visible === '') visible = opt.selectVisibleOptions;
+							var minHeight = liHeight * 5;
+							var newHeight = liHeight * visible;
+							if (visible > 0 && visible < 6) minHeight = newHeight;
+							if (visible === 0) newHeight = 'auto';
+
+							var dropDown = function() {
+								dropdown.height('auto').css({bottom: 'auto', top: position});
+								var maxHeightBottom = function() {
+									ul.css('max-height', Math.floor((bottomOffset - 20 - searchHeight) / liHeight) * liHeight);
+								};
+								maxHeightBottom();
+								ul.css('max-height', newHeight);
+								if (isMaxHeight != 'none') {
+									ul.css('max-height', isMaxHeight);
+								}
+								if (bottomOffset < (dropdown.outerHeight() + 20)) {
+									maxHeightBottom();
+								}
+							};
+
+							var dropUp = function() {
+								dropdown.height('auto').css({top: 'auto', bottom: position});
+								var maxHeightTop = function() {
+									ul.css('max-height', Math.floor((topOffset - win.scrollTop() - 20 - searchHeight) / liHeight) * liHeight);
+								};
+								maxHeightTop();
+								ul.css('max-height', newHeight);
+								if (isMaxHeight != 'none') {
+									ul.css('max-height', isMaxHeight);
+								}
+								if ((topOffset - win.scrollTop() - 20) < (dropdown.outerHeight() + 20)) {
+									maxHeightTop();
+								}
+							};
+
+							if (selectSmartPositioning === true || selectSmartPositioning === 1) {
+								// раскрытие вниз
+								if (bottomOffset > (minHeight + searchHeight + 20)) {
+									dropDown();
+									selectbox.removeClass('dropup').addClass('dropdown');
+								// раскрытие вверх
+								} else {
+									dropUp();
+									selectbox.removeClass('dropdown').addClass('dropup');
+								}
+							} else if (selectSmartPositioning === false || selectSmartPositioning === 0) {
+								// раскрытие вниз
+								if (bottomOffset > (minHeight + searchHeight + 20)) {
+									dropDown();
+									selectbox.removeClass('dropup').addClass('dropdown');
+								}
+							} else {
+								// если умное позиционирование отключено
+								dropdown.height('auto').css({bottom: 'auto', top: position});
+								ul.css('max-height', newHeight);
+								if (isMaxHeight != 'none') {
+									ul.css('max-height', isMaxHeight);
+								}
+							}
+
+							// если выпадающий список выходит за правый край окна браузера,
+							// то меняем позиционирование с левого на правое
+							if (selectbox.offset().left + dropdown.outerWidth() > win.width()) {
+								dropdown.css({left: 'auto', right: 0});
+							}
+							// конец умного позиционирования
+
+							$('div.jqselect').css({zIndex: (selectzIndex - 1)}).removeClass('opened');
+							selectbox.css({zIndex: selectzIndex});
+							if (dropdown.is(':hidden')) {
+								$('div.jq-selectbox__dropdown:visible').hide();
+								dropdown.show();
+								selectbox.addClass('opened focused');
+								// колбек при открытии селекта
+								opt.onSelectOpened.call(selectbox);
+							} else {
+								dropdown.hide();
+								selectbox.removeClass('opened dropup dropdown');
+								// колбек при закрытии селекта
+								if ($('div.jq-selectbox').filter('.opened').length) {
+									opt.onSelectClosed.call(selectbox);
+								}
+							}
+
+							// поисковое поле
+							if (search.length) {
+								search.val('').keyup();
+								notFound.hide();
+								search.keyup(function() {
+									var query = $(this).val();
+									li.each(function() {
+										if (!$(this).html().match(new RegExp('.*?' + query + '.*?', 'i'))) {
+											$(this).hide();
+										} else {
+											$(this).show();
+										}
+									});
+									// прячем 1-ю пустую опцию
+									if (option.first().text() === '' && el.data('placeholder') !== '') {
+										li.first().hide();
+									}
+									if (li.filter(':visible').length < 1) {
+										notFound.show();
+									} else {
+										notFound.hide();
+									}
+								});
+							}
+
+							// прокручиваем до выбранного пункта при открытии списка
+							if (li.filter('.selected').length) {
+								if (el.val() === '') {
+									ul.scrollTop(0);
+								} else {
+									// если нечетное количество видимых пунктов,
+									// то высоту пункта делим пополам для последующего расчета
+									if ( (ul.innerHeight() / liHeight) % 2 !== 0 ) liHeight = liHeight / 2;
+									ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top - ul.innerHeight() / 2 + liHeight);
+								}
+							}
+
+							preventScrolling(ul);
+
+						}); // end divSelect.click()
+
+						// при наведении курсора на пункт списка
+						li.hover(function() {
+							$(this).siblings().removeClass('selected');
+						});
+						var selectedText = li.filter('.selected').text();
+
+						// при клике на пункт списка
+						li.filter(':not(.disabled):not(.optgroup)').click(function() {
+							el.focus();
+							var t = $(this);
+							var liText = t.text();
+							if (!t.is('.selected')) {
+								var index = t.index();
+								index -= t.prevAll('.optgroup').length;
+								t.addClass('selected sel').siblings().removeClass('selected sel');
+								option.prop('selected', false).eq(index).prop('selected', true);
+								selectedText = liText;
+								divText.text(liText);
+
+								// передаем селекту класс выбранного пункта
+								if (selectbox.data('jqfs-class')) selectbox.removeClass(selectbox.data('jqfs-class'));
+								selectbox.data('jqfs-class', t.data('jqfs-class'));
+								selectbox.addClass(t.data('jqfs-class'));
+
+								el.change();
+							}
+							dropdown.hide();
+							selectbox.removeClass('opened dropup dropdown');
+							// колбек при закрытии селекта
+							opt.onSelectClosed.call(selectbox);
+
+						});
+						dropdown.mouseout(function() {
+							$('li.sel', dropdown).addClass('selected');
+						});
+
+						// изменение селекта
+						el.on('change.styler', function() {
+							divText.text(option.filter(':selected').text()).removeClass('placeholder');
+							li.removeClass('selected sel').not('.optgroup').eq(el[0].selectedIndex).addClass('selected sel');
+							// добавляем класс, показывающий изменение селекта
+							if (option.first().text() != li.filter('.selected').text()) {
+								selectbox.addClass('changed');
+							} else {
+								selectbox.removeClass('changed');
+							}
+						})
+						.on('focus.styler', function() {
+							selectbox.addClass('focused');
+							$('div.jqselect').not('.focused').removeClass('opened dropup dropdown').find('div.jq-selectbox__dropdown').hide();
+						})
+						.on('blur.styler', function() {
+							selectbox.removeClass('focused');
+						})
+						// изменение селекта с клавиатуры
+						.on('keydown.styler keyup.styler', function(e) {
+							var liHeight = li.data('li-height');
+							if (el.val() === '') {
+								divText.text(selectPlaceholder).addClass('placeholder');
+							} else {
+								divText.text(option.filter(':selected').text());
+							}
+							li.removeClass('selected sel').not('.optgroup').eq(el[0].selectedIndex).addClass('selected sel');
+							// вверх, влево, Page Up, Home
+							if (e.which == 38 || e.which == 37 || e.which == 33 || e.which == 36) {
+								if (el.val() === '') {
+									ul.scrollTop(0);
+								} else {
+									ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top);
+								}
+							}
+							// вниз, вправо, Page Down, End
+							if (e.which == 40 || e.which == 39 || e.which == 34 || e.which == 35) {
+								ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top - ul.innerHeight() + liHeight);
+							}
+							// закрываем выпадающий список при нажатии Enter
+							if (e.which == 13) {
+								e.preventDefault();
+								dropdown.hide();
+								selectbox.removeClass('opened dropup dropdown');
+								// колбек при закрытии селекта
+								opt.onSelectClosed.call(selectbox);
+							}
+						}).on('keydown.styler', function(e) {
+							// открываем выпадающий список при нажатии Space
+							if (e.which == 32) {
+								e.preventDefault();
+								divSelect.click();
+							}
+						});
+
+						// прячем выпадающий список при клике за пределами селекта
+						if (!onDocumentClick.registered) {
+							$(document).on('click', onDocumentClick);
+							onDocumentClick.registered = true;
+						}
+
+					} // end doSelect()
+
+					// мультиселект
+					function doMultipleSelect() {
+
+						var att = new Attributes();
+						var selectbox =
+							$('<div class="jq-select-multiple jqselect"></div>')
+							.attr({
+								id: att.id,
+								title: att.title
+							})
+							.addClass(att.classes)
+							.data(att.data)
+						;
+
+						el.after(selectbox);
+
+						makeList();
+						selectbox.append('<ul>' + list + '</ul>');
+						var ul = $('ul', selectbox);
+						var li = $('li', selectbox);
+						var size = el.attr('size');
+						var ulHeight = ul.outerHeight();
+						var liHeight = li.outerHeight();
+						if (size !== undefined && size > 0) {
+							ul.css({'height': liHeight * size});
+						} else {
+							ul.css({'height': liHeight * 4});
+						}
+						if (ulHeight > selectbox.height()) {
+							ul.css('overflowY', 'scroll');
+							preventScrolling(ul);
+							// прокручиваем до выбранного пункта
+							if (li.filter('.selected').length) {
+								ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top);
+							}
+						}
+
+						// прячем оригинальный селект
+						el.prependTo(selectbox);
+
+						// если селект неактивный
+						if (el.is(':disabled')) {
+							selectbox.addClass('disabled');
+							option.each(function() {
+								if ($(this).is(':selected')) li.eq($(this).index()).addClass('selected');
+							});
+
+						// если селект активный
+						} else {
+
+							// при клике на пункт списка
+							li.filter(':not(.disabled):not(.optgroup)').click(function(e) {
+								el.focus();
+								var clkd = $(this);
+								if(!e.ctrlKey && !e.metaKey) clkd.addClass('selected');
+								if(!e.shiftKey) clkd.addClass('first');
+								if(!e.ctrlKey && !e.metaKey && !e.shiftKey) clkd.siblings().removeClass('selected first');
+
+								// выделение пунктов при зажатом Ctrl
+								if(e.ctrlKey || e.metaKey) {
+									if (clkd.is('.selected')) clkd.removeClass('selected first');
+										else clkd.addClass('selected first');
+									clkd.siblings().removeClass('first');
+								}
+
+								// выделение пунктов при зажатом Shift
+								if(e.shiftKey) {
+									var prev = false,
+											next = false;
+									clkd.siblings().removeClass('selected').siblings('.first').addClass('selected');
+									clkd.prevAll().each(function() {
+										if ($(this).is('.first')) prev = true;
+									});
+									clkd.nextAll().each(function() {
+										if ($(this).is('.first')) next = true;
+									});
+									if (prev) {
+										clkd.prevAll().each(function() {
+											if ($(this).is('.selected')) return false;
+												else $(this).not('.disabled, .optgroup').addClass('selected');
+										});
+									}
+									if (next) {
+										clkd.nextAll().each(function() {
+											if ($(this).is('.selected')) return false;
+												else $(this).not('.disabled, .optgroup').addClass('selected');
+										});
+									}
+									if (li.filter('.selected').length == 1) clkd.addClass('first');
+								}
+
+								// отмечаем выбранные мышью
+								option.prop('selected', false);
+								li.filter('.selected').each(function() {
+									var t = $(this);
+									var index = t.index();
+									if (t.is('.option')) index -= t.prevAll('.optgroup').length;
+									option.eq(index).prop('selected', true);
+								});
+								el.change();
+
+							});
+
+							// отмечаем выбранные с клавиатуры
+							option.each(function(i) {
+								$(this).data('optionIndex', i);
+							});
+							el.on('change.styler', function() {
+								li.removeClass('selected');
+								var arrIndexes = [];
+								option.filter(':selected').each(function() {
+									arrIndexes.push($(this).data('optionIndex'));
+								});
+								li.not('.optgroup').filter(function(i) {
+									return $.inArray(i, arrIndexes) > -1;
+								}).addClass('selected');
+							})
+							.on('focus.styler', function() {
+								selectbox.addClass('focused');
+							})
+							.on('blur.styler', function() {
+								selectbox.removeClass('focused');
+							});
+
+							// прокручиваем с клавиатуры
+							if (ulHeight > selectbox.height()) {
+								el.on('keydown.styler', function(e) {
+									// вверх, влево, PageUp
+									if (e.which == 38 || e.which == 37 || e.which == 33) {
+										ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top - liHeight);
+									}
+									// вниз, вправо, PageDown
+									if (e.which == 40 || e.which == 39 || e.which == 34) {
+										ul.scrollTop(ul.scrollTop() + li.filter('.selected:last').position().top - ul.innerHeight() + liHeight * 2);
+									}
+								});
+							}
+
+						}
+					} // end doMultipleSelect()
+
+					if (el.is('[multiple]')) {
+
+						// если Android или iOS, то мультиселект не стилизуем
+						// причина для Android - в стилизованном селекте нет возможности выбрать несколько пунктов
+						// причина для iOS - в стилизованном селекте неправильно отображаются выбранные пункты
+						if (Android || iOS) return;
+
+						doMultipleSelect();
+					} else {
+						doSelect();
+					}
+
+				}; // end selectboxOutput()
+
+				selectboxOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.off('.styler').parent().before(el).remove();
+					selectboxOutput();
+				});
+
+			// end select
+
+			// reset
+			} else if (el.is(':reset')) {
+				el.on('click', function() {
+					setTimeout(function() {
+						el.closest('form').find('input, select').trigger('refresh');
+					}, 1);
+				});
+			} // end reset
+
+		}, // init: function()
+
+		// деструктор
+		destroy: function() {
+
+			var el = $(this.element);
+
+			if (el.is(':checkbox') || el.is(':radio')) {
+				el.removeData('_' + pluginName).off('.styler refresh').removeAttr('style').parent().before(el).remove();
+				el.closest('label').add('label[for="' + el.attr('id') + '"]').off('.styler');
+			} else if (el.is('input[type="number"]')) {
+				el.removeData('_' + pluginName).off('.styler refresh').closest('.jq-number').before(el).remove();
+			} else if (el.is(':file') || el.is('select')) {
+				el.removeData('_' + pluginName).off('.styler refresh').removeAttr('style').parent().before(el).remove();
+			}
+
+		} // destroy: function()
+
+	}; // Plugin.prototype
+
+	$.fn[pluginName] = function(options) {
+		var args = arguments;
+		if (options === undefined || typeof options === 'object') {
+			this.each(function() {
+				if (!$.data(this, '_' + pluginName)) {
+					$.data(this, '_' + pluginName, new Plugin(this, options));
+				}
+			})
+			// колбек после выполнения плагина
+			.promise()
+			.done(function() {
+				var opt = $(this[0]).data('_' + pluginName);
+				if (opt) opt.options.onFormStyled.call();
+			});
+			return this;
+		} else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
+			var returns;
+			this.each(function() {
+				var instance = $.data(this, '_' + pluginName);
+				if (instance instanceof Plugin && typeof instance[options] === 'function') {
+					returns = instance[options].apply(instance, Array.prototype.slice.call(args, 1));
+				}
+			});
+			return returns !== undefined ? returns : this;
+		}
+	};
+
+	// прячем выпадающий список при клике за пределами селекта
+	function onDocumentClick(e) {
+		// e.target.nodeName != 'OPTION' - добавлено для обхода бага в Opera на движке Presto
+		// (при изменении селекта с клавиатуры срабатывает событие onclick)
+		if (!$(e.target).parents().hasClass('jq-selectbox') && e.target.nodeName != 'OPTION') {
+			if ($('div.jq-selectbox.opened').length) {
+				var selectbox = $('div.jq-selectbox.opened'),
+						search = $('div.jq-selectbox__search input', selectbox),
+						dropdown = $('div.jq-selectbox__dropdown', selectbox),
+						opt = selectbox.find('select').data('_' + pluginName).options;
+
+				// колбек при закрытии селекта
+				opt.onSelectClosed.call(selectbox);
+
+				if (search.length) search.val('').keyup();
+				dropdown.hide().find('li.sel').addClass('selected');
+				selectbox.removeClass('focused opened dropup dropdown');
+			}
+		}
+	}
+	onDocumentClick.registered = false;
+
+}));
+/*
+CryptoJS v3.1.2
+code.google.com/p/crypto-js
+(c) 2009-2013 by Jeff Mott. All rights reserved.
+code.google.com/p/crypto-js/wiki/License
+*/
+var CryptoJS=CryptoJS||function(g,l){var e={},d=e.lib={},m=function(){},k=d.Base={extend:function(a){m.prototype=this;var c=new m;a&&c.mixIn(a);c.hasOwnProperty("init")||(c.init=function(){c.$super.init.apply(this,arguments)});c.init.prototype=c;c.$super=this;return c},create:function(){var a=this.extend();a.init.apply(a,arguments);return a},init:function(){},mixIn:function(a){for(var c in a)a.hasOwnProperty(c)&&(this[c]=a[c]);a.hasOwnProperty("toString")&&(this.toString=a.toString)},clone:function(){return this.init.prototype.extend(this)}},
+p=d.WordArray=k.extend({init:function(a,c){a=this.words=a||[];this.sigBytes=c!=l?c:4*a.length},toString:function(a){return(a||n).stringify(this)},concat:function(a){var c=this.words,q=a.words,f=this.sigBytes;a=a.sigBytes;this.clamp();if(f%4)for(var b=0;b<a;b++)c[f+b>>>2]|=(q[b>>>2]>>>24-8*(b%4)&255)<<24-8*((f+b)%4);else if(65535<q.length)for(b=0;b<a;b+=4)c[f+b>>>2]=q[b>>>2];else c.push.apply(c,q);this.sigBytes+=a;return this},clamp:function(){var a=this.words,c=this.sigBytes;a[c>>>2]&=4294967295<<
+32-8*(c%4);a.length=g.ceil(c/4)},clone:function(){var a=k.clone.call(this);a.words=this.words.slice(0);return a},random:function(a){for(var c=[],b=0;b<a;b+=4)c.push(4294967296*g.random()|0);return new p.init(c,a)}}),b=e.enc={},n=b.Hex={stringify:function(a){var c=a.words;a=a.sigBytes;for(var b=[],f=0;f<a;f++){var d=c[f>>>2]>>>24-8*(f%4)&255;b.push((d>>>4).toString(16));b.push((d&15).toString(16))}return b.join("")},parse:function(a){for(var c=a.length,b=[],f=0;f<c;f+=2)b[f>>>3]|=parseInt(a.substr(f,
+2),16)<<24-4*(f%8);return new p.init(b,c/2)}},j=b.Latin1={stringify:function(a){var c=a.words;a=a.sigBytes;for(var b=[],f=0;f<a;f++)b.push(String.fromCharCode(c[f>>>2]>>>24-8*(f%4)&255));return b.join("")},parse:function(a){for(var c=a.length,b=[],f=0;f<c;f++)b[f>>>2]|=(a.charCodeAt(f)&255)<<24-8*(f%4);return new p.init(b,c)}},h=b.Utf8={stringify:function(a){try{return decodeURIComponent(escape(j.stringify(a)))}catch(c){throw Error("Malformed UTF-8 data");}},parse:function(a){return j.parse(unescape(encodeURIComponent(a)))}},
+r=d.BufferedBlockAlgorithm=k.extend({reset:function(){this._data=new p.init;this._nDataBytes=0},_append:function(a){"string"==typeof a&&(a=h.parse(a));this._data.concat(a);this._nDataBytes+=a.sigBytes},_process:function(a){var c=this._data,b=c.words,f=c.sigBytes,d=this.blockSize,e=f/(4*d),e=a?g.ceil(e):g.max((e|0)-this._minBufferSize,0);a=e*d;f=g.min(4*a,f);if(a){for(var k=0;k<a;k+=d)this._doProcessBlock(b,k);k=b.splice(0,a);c.sigBytes-=f}return new p.init(k,f)},clone:function(){var a=k.clone.call(this);
+a._data=this._data.clone();return a},_minBufferSize:0});d.Hasher=r.extend({cfg:k.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){r.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._append(a);return this._doFinalize()},blockSize:16,_createHelper:function(a){return function(b,d){return(new a.init(d)).finalize(b)}},_createHmacHelper:function(a){return function(b,d){return(new s.HMAC.init(a,
+d)).finalize(b)}}});var s=e.algo={};return e}(Math);
+(function(){var g=CryptoJS,l=g.lib,e=l.WordArray,d=l.Hasher,m=[],l=g.algo.SHA1=d.extend({_doReset:function(){this._hash=new e.init([1732584193,4023233417,2562383102,271733878,3285377520])},_doProcessBlock:function(d,e){for(var b=this._hash.words,n=b[0],j=b[1],h=b[2],g=b[3],l=b[4],a=0;80>a;a++){if(16>a)m[a]=d[e+a]|0;else{var c=m[a-3]^m[a-8]^m[a-14]^m[a-16];m[a]=c<<1|c>>>31}c=(n<<5|n>>>27)+l+m[a];c=20>a?c+((j&h|~j&g)+1518500249):40>a?c+((j^h^g)+1859775393):60>a?c+((j&h|j&g|h&g)-1894007588):c+((j^h^
+g)-899497514);l=g;g=h;h=j<<30|j>>>2;j=n;n=c}b[0]=b[0]+n|0;b[1]=b[1]+j|0;b[2]=b[2]+h|0;b[3]=b[3]+g|0;b[4]=b[4]+l|0},_doFinalize:function(){var d=this._data,e=d.words,b=8*this._nDataBytes,g=8*d.sigBytes;e[g>>>5]|=128<<24-g%32;e[(g+64>>>9<<4)+14]=Math.floor(b/4294967296);e[(g+64>>>9<<4)+15]=b;d.sigBytes=4*e.length;this._process();return this._hash},clone:function(){var e=d.clone.call(this);e._hash=this._hash.clone();return e}});g.SHA1=d._createHelper(l);g.HmacSHA1=d._createHmacHelper(l)})();
+(function(){var g=CryptoJS,l=g.enc.Utf8;g.algo.HMAC=g.lib.Base.extend({init:function(e,d){e=this._hasher=new e.init;"string"==typeof d&&(d=l.parse(d));var g=e.blockSize,k=4*g;d.sigBytes>k&&(d=e.finalize(d));d.clamp();for(var p=this._oKey=d.clone(),b=this._iKey=d.clone(),n=p.words,j=b.words,h=0;h<g;h++)n[h]^=1549556828,j[h]^=909522486;p.sigBytes=b.sigBytes=k;this.reset()},reset:function(){var e=this._hasher;e.reset();e.update(this._iKey)},update:function(e){this._hasher.update(e);return this},finalize:function(e){var d=
+this._hasher;e=d.finalize(e);d.reset();return d.finalize(this._oKey.clone().concat(e))}})})();
+/*
+CryptoJS v3.1.2
+code.google.com/p/crypto-js
+(c) 2009-2013 by Jeff Mott. All rights reserved.
+code.google.com/p/crypto-js/wiki/License
+*/
+(function(){var h=CryptoJS,j=h.lib.WordArray;h.enc.Base64={stringify:function(b){var e=b.words,f=b.sigBytes,c=this._map;b.clamp();b=[];for(var a=0;a<f;a+=3)for(var d=(e[a>>>2]>>>24-8*(a%4)&255)<<16|(e[a+1>>>2]>>>24-8*((a+1)%4)&255)<<8|e[a+2>>>2]>>>24-8*((a+2)%4)&255,g=0;4>g&&a+0.75*g<f;g++)b.push(c.charAt(d>>>6*(3-g)&63));if(e=c.charAt(64))for(;b.length%4;)b.push(e);return b.join("")},parse:function(b){var e=b.length,f=this._map,c=f.charAt(64);c&&(c=b.indexOf(c),-1!=c&&(e=c));for(var c=[],a=0,d=0;d<
+e;d++)if(d%4){var g=f.indexOf(b.charAt(d-1))<<2*(d%4),h=f.indexOf(b.charAt(d))>>>6-2*(d%4);c[a>>>2]|=(g|h)<<24-8*(a%4);a++}return j.create(c,a)},_map:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="}})();
 
 
 /**
@@ -12923,49 +16184,6 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 			$primaryContent.each(function(){
 				var $self = $(this);
 
-
-				/**
-				 * Set section background image
-				 */
-				if ($self.attr('data-section-image')) {
-					var url  = $self.attr('data-section-image');
-					var attr = 'url('+url+')';
-			        var img = new Image();
-
-
-					/**
-					 * Expanable image
-					 */
-					if ($self.attr('data-section-expanded') == '1') {
-				        img.onload = function(){
-				            var img_percent = img.height / img.width * 100;
-				            var img_height = screen.width / 100 * img_percent;
-
-				            $self.animate({
-				              'min-height': img_height, 
-				            }, 100);
-						};
-				    }
-
-				    // assign url to new image 
-			        img.src = url;
-
-					// Set background image
-		            $self.css('background-image', attr);
-				}
-
-
-				/**
-				 * Generate google maps background
-				 */
-				if ($self.attr('data-section-lat') && $self.attr('data-section-lng')) {
-					var lat = $self.attr('data-section-lat');
-					var lng = $self.attr('data-section-lng');
-
-					$self.prepend("<div class='acf-map primary-content--bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
-				}
-
-
 				/**
 				 * Set dividers' background images
 				 */
@@ -13026,9 +16244,6 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 				 */
 				$self.attr('data-inited', 1);
 			});
-
-
-
 
 			/**
 			 * Set rows' backgrounds
@@ -13342,141 +16557,6 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 
 		init: function () {
 
-			/**
-			 * Scroll down arrow
-			 */
-			$('.hero-area--nav__down').click(function(){
-				var $self     = $(this);
-				var $heroArea = $('#hero-area').find('.hero-area--banner');
-				var distance  = $heroArea.height() + $heroArea.offset().top;
-
-				$('html, body').animate({ scrollTop: distance }, 750);
-			});
-
-
-			/**
-			 * Styling the border divider
-			 */
-			if ( $('.hero-area--divider__repeater').length > 0 ) { 
-				var $self    = $('.hero-area--divider__repeater');
-				var repeater = $self.attr('data-repeater');
-
-				$self.css('background-image', 'url(' + repeater + ')');
-			}
-
-			if ( $('.hero-area--divider__gradient').length > 0 ) { 
-				var $self    = $('.hero-area--divider__gradient');
-				var gradient = $self.attr('data-gradient');
-
-				$self.css({
-					'background': gradient,
-					'background': '-moz-linear-gradient(top, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
-					'background': '-webkit-linear-gradient(top, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
-					'background': 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, ' + gradient + ' 100%)',
-				});
-			}
-
-
-			/**
-			 * Styling overlay
-			 */
-			if ( $('.hero-area--overlay__color').length > 0 ) {
-				var $self = $('.hero-area--overlay__color');
-				var color = $self.attr('data-color');
-
-				$self.css('background-color', color);
-			}
-
-
-			/**
-			 * Add style number class to Calendar picker 
-			 */
-			var heroAreaStyle = $('#hero-area').attr('data-style');
-
-
-			/**
-			 * Searchbox
-			 */
-			var now = new Date;
-
-			pickmeup('.hero-area--search__single', {
-				position       : 'bottom',
-				hide_on_select : true,
-				min            : now,
-				class_name     : heroAreaStyle
-			});
-
-			pickmeup('.hero-area--search__start', {
-				position       : 'bottom',
-				hide_on_select : true,
-				min            : now,
-				class_name     : heroAreaStyle
-			});
-
-			pickmeup('.hero-area--search__end', {
-				position       : 'bottom',
-				hide_on_select : true,
-				min            : now,
-				class_name     : heroAreaStyle
-			});
-
-
-			/**
-			 * Generate HR lines
-			 */
-			if ( $('.hero-area--hr').length > 0 ) { 
-				var $heroAreaHr = $('.hero-area--hr');
-				var fullWidth   = $('.hero-area--content').width();
-
-				$heroAreaHr.map(function(){
-					var $self = $(this);
-					var color = $self.attr('data-color');
-					var width = $self.attr('data-width') * fullWidth;
-
-					$self.css({
-						'color': color,
-						'width': width
-					});
-				});
-			}
-
-			/**
-			 * Hero area slider
-			 */
-			$('.hero-area--bg__slide').height( $('.hero-area--banner').height() );
-			
-			if ($('.hero-area--bg__wrap:not(".js-handled")').length > 0 && global_var.dev != true) {
-				try {
-					$('.hero-area--bg__wrap').addClass('js-handled').slick({
-						arrows: false,
-						slidesToScroll: 1,
-						autoplay: true,
-						autoplaySpeed: 5000,
-						speed: 1500,
-						fade: true,
-					});
-				} catch (e) {
-					console.log('Can\'t init slick-slider carousel. Error message: ' + e);
-
-					/**
-					 * Choose each section which requires slick-slider handling 
-					 */
-					var $wrapper = $('.hero-area--bg__wrap:not(".js-handled")');
-					$wrapper.each(function(){
-						var $self     = $(this);
-						var $children = $self.children();
-
-						/** delete all slider except the first */
-						$children.each(function(index){
-							var $child = $(this);
-
-							if ( index != 0 ) {
-								$child.detach();
-							}
-						});
-					});
-				}
-			}
 
 		}
 
@@ -13761,71 +16841,20 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 	var methods = {
 
 		init: function () {
-			var $btn = $(this).not('.js-handled');
+			var $btn = $(this).not('[data-status="handle-click"]');
 
 			$btn.on('click', function(){
 				var $click = $(this);
 
-				// If request to show more 
-				// rows in primary content
+				/**
+				 * If request to show more rows in primary content
+				 */
 				if ($click.attr('data-ajax-rows')) {
-					var trigger    = $click.attr('data-ajax-rows');
-
-					// Button within a section
-					if ($click.hasClass('js-show')) {
-						var $rowHolder = $click.closest('.primary-content').find('.rows'); 
-						var $rows      = $rowHolder.children();
-						var lack       = +$rowHolder.attr('data-lack');
-
-						// buttons
-						var $moreBtn   = $click;
-						var $lessBtn   = $click.closest('.primary-content').find('.js-hide');
-
-						if (lack > 0) {
-							$moreBtn.handleClick('toggleSpiner');
-							$rowHolder.acfApi('loadAjax', function () {
-								$moreBtn.hide().handleClick('toggleSpiner');
-		                		$lessBtn.show();
-							});
-						} else {
-							var atOnce = +$rowHolder.attr('data-init');
-			                $rows.each(function(index){
-			                    if (index >= atOnce) {
-			                        $(this).fadeIn(500).removeClass('slick-out');
-			                    }
-			                });
-
-			                $moreBtn.hide();
-			                $lessBtn.show();
-						}
-
-					} else if ($click.hasClass('js-hide')) {
-						var $rowHolder = $click.closest('.primary-content').find('.rows'); 
-						var $rows      = $rowHolder.children();
-						var atOnce     = +$rowHolder.attr('data-init');
-						// buttons
-						var $moreBtn   = $click.closest('.primary-content').find('.js-show');
-						var $lessBtn   = $click;
-
-						// hide rows
-		                $rows.each(function(index){
-		                    if (index >= atOnce) {
-		                        $(this).addClass('slick-out').fadeOut(500);
-		                    }
-		                });
-
-		                $moreBtn.show();
-		                $lessBtn.hide();
-
-					// button placed elsewhere
-					} else {
-						var $rowHolder = $('[data-rows-trigger="' + trigger + '"]'); 
-						$rowHolder.acfApi('loadAjax');
-					}
+					$click.handleClick( 'ajaxRows' );
 				}
 			});
 
-			$btn.addClass('js-handled');
+			$btn.attr('data-status', 'handle-click');
 		},
 
 		toggleSpiner: function () {
@@ -13843,6 +16872,63 @@ function aload(t){"use strict";var e="data-aload";return t=t||window.document.qu
 					$button.removeClass('is-loading');
 					$button.html($button.attr('data-label'));
 				}
+			}
+		},
+
+		ajaxRows: function () {
+			var $click     = $(this);
+			var trigger    = $click.attr('data-ajax-rows');
+
+			// Button within a section
+			if ($click.hasClass('js-show')) {
+				var $rowHolder = $click.closest('.primary-content').find('.rows'); 
+				var $rows      = $rowHolder.children();
+				var lack       = +$rowHolder.attr('data-lack');
+
+				// buttons
+				var $moreBtn   = $click;
+				var $lessBtn   = $click.closest('.primary-content').find('.js-hide');
+
+				if (lack > 0) {
+					$moreBtn.handleClick('toggleSpiner');
+					$rowHolder.acfApi('loadAjax', function () {
+						$moreBtn.hide().handleClick('toggleSpiner');
+                		$lessBtn.show();
+					});
+				} else {
+					var atOnce = +$rowHolder.attr('data-init');
+	                $rows.each(function(index){
+	                    if (index >= atOnce) {
+	                        $(this).fadeIn(500).removeClass('slick-out');
+	                    }
+	                });
+
+	                $moreBtn.hide();
+	                $lessBtn.show();
+				}
+
+			} else if ($click.hasClass('js-hide')) {
+				var $rowHolder = $click.closest('.primary-content').find('.rows'); 
+				var $rows      = $rowHolder.children();
+				var atOnce     = +$rowHolder.attr('data-init');
+				// buttons
+				var $moreBtn   = $click.closest('.primary-content').find('.js-show');
+				var $lessBtn   = $click;
+
+				// hide rows
+                $rows.each(function(index){
+                    if (index >= atOnce) {
+                        $(this).addClass('slick-out').fadeOut(500);
+                    }
+                });
+
+                $moreBtn.show();
+                $lessBtn.hide();
+
+			// button placed elsewhere
+			} else {
+				var $rowHolder = $('[data-rows-trigger="' + trigger + '"]'); 
+				$rowHolder.acfApi('loadAjax');
 			}
 		}
 
@@ -14096,6 +17182,704 @@ wow = new WOW({
   mobile:       false,       
   live:         true     
 });
+/*  =========================
+	gForm controller */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	// todo load these scripts
+    var CalculateSig = function CalculateSig(stringToSign, privateKey){
+        //calculate the signature needed for authentication
+        var hash = CryptoJS.HmacSHA1(stringToSign, privateKey);
+        var base64 = hash.toString(CryptoJS.enc.Base64);
+        return encodeURIComponent(base64);
+    };
+
+    /**
+     * This function makes AJAX request to gForm API
+     * Also there are actions which happen after AJAX
+     */ 
+    function submitGForm (url, values_json, $form) {
+	    $.post(url, values_json, function(data) {
+
+	    	// Responce
+	        console.log(data);
+
+	        /**
+	         * Redirect
+	         */
+	        if (typeof data === 'string') {
+	            document.location.href = data.split('rel="canonical" href="')[1].split('" />')[0];
+	        }
+
+	        /**
+	         * Show confirmation message if it's exist
+	         */
+	        if (data.response) {
+	        	if (data.response.is_valid == true) {
+
+	        		// Show confirmation
+		            $form
+		            	.hide()
+		            	.parent()
+		            	.append(data.response.confirmation_message)
+		            	.find('.gform_confirmation_message')
+		            	.addClass('wysiwyg');
+
+		            //Scroll to confirmation
+		            $('body, html').animate({
+		            	scrollTop: $('.gform_anchor').offset().top
+		            });
+
+		            $('.slick-slider').slick('setOption', 'height', null, true);
+	        	} else {
+	        		var msg        = data.response.validation_messages;
+	        		var theHighest = 0; // this is anchor where to scroll
+
+	        		// Remove spinner from submit button
+	        		$form.find('[type="submit"]').handleClick('toggleSpiner');
+
+	        		// Loop each error message
+	        		for (var id in msg) {
+	        			var $invalidField = $form.find('[name="input_'+id+'"]');
+	        			var $invalidWrap  = $invalidField.closest('.gform-field');
+	        			var $notification = $('<div class="gform-error">'+msg[id]+'</div>');
+	        			var wrapTopOffset = $invalidWrap.offset().top;
+	        			var wrapWidth     = $invalidWrap.width();
+
+	        			// Show error message
+	        			$invalidWrap
+	        				.append($notification)
+	        				.find('.gform-error')
+	        				.width(wrapWidth)
+	        				.slideDown();
+
+	        			if (wrapTopOffset < theHighest || theHighest === 0)
+	        				theHighest = wrapTopOffset;
+	        		}
+
+	        		// Scroll to the highest error message
+	        		$('body, html').animate({
+	        			scrollTop: theHighest - 50
+	        		});
+
+	        		$('.slick-slider').slick('setOption', 'height', null, true);
+	        	}
+	        }	
+	    });
+
+	    return false;
+    }
+
+	/**
+	 * Methods to $.gForm()
+	 */
+	var methods = {
+
+		init: function () {
+
+			var $forms = $(this).not('[data-inited]');
+
+			if ($forms.length > 0) {
+
+				/**
+				 * Actions over $form
+				 * - Stylize specific fields
+				 * - Set mask to time-field
+				 * - Set mask to date
+				 * - Set mask to phone
+				 * - Route actions
+				 * - On Submit action
+				 * - Conditionalize
+				 * - Set data-init to the form
+				 */
+				$forms
+					.find('select, input[type="radio"], input[type="checkbox"], input[type="file"]')
+					.styler();
+
+				$forms
+					.find('.type_time')
+					.find('input')
+					.mask('00');
+
+				$forms
+					.find('.type_date')
+					.find('input')
+					.mask('00/00/0000');
+
+				$forms
+					.find('.type_phone')
+					.find('input')
+					.mask('(000) 000-0000');
+
+				$forms.on('click', '.gform-pagination__btn', function (e) {
+					e.preventDefault();
+					$(this).gForm('routePage');
+					return false;
+				});
+
+				$forms.submit(function (e) {
+					e.preventDefault();
+					var $form = $(this);
+
+					$form.find('[type="submit"]').handleClick('toggleSpiner');
+					$form.gForm('submit');
+
+					return false;
+				});
+
+				$forms.gForm('conditionalize');
+
+				$forms.on('change', 'input[type="checkbox"], input[type="radio"], select', function () {
+					$forms.gForm('conditionalize');
+				});
+
+				$forms.attr('data-inited', 1);
+			}
+		},
+
+		/**
+		 * Submit method does following things:
+		 * - Validate data
+		 * - Grab data
+		 * - Send data
+		 */
+		submit: function () {
+
+            /**
+             * DOM Objects
+             */
+            var $form         = $(this);
+            var $body         = $form.find('.gform-body');
+            var $fields       = $body.find('.gform-field');
+            var $reCaptcha    = $body.find('.g-recaptcha');
+            var $notifyGroups = $form.find('.gform-notify_group'); // todo: create on frontend
+
+            /**
+             * Data variable is used 
+             * for AJAX requests in Wordpress
+             */
+            var values      = {};
+            var inputValues = {};
+            var formId      = $form.attr('id').split('-')[1];
+
+
+            $form.find('.gform-error').detach();
+
+            /**
+             * Loop user fields
+             */
+            if ($fields.length > 0) {
+                $fields.each(function(){
+                    var $item           = $(this);
+                    var label           = $item.attr('data-label');
+
+                    // Default type of handle
+                    var isHandleDefault = (
+                    	   $item.hasClass('type_text') 
+                    	|| $item.hasClass('type_phone') 
+                    	|| $item.hasClass('type_select') 
+                    	|| $item.hasClass('type_multiselect') 
+                    	|| $item.hasClass('type_website') 
+                    	|| $item.hasClass('type_number')
+                    	|| $item.hasClass('type_textarea')
+                    );
+
+                    // Choices type of handle
+                    var isHandleChoices = (
+                    	   $item.hasClass('type_checkbox') 
+                    	|| $item.hasClass('type_radio') 
+                    );
+
+                    // Choices type of handle
+                    var isHandleMultiply = (
+                    	   $item.hasClass('type_name') 
+                    	|| $item.hasClass('type_address') 
+                    	|| $item.hasClass('type_time') 
+                    	|| $item.hasClass('type_email') 
+                    );
+
+                    // Start handling
+                    if (isHandleDefault) {
+                    	var $input   = $item.find('input, textarea, select');
+                        var name     = $input.attr('name');
+                        var value    = $input.val();
+
+                        inputValues[name] = value;
+                    }
+
+                    // Start choices handling
+                    if (isHandleChoices) {
+                    	var isOtherChoice = $item.find('[data-more="1"]').length > 0;
+
+                    	var $checked      = $item.find('input:checked');
+                    	var is_checked    = $checked.length > 0;
+
+                    	// Whether this choices group 
+                    	// has additional input and somethng checked
+                    	if (isOtherChoice && is_checked) {
+                    		var isCheckedMore = $checked.attr('data-more') == '1';
+
+                    		// Whether checked additional input
+                    		if (isCheckedMore)
+                    			$checked = $item.find('input[type="text"]');
+                    	}
+
+                    	// Time to setting inputVariables
+                    	if (typeof $checked !== 'object') {
+                    		var name          = $checked.attr('name');
+                    		var value         = $checked.val();
+                        	inputValues[name] = value;
+                        } else {
+                        	var arrSize = $checked.length;
+
+                            /**
+                             * Get variables of each DOM item
+                             */
+                            for (var counter = 0; counter < arrSize; counter++) {
+                        		var name          = $checked.eq(counter).attr('name');
+                        		var value         = $checked.eq(counter).val();
+                                inputValues[name] = value;
+                            }
+                        }
+                    }
+
+                    // Start handling
+                    if (isHandleMultiply) {
+                    	var $inputs  = $item.find('input, select');
+
+                    	if (typeof $inputs !== 'object') {
+	                        var name     = $input.attr('name');
+	                        var value    = $input.val();
+
+	                        inputValues[name] = value;
+                    	} else {
+                        	var arrSize = $inputs.length;
+
+                            /**
+                             * Get variables of each DOM item
+                             */
+                            for (var counter = 0; counter < arrSize; counter++) {
+                        		var name          = $inputs.eq(counter).attr('name');
+                        		var value         = $inputs.eq(counter).val();
+                                inputValues[name] = value;
+                            }
+                    	}
+                    }
+                });
+            }
+
+            /**
+             * Check reCaptcha is it's exist
+             */
+            if ($reCaptcha.length > 0) {
+                var captcha = grecaptcha.getResponse();
+
+                if(!captcha.length){
+                    e.preventDefault();
+                    console.warn('False captcha');
+                    return false;
+                } 
+            }
+
+            /**
+             * Input values for submitting
+             */
+            values.input_values = inputValues;
+            var values_json     = JSON.stringify(values);
+
+            console.log(values);
+
+            //set variables
+            var d               = new Date;
+            var expiration      = 3600; // 1 hour,
+            var unixtime        = parseInt(d.getTime() / 1000);
+            var future_unixtime = unixtime + expiration;
+            var publicKey       = global_var.gf_public_key;
+            var privateKey      = global_var.gf_private_key;
+            var method          = "POST";
+            var route           = "/gravityformsapi/forms/"+formId+"/submissions";
+
+            var stringToSign = publicKey + ":" + method + ":" + route + ":" + future_unixtime;
+            var sig = CalculateSig(stringToSign, privateKey);
+            var url = global_var.url + route + '?api_key=' + publicKey + '&signature=' + sig + '&expires=' + future_unixtime;
+
+            // Ok, let's go to AJAX MAA-FUCKA!!!
+            submitGForm(url, values_json, $form);
+
+            return false;
+		},
+
+		/** 
+		 * Handle button which 
+		 * was clicked to route 
+		 * to another form page
+		 */
+		routePage: function () {
+			var $btn      = $(this);
+			var goTo      = +$btn.attr('data-goto') - 1; // get id of page where to go
+
+			var $body     = $btn.closest('.gform-body');
+			var $theOne   = $body.children().eq(goTo);
+
+			$btn.animate({ 'opacity': 0 }, 300);
+
+			$theOne
+				.animate({
+					'opacity': 1
+				}, 300)
+				.css({
+					'pointer-events': 'auto'
+				}, 300);
+
+			$('body, html').animate({
+				scrollTop: ($theOne.offset().top) - 50
+			}, 300);
+		},
+
+		conditionalize: function () {
+			var $form          = $(this);
+			var $conditionaled = $form.find('[data-conditional-type]');
+
+			$conditionaled.each(function () {
+				var $field       = $(this);
+				var type         = $field.attr('data-conditional-type');
+				var fieldId      = $field.closest('[data-id]').attr('data-id');
+				var $fieldWrap   = $form.find('[data-id="' + fieldId + '"]');
+				var id           = $field.attr('data-conditional-id');
+				var operator     = $field.attr('data-conditional-operator');
+				var value        = $field.attr('data-conditional-value');
+				var $related     = $form.find('[data-id="' + id + '"]');
+				var relatedValue = $related.find('input, textarea, select').val();
+				var $inputs      = $field.find('input, textarea, select');
+
+				switch (operator) {
+					case 'is':
+						operator = true;
+						break;
+
+					default:
+						operator = true;
+						break;
+				}
+
+				var conditional = (relatedValue == value) === operator;
+
+				if (conditional) {
+					$fieldWrap.show().removeClass('js-hidden');
+
+					if ($inputs.is('select') || $inputs.is('[type="radio"]') || $inputs.is('[type="checkbox"]'))
+						$inputs.styler();
+				} else {
+					$fieldWrap.hide().addClass('js-hidden');
+					$inputs.val('');
+
+					if ($inputs.is('select') || $inputs.is('[type="radio"]') || $inputs.is('[type="checkbox"]'))
+						$inputs.styler('destroy');
+				}
+
+				$('.slick-slider').slick('setOption', 'height', null, true);
+			});
+		}
+	};
+
+	/** 
+	 * Init method
+	 */
+	$.fn.gForm = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.gForm' );
+        } 
+
+    };
+}));
+/*  =========================
+	background */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	var methods = {
+
+		init: function () {			
+
+			var $wrappers = $('[data-bg-image]').not('[data-bg-inited]');
+
+			$wrappers.each(function(){
+				var $self = $(this);
+
+				/**
+				 * Set section background image
+				 */
+				$self.attr('data-bg-image') && $self.backgrounds('urlToBackground');
+
+
+				/**
+				 * Generate google maps background
+				 */
+				if ($self.attr('data-section-lat') && $self.attr('data-section-lng')) {
+					var lat = $self.attr('data-section-lat');
+					var lng = $self.attr('data-section-lng');
+
+					$self.prepend("<div class='acf-map bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
+				}
+
+				/**
+				 * Set backgrund's overlay
+				 */
+				if ($self.attr('data-bg-overlay')) {
+					var $overlay = $('<div class="bg-overlay"></div>');
+					var color    = $self.attr('data-bg-overlay-color');
+					var image    = $self.attr('data-bg-overlay-image');
+					var opacity  = $self.attr('data-bg-overlay-opacity');
+
+					color && $overlay.css('background-color', color);
+					image && $overlay.css('background-image', 'url('+image+')');
+					opacity && $overlay.css('opacity', opacity / 100);
+
+					$overlay.prependTo($self);
+				}
+			});
+
+			$wrappers.attr('data-bg-inited', 1);
+		},
+
+		urlToBackground: function () {
+			var $self  = $(this); 
+			var url    = $self.attr('data-bg-image');
+            var image  = new Image();
+
+            if (url) {
+				image.onload = function(){
+	                var imgPercent = image.height / image.width * 100;
+	                var imgHeight  = screen.width / 100 * imgPercent;
+
+					// make width and height of 
+					// the image proporsial to 
+					// an user's screen
+					if ( $self.attr('data-bg-equal') == '1' ) {
+		                var imgPercent = image.height / image.width * 100;
+		                var imgHeight  = +$('body').width() / 100 * imgPercent;
+
+		                // smooth or not
+		                if ($self.hasClass('divider-image')) {
+		                	$self.css({'min-height': imgHeight});
+		                } else {
+		                	$self.animate({'min-height': imgHeight}, 500);
+		                }
+
+					// Default height
+					} else if ( $self.attr('data-bg-height') == 'image' ) {
+						var imgHeight = image.height;
+
+						// smooth or not
+		                if ($self.hasClass('divider-image')) {
+		                	$self.css({'min-height': imgHeight});
+		                } else {
+		                	$self.animate({'min-height': imgHeight}, 500);
+		                }
+					} 
+
+					$self.css({
+						'background-image': 'url(' + url + ')'
+					});
+				}
+
+	            image.src = url;
+            }
+		}
+
+	};
+
+	/** 
+	 * Init method
+	 */
+	$.fn.backgrounds = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.backgrounds' );
+        } 
+
+    };
+}));
+/*  =========================
+	dividers */
+
+(function(factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports !== 'undefined') {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+
+}(function($) {
+
+	var methods = {
+
+		init: function () {			
+
+			var $wrappers = $('[data-dividers]').not('[data-dividers-inited]');
+
+			$wrappers.each(function(){
+				var $wrapper   = $(this);
+				var topType    = $wrapper.attr('data-divider-top-type');
+				var bottomType = $wrapper.attr('data-divider-bottom-type');
+
+				// top divider
+				if ( topType != 'none' && topType ) {
+					var $topDivider = $('<div></div>', {
+						'class': 'divider-top divider-type_' + topType
+					});
+
+					var url   = $wrapper.attr('data-divider-top-image');
+					var color = $wrapper.attr('data-divider-top-color'); 
+
+					switch (topType) {
+						case 'image':
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-equal', '1');
+							$image.backgrounds('urlToBackground');
+
+							$image.appendTo($topDivider);
+							break;
+
+						case 'repeater':
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-height', 'image');
+							$image.backgrounds('urlToBackground');
+
+							$image.appendTo($topDivider);
+							break;
+
+
+						case 'line': 
+							var width = $wrapper.attr('data-divider-top-width'); 
+							var $hr   = $('<hr class="divider-hr" />').css({
+								'border-top': width + 'px solid ' + color
+							});
+
+							$hr.appendTo($topDivider);
+							break;
+
+						case 'gradient':
+							var duration = $wrapper.attr('data-divider-top-duration'); 
+							var $div     = $('<div class="divider-gradient"></div>').css({
+								'background': 'linear-gradient(to bottom, '+color+' 0%,rgba(0,0,0,0) 100%)'
+							});
+
+							$div.appendTo($topDivider);
+							$topDivider.height(duration);
+							break;
+					}
+
+					$topDivider.prependTo($wrapper);
+				}
+
+				// top divider
+				if ( bottomType != 'none' && bottomType ) {
+					var $bottomDivider = $('<div></div>', {
+						'class': 'divider-bottom divider-type_' + bottomType
+					});
+
+					var url   = $wrapper.attr('data-divider-bottom-image');
+					var color = $wrapper.attr('data-divider-bottom-color'); 
+
+					switch (bottomType) {
+						case 'image':
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-equal', '1');
+							$image.backgrounds('urlToBackground');
+
+							$image.appendTo($bottomDivider);
+							break;
+
+						case 'repeater':
+							var $image = $('<div class="divider-image"></div>')
+								.attr('data-bg-image', url)
+								.attr('data-bg-height', 'image');
+							$image.backgrounds('urlToBackground');
+
+							$image.appendTo($bottomDivider);
+							break;
+
+						case 'line':
+							var width = $wrapper.attr('data-divider-bottom-width'); 
+							var $hr   = $('<hr class="divider-hr" />').css({
+								'border-top': width + 'px solid ' + color
+							});
+
+							$hr.appendTo($bottomDivider);
+							break;
+
+						case 'gradient':
+							var duration = $wrapper.attr('data-divider-bottom-duration'); 
+							var $div     = $('<div class="divider-gradient"></div>').css({
+								'background': 'linear-gradient(to top, '+color+' 0%,rgba(0,0,0,0) 100%)'
+							});
+
+							$div.appendTo($bottomDivider);
+							$bottomDivider.height(duration);
+							break;
+					}
+
+					$bottomDivider.appendTo($wrapper);
+				}
+			});
+
+			$wrappers.attr('data-dividers-inited', 1);
+		}
+
+	};
+
+	/** 
+	 * Init method
+	 */
+	$.fn.dividers = function( method ) {
+
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method named ' +  method + ' isn\'t exist within jQuery.dividers' );
+        } 
+
+    };
+}));
 
 (function(factory) {
     'use strict';
@@ -14130,7 +17914,11 @@ wow = new WOW({
 			$(document).acfApi('init');
 			$(document).controller('addBlacklistClass');
 
-			// Hang click handling to following buttons:
+			// Hang click handling to following buttons
+			// Note: handleClick works with TourismTiger
+			//       functions. If you want handle a button
+			//       uses third-party, cleate separated
+			//       jQuery plugin like $.rezdy()
 			$('[data-ajax-rows]').handleClick('init');
 
 			// Hang click handling to following buttons:
@@ -14138,6 +17926,9 @@ wow = new WOW({
 
 			// Hang gallery sliders:
 			$('.gallery-slider').gallerySlider('init');
+
+			// Init forms
+			$('.gform').gForm('init');
 
 			// Product page's tstimonials
 			$('.testimonials-carousel').not('[data-inited]').slick({
@@ -14148,6 +17939,22 @@ wow = new WOW({
 
 			// Accordion
 			$('.accordion').accordion('init');
+
+			// Init Datepicker
+			$.fn.datepicker.setDefaults({
+				autoHide: true,
+				autoPick: true,
+				format: 'dd/mm/yyyy',
+				date: new Date(),
+				weekStart: 1
+			});
+			$('[data-toggle="datepicker"]').datepicker();
+
+			// Load backgrounds
+			$(window).backgrounds('init');
+
+			// Load backgrounds
+			$(window).dividers('init');
 		},
 
 		/**

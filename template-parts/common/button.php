@@ -7,12 +7,15 @@
  */
 
 // Common 
-$d                    = array(); // just for keep row values
-$attrs                = array(); // Regarding to button
-$style                = array(); // Regarding to button
+$d                    = array();
+$attrs                = array(); 
+$style                = array(); 
 $classes              = array(); // Regarding to button
+$classes_wrap         = array(); // Regarding to wrapper
 $classes[]            = 'button';
-$classes[]            = 'width_box';
+$classes_wrap[]       = 'button--wrapper';
+$classes_wrap[]       = 'width_inline';
+
 
 $d['btn'] = get_sub_field( 'button' );
 $d['btn'] = get_button( $d['btn'], $classes );
@@ -28,6 +31,7 @@ if ( $d['margin_bottom'] )
 	$style[]          = "margin-bottom:{$d['margin_bottom']}rem;";
 
 // Compile classes and attributes
+$attrs[]              = count($classes_wrap) > 0 ? 'class="' . generate_classlist( $classes_wrap ) . '"' : '';
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
 $attrs                = generate_classlist( $attrs );
 

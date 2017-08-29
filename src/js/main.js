@@ -10,13 +10,17 @@
 */
 //= ../../bower_components/jquery/dist/jquery.js
 //= ../../bower_components/slick-carousel/slick/slick.js
-//= ../../bower_components/pickmeup/dist/pickmeup.min.js
+//= ../../bower_components/datepicker/dist/datepicker.js
 //= ../../bower_components/aload/dist/aload.min.js
 
 //= ../../bower_components/wow/dist/wow.min.js
 //= ../../bower_components/smoothstate/src/jquery.smoothState.js
-// ../../bower_components/jquery-mask-plugin/dist/jquery.mask.js
+//= ../../bower_components/jquery-mask-plugin/dist/jquery.mask.js
 // ../../bower_components/magnific-popup/dist/jquery.magnific-popup.js
+
+//= local-plugins/form-styler.js
+//= local-plugins/crypto.js
+//= local-plugins/enc-base.js
 
 
 /**
@@ -31,6 +35,9 @@
 //= common/gallery-slider.js
 //= common/trip-details.js
 //= common/wow.js
+//= common/gform.js
+//= common/backgrounds.js
+//= common/dividers.js
 
 (function(factory) {
     'use strict';
@@ -65,7 +72,11 @@
 			$(document).acfApi('init');
 			$(document).controller('addBlacklistClass');
 
-			// Hang click handling to following buttons:
+			// Hang click handling to following buttons
+			// Note: handleClick works with TourismTiger
+			//       functions. If you want handle a button
+			//       uses third-party, cleate separated
+			//       jQuery plugin like $.rezdy()
 			$('[data-ajax-rows]').handleClick('init');
 
 			// Hang click handling to following buttons:
@@ -73,6 +84,9 @@
 
 			// Hang gallery sliders:
 			$('.gallery-slider').gallerySlider('init');
+
+			// Init forms
+			$('.gform').gForm('init');
 
 			// Product page's tstimonials
 			$('.testimonials-carousel').not('[data-inited]').slick({
@@ -83,6 +97,22 @@
 
 			// Accordion
 			$('.accordion').accordion('init');
+
+			// Init Datepicker
+			$.fn.datepicker.setDefaults({
+				autoHide: true,
+				autoPick: true,
+				format: 'dd/mm/yyyy',
+				date: new Date(),
+				weekStart: 1
+			});
+			$('[data-toggle="datepicker"]').datepicker();
+
+			// Load backgrounds
+			$(window).backgrounds('init');
+
+			// Load backgrounds
+			$(window).dividers('init');
 		},
 
 		/**

@@ -1,33 +1,56 @@
 /*  =========================
     Divider */
 
-.top-divider {
-	top: 0;
-}
-
-.bottom-divider {
-	bottom: 0;
-}
-
-.top-divider,
-.bottom-divider {
-	position: absolute;
-	width: 100%;
-	left: 0;
-	margin: 0;
-	padding: 0;
-	z-index: 10;
-
-	&_line {
-		border-style: solid;
+.divider {
+	&-top,
+	&-bottom {
+		position: absolute;
+		left: 0;
+		width: 100%;
 	}
 
-	&_image {
-		background-repeat: no-repeat;
-		background-position: 50% 50%;
+	&-top {
+		top: 0;
+		z-index: 10;
+
+		.divider {
+			&-image {
+				background-position: top center;
+			}
+		}
 	}
 
-	&_repeater {
-		background-position: 50% 50%;
+	&-bottom {
+		bottom: 0;
+		z-index: 20;
+
+		.divider {
+			&-image {
+				background-position: bottom center;
+			}
+		}
+	}
+
+	&-gradient {
+		height: 100%;
+		width: 100%;
+		position: relative;
+	}
+
+	&-image {
+		background-position: center center;
+	}
+
+	&-hr {
+		margin: 0;
+	}
+
+	&-type {
+		&_image {
+			.divider-image {
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+		}
 	}
 }

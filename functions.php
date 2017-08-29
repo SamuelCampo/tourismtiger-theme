@@ -93,6 +93,12 @@ include_once THEME_INC_PATH . '/common/acf.php';
 /**
  * ACF Option page: Primary Styles
  */
+include THEME_INC_PATH . '/option-pages/api-keys.php';
+
+
+/**
+ * ACF Option page: Primary Styles
+ */
 include THEME_INC_PATH . '/option-pages/primary-styles.php';
 
 
@@ -194,6 +200,24 @@ include THEME_INC_PATH . '/api/primary-content.php';
 
 
 /**
- * Button generation
+ * Button functions
  */
 include THEME_INC_PATH . '/api/button.php';
+
+
+/**
+ * Gravity Forms functions
+ */
+include THEME_INC_PATH . '/api/gform.php';
+
+
+/**
+ * Background functions generation
+ */
+include THEME_INC_PATH . '/api/backgrounds.php';
+
+
+/**
+ * Dividers functions generation
+ */
+include THEME_INC_PATH . '/api/dividers.php';

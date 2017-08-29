@@ -17,8 +17,7 @@ $classes[]            = 'row';
 
 
 // Row type
-$type                 = get_sub_field( 'type' ); 
-
+$type                 = get_sub_field( 'row-type' ); 
 
 // Options
 $d['cols_count']      = get_sub_field( 'cols-count' ); 
@@ -30,7 +29,11 @@ $d['vertical']        = get_sub_field( 'vertical-placement' );
 $d['cols_placement']  = get_sub_field( 'cols-placement' ); 
 $d['margin_top']      = get_sub_field( 'margin_top' ); 
 $d['margin_bottom']   = get_sub_field( 'margin_bottom' ); 
-$d['background']      = get_sub_field( 'background' );
+
+$background           = get_sub_field( 'background' );
+$background           = get_background_attrs( $background ); // Set attrs and get bg videos
+$attrs[]              = $background['attrs'] ? $background['attrs'] : '';
+$style[]              = $background['style'] ? $background['style'] : '';
 
 $classes[]            = 'layout_' . $d['layout'];
 $classes[]            = 'width_' . $d['width'];
@@ -82,17 +85,6 @@ elseif ( $d['layout'] == 'carousel' ) :
 		$classes[]        = 'arrows_position_' . $d['arrows_position'];
 		$attrs[]          = "data-arrows-color='{$d['arrows_color']}';";
 	endif;
-endif;
-
-// Background 
-if ( $d['background'] != 'none' ) :
-	$d['texture']     = get_sub_field( 'background_texture' ); 
-	$d['color']       = get_sub_field( 'background_color' ); 
-
-	$classes[]        = 'background_' . $d['background'];
-
-	$style[]          = $d['background'] == 'texture' ? "background-image:url({$d['texture']});" : '';
-	$style[]          = $d['background'] == 'color' ? "background-color:{$d['color']};" : '';
 endif;
 
 // Compile classes and attributes
