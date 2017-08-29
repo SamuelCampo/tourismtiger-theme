@@ -1,0 +1,228 @@
+/*  =========================
+    Banner UI */
+
+.banner {
+	position: relative;
+	display: flex;
+	.mx-box(5rem);
+	
+	&--box {
+		position: relative;
+		z-index: 50;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+
+		> * {
+			width: 100%;
+		}
+	}
+
+	&.width {
+		&_box {
+			.box;
+		}
+
+		&_full {
+			padding-left: 3rem;
+			padding-right: 3rem;
+		}
+	}
+
+	&.height {
+		&_200px {
+			min-height: 20rem;
+		}
+
+		&_300px {
+			min-height: 30rem;
+		}
+
+		&_400px {
+			min-height: 40rem;
+		}
+
+		&_500px {
+			min-height: 50rem;
+		}
+
+		&_600px {
+			min-height: 60rem;
+		}
+
+		&_100vh {
+			min-height: 100vh;
+		}
+	}
+
+	&.inner-width {
+		&_full {
+			width: 100%;
+		}
+
+		&_4-5 {
+			.banner {
+				&--box {
+					width: 80%;
+
+					@media (max-width: @padmini) {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		&_2-3 {
+			.banner {
+				&--box {
+					width: 66%;
+
+					@media (max-width: @pad) {
+						width: 75%;
+					}
+
+					@media (max-width: @padmini) {
+						width: 85%;
+					}
+
+					@media (max-width: @mobile) {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		&_1-2 {
+			.banner {
+				&--box {
+					width: 50%;
+
+					@media (max-width: @laptop) {
+						width: 60%;
+					}
+
+					@media (max-width: @pad) {
+						width: 70%;
+					}
+
+					@media (max-width: @padmini) {
+						width: 80%;
+					}
+
+					@media (max-width: @mobile) {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		&_1-4 {
+			.banner {
+				&--box {
+					width: 25%;
+
+					@media (max-width: @laptop) {
+						width: 33%;
+					}
+
+					@media (max-width: @pad) {
+						width: 50%;
+					}
+
+					@media (max-width: @padmini) {
+						width: 70%;
+					}
+
+					@media (max-width: @mobile) {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	&.inner-vertical {
+		&_start {
+			.banner {
+				&--box {
+					align-content: flex-start;
+				}
+			}
+		}
+
+		&_end {
+			.banner {
+				&--box {
+					align-content: flex-end;
+				}
+			}
+		}
+
+		&_center {
+			.banner {
+				&--box {
+					align-content: center;
+				}
+			}
+		}
+
+		&_space-between {
+			.banner {
+				&--box {
+					align-content: space-between;
+				}
+			}
+		}
+
+		&_space-around {
+			.banner {
+				&--box {
+					align-content: space-around;
+				}
+			}
+		}
+	}
+
+	&.inner-align {
+		&_left {
+			.banner {
+				&--box {
+					margin-right: auto;
+				}
+			}
+		}
+
+		&_center {
+			.banner {
+				&--box {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+		}
+
+		&_right {
+			.banner {
+				&--box {
+					margin-left: auto;
+				}
+			}
+		}
+
+		&_space-between {
+			.banner {
+				&--box {
+					justify-content: space-between;
+				}
+			}
+		}
+
+		&_space-around {
+			.banner {
+				&--box {
+					justify-content: space-around;
+				}
+			}
+		}
+	}
+}

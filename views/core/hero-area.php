@@ -13,10 +13,25 @@
 	 * Loop slides (components)
 	 */
 	if ( have_rows( 'components' ) ) :
-		while ( have_rows( 'components' ) ) :
-			the_row();
-			get_template_part( "template-parts/hero-area/$component" ); 
-		endwhile;
+		?>
+
+		<div class="hero-area--wrapper">
+
+			<?php
+			/**
+			 * Loop banners
+			 */
+			while ( have_rows( 'components' ) ) :
+				the_row();
+				$component = get_row_layout();
+
+				get_template_part( "template-parts/hero-area/$component" ); 
+			endwhile;
+			?>
+
+		</div>
+
+		<?php
 	endif;
 	?>
 </div>

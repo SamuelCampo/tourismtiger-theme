@@ -17,13 +17,9 @@ if ( have_rows( 'hero_area' ) ) :
 		$classes     = array();
 		$attrs       = array();
 
-		$d['width']  = get_sub_field( 'width' );
-		$d['height'] = get_sub_field( 'height' );
+		$classes[]   = 'hero-area';
 
-		$classes[]   = "width_{$d['width']}";
-		$classes[]   = "height_{$d['height']}";
-
-		$classes     = count( $classes ) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
+		$attrs[]     = count( $classes ) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
 		$attrs       = count( $attrs ) > 0 ? generate_classlist( $attrs ) : '';
 
 		/**
@@ -32,5 +28,4 @@ if ( have_rows( 'hero_area' ) ) :
 		include THEME_VIEWS . 'core/hero-area.php';
 	endwhile;
 endif;
-
 ?>

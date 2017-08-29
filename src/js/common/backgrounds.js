@@ -23,22 +23,6 @@
 				var $self = $(this);
 
 				/**
-				 * Set backgrund's overlay
-				 */
-				if ($self.attr('data-bg-overlay')) {
-					var $overlay = $('<div class="bg-overlay"></div>');
-					var color    = $self.attr('data-bg-overlay-color');
-					var image    = $self.attr('data-bg-overlay-image');
-					var opacity  = $self.attr('data-bg-overlay-opacity');
-
-					color && $overlay.css('background-color', color);
-					image && $overlay.css('background-image', 'url('+image+')');
-					opacity && $overlay.css('opacity', opacity / 100);
-
-					$overlay.prependTo($self);
-				}
-
-				/**
 				 * Set section background image
 				 */
 				$self.attr('data-bg-image') && $self.backgrounds('urlToBackground');
@@ -52,6 +36,22 @@
 					var lng = $self.attr('data-section-lng');
 
 					$self.prepend("<div class='acf-map bg_map'><div class='marker' data-lat='"+lat+"' data-lng='"+lng+"'></div></div>");
+				}
+
+				/**
+				 * Set backgrund's overlay
+				 */
+				if ($self.attr('data-bg-overlay')) {
+					var $overlay = $('<div class="bg-overlay"></div>');
+					var color    = $self.attr('data-bg-overlay-color');
+					var image    = $self.attr('data-bg-overlay-image');
+					var opacity  = $self.attr('data-bg-overlay-opacity');
+
+					color && $overlay.css('background-color', color);
+					image && $overlay.css('background-image', 'url('+image+')');
+					opacity && $overlay.css('opacity', opacity / 100);
+
+					$overlay.prependTo($self);
 				}
 			});
 

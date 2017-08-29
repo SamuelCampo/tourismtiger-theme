@@ -3375,14 +3375,6 @@ function get_section_local_field( $id = '1234QWERasdf' ) {
 function get_hero_area_local_field( $id = '1234567890' ) {
 	return array (
 		array (
-			'key' => $id . '_qdc13of931z12',
-			'label' => 'Components',
-			'name' => 'tab_components',
-			'type' => 'tab',
-			'required' => 0,
-			'placement' => 'top'
-		),
-		array (
 			'key'          => $id . '_qdc13of931z03',
 			'label'        => 'Components',
 			'name'         => 'components',
@@ -3443,6 +3435,157 @@ function get_hero_area_local_field( $id = '1234567890' ) {
 							'placement' => 'top'
 						),
 						array (
+							'key'      => $id . '_qdc13of931s91',
+							'label'    => 'Height',
+							'name'     => 'height',
+							'type'     => 'select',
+							'required' => 0,
+							'choices'  => array (
+								'auto'   => 'Auto',
+								'200px'  => '200px',
+								'300px'  => '300px',
+								'400px'  => '400px',
+								'500px'  => '500px',
+								'600px'  => '600px',
+								'100vh'  => '100% of an user\'s display'
+							),
+							'default_values' => array (
+								'auto' => 'Auto'
+							),
+							'wrapper' => array (
+								'width' => '25'
+							)
+						),
+						array (
+							'key'      => $id . '_qdc13of931s82',
+							'label'    => 'Width',
+							'name'     => 'width',
+							'type'     => 'select',
+							'required' => 0,
+							'choices'  => array (
+								'full' => 'Full width',
+								'box'  => 'Fit in page\'s grid',
+							),
+							'default_values' => array (
+								'full' => 'Full width'
+							),
+							'wrapper' => array (
+								'width' => '25'
+							)
+						),
+						array (
+							'key'      => $id . '_qdc13of931s63',
+							'label'    => 'Vertical align',
+							'name'     => 'vertical-align',
+							'type'     => 'select',
+							'required' => 0,
+							'choices'  => array (
+								'center'     => 'Center',
+								'stretch'    => 'Stretch',
+								'start' => 'Top',
+								'end'     => 'Bottom'
+							),
+							'default_values' => array (
+								'center'     => 'Center'
+							),
+							'wrapper'   => array (
+								'width' => '25'
+							)
+						),
+
+						array (
+							'key' => $id . '_qdc13of93bs44',
+							'label' => 'Inner content',
+							'name' => 'Inner_Options_0',
+							'type' => 'tab',
+							'required' => 0,
+						),
+						array (
+							'key'      => $id . '_qdc13of931s94',
+							'label'    => 'Width',
+							'name'     => 'inner-width',
+							'type'     => 'select',
+							'required' => 0,
+							'choices'  => array (
+								'full' => 'Full width',
+								'4-5'  => '4/5',
+								'2-3'  => '3/4',
+								'1-2'  => '1/2',
+								'1-4'  => '1/4',
+								'auto' => 'Auto',
+							),
+							'default_values' => array (
+								'full' => 'Full width'
+							),
+							'wrapper' => array (
+								'width' => '25'
+							)
+						),
+						array (
+							'key'      => $id . '_qdc13of931s45',
+							'label'    => 'Horizontal align',
+							'name'     => 'inner-align',
+							'type'     => 'select',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field'    => $id . '_qdc13of931s94',
+										'operator' => '!=',
+										'value'    => 'full'
+									)
+								)
+							),
+							'choices'  => array (
+								'center' => 'Center',
+								'start'  => 'Left',
+								'end'    => 'Right',
+							),
+							'default_values' => array (
+								'center'     => 'Center'
+							),
+							'wrapper'   => array (
+								'width' => '25'
+							)
+						),
+						array (
+							'key'      => $id . '_qdc13of931s54',
+							'label'    => 'Vertical align',
+							'name'     => 'inner-vertical-align',
+							'type'     => 'select',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field'    => $id . '_qdc13of931s63',
+										'operator' => '==',
+										'value'    => 'stretch'
+									)
+								)
+							),
+							'choices'  => array (
+								'center'        => 'Center',
+								'start'         => 'Top',
+								'end'           => 'Bottom',
+								'space-between' => 'Space Between',
+								'space-around'  => 'Space Around',
+							),
+							'default_values' => array (
+								'center'     => 'Center'
+							),
+							'wrapper'   => array (
+								'width' => '25'
+							)
+						),
+
+						array (
+							'key' => $id . '_qdc13of93bs73',
+							'label' => 'Dividers',
+							'name' => 'Dividers_Options_0',
+							'type' => 'tab',
+							'required' => 0,
+						),
+						array (
 							'key'           => $id . '_5824fa4aabd9u',
 							'label'         => 'Dividers',
 							'name'          => 'dividers',
@@ -3484,53 +3627,6 @@ function get_hero_area_local_field( $id = '1234567890' ) {
 				)
 			)
 		),
-		array (
-			'key' => $id . '_qdc13of931s00',
-			'label' => 'Settings',
-			'name' => 'tab_settings',
-			'type' => 'tab',
-			'required' => 0,
-			'placement' => 'top'
-		),
-		array (
-			'key'      => $id . '_qdc13of931s91',
-			'label'    => 'Height',
-			'name'     => 'height',
-			'type'     => 'select',
-			'required' => 0,
-			'choices'  => array (
-				'auto'   => 'Auto',
-				'200px'  => '200px',
-				'300px'  => '300px',
-				'400px'  => '400px',
-				'500px'  => '500px',
-				'600px'  => '600px',
-				'100vh'  => '100% of an user\'s display'
-			),
-			'default_values' => array (
-				'auto' => 'Auto'
-			),
-			'wrapper' => array (
-				'width' => '25'
-			)
-		),
-		array (
-			'key'      => $id . '_qdc13of931s82',
-			'label'    => 'Width',
-			'name'     => 'width',
-			'type'     => 'select',
-			'required' => 0,
-			'choices'  => array (
-				'full' => 'Full width',
-				'box'  => 'Fit in page\'s grid',
-			),
-			'default_values' => array (
-				'full' => 'Full width'
-			),
-			'wrapper' => array (
-				'width' => '25'
-			)
-		)
 	);
 }
 

@@ -23,3 +23,15 @@
 <body>
 <div id="wrapper">
 <div id="body-class"  <?php body_class(); ?>>
+
+<?php
+/**
+ * Get hero area
+ */
+get_template_part( 'template-parts/hero-area' );
+?>
+
+
+
+
+
