@@ -21,9 +21,11 @@ if ( have_rows( 'columns' ) ) :
 		$classes              = array();
 		$classes[]            = "row--column";
 		$classes[]            = "column-{$layout}"; 
-		$classes[]            = $layout; 
-		$classes[]            = "card-wrapper";  
-		$classes[]            = "wysiwyg";          
+		$classes[]            = $layout;   
+		$classes[]            = "wysiwyg";        
+
+		$d['wrapper']         = get_sub_field( 'wrapper' );  
+		$classes[] 			  = $d['wrapper'] ? "{$d['wrapper']}_wrapper" : '';
 
 		// Compile classes and attributes
 		$attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';

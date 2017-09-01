@@ -1248,6 +1248,22 @@ function get_content_local_field( $id = '1234QWERasdf' ) {
 			'choices' => get_available_styles_list( 'placeholder' ),
 		),
 		array (
+			'key' => $id . '_8I2ie7Ecd3Rc9',
+			'label' => 'Wrapper',
+			'name' => 'wrapper',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '33',
+			),
+			'choices' => array (
+				'card' => 'Card',
+				'auto'         => 'Auto'
+			),
+			'allow_null' => 0,
+			'default_value' => 'card',
+		),
+		array (
 			'key' => $id . '_8I2ie7Ecd4Ef8',
 			'label' => 'Borders',
 			'name' => 'borders',
