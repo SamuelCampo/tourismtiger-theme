@@ -24,8 +24,12 @@ if ( have_rows( 'columns' ) ) :
 		$classes[]            = $layout;   
 		$classes[]            = "wysiwyg";        
 
+		// Set wrapper value if it exists
 		$d['wrapper']         = get_sub_field( 'wrapper' );  
-		$classes[] 			  = $d['wrapper'] ? "{$d['wrapper']}_wrapper" : '';
+		$classes[] 			  = $d['wrapper'] ? "{$d['wrapper']}-wrapper" : '';
+
+		if ( $layout == 'flexicard' ) 
+			$classes[] 		  = $d['wrapper'] ? 'card-wrapper' : '';
 
 		// Compile classes and attributes
 		$attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
