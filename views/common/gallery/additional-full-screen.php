@@ -1,10 +1,6 @@
 <?php
 /**
  * View: Gallery additional panel for fullscreen type 
- *
- * $iframe  (array) 
- * $class   (string)
- * $attrs   (string)
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger

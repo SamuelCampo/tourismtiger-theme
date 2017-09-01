@@ -27,16 +27,14 @@ $classes[]  = is_array( $paddings ) ? 'padding_' . implode( ' padding_', $paddin
 /**
  * Background options
  */
-$background = get_sub_field( 'background' );
-$background = get_background_attrs( $background ); // Set attrs and get bg videos
+$background = get_background_attrs(); 
 $attrs[]    = $background['attrs'] ? $background['attrs'] : '';
 $style[]    = $background['style'] ? $background['style'] : '';
 
 /**
  * Generate dividers
  */
-$dividers   = get_sub_field( 'dividers' );
-$attrs[]    = get_dividers_attrs( $dividers );
+$attrs[]    = get_dividers_attrs();
 
 /**
  * AJAX rows-loading core variables
@@ -55,7 +53,7 @@ endif;
 
 // Section attributes
 $attrs[]    = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-$classes    = generate_classlist( $classes );
+$attrs[]    = count($classes) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
 $attrs      = generate_classlist( $attrs );
 $row_attrs  = generate_classlist( $row_attrs );
 

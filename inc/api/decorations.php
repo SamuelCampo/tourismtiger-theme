@@ -1,13 +1,13 @@
 <?php 
 /**
- * Backgrounds
+ * Decorations
  *
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */
 
 /**
- * That function generates section attributes
+ * That function generates section attributes to background
  * According with which a javascript will generate
  *
  * Also here the actions run to print video background 
@@ -16,9 +16,10 @@
  *         $output['attrs'] = list of attributes; 
  *         $output['style'] = list of styles
  */
-function get_background_attrs( $background ) {
+function get_background_attrs() {
+    $background = get_sub_field( 'background' );
 
-    $output = array( 'attrs' => array(), 'style' => array() );
+    $output     = array( 'attrs' => array(), 'style' => array() );
     
     if ( !$background )
         return $output;
@@ -172,4 +173,99 @@ function the_background_oembed( $background ) {
     $video = get_background_oembed( $background );
     echo "<div class='primary-content--bg_video'>{$video}</div>";
     return null;
+}
+
+
+/**
+ * Function returns attributes 
+ * to generate dividers
+ * 
+ * @var $d (array) - contains dividers acf data
+ */
+function get_dividers_attrs() {
+    $d = get_sub_field( 'dividers' );
+
+    if ( ! $d || ! is_array( $d ) )
+        return '';
+
+    $output    = array();
+
+    $is_top    = $d['top-divider'] && $d['top-divider'] != 'none';
+    $is_bottom = $d['bottom-divider'] && $d['bottom-divider'] != 'none';
+
+    if ( $is_top || $is_bottom ) 
+        $output[] = 'data-dividers';
+    else 
+        return '';
+
+    // top divider
+    $output[] = $is_top ? "data-divider-top-type='{$d['top-divider']}'" : '';
+
+    if ( $is_top ) :
+        switch ( $d['top-divider'] ) :
+            case 'repeater': 
+            case 'image':
+                $output[] = "data-divider-top-image='{$d['top-divider--image']}'";
+                break;
+
+            case 'line':
+                $output[] = "data-divider-top-color='{$d['top-divider--color']}'";
+                $output[] = "data-divider-top-width='{$d['top-divider--width']}'";
+                break;
+
+            case 'gradient':
+                $output[] = "data-divider-top-color='{$d['top-divider--color']}'";
+                $output[] = "data-divider-top-duration='{$d['top-divider--duration']}'";
+                break;
+        endswitch;
+    endif;
+
+    // bottom divider
+    $output[]  = $is_bottom ? "data-divider-bottom-type='{$d['bottom-divider']}'" : '';
+
+    if ( $is_bottom ) :
+        switch ( $d['bottom-divider'] ) :
+            case 'repeater': 
+                $output[] = "data-divider-bottom-repeater='{$d['bottom-divider--image']}'";
+                break;
+
+            case 'image':
+                $output[] = "data-divider-bottom-image='{$d['bottom-divider--image']}'";
+                break;
+
+            case 'line':
+                $output[] = "data-divider-bottom-color='{$d['bottom-divider--color']}'";
+                $output[] = "data-divider-bottom-width='{$d['bottom-divider--width']}'";
+                break;
+
+            case 'gradient':
+                $output[] = "data-divider-bottom-color='{$d['bottom-divider--color']}'";
+                $output[] = "data-divider-bottom-duration='{$d['bottom-divider--duration']}'";
+                break;
+        endswitch;
+    endif;
+
+    return generate_classlist( $output );
+}
+
+
+/**
+ * Return margins attrs
+ * From special acf fiels
+ */
+function get_margins_attrs() {
+    $margins = get_sub_field( 'margins' );
+
+    if ( ! is_array( $margins ) || count( $margins ) < 1 ) 
+        return '';
+
+    $html              = '';
+
+    $margins['top']    = $margins['top'] ? $margins['top'] / 10 : false;
+    $margins['bottom'] = $margins['bottom'] ? $margins['bottom'] / 10 : false;
+
+    $html             .= $margins['top'] ? "margin-top:{$margins['top']}rem;" : '';
+    $html             .= $margins['bottom'] ? "margin-bottom:{$margins['bottom']}rem;" : '';
+
+    return $html;
 }

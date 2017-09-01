@@ -214,10 +214,4 @@ include THEME_INC_PATH . '/api/gform.php';
 /**
  * Background functions generation
  */
-include THEME_INC_PATH . '/api/backgrounds.php';
-
-
-/**
- * Dividers functions generation
- */
-include THEME_INC_PATH . '/api/dividers.php';
+include THEME_INC_PATH . '/api/decorations.php';

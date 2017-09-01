@@ -1,10 +1,6 @@
 <?php
 /**
- * View: Gallery cover for fullscreen type 
- *
- * $iframe  (array) 
- * $class   (string)
- * $attrs   (string)
+ * View: Gallery cover for fullscreen type =
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -19,7 +15,7 @@
 
 <?php 
 /**
- * Panel over a cuurent image
+ * Panel over a current image
  */
 if ( $d['label'] ) : 
 	?>

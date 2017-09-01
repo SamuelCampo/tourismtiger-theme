@@ -1,17 +1,13 @@
 <?php
 /**
  * View: Column
- *
- * @var $the_row - variable that contains row's subfields data 
- * @var $classes
- * @var $attrs
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */
 ?>
 
-<div class="<?=$classes;?>" <?=$attrs;?>>
+<div <?=$attrs;?>>
 
 	<?php 
 	/**
@@ -26,9 +22,9 @@
 
 
 	/**
-	 * Echo component
+	 * Echo component.
 	 */
-	get_template_part( 'template-parts/column', $layout );
+	get_template_part( "template-parts/$layout", 'column' );
 
 
 	/**

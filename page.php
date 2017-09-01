@@ -1,6 +1,6 @@
 <?php
 /**
- * Page
+ * Default page template
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  * 

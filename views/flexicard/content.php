@@ -1,17 +1,13 @@
 <?php
 /**
  * View: Content of flexicard
- *
- * $d       (array) 
- * $class   (string)
- * $attrs   (string)
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */
 ?>
 
-<div class="<?=$classes;?>">
+<div <?=$attrs;?>>
 	<?php 
 	if ( $d['title'] ) 
 		echo "<h5 class='flexicard--title'>{$d['title']}</h5>";

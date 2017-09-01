@@ -14,55 +14,48 @@
 
 get_header();
 
+	/**
+	 * Template for undefined singular templates
+	 */
 	if ( is_singular() ) :
-
 		if ( have_posts() ) : 
-
-			while ( have_posts() ) : the_post(); 
+			while ( have_posts() ) : 
+				the_post(); 
 
 				/**
 				 * Set post variables and output template
 				 */
-				$title   = get_the_title();
+				$title   = the_title( '<h1>', '</h1>', false );
 				$content = get_the_content();
-				?>
 
-				<section class="wysiwyg">
-					<h1><?=$title;?></h1>
-					<p class="wysiwyg"><?=$title;?></p>
-				</section>
-
-				<?php
+				include THEME_VIEWS . 'loop/content.php';
 			endwhile;
-
 		endif;
 
+	/**
+	 * Template for undefined archive pages
+	 */
 	elseif ( is_archive() ) :
-
 		if ( have_posts() ) : 
 			?>
 
 			<div class="wysiwyg">
-				<h1>Aerchive page</h1>
+				<h1>Archive page</h1>
 
 				<?php
 				/**
 				 * Loop items of current archive
 				 */
-				while ( have_posts() ) : the_post(); 
+				while ( have_posts() ) : 
+					the_post(); 
+
 					/**
 					 * Set post variables and output template
 					 */
-					$title   = get_the_title();
+					$title   = the_title( '<h2>', '</h2>', false );
 					$content = get_the_content();
-					?>
 
-					<section class="wysiwyg">
-						<h2><?=$title;?></h2>
-						<p class="wysiwyg"><?=$title;?></p>
-					</section>
-
-					<?php
+					include THEME_VIEWS . 'loop/content.php';
 				endwhile;
 				?>
 
@@ -70,7 +63,6 @@ get_header();
 
 			<?php
 		endif;
-		
 	endif;
 
 get_footer();

@@ -2,6 +2,8 @@
 /**
  * View: Spiner
  * 
+ * @link http://tobiasahlin.com/spinkit/
+ * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */

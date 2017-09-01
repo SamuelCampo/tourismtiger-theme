@@ -325,11 +325,6 @@ gulp.task('clean', function (cb) {
     rimraf(path.clean, cb);
 });
 
-
-
-
-
-
 /**
  * Copyrate task
  */
