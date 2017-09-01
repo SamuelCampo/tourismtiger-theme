@@ -8771,6 +8771,9 @@ input[type='submit'][disabled] {
     margin-bottom: -1.5rem;
   }
 }
+.card-wrapper .flexicard--layout__mouseover {
+  border-radius: 10px;
+}
 /*  =========================
     Flexi Card UI */
 .flexicard--image {
