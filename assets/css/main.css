@@ -7834,19 +7834,31 @@ input[type='submit'][disabled] {
   padding-left: 3rem;
   padding-right: 3rem;
 }
-.banner.height_200px {
+.banner.height_20rem {
   min-height: 20rem;
 }
-.banner.height_300px {
+.banner.height_25rem {
+  min-height: 25rem;
+}
+.banner.height_30rem {
   min-height: 30rem;
 }
-.banner.height_400px {
+.banner.height_35rem {
+  min-height: 35rem;
+}
+.banner.height_40rem {
   min-height: 40rem;
 }
-.banner.height_500px {
+.banner.height_45rem {
+  min-height: 45rem;
+}
+.banner.height_50rem {
   min-height: 50rem;
 }
-.banner.height_600px {
+.banner.height_55rem {
+  min-height: 55rem;
+}
+.banner.height_60rem {
   min-height: 60rem;
 }
 .banner.height_100vh {
