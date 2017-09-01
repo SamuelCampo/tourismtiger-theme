@@ -29,7 +29,7 @@ if ( have_rows( 'columns' ) ) :
 		$classes[] 			  = $d['wrapper'] ? "{$d['wrapper']}-wrapper" : '';
 
 		if ( $layout == 'flexicard' ) 
-			$classes[] 		  = $d['wrapper'] ? 'card-wrapper' : '';
+			$classes[] 		  = 'card-wrapper';
 
 		// Compile classes and attributes
 		$attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
