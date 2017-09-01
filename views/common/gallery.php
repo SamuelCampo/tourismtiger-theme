@@ -1,17 +1,13 @@
 <?php
 /**
  * View: Gallery
- *
- * $iframe  (array) 
- * $class   (string)
- * $attrs   (string)
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */
 ?>
 
-<div class="<?=$classes;?>" <?=$attrs;?>>
+<div <?=$attrs;?>>
 	<div class="gallery-slider__cover">
 
 		<?php
@@ -26,7 +22,8 @@
 
 	<?php
 	/**
-	 * Include additional slider if it's required
+	 * Include additional slider 
+	 * if it's required
 	 */
 	if ( $d['additional'] ) : 
 		?>

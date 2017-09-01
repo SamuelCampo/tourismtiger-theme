@@ -6,9 +6,6 @@
  * @author  tourismtiger
  */
 
-
-if( function_exists('acf_add_local_field_group') ):
-
 acf_add_local_field_group(array (
 	'key' => 'api_59955dc048b00',
 	'title' => 'API Keys',
@@ -108,5 +105,3 @@ acf_add_local_field_group(array (
 	'active' => 1,
 	'description' => '',
 ));
-
-endif;

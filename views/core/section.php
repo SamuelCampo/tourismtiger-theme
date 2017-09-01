@@ -1,24 +1,16 @@
 <?php
 /**
  * View: Section
- *
- * @var $the_section_row - variable that contains section's subfields data 
- * @var $classes
- * @var $attrs
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
  */
 ?>
 
-<div class="<?=$classes;?>" <?=$attrs;?>>
+<div <?=$attrs;?>>
 	
 	<?php 
 	/**
-	 * Run functions after open tag.
-	 * For exampe it can be used to video background 
-	 * and border divider.
-	 *
 	 * After completing assigned functions 
 	 * that acton will be cleaned up except 
 	 * the functions under 'priority 10'
@@ -55,8 +47,8 @@
 
 				/**
 				 * Stop loop 
-				 * if AJAX rows loading i
-				 * s activated
+				 * if AJAX rows loading
+				 * is activated
 				 */
 				if ( $the_section_rows_id === $the_section_rows_limit ) 
 					break;
@@ -69,9 +61,6 @@
 	endif;
 
 	/**
-	 * Run functions before close tag.
-	 * For exampe it can be used to border divider
-	 *
 	 * After completing assigned functions 
 	 * that acton will be cleaned up except 
 	 * the functions under 'priority 10'

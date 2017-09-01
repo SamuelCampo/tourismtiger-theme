@@ -22,42 +22,49 @@ $classes[]            = "layout_{$d['layout']}";
 $classes[]            = "align-items_{$d['vertical']}";
 $classes[]            = "justify-content_{$d['align']}";
 
+// margins
+$style[]              = get_margins_attrs();
+
 // Grab icons data
 while ( have_rows( 'icons-list' ) ) :
 	the_row();
-	$c = $d['counter']++;
-	
-	$d['icons'][$c]['type']      = get_sub_field( 'icon-type' );
-	$d['icons'][$c]['text']      = get_sub_field( 'textarea' );
-	$d['icons'][$c]['url']       = get_sub_field( 'url' );
-	$d['icons'][$c]['font-size'] = get_sub_field( 'font-size' ) ? get_sub_field( 'font-size' ) / 10 : '';
-	$d['icons'][$c]['font-size'] = $d['icons'][$c]['font-size'] ? "style='font-size:{$d['icons'][$c]['font-size']}rem;'" : '';
+	$c                   = $d['counter']++;
+	$d['i']              = array(); // temporarily icon array
+	$d['i']['attrs']     = array(); // here will be kept some attributes
+	// Grab data from sub fields
+	$d['i']['type']      = get_sub_field( 'icon-type' );
+	$d['i']['text']      = get_sub_field( 'textarea' );
+	$d['i']['url']       = get_sub_field( 'url' );
+	$d['i']['font-size'] = get_sub_field( 'font-size' ) ? get_sub_field( 'font-size' ) / 10 : '';
+	// set attributes
+	$d['i']['attrs'][]   = $d['i']['font-size'] ? "font-size:{$d['i']['font-size']}rem;" : '';
 
-	if ( $d['icons'][$c]['type'] == 'checklist' ) :
-		$d['icons'][$c]['icon'] = '<i class="fa icons-list--icon_default"></i>';
-	elseif ( $d['icons'][$c]['type'] == 'custom' ) :
+	$d['i']['attrs']     = count( $d['i']['attrs'] ) ? 'style="' . generate_classlist( $d['i']['attrs'] ) . '"' : '';
+
+	/**
+	 * Checklist icon type
+	 */
+	if ( $d['i']['type'] == 'checklist' ) :
+		$d['i']['icon'] = '<i class="fa icons-list--icon_default"></i>';
+
+	/**
+	 * Custom icon type
+	 */
+	elseif ( $d['i']['type'] == 'custom' ) :
 		// Icon's atteibutes
-		$d['size'] = get_sub_field( 'size' ) ? get_sub_field( 'size' )  / 10 : '';
-		$d['size'] = $d['size'] ? "style='font-size:{$d['size']}rem;'" : '';
+		$d['size']      = get_sub_field( 'size' ) ? get_sub_field( 'size' )  / 10 : '';
+		$d['style']     = $d['size'] ? "style='font-size:{$d['size']}rem;'" : '';
 		// Icons's html
-		$d['icon'] = get_sub_field( 'icon' );
-		$d['icons'][$c]['icon'] = "<i class='fa {$d['icon']}' {$d['size']}></i>";
+		$d['icon']      = get_sub_field( 'icon' );
+		$d['i']['icon'] = "<i class='fa {$d['icon']}' {$d['style']}></i>";
 	endif;
+
+	$d['icons'][$c] = $d['i'];
 endwhile;
-
-// Margins
-$d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
-$d['margin_bottom']   = get_sub_field( 'margin_bottom' ) ? get_sub_field( 'margin_bottom' ) / 10 : false;
-
-if ( $d['margin_top'] ) 
-	$style[]          = "margin-top:{$d['margin_top']}rem;";
-
-if ( $d['margin_bottom'] ) 
-	$style[]          = "margin-bottom:{$d['margin_bottom']}rem;";
 
 // Compile classes and attributes
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-$classes              = generate_classlist( $classes );
+$attrs[]              = count($classes) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
 $attrs                = generate_classlist( $attrs );
 
 /**

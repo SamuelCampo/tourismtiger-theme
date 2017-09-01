@@ -1,6 +1,6 @@
 <?php 
 /**
- * Grabbing data of Product Image card field
+ * Grabbing data of Image card
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -21,23 +21,17 @@ $d['content']         = get_sub_field( 'content' );
 $d['layout']          = get_sub_field( 'layout' );
 $classes[]            = "layout_{$d['layout']}";
 
-// Margins
-$d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
-$d['margin_bottom']   = get_sub_field( 'margin_bottom' ) ? get_sub_field( 'margin_bottom' ) / 10 : false;
+// margins
+$style[]              = get_margins_attrs();
 
-if ( $d['margin_top'] ) 
-	$style[]          = "margin-top:{$d['margin_top']}rem;";
-
-if ( $d['margin_bottom'] ) 
-	$style[]          = "margin-bottom:{$d['margin_bottom']}rem;";
-
-// Compile classes and attributes
+// Compile attributes
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-$classes              = generate_classlist( $classes );
+$attrs[]              = count($classes) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
 $attrs                = generate_classlist( $attrs );
 
 /**
  * Get section view
  */
-include THEME_VIEWS . 'common/image-card.php';
+if ( $d['image'] )
+	include THEME_VIEWS . 'common/image-card.php';
 

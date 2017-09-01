@@ -11,15 +11,16 @@ function get_button( $btn = array(), $classes = array() ) {
         return null;
 
     // Converts classes array to string
-    $classes = generate_classlist( $classes );
+    $classes = apply_filters( 'get_button_classes', $classes, $btn );
+    $classes = 'class="' . generate_classlist( $classes ) . '"';
 
     switch ( $btn['type'] ) :
         case 'url':
-            $html = "<a href='{$btn['url']}' target='_blank' class='{$classes}'>{$btn['label']}</a>";
+            $html = "<a href='{$btn['url']}' target='_blank' {$classes}>{$btn['label']}</a>";
             break;
 
         default:    
-            $html = "<a href='{$btn['page']}' class='{$classes}'>{$btn['label']}</a>";
+            $html = "<a href='{$btn['page']}' {$classes}>{$btn['label']}</a>";
             break;
     endswitch;
 

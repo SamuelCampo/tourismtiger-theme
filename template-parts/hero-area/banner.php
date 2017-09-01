@@ -28,19 +28,17 @@ $classes[]             = $d['inner-width'] ? "inner-width_{$d['inner-width']}" :
 $classes[]             = $d['inner-align'] ? "inner-align_{$d['inner-align']}" : '';
 $classes[]             = $d['i-vertical-align'] ? "inner-vertical_{$d['i-vertical-align']}" : '';
 
-// background
-$background          = get_sub_field( 'background' );
-$background          = get_background_attrs( $background );
-$attrs[]             = $background['attrs'] ? $background['attrs'] : '';
-$style[]             = $background['style'] ? $background['style'] : '';
+$background            = get_background_attrs(); 
+$attrs[]               = $background['attrs'] ? $background['attrs'] : '';
+$style[]               = $background['style'] ? $background['style'] : '';
 
-// dividers
-$dividers            = get_sub_field( 'dividers' );
-$dividers            = get_dividers_attrs( $dividers );
-$attrs[]             = $dividers ? $dividers : '';
+/**
+ * Generate dividers
+ */
+$attrs[]               = get_dividers_attrs();
 
-$attrs[]             = count( $classes ) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
-$attrs[]             = count( $style ) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-$attrs               = count( $attrs ) > 0 ? generate_classlist( $attrs ) : '';
+$attrs[]               = count( $classes ) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
+$attrs[]               = count( $style ) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
+$attrs                 = count( $attrs ) > 0 ? generate_classlist( $attrs ) : '';
 
 include THEME_VIEWS . 'hero-area/banner.php';

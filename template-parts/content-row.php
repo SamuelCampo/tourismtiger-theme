@@ -1,8 +1,6 @@
 <?php 
 /**
  * Start columns loop
- *
- * @todo Blog settings
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -24,12 +22,12 @@ if ( have_rows( 'columns' ) ) :
 		$classes[]            = "row--column";
 		$classes[]            = "column-{$layout}"; 
 		$classes[]            = $layout; 
-		$classes[]            = "card-wrapper";     // add card styles to wrapper
-		$classes[]            = "wysiwyg";          // add margins between chilrend  
+		$classes[]            = "card-wrapper";  
+		$classes[]            = "wysiwyg";          
 
 		// Compile classes and attributes
 		$attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-		$classes              = generate_classlist( $classes );
+		$attrs[]              = count($classes) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
 		$attrs                = generate_classlist( $attrs );
 
 

@@ -1,10 +1,6 @@
 <?php
 /**
  * View: Default gallery cover
- *
- * $iframe  (array) 
- * $class   (string)
- * $attrs   (string)
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger

@@ -13,25 +13,22 @@ $style                = array();
 $classes              = array();
 $classes[]            = 'form-wrapper';
 
-
 $d['id']              = get_sub_field('id');
 
-// Margins
-$d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
-$d['margin_bottom']   = get_sub_field( 'margin_bottom' ) ? get_sub_field( 'margin_bottom' ) / 10 : false;
-
-if ( $d['margin_top'] ) 
-	$style[]          = "margin-top:{$d['margin_top']}rem;";
-
-if ( $d['margin_bottom'] ) 
-	$style[]          = "margin-bottom:{$d['margin_bottom']}rem;";
+// margins
+$style[]              = get_margins_attrs();
 
 // Compile classes and attributes
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-$classes              = generate_classlist( $classes );
+$attrs[]              = count($classes) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
 $attrs                = generate_classlist( $attrs );
+
+if ( $d['id'] ) :
 ?>
 
-<div class="<?=$classes;?>" <?=$attrs;?>>
+<div <?=$attrs;?>>
 	<?php the_gform( $d['id'] ); ?>
 </div>
+
+<?
+endif;

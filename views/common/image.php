@@ -1,6 +1,6 @@
 <?php
 /**
- * View: WYSIWYG
+ * View: Image
  *
  * $d       (array) 
  * $class   (string)

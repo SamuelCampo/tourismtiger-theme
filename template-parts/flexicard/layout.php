@@ -12,7 +12,10 @@ while ( have_rows( 'layout' ) ) :
 	$counter++;
 	$the_layout       = the_row();
 	$layout           = get_row_layout();
+	$attrs            = array();
+	$style            = array();
 	$classes          = array();
+	
 	$classes[]        = 'flexicard--layout';
 	$classes[]        = "flexicard--layout__{$layout}";
 	$classes[]        = "wysiwyg";
@@ -26,7 +29,9 @@ while ( have_rows( 'layout' ) ) :
 	$d['type']        = get_sub_field( 'type' );
 	$classes[]        = $d['type'] && $d['type'] != 'default' ? "type-{$d['type']}" : '';
 
-	$classes          = generate_classlist( $classes );
+	$attrs[]          = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
+	$attrs[]          = count($classes) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
+	$attrs            = generate_classlist( $attrs );
 
 	/**
 	 * Get section view

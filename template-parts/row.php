@@ -1,8 +1,6 @@
 <?php 
 /**
  * Grabbing data of Primnary content row field
- *
- * @todo Blog settings
  * 
  * @package TourismTiger_Theme
  * @author  tourismtiger
@@ -27,11 +25,8 @@ $d['width']           = get_sub_field( 'width' );
 $d['position']        = get_sub_field( 'position' ); 
 $d['vertical']        = get_sub_field( 'vertical-placement' ); 
 $d['cols_placement']  = get_sub_field( 'cols-placement' ); 
-$d['margin_top']      = get_sub_field( 'margin_top' ); 
-$d['margin_bottom']   = get_sub_field( 'margin_bottom' ); 
 
-$background           = get_sub_field( 'background' );
-$background           = get_background_attrs( $background ); // Set attrs and get bg videos
+$background           = get_background_attrs(); 
 $attrs[]              = $background['attrs'] ? $background['attrs'] : '';
 $style[]              = $background['style'] ? $background['style'] : '';
 
@@ -42,10 +37,10 @@ $classes[]            = 'vertical_' . $d['vertical'];
 $classes[]            = 'cols_placement_' . $d['cols_placement'];
 $classes[]            = 'cols_margins_' . $d['cols_margins'];
 
-$style[]              = $d['margin_top'] ? "margin-top:{$d['margin_top']};" : '';
-$style[]              = $d['margin_bottom'] ? "margin-top:{$d['margin_bottom']};" : '';
-
 $classes[]            = defined('GET_ROW_AJAX') ? 'slide-out' : '';
+
+// margins
+$style[]              = get_margins_attrs();
 
 // Important variable
 $GLOBALS['cols']      = $d['cols_count'];
@@ -89,7 +84,7 @@ endif;
 
 // Compile classes and attributes
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-$classes              = generate_classlist( $classes );
+$attrs[]              = count($classes) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
 $attrs                = generate_classlist( $attrs );
 
 

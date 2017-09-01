@@ -3,7 +3,6 @@
  * View: Image card
  *
  * $d       (array) 
- * $class   (string)
  * $attrs   (string)
  * 
  * @package TourismTiger_Theme
@@ -11,7 +10,7 @@
  */
 ?>
 
-<div class="<?=$classes;?>" <?=$attrs;?>>
+<div <?=$attrs;?>>
 	<div class="flexicard--image__thumb"><?=$d['image'];?></div>
 	
 	<?php

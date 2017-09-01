@@ -1,13 +1,16 @@
 <?php
 /**
- * Sidebar of propduct page
+ * Sidebar of Propduct page
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  * 
  * @package TourismTiger_Theme
  */
 
-if ( have_rows( 'widgets' ) && ! wp_is_mobile() ) :
+/**
+ * Show sidebar just for desktop devices
+ */
+if ( have_rows( 'widgets' ) && !wp_is_mobile() ) :
 	?>
 
 	<div class="sidebar">

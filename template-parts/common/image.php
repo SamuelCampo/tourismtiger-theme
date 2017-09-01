@@ -24,15 +24,8 @@ $d['target']          = get_sub_field('target') ? 'target="_blank"' : '';
 $d['start'] = $d['url'] ? "a href='{$d['url']}' {$d['target']}" : 'div';
 $d['end']   = $d['url'] ? "a" : 'div';
 
-// Margins
-$d['margin_top']      = get_sub_field( 'margin_top' ) ? get_sub_field( 'margin_top' ) / 10 : false;
-$d['margin_bottom']   = get_sub_field( 'margin_bottom' ) ? get_sub_field( 'margin_bottom' ) / 10 : false;
-
-if ( $d['margin_top'] ) 
-	$style[]          = "margin-top:{$d['margin_top']}rem;";
-
-if ( $d['margin_bottom'] ) 
-	$style[]          = "margin-bottom:{$d['margin_bottom']}rem;";
+// margins
+$style[]              = get_margins_attrs();
 
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
 $attrs                = generate_classlist( $attrs );
@@ -40,4 +33,5 @@ $attrs                = generate_classlist( $attrs );
 /**
  * Get section view
  */
-include THEME_VIEWS . 'common/image.php';
+if ( $d['image'] )
+	include THEME_VIEWS . 'common/image.php';

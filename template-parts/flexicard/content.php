@@ -23,7 +23,7 @@ $classes[]            = $d['type'] && $d['type'] != 'default' ? "type-{$d['type'
 
 // Compile classes and attributes
 $attrs[]              = count($style) > 0 ? 'style="' . generate_classlist( $style ) . '"' : '';
-$classes              = generate_classlist( $classes );
+$attrs[]              = count($classes) > 0 ? 'class="' . generate_classlist( $classes ) . '"' : '';
 $attrs                = generate_classlist( $attrs );
 
 /**
