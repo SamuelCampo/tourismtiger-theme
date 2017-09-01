@@ -346,6 +346,6 @@ gulp.task('copyrate', function (cb) {
 gulp.task('default', ['build']);
 gulp.task('build-webserver', ['build', 'webserver', 'watch']);
 gulp.task('build-watch', ['build', 'watch']);
-gulp.task('deploy', ['build', 'commit', 'push']);
+gulp.task('deploy', ['build', 'commit']);
 
 

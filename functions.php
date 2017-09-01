@@ -215,3 +215,4 @@ include THEME_INC_PATH . '/api/gform.php';
  * Background functions generation
  */
 include THEME_INC_PATH . '/api/decorations.php';
+
