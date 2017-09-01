@@ -524,7 +524,7 @@ html {
     Common */
 body {
   box-sizing: border-box;
-  font-size: 1.5rem;
+  font-size: 1.85rem;
   line-height: 1.4;
   color: #233744;
   font-family: sans-serif;
@@ -574,10 +574,10 @@ body input[type="submit"]:active {
 h1,
 h2,
 h3 {
-  line-height: 1.1;
+  line-height: 1.25;
 }
 h1 {
-  font-size: 4rem;
+  font-size: 5rem;
   margin: 0;
   font-weight: 700;
 }
@@ -588,7 +588,7 @@ h1 {
   }
 }
 h2 {
-  font-size: 3.5rem;
+  font-size: 4.2rem;
   margin: 0;
   font-weight: 100;
 }
@@ -599,7 +599,7 @@ h2 {
   }
 }
 h3 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin: 0;
   font-weight: 100;
 }
@@ -610,7 +610,7 @@ h3 {
   }
 }
 h4 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin: 0;
   font-weight: 100;
 }
@@ -620,7 +620,7 @@ h4 {
   }
 }
 h5 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin: 0;
   font-weight: 400;
 }
@@ -630,13 +630,13 @@ h5 {
   }
 }
 h6 {
-  font-size: 1.8rem;
+  font-size: 2.1rem;
   margin: 0;
   font-weight: 400;
 }
 p,
 li {
-  font-size: 1.5rem;
+  font-size: 1.85rem;
   margin: 0;
   line-height: 1.5;
   font-weight: 400;
@@ -7333,16 +7333,6 @@ input[type='submit'][disabled] {
   width: 100%;
   height: 100%;
 }
-.oembed.width_full {
-  max-width: calc(100% + 6rem);
-  width: calc(100% + 6rem);
-}
-@media (max-width: 568px) {
-  .oembed.width_full {
-    max-width: calc(100% + 4rem);
-    width: calc(100% + 4rem);
-  }
-}
 /*  =========================
    Gallery slider*/
 .gallery-slider img {
@@ -8711,6 +8701,16 @@ input[type='submit'][disabled] {
 @media (max-width: 1150px) {
   .card-wrapper {
     padding: 1.5rem 2rem;
+  }
+}
+.card-wrapper .oembed.width_full {
+  max-width: calc(100% + 6rem);
+  width: calc(100% + 6rem);
+}
+@media (max-width: 568px) {
+  .card-wrapper .oembed.width_full {
+    max-width: calc(100% + 4rem);
+    width: calc(100% + 4rem);
   }
 }
 .card-wrapper .width_full {
