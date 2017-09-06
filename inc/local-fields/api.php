@@ -1257,11 +1257,11 @@ function get_content_local_field( $id = '1234QWERasdf' ) {
 				'width' => '33',
 			),
 			'choices' => array (
-				'card' => 'Card',
-				'auto'         => 'Auto'
+				'auto' => 'Auto',
+				'card' => 'Card'
 			),
 			'allow_null' => 0,
-			'default_value' => 'card',
+			'default_value' => 'auto',
 		),
 		array (
 			'key' => $id . '_8I2ie7Ecd4Ef8',

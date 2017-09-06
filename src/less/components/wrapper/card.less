@@ -11,6 +11,16 @@
         padding: 1.5rem 2rem;
     }
 
+    .oembed.width_full {
+        max-width: ~"calc(100% + 6rem)";
+        width: ~"calc(100% + 6rem)";
+
+        @media (max-width: @mobile) {
+            max-width: ~"calc(100% + 4rem)";
+            width: ~"calc(100% + 4rem)";
+        }
+    }
+
     .width_full {
         margin-left: -3rem;
         margin-right: -3rem;
