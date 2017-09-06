@@ -89,6 +89,13 @@ function create_style_prefix( $i = '' ) {
     return $prefix;
 }
 
+/**
+ * To style prefix
+ */
+function set_style_prefix( $i = 0 ) {
+    return 'style-' . create_style_prefix($i);
+} 
+
 
 /**
  * Transform name for using in strings/slugs/urls

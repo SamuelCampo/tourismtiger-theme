@@ -36,7 +36,8 @@ var path = {
         js:     'assets/js/',
         css:    'assets/css/',
         fonts:  'assets/fonts/',
-        img:    'assets/img/'
+        img:    'assets/img/',
+        json:   'assets/json/'
     },
     src: {
         html:  'src/*.html', 
@@ -196,7 +197,7 @@ gulp.task('xml:build', function () {
  */
 gulp.task('json:build', function () {
     gulp.src(path.src.json)
-        .pipe(gulp.dest(path.build.html))
+        .pipe(gulp.dest(path.build.json))
         .pipe(reload({stream: true})); 
 });
 

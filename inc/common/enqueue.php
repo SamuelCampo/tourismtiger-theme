@@ -15,7 +15,7 @@
 function tourismtiger_assets() {
 	wp_enqueue_style( 'tourismtiger-main', get_template_directory_uri() . '/assets/css/main.min.css', array(), false, 'all' );
 	wp_enqueue_style( 'tourismtiger-responsive', get_template_directory_uri() . '/assets/css/main.min.responsive.css', array(), false, '(max-width:1364px)' );
-	wp_enqueue_style( 'theme-styling', get_styling_stylesheet_uri() . '/styling.css', array(), false, 'all' );
+	wp_enqueue_style( 'theme-styling', get_styling_stylesheet_uri() . '/styling.css', array(), null, 'all' );
 	wp_enqueue_script( 'googme-maps-js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCRJz_DMLCdqsfRwyysbIaWvzDxIIKzmaU', array(), false, true );
 	wp_enqueue_script( 'tourismtiger-js', get_template_directory_uri() . '/assets/js/main.js', array(), false, true );
 }

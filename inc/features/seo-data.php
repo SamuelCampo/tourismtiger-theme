@@ -8,14 +8,7 @@
 
 function include_seo_metadata() {
 	global $post;
-
-	/**
-	 * Common variables
-	 */
-	$title       = get_the_title() . ' | ' . get_bloginfo( 'name' );
 	?>
-
-	<title><?=$title;?></title>
 
 	<!-- Schema.org markup (Google) -->
 	<meta itemprop="name" content="<?=$title;?>" />

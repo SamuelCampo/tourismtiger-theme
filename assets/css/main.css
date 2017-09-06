@@ -8865,10 +8865,10 @@ input[type='submit'][disabled] {
   color: #fff;
 }
 .flexicard--layout.type-1 {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   text-align: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 .flexicard--layout.type-2 {
   -webkit-box-pack: center;

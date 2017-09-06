@@ -166,6 +166,12 @@ include_once THEME_INC_PATH . '/stylings/init.php';
 
 
 /**
+ * Font functions generation
+ */
+include THEME_INC_PATH . '/api/font.php';
+
+
+/**
  * Init local fields
  */
 include THEME_INC_PATH . '/local-fields/init.php';

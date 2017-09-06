@@ -15,7 +15,7 @@ if( function_exists('acf_add_options_sub_page') ) :
 		'menu_slug'    => 'acf-theme-styles',
 		'icon_url'     => 'dashicons-align-left',
 		'post_id'      => 'styles',
-		'redirect'     => false,
+		'redirect'     => true,
 	));
 
 endif;

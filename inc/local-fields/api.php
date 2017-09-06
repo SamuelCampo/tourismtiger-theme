@@ -9,7 +9,6 @@
  * @author  tourismtiger
  */
 
-
 /**
  * Sidebar widget
  */
