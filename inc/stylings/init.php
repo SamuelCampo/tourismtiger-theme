@@ -25,7 +25,7 @@ include_once( THEME_INC_PATH . 'stylings/class-styling-common.php' );
 /**
  * Components Styling Class
  */
-//include_once( THEME_INC_PATH . 'stylings/class-styling-components.php' );
+include_once( THEME_INC_PATH . 'stylings/class-styling-components.php' );
 
 
 
