@@ -321,7 +321,7 @@ function render_styles_option_page( $field = array() ) {
 ?>
 
 	<form metod="POST">
-		<p><?php echo $_GET['page'] != 'acf-options-common' ? $button_add . ' ' . $button_remove : ''; ?></p>
+		<p><?php echo $_GET['page'] != 'acf-options-common' && $_GET['page'] != 'acf-options-constants' ? $button_add . ' ' . $button_remove : ''; ?></p>
 		<p><?php echo $button_refresh; ?></p>
 	</form>
 
@@ -384,6 +384,7 @@ function get_styling_stylesheet_uri() {
  */
 function refresh_styling_cache() {
 	refresh_font_queue();
+	Constants::put_rules_to_json();
 	Common::put_rules_to_json();
 
 	refresh_styling_css_file();
@@ -439,8 +440,9 @@ function get_common_css() {
 						// Obviously the rules start from selector
 						$output .= "{$selector}{";
 
-						foreach ( $rules as $rule ) 
+						foreach ( $rules as $rule ) :
 							$output .= $rule;
+						endforeach;
 
 						$output .= '}';
 						// Rules end
@@ -481,6 +483,24 @@ function get_fonts_queue_css() {
 	endforeach;
 
 	return $output;
+}
+
+
+/**
+ * Get/Create rules file
+ */
+function get_rules_json( $slug = '' ) {
+	$file = get_styling_json_path() . $slug . '.json';
+
+	if ( file_exists( $file ) ) : 
+		return $file;
+	else :
+		$fp = fopen($file, "w"); 
+	    fwrite($fp, "// Init");
+	    fclose($fp);
+
+	    return $file;
+	endif;
 }
 
 

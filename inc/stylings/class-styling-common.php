@@ -302,7 +302,7 @@ class Common extends Styling {
 	 */
 	public static function put_rules_to_json() {
 		$rules       = self::init_rules();
-		$file        = self::get_rules_json();
+		$file        = get_rules_json('common');
 
 		$encodedJSON = json_encode( $rules );
 		$handle      = fopen($file, 'w');

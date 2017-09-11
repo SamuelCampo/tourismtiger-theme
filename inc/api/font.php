@@ -73,10 +73,6 @@ function get_font_rules_array( $font = array() ) {
          */
         if ($rule) :
             switch ($name) :
-                default:
-                    $array[$name] = "{$name}:{$rule};";
-                    break;
-
                 case 'font-family':
                     $array[$name] = "{$name}:'{$rule}';";
                     break;
@@ -88,6 +84,20 @@ function get_font_rules_array( $font = array() ) {
                 case 'letter-spacing':
                 case 'font-size':
                     $array[$name] = "{$name}:{$rule}px;";
+                    break;
+
+                case 'color-type':
+                    $type           = $font['color-type'];
+                    $value          = $font["color-{$type}"];
+                    $array['color'] = "{$value};";
+                    break;
+
+                case 'color-rgba':
+                case 'color-custom':
+                    break;
+
+                default:
+                    $array[$name] = "{$name}:{$rule};";
                     break;
             endswitch;
         endif;
@@ -165,6 +175,22 @@ function get_font_weight_choices() {
         600       => 'Medium',
         700       => 'Bold',
     );
+
+    return $choices;
+}
+
+/**
+ * List of available fonts
+ */
+function get_font_color_choices() {
+    $choices = array();
+    $json    = get_rules_json('constants');
+    $json    = file_get_contents( $json );
+    $json    = json_decode( $json, true );
+
+    if ( is_array( $json ) ) 
+        foreach ( $json['color-custom'] as $value => $name )
+            $choices[$value] = "<span style='color:{$value}'>◉</span> {$name}";
 
     return $choices;
 }

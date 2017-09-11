@@ -18,6 +18,11 @@ include_once( THEME_INC_PATH . 'stylings/api.php' );
 include_once( THEME_INC_PATH . 'stylings/class-styling.php' );
 
 /**
+ * Constans Styling Class
+ */
+include_once( THEME_INC_PATH . 'stylings/class-styling-constants.php' );
+
+/**
  * Common Styling Class
  */
 include_once( THEME_INC_PATH . 'stylings/class-styling-common.php' );

@@ -129,10 +129,8 @@ include THEME_INC_PATH . '/features/image-sizes.php';
 
 /**
  * Add additional myme types
- *
- * 1. SVG
  */
-include THEME_INC_PATH . '/features/myme-types.php';
+include THEME_INC_PATH . '/features/mime-types.php';
 
 /**
  * Breadcrumbs
@@ -160,15 +158,15 @@ include THEME_INC_PATH . '/snippets/paningation.php';
 
 
 /**
- * Theme option styling pages
- */
-include_once THEME_INC_PATH . '/stylings/init.php';
-
-
-/**
  * Font functions generation
  */
 include THEME_INC_PATH . '/api/font.php';
+
+
+/**
+ * Theme option styling pages
+ */
+include_once THEME_INC_PATH . '/stylings/init.php';
 
 
 /**

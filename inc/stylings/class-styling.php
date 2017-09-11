@@ -186,24 +186,6 @@ abstract class Styling {
 
 
 	/**
-	 * Get/Create rules file
-	 */
-	public static function get_rules_json() {
-		$file = get_styling_json_path() . self::get_url() . '.json';
-
-		if ( file_exists( $file ) ) : 
-			return $file;
-		else :
-			$fp = fopen($file, "w"); 
-		    fwrite($fp, "// Init");
-		    fclose($fp);
-
-		    return $file;
-		endif;
-	}
-
-
-	/**
 	 * Init ACF Fields
 	 * @return array
 	 */

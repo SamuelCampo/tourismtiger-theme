@@ -471,22 +471,69 @@ acf_add_local_field_group(array (
 			'placeholder' => '',
 		),
 		array (
+			'key' => 'font_59aec73e7dc4b',
+			'label' => 'Color type',
+			'name' => 'color-type',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '33',
+			),
+			'choices' => array(
+				'rgba' => 'RGBA picker',
+				'custom' => 'Custom color'
+			),
+			'default_values' => array(
+				'rgba' => 'RGBA picker'
+			),
+		),
+		array (
 			'key' => 'font_59aec73e7cd5a',
 			'label' => 'Text color',
-			'name' => 'color',
+			'name' => 'color-rgba',
 			'type' => 'rgba_color',
 			'instructions' => '',
 			'required' => 0,
-			'conditional_logic' => 0,
+			'conditional_logic' => array(
+				array (
+					array(
+						'field' => 'font_59aec73e7dc4b',
+						'operator' => '==',
+						'value' => 'rgba'
+					)
+				)
+			),
+			'wrapper' => array (
+				'width' => '33',
+			),
+		),
+		array (
+			'key' => 'font_59aec73e8sa3c',
+			'label' => 'Custom color',
+			'name' => 'color-custom',
+			'type' => 'select',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array (
+					array(
+						'field' => 'font_59aec73e7dc4b',
+						'operator' => '==',
+						'value' => 'custom'
+					)
+				)
+			),
 			'wrapper' => array (
 				'width' => '33',
 				'class' => '',
 				'id' => '',
 			),
-			'rgba' => '',
-			'return_value' => 0,
-			'ext_value' => array (
-			),
+			'choices' => get_font_color_choices(),
+			'allow_null' => 1,
+			'multiple' => 0,
+			'ui' => 1,
+			'ajax' => 1,
+			'return_format' => 'value',
 		),
 	),
 	'location' => array (
