@@ -89,7 +89,7 @@ function get_font_rules_array( $font = array() ) {
                 case 'color-type':
                     $type           = $font['color-type'];
                     $value          = $font["color-{$type}"];
-                    $array['color'] = "{$value};";
+                    $array['color'] = "color:{$value};";
                     break;
 
                 case 'color-rgba':
@@ -174,6 +174,21 @@ function get_font_weight_choices() {
         'regular' => 'Regular',
         600       => 'Medium',
         700       => 'Bold',
+    );
+
+    return $choices;
+}
+
+/**
+ * List of available fonts
+ */
+function get_text_align_choices() {
+    $choices = array(
+        'inherit' => 'Auto',
+        'left'    => 'Left',
+        'center'  => 'Center',
+        'right'   => 'Right',
+        'justify' => 'Justify',
     );
 
     return $choices;

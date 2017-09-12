@@ -401,6 +401,7 @@ function refresh_styling_css_file() {
 
 	$output  .= get_fonts_queue_css(); // set fonts parameters
 	$output  .= get_common_css(); // set common css parameters
+	$output  .= Constants::get_button_css_classes(); // button types
 
 	$file_open = fopen($css_file, "w");
 	fwrite($file_open, $output);
@@ -492,15 +493,13 @@ function get_fonts_queue_css() {
 function get_rules_json( $slug = '' ) {
 	$file = get_styling_json_path() . $slug . '.json';
 
-	if ( file_exists( $file ) ) : 
-		return $file;
-	else :
+	if ( !file_exists( $file ) ) : 
 		$fp = fopen($file, "w"); 
 	    fwrite($fp, "// Init");
 	    fclose($fp);
-
-	    return $file;
 	endif;
+
+    return $file;
 }
 
 

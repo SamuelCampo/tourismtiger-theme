@@ -106,8 +106,8 @@ function set_style_prefix( $i = 0 ) {
  */
 function transform_name( $name = '', $type = '' ) {
     $word = array( ' ' => $type, '&' => '' );
-    $new = strtr( $name, $word );
-    $new = strtolower( $new );
+    $new = strtolower( $name );
+    $new = strtr( $new, $word );
 
     return $new;
 }

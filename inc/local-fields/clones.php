@@ -471,6 +471,27 @@ acf_add_local_field_group(array (
 			'placeholder' => '',
 		),
 		array (
+			'key' => 'font_59aec6f87vf60',
+			'label' => 'Text align',
+			'name' => 'text-align',
+			'type' => 'select',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '33',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => get_text_align_choices(),
+			'allow_null' => 1,
+			'multiple' => 0,
+			'ui' => 0,
+			'ajax' => 0,
+			'return_format' => 'value',
+			'placeholder' => '',
+		),
+		array (
 			'key' => 'font_59aec73e7dc4b',
 			'label' => 'Color type',
 			'name' => 'color-type',
@@ -489,7 +510,7 @@ acf_add_local_field_group(array (
 		),
 		array (
 			'key' => 'font_59aec73e7cd5a',
-			'label' => 'Text color',
+			'label' => 'Color',
 			'name' => 'color-rgba',
 			'type' => 'rgba_color',
 			'instructions' => '',
@@ -504,12 +525,12 @@ acf_add_local_field_group(array (
 				)
 			),
 			'wrapper' => array (
-				'width' => '33',
+				'width' => '67',
 			),
 		),
 		array (
 			'key' => 'font_59aec73e8sa3c',
-			'label' => 'Custom color',
+			'label' => 'Color',
 			'name' => 'color-custom',
 			'type' => 'select',
 			'instructions' => '',
@@ -524,7 +545,7 @@ acf_add_local_field_group(array (
 				)
 			),
 			'wrapper' => array (
-				'width' => '33',
+				'width' => '67',
 				'class' => '',
 				'id' => '',
 			),
@@ -703,6 +724,244 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 0,
 	'description' => '',
+));
+
+acf_add_local_field_group(array (
+	'key' => 'button_59aec5c7655c9',
+	'title' => 'Button values',
+	'fields' => array (
+		array (
+			'key'      => 'button_6b4bwer23ds23',
+			'label'    => 'Font properties',
+			'name'     => 'font',
+			'type'     => 'clone',
+			'required' => 0,
+			'clone'    => array (
+				0 => 'font_59aec5c7655c9',
+			),
+			'display' => 'group',
+			'layout' => 'block',
+			'prefix_label' => 0,
+			'prefix_name' => 1,
+		),
+		array (
+			'key' => 'button_6b4bwer5b5b',
+			'label' => 'Background color type',
+			'name' => 'bg-color-type',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '33',
+			),
+			'choices' => array(
+				'rgba' => 'RGBA picker',
+				'custom' => 'Custom color'
+			),
+			'default_values' => array(
+				'rgba' => 'RGBA picker'
+			),
+		),
+		array (
+			'key' => 'button_6b4bwer4b6b',
+			'label' => 'Background color',
+			'name' => 'bg-color-rgba',
+			'type' => 'rgba_color',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array (
+					array(
+						'field' => 'button_6b4bwer5b5b',
+						'operator' => '==',
+						'value' => 'rgba'
+					)
+				)
+			),
+			'wrapper' => array (
+				'width' => '67',
+			),
+		),
+		array (
+			'key' => 'button_6b4bwer3b7b',
+			'label' => 'Background color',
+			'name' => 'bg-color-custom',
+			'type' => 'select',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array (
+					array(
+						'field' => 'button_6b4bwer5b5b',
+						'operator' => '==',
+						'value' => 'custom'
+					)
+				)
+			),
+			'wrapper' => array (
+				'width' => '67',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => get_font_color_choices(),
+			'allow_null' => 1,
+			'multiple' => 0,
+			'ui' => 1,
+			'ajax' => 1,
+			'return_format' => 'value',
+		),
+		array (
+			'key' => 'button_6b4bwer5b5t',
+			'label' => 'Border',
+			'name' => 'border',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '33',
+			),
+			'choices' => array(
+				'none' => 'None',
+				'on'   => 'Turn on',
+			),
+			'default_values' => array(
+				'none' => 'None'
+			),
+		),
+		array (
+			'key' => 'button_6b4bwer5b5w',
+			'label' => 'Border width',
+			'name' => 'border-width',
+			'type' => 'number',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '33',
+			),
+			'min'  => 1,
+			'max'  => 15,
+			'step' => 1,
+			'append' => 'px',
+			'placeholder' => '2',
+			'conditional_logic' => array(
+				array (
+					array(
+						'field' => 'button_6b4bwer5b5t',
+						'operator' => '==',
+						'value' => 'on'
+					),
+				)
+			),
+		),
+		array (
+			'key' => 'button_6b4bwer5b5s',
+			'label' => 'Border style',
+			'name' => 'border-style',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '33',
+			),
+			'choices' => array(
+				'solid'  => 'Solid',
+				'dashed' => 'Dashed',
+				'dotted' => 'Dotted'
+			),
+			'default_values' => array(
+				'solid'  => 'Solid'
+			),
+			'conditional_logic' => array(
+				array (
+					array(
+						'field' => 'button_6b4bwer5b5t',
+						'operator' => '==',
+						'value' => 'on'
+					),
+				)
+			),
+		),
+		array (
+			'key' => 'button_6b4bwer5b5o',
+			'label' => 'Border color type',
+			'name' => 'border-color-type',
+			'type' => 'select',
+			'required' => 0,
+			'wrapper' => array (
+				'width' => '33',
+			),
+			'choices' => array(
+				'rgba' => 'RGBA picker',
+				'custom' => 'Custom color'
+			),
+			'default_values' => array(
+				'rgba' => 'RGBA picker'
+			),
+			'conditional_logic' => array(
+				array (
+					array(
+						'field' => 'button_6b4bwer5b5t',
+						'operator' => '==',
+						'value' => 'on'
+					),
+				)
+			),
+		),
+		array (
+			'key' => 'button_6b4bwer4b6o',
+			'label' => 'Border color',
+			'name' => 'border-color-rgba',
+			'type' => 'rgba_color',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array (
+					array(
+						'field' => 'button_6b4bwer5b5o',
+						'operator' => '==',
+						'value' => 'rgba'
+					),
+					array(
+						'field' => 'button_6b4bwer5b5t',
+						'operator' => '==',
+						'value' => 'on'
+					),
+				)
+			),
+			'wrapper' => array (
+				'width' => '67',
+			),
+		),
+		array (
+			'key' => 'button_6b4bwer3b7o',
+			'label' => 'Border color',
+			'name' => 'border-color-custom',
+			'type' => 'select',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array (
+					array(
+						'field' => 'button_6b4bwer5b5o',
+						'operator' => '==',
+						'value' => 'custom'
+					),
+					array(
+						'field' => 'button_6b4bwer5b5t',
+						'operator' => '==',
+						'value' => 'on'
+					),
+				)
+			),
+			'wrapper' => array (
+				'width' => '67',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => get_font_color_choices(),
+			'allow_null' => 1,
+			'multiple' => 0,
+			'ui' => 1,
+			'ajax' => 1,
+			'return_format' => 'value',
+		),
+	)
 ));
 
 acf_add_local_field_group(array (

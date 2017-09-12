@@ -6231,12 +6231,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   text-overflow: ellipsis;
   transition: ease 0.3s;
   display: inline-block;
-  min-width: 15rem;
   text-align: center;
-  color: #fff;
   cursor: pointer;
-  background-color: #00b149;
-  border: 1px solid #00b149;
+  min-width: 15rem;
   position: absolute;
   right: 0;
   top: 0;
@@ -6244,7 +6241,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   padding-bottom: 1.4rem;
   min-width: auto;
 }
-.jq-file__browse:hover {
+.jq-file__browse_default {
+  color: #fff;
+  background-color: #00b149;
+  border: 1px solid #00b149;
+}
+.jq-file__browse_default:hover {
   background-color: #007e34;
   border-color: #007e34;
 }
@@ -6854,16 +6856,20 @@ input[type='reset'] {
   text-overflow: ellipsis;
   transition: ease 0.3s;
   display: inline-block;
-  min-width: 15rem;
   text-align: center;
-  color: #fff;
   cursor: pointer;
+  min-width: 15rem;
+}
+input[type='button']_default,
+input[type='submit']_default,
+input[type='reset']_default {
+  color: #fff;
   background-color: #00b149;
   border: 1px solid #00b149;
 }
-input[type='button']:hover,
-input[type='submit']:hover,
-input[type='reset']:hover {
+input[type='button']_default:hover,
+input[type='submit']_default:hover,
+input[type='reset']_default:hover {
   background-color: #007e34;
   border-color: #007e34;
 }
@@ -7002,14 +7008,16 @@ input[type='submit'][disabled] {
   text-overflow: ellipsis;
   transition: ease 0.3s;
   display: inline-block;
-  min-width: 15rem;
   text-align: center;
-  color: #fff;
   cursor: pointer;
+  min-width: 15rem;
+}
+.button_default {
+  color: #fff;
   background-color: #00b149;
   border: 1px solid #00b149;
 }
-.button:hover {
+.button_default:hover {
   background-color: #007e34;
   border-color: #007e34;
 }
@@ -7461,19 +7469,21 @@ input[type='submit'][disabled] {
   text-overflow: ellipsis;
   transition: ease 0.3s;
   display: inline-block;
-  min-width: 15rem;
   text-align: center;
-  color: #fff;
   cursor: pointer;
-  background-color: #00b149;
-  border: 1px solid #00b149;
+  min-width: 15rem;
   background-color: transparent;
   border-color: #fff;
   text-transform: uppercase;
   min-width: 22rem;
   font-size: 1.6rem;
 }
-.gallery-slider--panel__btn:hover {
+.gallery-slider--panel__btn_default {
+  color: #fff;
+  background-color: #00b149;
+  border: 1px solid #00b149;
+}
+.gallery-slider--panel__btn_default:hover {
   background-color: #007e34;
   border-color: #007e34;
 }
